@@ -1,25 +1,25 @@
 {
-	"name": "typescript-project",
+	"name": "binmat",
 	"version": "0.0.0",
 	"description": "remember to update urls in this file",
 	"main": "index.js",
 	"scripts": {
 		"build": "tsc",
-		"watch": "tsc --watch"
+		"dev": "tsc --watch"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/samualtnorman/typescript-project"
+		"url": "https://github.com/samualtnorman/binmat"
 	},
 	"author": "Samual Norman",
 	"license": "GPL-3.0-or-later",
 	"bugs": {
-		"url": "https://github.com/samualtnorman/typescript-project/issues"
+		"url": "https://github.com/samualtnorman/binmat/issues"
 	},
-	"homepage": "https://github.com/samualtnorman/typescript-project#readme",
+	"homepage": "https://github.com/samualtnorman/binmat#readme",
 	"dependencies": {},
 	"devDependencies": {
-		"@types/node": "^14.14.31",
-		"typescript": "^4.1.5"
+		"@types/node": "latest",
+		"typescript": "latest"
 	}
 }
