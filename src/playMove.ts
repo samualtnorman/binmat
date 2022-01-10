@@ -23,19 +23,15 @@ export type Move = {
 	action: Action.Draw
 	deck: Lane | AttackerDeck
 } | {
-	action: Action.Play
-	card: Card
-	lane: Lane
-} | {
-	action: Action.PlayFaceup
-	card: Card
+	action: Action.Play | Action.PlayFaceup
+	card: Card | CardValue
 	lane: Lane
 } | {
 	action: Action.Combat
 	lane: Lane
 } | {
 	action: Action.Discard
-	card: Card
+	card: Card | CardValue
 	discardPile: Lane | AttackerDiscardPile
 } | { action: Action.Pass }
 
@@ -117,7 +113,7 @@ export function playMove(state: State, move: Move): StatusCode {
 					if (move.card[0] == CardModifier.Break && !state.defenderStacks[move.lane].cards.length)
 						return StatusCode.PlayedBreakToEmptyStack
 
-					const index = state.defenderHand.indexOf(move.card)
+					const index = getDefenderHandCardIndex(move.card)
 
 					if (index == -1)
 						return StatusCode.PlayedUnownedCard
@@ -127,7 +123,7 @@ export function playMove(state: State, move: Move): StatusCode {
 					if (move.card[0] == CardModifier.Break && !state.attackerStacks[move.lane].length)
 						return StatusCode.PlayedBreakToEmptyStack
 
-					const index = state.attackerHand.indexOf(move.card)
+					const index = getAttackerHandCardIndex(move.card)
 
 					if (index == -1)
 						return StatusCode.PlayedUnownedCard
@@ -138,7 +134,7 @@ export function playMove(state: State, move: Move): StatusCode {
 
 			case Action.PlayFaceup: {
 				if (roleTurn == Role.Defender) {
-					const index = state.defenderHand.indexOf(move.card)
+					const index = getDefenderHandCardIndex(move.card)
 
 					if (index == -1)
 						return StatusCode.PlayedUnownedCard
@@ -154,7 +150,7 @@ export function playMove(state: State, move: Move): StatusCode {
 					} else
 						state.defenderStacks[move.lane].cards.push(state.defenderHand.splice(index, 1)[0]!)
 				} else /* attacker turn */ {
-					const index = state.attackerHand.indexOf(move.card)
+					const index = getAttackerHandCardIndex(move.card)
 
 					if (index == -1)
 						return StatusCode.PlayedUnownedCard
@@ -190,7 +186,7 @@ export function playMove(state: State, move: Move): StatusCode {
 
 			case Action.Discard: {
 				if (roleTurn == Role.Defender) {
-					const index = state.defenderHand.indexOf(move.card)
+					const index = getDefenderHandCardIndex(move.card)
 
 					if (index == -1)
 						return StatusCode.PlayedUnownedCard
@@ -198,10 +194,9 @@ export function playMove(state: State, move: Move): StatusCode {
 					if (move.discardPile == AttackerDiscardPile)
 						return StatusCode.DiscardedToOpponentDiscardPile
 
-					state.laneDiscardPiles[move.discardPile].push(move.card)
-					state.defenderHand.splice(index, 1)
+					state.laneDiscardPiles[move.discardPile].push(state.defenderHand.splice(index, 1)[0]!)
 				} else /* attacker turn */ {
-					const index = state.attackerHand.indexOf(move.card)
+					const index = getAttackerHandCardIndex(move.card)
 
 					if (index == -1)
 						return StatusCode.PlayedUnownedCard
@@ -209,8 +204,7 @@ export function playMove(state: State, move: Move): StatusCode {
 					if (move.discardPile != AttackerDiscardPile)
 						return StatusCode.DiscardedToOpponentDiscardPile
 
-					state.attackerDiscardPile.push(move.card)
-					state.attackerHand.splice(index, 1)
+					state.attackerDiscardPile.push(state.attackerHand.splice(index, 1)[0]!)
 				}
 			} break
 		}
@@ -227,6 +221,20 @@ export function playMove(state: State, move: Move): StatusCode {
 		return StatusCode.DefenderWin
 
 	return StatusCode.Ok
+
+	function getDefenderHandCardIndex(card: any) {
+		if (card.length == 2)
+			return state.defenderHand.indexOf(card)
+
+		return state.defenderHand.findIndex(([ value ]) => value == card)
+	}
+
+	function getAttackerHandCardIndex(card: any) {
+		if (card.length == 2)
+			return state.attackerHand.indexOf(card)
+
+		return state.attackerHand.findIndex(([ value ]) => value == card)
+	}
 
 	function getDeck(deck: Lane | AttackerDeck) {
 		if (deck == AttackerDeck)
