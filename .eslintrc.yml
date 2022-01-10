@@ -140,7 +140,7 @@ rules:
   unicorn/prefer-number-properties: off
   unicorn/explicit-length-check: off
   unicorn/no-await-expression-member: off
-  unicorn/no-null: off
+  unicorn/no-null: warn
   unicorn/import-index: warn
   unicorn/no-unsafe-regex: warn
   unicorn/no-unused-properties: warn
@@ -152,6 +152,8 @@ rules:
   unicorn/filename-case: off
   unicorn/prefer-code-point: off
   unicorn/no-new-array: off
+  unicorn/empty-brace-spaces: warn
+  unicorn/no-lonely-if: warn
 
   no-constant-condition:
     - warn

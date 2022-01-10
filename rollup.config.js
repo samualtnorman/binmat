@@ -56,7 +56,7 @@ export default async ({ w }) => {
 		plugins,
 		external: external.map(name => new RegExp(`^${name}(?:/|$)`)),
 		preserveEntrySignatures: `allow-extension`,
-		treeshake: { moduleSideEffects: `no-external` }
+		treeshake: { moduleSideEffects: false }
 	}
 }
 
