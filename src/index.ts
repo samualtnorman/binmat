@@ -1,4 +1,4 @@
-import { assert, shuffle } from "./lib"
+import { assert } from "@samual/lib"
 
 export const enum CardModifier {
 	Trap = "@",

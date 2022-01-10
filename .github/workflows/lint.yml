@@ -1,4 +1,4 @@
-name: Build
+name: Lint
 
 on:
   push:
@@ -22,4 +22,4 @@ jobs:
         node-version: ^12.20 || >=14
 
     - run: npm ci
-    - run: npm run build
+    - run: npm run lint

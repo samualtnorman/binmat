@@ -1,11 +1,17 @@
 {
+	"include": [ "**/*", "package.json" ],
 	"compilerOptions": {
-		"target": "ES2017",
-		"module": "commonjs",
-		"strict": true,
-		"esModuleInterop": true,
+		"rootDir": ".",
+		"outDir": ".",
+		"resolveJsonModule": true,
+		"composite": true,
+		"emitDeclarationOnly": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"lib": [ "ESNext" ]
-	}
+		"checkJs": true,
+		"esModuleInterop": true,
+		"target": "ES2019",
+		"moduleResolution": "Node",
+		"strictNullChecks": true
+	},
+	"exclude": [ "src", "dist" ]
 }
