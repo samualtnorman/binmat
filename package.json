@@ -42,6 +42,7 @@
 		"eslint-plugin-optimize-regex": "^1.2.1",
 		"eslint-plugin-regexp": "^1.5.1",
 		"eslint-plugin-unicorn": "^40.0.0",
+		"hackmud-script-manager": "^0.13.0-7dddbef",
 		"jest": "^27.4.7",
 		"rollup": "^2.63.0",
 		"rollup-plugin-preserve-shebang": "^1.0.1",

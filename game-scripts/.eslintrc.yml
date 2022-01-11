@@ -1,0 +1,5 @@
+rules:
+  unicorn/prevent-abbreviations:
+    - warn
+    - allowList:
+        args: true

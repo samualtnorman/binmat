@@ -13,5 +13,6 @@
 		"moduleResolution": "Node",
 		"strictNullChecks": true
 	},
-	"exclude": [ "src", "dist" ]
+	"exclude": [ "src", "dist", "game-scripts" ],
+	"references": [ { "path": "./src" } ]
 }

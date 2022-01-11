@@ -147,13 +147,13 @@ rules:
   # unicorn/prefer-string-replace-all: warn
   # unicorn/prefer-top-level-await: warn
   eslint-comments/no-unused-disable: warn
-  eslint-comments/require-description: warn
   array-func/prefer-array-from: off
   unicorn/filename-case: off
   unicorn/prefer-code-point: off
   unicorn/no-new-array: off
   unicorn/empty-brace-spaces: warn
   unicorn/no-lonely-if: warn
+  eslint-comments/disable-enable-pair: off
 
   no-constant-condition:
     - warn
