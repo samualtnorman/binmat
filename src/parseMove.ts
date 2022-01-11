@@ -27,7 +27,7 @@ export const CardSuits: CardSuit[] = [
 	CardSuit.Choice
 ]
 
-export function parseMove(move: string, hand: Card[]): Move {
+export function parseMove(move: string): Move {
 	assert(move.length > 1, `move length must be more than 1, got ${move.length}`)
 
 	switch (move[0]) {

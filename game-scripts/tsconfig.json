@@ -1,20 +1,13 @@
 {
 	"compilerOptions": {
-		"rootDir": ".",
-		"target": "ES2015",
-		"module": "ES2020",
-		"strict": true,
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"declaration": true,
-		"useUnknownInCatchVariables": true,
 		"exactOptionalPropertyTypes": true,
-		"noImplicitOverride": true,
-		"moduleResolution": "Node",
-		"resolveJsonModule": true,
 		"noUncheckedIndexedAccess": true,
-		"noEmit": true
+		"strict": true,
+		"useUnknownInCatchVariables": true,
+		"strictNullChecks": true,
+		"module": "ES2020",
+		"target": "ES2015"
 	},
-	"references": [ { "path": ".." } ]
+	"extends": "../tsconfig.json",
+	"include": [ "*" ]
 }

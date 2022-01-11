@@ -19,9 +19,9 @@
 	"scripts": {
 		"build": "rollup --config",
 		"dev": "rollup --config --watch",
-		"lint": "eslint .; tsc --noEmit --emitDeclarationOnly false --project src",
+		"lint": "eslint .; tsc",
 		"test": "node --experimental-vm-modules node_modules/jest/bin/jest",
-		"package": "rm -rf dist && rollup --config && tsc --project src && node scripts/build-package-json && cp LICENSE package-lock.json README.md dist"
+		"package": "rm -rf dist && rollup --config && tsc --project src --declaration true --emitDeclarationOnly true --noEmit false --outDir dist && node scripts/build-package-json && cp LICENSE package-lock.json README.md dist"
 	},
 	"devDependencies": {
 		"@babel/preset-env": "^7.16.7",
@@ -42,7 +42,7 @@
 		"eslint-plugin-optimize-regex": "^1.2.1",
 		"eslint-plugin-regexp": "^1.5.1",
 		"eslint-plugin-unicorn": "^40.0.0",
-		"hackmud-script-manager": "^0.13.0-7dddbef",
+		"hackmud-script-manager": "^0.13.0-bf69e1f",
 		"jest": "^27.4.7",
 		"rollup": "^2.63.0",
 		"rollup-plugin-preserve-shebang": "^1.0.1",

@@ -1,3 +1,6 @@
+extends:
+  - ../.eslintrc.yml
+
 rules:
   unicorn/prevent-abbreviations:
     - warn

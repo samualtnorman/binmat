@@ -11,6 +11,7 @@ parserOptions:
   project:
     - ./tsconfig.json
     - ./src/tsconfig.json
+    - ./game-scripts/tsconfig.json
 
 plugins:
   - "@typescript-eslint"
@@ -154,6 +155,7 @@ rules:
   unicorn/empty-brace-spaces: warn
   unicorn/no-lonely-if: warn
   eslint-comments/disable-enable-pair: off
+  "@typescript-eslint/no-unnecessary-condition": off
 
   no-constant-condition:
     - warn
@@ -386,10 +388,6 @@ rules:
     - warn
     - allow:
       - arrowFunctions
-
-  "@typescript-eslint/no-unnecessary-condition":
-    - warn
-    - allowConstantLoopConditions: true
 
   "@typescript-eslint/require-array-sort-compare":
     - warn
