@@ -248,6 +248,40 @@ type BrainContext = CLIContext & {
 	is_brain: true
 }
 
+type ScriptSuccess<T = Record<string, never>> = { ok: true } & T
+
+type ScriptFailure = {
+	ok: false
+	msg?: string
+}
+
+type ScriptResponse<T = Record<string, never>> = ScriptSuccess<T> | ScriptFailure
+
+declare const $fs = {
+	chats: {
+		/**
+		 * **FULLSEC**
+		 *
+		 * @summary Send a chat message to a specific user
+		 *
+		 * @description This script lets you send a message to the specified user directly.
+		 * You can message any user, you only need their username.
+		 * Note that you will not be able to see your message after it is sent (though many chat scripts based on chats.tell also send the message to you to work around this limitation).
+		 */
+		tell(args: {
+			/**
+			 * The username to send the message to
+			 */
+			to: string
+
+			/**
+			 * The message to send
+			 */
+			msg: string
+		}): ScriptResponse
+	}
+}
+
 type Context = CLIContext | SubscriptContext | ScriptorContext | BrainContext
 
 declare const context: Context
