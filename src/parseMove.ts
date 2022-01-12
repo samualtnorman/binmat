@@ -27,8 +27,11 @@ export const CardSuits: CardSuit[] = [
 	CardSuit.Choice
 ]
 
-export function parseMove(move: string): Move {
-	assert(move.length > 1, `move length must be more than 1, got ${move.length}`)
+export function parseMove(move: string, extra = false): Move {
+	assert(move.length > 1, `move must at least than 2 character, got ${move.length}`)
+
+	if (move == `--`)
+		return { action: Action.Pass }
 
 	switch (move[0]) {
 		case `d`: {
@@ -43,7 +46,7 @@ export function parseMove(move: string): Move {
 
 			const lane = Number(move[1])
 
-			assert(lane >= 0 && lane < 6, `invalid lane number "${move[1]}" (expected 0 to 6 or "a")`)
+			assert(lane >= 0 && lane < 6, `invalid lane number "${move[1]}" (expected 0 - 5 or "a")`)
 
 			return {
 				action: Action.Draw,
@@ -56,7 +59,7 @@ export function parseMove(move: string): Move {
 
 			const lane = Number(move[1])
 
-			assert(lane >= 0 && lane < 6, `invalid lane number "${move[1]}" (expected 0 to 6)`)
+			assert(lane >= 0 && lane < 6, `invalid lane number "${move[1]}" (expected 0 - 5)`)
 
 			return {
 				action: Action.Combat,
@@ -71,7 +74,7 @@ export function parseMove(move: string): Move {
 
 				const lane = Number(move[2])
 
-				assert(lane >= 0 && lane < 6, `invalid lane number "${move[2]}" (expected 0 to 6)`)
+				assert(lane >= 0 && lane < 6, `invalid lane number "${move[2]}" (expected 0 - 5)`)
 
 				return {
 					action: move[0] == `p` ? Action.Play : Action.PlayFaceup,
@@ -86,7 +89,7 @@ export function parseMove(move: string): Move {
 
 				const lane = Number(move[3])
 
-				assert(lane >= 0 && lane < 6, `invalid lane number "${move[3]}" (expected 0 to 6)`)
+				assert(lane >= 0 && lane < 6, `invalid lane number "${move[3]}" (expected 0 - 5)`)
 
 				return {
 					action: move[0] == `p` ? Action.Play : Action.PlayFaceup,
@@ -99,9 +102,9 @@ export function parseMove(move: string): Move {
 		}
 
 		case `x`: {
-			if (move.length == 2) {
-				assert(CardValues.includes(move[1] as any), `invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`)
+			assert(CardValues.includes(move[1] as any), `invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`)
 
+			if (extra && move.length == 2) {
 				return {
 					action: Action.Discard,
 					card: move[1] as CardValue,
@@ -110,8 +113,6 @@ export function parseMove(move: string): Move {
 			}
 
 			if (move.length == 3) {
-				assert(CardValues.includes(move[1] as any), `invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`)
-
 				if (move[2] == `a`) {
 					return {
 						action: Action.Discard,
@@ -120,7 +121,7 @@ export function parseMove(move: string): Move {
 					}
 				}
 
-				if (CardSuits.includes(move[2] as any)) {
+				if (extra && CardSuits.includes(move[2] as any)) {
 					return {
 						action: Action.Discard,
 						card: move.slice(1, 3) as Card,
@@ -130,7 +131,7 @@ export function parseMove(move: string): Move {
 
 				const lane = Number(move[2])
 
-				assert(lane >= 0 && lane < 6, `invalid discard pile "${move[2]}" (expected 0 to 6 or "a")`)
+				assert(lane >= 0 && lane < 6, `invalid discard pile "${move[2]}" (expected 0 - 5 or "a")`)
 
 				return {
 					action: Action.Discard,
@@ -140,7 +141,6 @@ export function parseMove(move: string): Move {
 			}
 
 			if (move.length == 4) {
-				assert(CardValues.includes(move[1] as any), `invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`)
 				assert(CardSuits.includes(move[2] as any), `invalid card suit "${move[2]}" (expected one of ${CardSuits.join(`, `)})`)
 
 				if (move[3] == `a`) {
@@ -153,7 +153,7 @@ export function parseMove(move: string): Move {
 
 				const lane = Number(move[3])
 
-				assert(lane >= 0 && lane < 6, `invalid discard pile "${move[3]}" (expected 0 to 6 or "a")`)
+				assert(lane >= 0 && lane < 6, `invalid discard pile "${move[3]}" (expected 0 - 5 or "a")`)
 
 				return {
 					action: Action.Discard,
@@ -162,13 +162,7 @@ export function parseMove(move: string): Move {
 				}
 			}
 
-			throw new Error(`discard moves must be 2, 3, or 4 characters, got ${move.length}`)
-		}
-
-		case `-`: {
-			assert(move.length == 2 && move[1] == `-`, `passes must be "--" got "${move}"`)
-
-			return { action: Action.Pass }
+			throw new Error(`discard moves must be 3 or 4 characters, got ${move.length}`)
 		}
 
 		default:
