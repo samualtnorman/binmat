@@ -46,7 +46,8 @@ export const enum StatusCode {
 	PlayedBreakToEmptyStack,
 	DefenderInitiatedCombat,
 	AttackerInitiatedCombatWithEmptyStack,
-	DiscardedToOpponentDiscardPile
+	DiscardedToOpponentDiscardPile,
+	AttackerDiscardedToEmptyDiscardAndDeck
 }
 
 const PowersOfTwo = [ 2, 4, 8, 16, 32, 64, 128, 256 ]
@@ -204,7 +205,20 @@ export function playMove(state: State, move: Move): StatusCode {
 					if (move.discardPile != AttackerDiscardPile)
 						return StatusCode.DiscardedToOpponentDiscardPile
 
+					if (!state.attackerDiscardPile.length && !state.attackerDeck.length)
+						return StatusCode.AttackerDiscardedToEmptyDiscardAndDeck
+
 					state.attackerDiscardPile.push(state.attackerHand.splice(index, 1)[0]!)
+
+					if (!state.attackerDeck.length) {
+						state.attackerDeck.push(...shuffle(state.attackerDiscardPile.splice(0)))
+						state.attackerHand.push(state.attackerDeck.pop()!, state.attackerDeck.pop()!)
+					} else if (state.attackerDeck.length == 1) {
+						state.attackerHand.push(state.attackerDeck.pop()!)
+						state.attackerDeck.push(...shuffle(state.attackerDiscardPile.splice(0)))
+						state.attackerHand.push(state.attackerDeck.pop()!)
+					} else
+						state.attackerHand.push(state.attackerDeck.pop()!, state.attackerDeck.pop()!)
 				}
 			} break
 		}
@@ -426,7 +440,7 @@ export function playMove(state: State, move: Move): StatusCode {
 				if (!state.defenderStacks[lane].cards.length)
 					break
 
-				state.laneDiscardPiles[lane].push(state.defenderStacks[lane].cards.pop()!)
+				state.attackerDiscardPile.push(state.defenderStacks[lane].cards.pop()!)
 			}
 		}
 	}
