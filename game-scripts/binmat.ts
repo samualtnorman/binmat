@@ -22,7 +22,7 @@ export default (context: Context, args: unknown) => {
 	const currentGameID = $db.f({ _id: `binmat.users.${context.caller}` }).first()?.gameID as string | undefined | null
 
 	if (currentGameID) {
-		const game = $db.f({ _id: `binmat.games.${currentGameID}` }).first() as { defender: string, attacker: string, state: State } | null
+		const game = $db.f({ _id: `binmat.games.${currentGameID}` }).first() as { _id: string, defender: string, attacker: string, state: State } | null
 
 		assert(game)
 
@@ -75,8 +75,6 @@ export default (context: Context, args: unknown) => {
 							}
 						}
 					}
-
-					// ${game.state.defenderStacks[args.inspect]?.faceup ? game.state.defenderStacks[args.inspect]!.cards.join(` `) : `defender stack `}
 
 					if (args.inspect == `a`)
 						return game.state.attackerDiscardPile.join(` `) || `empty`
