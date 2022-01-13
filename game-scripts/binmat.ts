@@ -22,9 +22,7 @@ export default (context: Context, args: unknown) => {
 	const currentGameID = $db.f({ _id: `binmat` }, { [`userToID/${context.caller}`]: true }).first()?.[`userToID/${context.caller}`] as string | undefined
 
 	if (currentGameID) {
-		const game = $db.f({ _id: `binmat` }, { [`IDToGame/${currentGameID}`]: true }).first()?.[`IDToGame/${currentGameID}`] as { defender: string, attacker: string, state: State } | undefined
-
-		assert(game)
+		const game = $db.f({ _id: `binmat` }, { [`IDToGame/${currentGameID}`]: true }).first()?.[`IDToGame/${currentGameID}`] as { defender: string, attacker: string, state: State }
 
 		if (isRecord(args) && args.leave) {
 			$db.us({ _id: `binmat` }, {
@@ -40,110 +38,28 @@ export default (context: Context, args: unknown) => {
 
 		const roleTurn: Role = (game.state.turn % 2) + 1
 
-		if (roleTurn == Role.Defender) {
-			if (context.caller == game.defender) {
-				if (isRecord(args)) {
-					if (typeof args.move == `string`) {
-						const move = parseMove(args.move)
-						const status = playMove(game.state, move)
-
-						switch (status) {
-							case StatusCode.Ok: {
-								$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
-								$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${move.action == Action.Play ? `pX${move.lane}` : args.move}` })
-
-								return { ok: true, msg: printStateForDefender(game.state) }
-							}
-
-							case StatusCode.DefenderWin: {
-								$db.us({ _id: `binmat` }, {
-									$unset: {
-										[`IDToGame/${currentGameID}`]: ``,
-										[`userToID/${game.defender}`]: ``,
-										[`userToID/${game.attacker}`]: ``
-									}
-								})
-
-								return { ok: true, msg: [ `you won!\n`, printStateForDefender(game.state) ] }
-							}
-
-							case StatusCode.AttackerWin: {
-								$db.us({ _id: `binmat` }, {
-									$unset: {
-										[`IDToGame/${currentGameID}`]: ``,
-										[`userToID/${game.defender}`]: ``,
-										[`userToID/${game.attacker}`]: ``
-									}
-								})
-
-								return { ok: true, msg: [ `you lost :(\n`, printStateForDefender(game.state) ] }
-							}
-
-							default: {
-								playMove(game.state, { action: Action.Pass })
-								$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
-
-								return { ok: false, msg: [ StatusCodeMessages[status], `passing\n`, printStateForDefender(game.state) ] }
-							}
+		if (context.caller == game.defender) {
+			if (isRecord(args)) {
+				if (typeof args.move == `string`) {
+					if (roleTurn == Role.Attacker) {
+						return {
+							ok: false,
+							msg: [
+								`it is not yet your turn, you are the defender\nit is @${game.attacker}'s turn`,
+								printStateForDefender(game.state)
+							]
 						}
 					}
 
-					if (args.inspect == `a`)
-						return game.state.attackerDiscardPile.join(` `) || `empty`
-
-					if (typeof args.inspect == `number`) {
-						return `\
-attacker stack ${args.inspect} has ${game.state.attackerStacks[args.inspect]?.length} cards
-
-defender stack ${args.inspect}:
-${game.state.defenderStacks[args.inspect]?.cards.join(` `) || `empty`}
-
-lane deck ${args.inspect} has ${game.state.laneDecks[args.inspect]?.length} cards
-
-lane discard ${args.inspect}:
-${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
-					}
-				}
-
-				return [ `you are the defender\nit is your turn`, printStateForDefender(game.state), `make a move with move: "d0"` ]
-			}
-
-			if (isRecord(args)) {
-				if (args.inspect == `a`)
-					return game.state.attackerDiscardPile.join(` `) || `empty`
-
-				if (typeof args.inspect == `number`) {
-					return `\
-attacker stack ${args.inspect}:
-${game.state.attackerStacks[args.inspect]?.join(` `) || `empty`}
-
-defender stack ${args.inspect}:
-${game.state.defenderStacks[args.inspect]?.faceup ? game.state.defenderStacks[args.inspect]!.cards.join(` `) || `empty` : `defender stack ${args.inspect} has ${game.state.defenderStacks[args.inspect]?.cards.length} cards`}
-
-lane deck ${args.inspect} has ${game.state.laneDecks[args.inspect]?.length} cards
-
-lane discard ${args.inspect}:
-${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
-				}
-			}
-
-			return [ `you are the attacker\nit is @${game.defender}'s turn`, printStateForAttacker(game.state) ]
-		}
-
-		/* attacker turn */
-
-		if (context.caller == game.attacker) {
-			if (isRecord(args)) {
-				if (typeof args.move == `string`) {
 					const move = parseMove(args.move)
 					const status = playMove(game.state, move)
 
 					switch (status) {
 						case StatusCode.Ok: {
 							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
-							$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${move.action == Action.Play ? `pX${move.lane}` : args.move}` })
+							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${move.action == Action.Play ? `pX${move.lane}` : args.move}` })
 
-							return { ok: true, msg: printStateForAttacker(game.state) }
+							return { ok: true, msg: printStateForDefender(game.state) }
 						}
 
 						case StatusCode.DefenderWin: {
@@ -155,7 +71,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 								}
 							})
 
-							return { ok: true, msg: [ `you lost :(\n`, printStateForAttacker(game.state) ] }
+							return { ok: true, msg: [ `you won!\n`, printStateForDefender(game.state) ] }
 						}
 
 						case StatusCode.AttackerWin: {
@@ -167,14 +83,14 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 								}
 							})
 
-							return { ok: true, msg: [ `you won!\n`, printStateForAttacker(game.state) ] }
+							return { ok: true, msg: [ `you lost :(\n`, printStateForDefender(game.state) ] }
 						}
 
 						default: {
 							playMove(game.state, { action: Action.Pass })
 							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
 
-							return { ok: false, msg: [ StatusCodeMessages[status], `passing\n`, printStateForAttacker(game.state) ] }
+							return { ok: false, msg: [ StatusCodeMessages[status], `passing\n`, printStateForDefender(game.state) ] }
 						}
 					}
 				}
@@ -184,6 +100,96 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 				if (typeof args.inspect == `number`) {
 					return `\
+attacker stack ${args.inspect} has ${game.state.attackerStacks[args.inspect]?.length} cards
+
+defender stack ${args.inspect}:
+${game.state.defenderStacks[args.inspect]?.cards.join(` `) || `empty`}
+
+lane deck ${args.inspect} has ${game.state.laneDecks[args.inspect]?.length} cards
+
+lane discard ${args.inspect}:
+${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
+				}
+			}
+
+			if (roleTurn == Role.Defender) {
+				return [
+					`you are the defender\nit is your turn`,
+					printStateForDefender(game.state),
+					`make a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+				]
+			}
+
+			return [
+				`you are the defender\nit is @${game.attacker}'s turn`,
+				printStateForDefender(game.state),
+				`make a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+			]
+		}
+
+		/* caller is attacker */
+
+		if (isRecord(args)) {
+			if (typeof args.move == `string`) {
+				if (roleTurn == Role.Defender) {
+					return {
+						ok: false,
+						msg: [
+							`it is not yet your turn, you are the attacker\nit is @${game.defender}'s turn`,
+							printStateForAttacker(game.state)
+						]
+					}
+				}
+
+				const move = parseMove(args.move)
+				const status = playMove(game.state, move)
+
+				switch (status) {
+					case StatusCode.Ok: {
+						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${move.action == Action.Play ? `pX${move.lane}` : args.move}` })
+
+						return { ok: true, msg: printStateForAttacker(game.state) }
+					}
+
+					case StatusCode.DefenderWin: {
+						$db.us({ _id: `binmat` }, {
+							$unset: {
+								[`IDToGame/${currentGameID}`]: ``,
+								[`userToID/${game.defender}`]: ``,
+								[`userToID/${game.attacker}`]: ``
+							}
+						})
+
+						return { ok: true, msg: [ `you lost :(\n`, printStateForAttacker(game.state) ] }
+					}
+
+					case StatusCode.AttackerWin: {
+						$db.us({ _id: `binmat` }, {
+							$unset: {
+								[`IDToGame/${currentGameID}`]: ``,
+								[`userToID/${game.defender}`]: ``,
+								[`userToID/${game.attacker}`]: ``
+							}
+						})
+
+						return { ok: true, msg: [ `you won!\n`, printStateForAttacker(game.state) ] }
+					}
+
+					default: {
+						playMove(game.state, { action: Action.Pass })
+						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+
+						return { ok: false, msg: [ StatusCodeMessages[status], `passing\n`, printStateForAttacker(game.state) ] }
+					}
+				}
+			}
+
+			if (args.inspect == `a`)
+				return game.state.attackerDiscardPile.join(` `) || `empty`
+
+			if (typeof args.inspect == `number`) {
+				return `\
 attacker stack ${args.inspect}:
 ${game.state.attackerStacks[args.inspect]?.join(` `) || `empty`}
 
@@ -194,31 +200,22 @@ lane deck ${args.inspect} has ${game.state.laneDecks[args.inspect]?.length} card
 
 lane discard ${args.inspect}:
 ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
-				}
-			}
-
-			return [ `you are the attacker\nit is your turn`, printStateForAttacker(game.state), `make a move with move: "d0"` ]
-		}
-
-		if (isRecord(args)) {
-			if (args.inspect == `a`)
-				return game.state.attackerDiscardPile.join(` `) || `empty`
-
-			if (typeof args.inspect == `number`) {
-				return `\
-attacker stack ${args.inspect} has ${game.state.attackerStacks[args.inspect]?.length} cards
-
-defender stack ${args.inspect}:
-${game.state.defenderStacks[args.inspect]?.cards.join(` `) || `empty`}
-
-lane deck ${args.inspect} has ${game.state.laneDecks[args.inspect]?.length} cards
-
-lane discard ${args.inspect}:
-${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 			}
 		}
 
-		return [ `you are the defender\nit is @${game.attacker}'s turn`, printStateForDefender(game.state) ]
+		if (roleTurn == Role.Attacker) {
+			return [
+				`you are the attacker\nit is your turn`,
+				printStateForAttacker(game.state),
+				`make a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+			]
+		}
+
+		return [
+			`you are the attacker\nit is @${game.defender}'s turn`,
+			printStateForAttacker(game.state),
+			`make a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+		]
 	}
 
 	const waitingUser = $db.f({ _id: `binmat` }, { waiting: true }).first()?.waiting as string | undefined
