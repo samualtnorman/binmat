@@ -123,7 +123,6 @@ type MongoCommand = MongoCommandValue & Partial<{
 	$unset: Record<string, "">
 }>
 
-// eslint-disable-next-line unicorn/prevent-abbreviations
 declare const $db: {
 	/**
 	 * Insert
