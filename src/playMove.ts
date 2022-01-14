@@ -47,7 +47,9 @@ export const enum StatusCode {
 	DefenderInitiatedCombat,
 	AttackerInitiatedCombatWithEmptyStack,
 	DiscardedToOpponentDiscardPile,
-	AttackerDiscardedToEmptyDiscardAndDeck
+	AttackerDiscardedToEmptyDiscardAndDeck,
+	AttackerDrewFromEmptyDiscardAndDeck,
+	PlayedCardFacedWrongWay
 }
 
 const PowersOfTwo = [ 2, 4, 8, 16, 32, 64, 128, 256 ]
@@ -95,7 +97,7 @@ export function playMove(state: State, move: Move): StatusCode {
 
 					if (!discardPile.length) {
 						if (move.deck == AttackerDeck)
-							return StatusCode.DefenderWin
+							return StatusCode.AttackerDrewFromEmptyDiscardAndDeck
 
 						return StatusCode.AttackerWin
 					}
@@ -111,6 +113,9 @@ export function playMove(state: State, move: Move): StatusCode {
 
 			case Action.Play: {
 				if (roleTurn == Role.Defender) {
+					if (state.defenderStacks[move.lane].faceup)
+						return StatusCode.PlayedCardFacedWrongWay
+
 					if (move.card[0] == CardModifier.Break && !state.defenderStacks[move.lane].cards.length)
 						return StatusCode.PlayedBreakToEmptyStack
 
@@ -148,8 +153,12 @@ export function playMove(state: State, move: Move): StatusCode {
 
 						if (doCombat(move.lane))
 							return StatusCode.AttackerWin
-					} else
+					} else {
+						if (!state.defenderStacks[move.lane].faceup)
+							return StatusCode.PlayedCardFacedWrongWay
+
 						state.defenderStacks[move.lane].cards.push(state.defenderHand.splice(index, 1)[0]!)
+					}
 				} else /* attacker turn */ {
 					const index = getAttackerHandCardIndex(move.card)
 
@@ -170,7 +179,7 @@ export function playMove(state: State, move: Move): StatusCode {
 						if (doCombat(move.lane))
 							return StatusCode.AttackerWin
 					} else
-						state.attackerStacks[move.lane].push(state.attackerHand.splice(index, 1)[0]!)
+						return StatusCode.PlayedCardFacedWrongWay
 				}
 			} break
 
@@ -264,6 +273,7 @@ export function playMove(state: State, move: Move): StatusCode {
 		return state.laneDiscardPiles[deck]
 	}
 
+	/** @returns whether the attacker won combat */
 	function doCombat(lane: Lane) {
 		if (roleTurn == Role.Defender) {
 			flipDefenderStack()
