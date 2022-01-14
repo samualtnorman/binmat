@@ -386,7 +386,7 @@ ${attackerHand}
  a0   a1   a2   a3   a4   a5     xa
 ${attackerStacks}   ${state.attackerDeck.length ? `{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``}
 
- d0   d1   d2   d3   d4   d5     la
+ d0   d1   d2   d3   d4   d5     a
 ${defenderStacks}   ${state.attackerDiscardPile.length ? `\`b${state.attackerDiscardPile.length.toString(36).toUpperCase()} \`${colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``}
 
  l0   l1   l2   l3   l4   l5
@@ -447,7 +447,7 @@ ${state.attackerHand.map(card => colourCard(card)).join(` `) || `empty`}
  a0   a1   a2   a3   a4   a5     xa
 ${attackerStacks}   ${state.attackerDeck.length ? `{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``}
 
- d0   d1   d2   d3   d4   d5     la
+ d0   d1   d2   d3   d4   d5     a
 ${defenderStacks}   ${state.attackerDiscardPile.length ? `\`b${state.attackerDiscardPile.length.toString(36).toUpperCase()} \`${colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``}
 
  l0   l1   l2   l3   l4   l5
