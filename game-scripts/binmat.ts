@@ -1,7 +1,7 @@
 import { assert, isRecord } from "@samual/lib"
-import createState, { Role, State } from "../src/createState"
-import playMove, { Action, StatusCode } from "../src/playMove"
+import createState, { Card, CardSuit, Role, State } from "../src/createState"
 import parseMove from "../src/parseMove"
+import playMove, { Action, StatusCode } from "../src/playMove"
 
 const StatusCodeMessages: Record<StatusCode, string> = {
 	[StatusCode.Ok]: `ok`,
@@ -15,10 +15,23 @@ const StatusCodeMessages: Record<StatusCode, string> = {
 	[StatusCode.DefenderInitiatedCombat]: `defender initiated combat`,
 	[StatusCode.AttackerInitiatedCombatWithEmptyStack]: `attacker initiated combat with empty stack`,
 	[StatusCode.DiscardedToOpponentDiscardPile]: `discarded to opponent discard pile`,
-	[StatusCode.AttackerDiscardedToEmptyDiscardAndDeck]: `attacker discarded to empty discard and deck`
+	[StatusCode.AttackerDiscardedToEmptyDiscardAndDeck]: `attacker discarded to empty discard and deck`,
+	[StatusCode.AttackerDrewFromEmptyDiscardAndDeck]: `attacker drew from empty discard and deck`,
+	[StatusCode.PlayedCardFacedWrongWay]: `played card faced wrong way`
 }
 
-export default (context: Context, args: unknown) => {
+const SuitToColourCode = {
+	[CardSuit.Form]: `l`,
+	[CardSuit.Kin]: `N`,
+	[CardSuit.Data]: `q`,
+	[CardSuit.Chaos]: `D`,
+	[CardSuit.Void]: `I`,
+	[CardSuit.Choice]: `F`
+} as const
+
+export default (context: Context, args: unknown) => $(context, args)
+
+function $(context: Context, args: unknown) {
 	const currentGameID = $db.f({ _id: `binmat` }, { [`userToID/${context.caller}`]: true }).first()?.[`userToID/${context.caller}`] as string | undefined
 
 	if (currentGameID) {
@@ -45,19 +58,31 @@ export default (context: Context, args: unknown) => {
 						return {
 							ok: false,
 							msg: [
-								`it is not yet your turn, you are the defender\nit is @${game.attacker}'s turn`,
+								`it is not yet your turn, you are the defender\nit is @${game.attacker}'s turn\n`,
 								printStateForDefender(game.state)
 							]
 						}
 					}
 
-					const move = parseMove(args.move)
+					let move
+
+					try {
+						move = parseMove(args.move)
+					} catch (error) {
+						assert(error instanceof Error)
+						playMove(game.state, { action: Action.Pass })
+						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+						$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
+
+						return { ok: false, msg: [ error.message, `passing\n`, printStateForDefender(game.state) ] }
+					}
+
 					const status = playMove(game.state, move)
 
 					switch (status) {
 						case StatusCode.Ok: {
 							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
-							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${move.action == Action.Play ? `pX${move.lane}` : args.move}` })
+							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${move.action == Action.Play && !game.state.defenderStacks[move.lane].faceup ? `pX${move.lane}` : args.move}` })
 
 							return { ok: true, msg: printStateForDefender(game.state) }
 						}
@@ -71,7 +96,9 @@ export default (context: Context, args: unknown) => {
 								}
 							})
 
-							return { ok: true, msg: [ `you won!\n`, printStateForDefender(game.state) ] }
+							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${args.move} and won` })
+
+							return [ `you won!\n`, printStateForDefender(game.state), `\`zLOCK_ERROR\`` ]
 						}
 
 						case StatusCode.AttackerWin: {
@@ -83,12 +110,15 @@ export default (context: Context, args: unknown) => {
 								}
 							})
 
-							return { ok: true, msg: [ `you lost :(\n`, printStateForDefender(game.state) ] }
+							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${args.move} and lost` })
+
+							return [ `you lost :(\n`, printStateForDefender(game.state), `\`zLOCK_UNLOCKED\`` ]
 						}
 
 						default: {
 							playMove(game.state, { action: Action.Pass })
 							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
 
 							return { ok: false, msg: [ StatusCodeMessages[status], `passing\n`, printStateForDefender(game.state) ] }
 						}
@@ -114,16 +144,16 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 			if (roleTurn == Role.Defender) {
 				return [
-					`you are the defender\nit is your turn`,
+					`you are the defender\nit is your turn\n`,
 					printStateForDefender(game.state),
-					`make a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+					`\nmake a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
 				]
 			}
 
 			return [
-				`you are the defender\nit is @${game.attacker}'s turn`,
+				`you are the defender\nit is @${game.attacker}'s turn\n`,
 				printStateForDefender(game.state),
-				`make a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+				`\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
 			]
 		}
 
@@ -135,13 +165,25 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					return {
 						ok: false,
 						msg: [
-							`it is not yet your turn, you are the attacker\nit is @${game.defender}'s turn`,
+							`it is not yet your turn, you are the attacker\nit is @${game.defender}'s turn\n`,
 							printStateForAttacker(game.state)
 						]
 					}
 				}
 
-				const move = parseMove(args.move)
+				let move
+
+				try {
+					move = parseMove(args.move)
+				} catch (error) {
+					assert(error instanceof Error)
+					playMove(game.state, { action: Action.Pass })
+					$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+					$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
+
+					return { ok: false, msg: [ error.message, `passing\n`, printStateForDefender(game.state) ] }
+				}
+
 				const status = playMove(game.state, move)
 
 				switch (status) {
@@ -161,7 +203,9 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 							}
 						})
 
-						return { ok: true, msg: [ `you lost :(\n`, printStateForAttacker(game.state) ] }
+						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${args.move} and lost` })
+
+						return [ `you lost :(\n`, printStateForAttacker(game.state), `\`zLOCK_ERROR\`` ]
 					}
 
 					case StatusCode.AttackerWin: {
@@ -173,12 +217,15 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 							}
 						})
 
-						return { ok: true, msg: [ `you won!\n`, printStateForAttacker(game.state) ] }
+						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${args.move} and won` })
+
+						return [ `you won!\n`, printStateForAttacker(game.state), `\`zLOCK_UNLOCKED\`` ]
 					}
 
 					default: {
 						playMove(game.state, { action: Action.Pass })
 						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
 
 						return { ok: false, msg: [ StatusCodeMessages[status], `passing\n`, printStateForAttacker(game.state) ] }
 					}
@@ -205,16 +252,16 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 		if (roleTurn == Role.Attacker) {
 			return [
-				`you are the attacker\nit is your turn`,
+				`you are the attacker\nit is your turn\n`,
 				printStateForAttacker(game.state),
-				`make a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+				`\nmake a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
 			]
 		}
 
 		return [
-			`you are the attacker\nit is @${game.defender}'s turn`,
+			`you are the attacker\nit is @${game.defender}'s turn\n`,
 			printStateForAttacker(game.state),
-			`make a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+			`\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
 		]
 	}
 
@@ -245,7 +292,13 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					}
 				})
 
-				return [ `created game with @${waitingUser}\nyou are the defender`, printStateForDefender(state) ]
+				$fs.chats.tell({ to: waitingUser, msg: `@${context.caller} has started a game of binmat with you in ${context.this_script}\nyou are the attacker` })
+
+				return [
+					`created game with @${waitingUser}\nyou are the defender\nit is your turn\n`,
+					printStateForDefender(state),
+					`\nmake a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+				]
 			}
 
 			/* attacker */
@@ -265,7 +318,13 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 				}
 			})
 
-			return [ `created game with @${waitingUser}\nyou are the attacker`, printStateForAttacker(state) ]
+			$fs.chats.tell({ to: waitingUser, msg: `@${context.caller} has started a game of binmat with you in ${context.this_script}\nyou are the defender, it is your turn` })
+
+			return [
+				`created game with @${waitingUser}\nyou are the attacker\nit is @${waitingUser}'s turn\n`,
+				printStateForAttacker(state),
+				`\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
+			]
 		}
 
 		$db.us({ _id: `binmat` }, { $set: { waiting: context.caller } })
@@ -280,45 +339,127 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 }
 
 function printStateForDefender(state: State) {
+	const attackerHand = state.attackerHand.length
+		? (state.attackerHand.length == 1
+			? `1 card`
+			: `${state.attackerHand.length} cards`
+		) : `empty`
+
+	const attackerStacks = state.attackerStacks
+		.map(cards =>
+			cards.length
+				? `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
+				: `\`C[\`\`b00\`\`C]\``
+		).join(` `)
+
+	const defenderStacks = state.defenderStacks
+		.map(({ cards, faceup }) =>
+			cards.length
+				? (faceup
+					? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
+					: `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
+				) : `\`C[\`\`b00\`\`C]\``
+		).join(` `)
+
+	const laneDecks012 = state.laneDecks
+		.slice(0, 3)
+		.map(cards =>
+			cards.length
+				? `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
+				: `\`C[\`\`b00\`\`C]\``
+		).join(` `)
+
+	const laneDecks345 = state.laneDecks
+		.slice(3)
+		.map(cards =>
+			cards.length
+				? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
+				: `\`C[\`\`b00\`\`C]\``
+		).join(` `)
+
 	return `\
 turn ${state.turn} / ${state.turns}
 
-attacker has ${state.attackerHand.length == 1 ? `1 card` : `${state.attackerHand.length} card`}
+ha0:
+${attackerHand}
 
-attacker stacks:   attacker deck:
-${state.attackerStacks.map(stack => stack.length ? `{}` : `\`C[]\``).join(` `)}  ${state.attackerDeck.length ? `{}` : `\`C[]\``}
+ a0   a1   a2   a3   a4   a5     xa
+${attackerStacks}   ${state.attackerDeck.length ? `{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``}
 
-defender stacks:   attacker discard pile:
-${state.defenderStacks.map(stack => stack.cards.length ? (stack.faceup ? stack.cards[stack.cards.length - 1] : `{}`) : `\`C[]\``).join(` `)}  ${state.attackerDiscardPile.length ? state.attackerDiscardPile[state.attackerDiscardPile.length - 1] : `\`C[]\``}
+ d0   d1   d2   d3   d4   d5     la
+${defenderStacks}   ${state.attackerDiscardPile.length ? `\`b${state.attackerDiscardPile.length.toString(36).toUpperCase()} \`${colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``}
 
-lane decks:
-${state.laneDecks[0].length ? `{}` : `\`C[]\``} ${state.laneDecks[1].length ? `{}` : `\`C[]\``} ${state.laneDecks[2].length ? `{}` : `\`C[]\``} ${state.laneDecks[3].length ? state.laneDecks[3][state.laneDecks[3].length - 1] : `\`C[]\``} ${state.laneDecks[4].length ? state.laneDecks[4][state.laneDecks[4].length - 1] : `\`C[]\``} ${state.laneDecks[5].length ? state.laneDecks[5][state.laneDecks[5].length - 1] : `\`C[]\``}
+ l0   l1   l2   l3   l4   l5
+${laneDecks012} ${laneDecks345}
 
-lane discards:
-${state.laneDiscardPiles.map(discardPile => discardPile.length ? discardPile[discardPile.length - 1] : `\`C[]\``).join(` `)}
+ x0   x1   x2   x3   x4   x5
+${state.laneDiscardPiles.map(cards => cards.length ? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``).join(` `)}
 
-your hand:
-${state.defenderHand.join(` `)}`
+hd0:
+${state.defenderHand.map(card => colourCard(card)).join(` `) || `empty`}`
 }
 
 function printStateForAttacker(state: State) {
+	const attackerStacks = state.attackerStacks
+		.map(cards =>
+			cards.length
+				? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
+				: `\`C[\`\`b00\`\`C]\``
+		).join(` `)
+
+	const defenderStacks = state.defenderStacks
+		.map(({ cards, faceup }) =>
+			cards.length
+				? (faceup
+					? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
+					: `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
+				) : `\`C[\`\`b00\`\`C]\``
+		).join(` `)
+
+	const laneDecks012 = state.laneDecks
+		.slice(0, 3)
+		.map(cards =>
+			cards.length
+				? `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
+				: `\`C[\`\`b00\`\`C]\``
+		).join(` `)
+
+	const laneDecks345 = state.laneDecks
+		.slice(3)
+		.map(cards =>
+			cards.length
+				? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
+				: `\`C[\`\`b00\`\`C]\``
+		).join(` `)
+
+	const defenderHand = state.attackerHand.length
+		? (state.defenderHand.length == 1
+			? `1 card`
+			: `${state.defenderHand.length} cards`
+		) : `empty`
+
 	return `\
 turn ${state.turn} / ${state.turns}
 
-your hand:
-${state.attackerHand.join(` `)}
+ha0:
+${state.attackerHand.map(card => colourCard(card)).join(` `) || `empty`}
 
-attacker stacks:   attacker deck:
-${state.attackerStacks.map(stack => stack.length ? `{}` : `\`C[]\``).join(` `)}  ${state.attackerDeck.length ? `{}` : `\`C[]\``}
+ a0   a1   a2   a3   a4   a5     xa
+${attackerStacks}   ${state.attackerDeck.length ? `{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``}
 
-defender stacks:   attacker discard pile:
-${state.defenderStacks.map(stack => stack.cards.length ? (stack.faceup ? stack.cards[stack.cards.length - 1] : `{}`) : `\`C[]\``).join(` `)}  ${state.attackerDiscardPile.length ? state.attackerDiscardPile[state.attackerDiscardPile.length - 1] : `\`C[]\``}
+ d0   d1   d2   d3   d4   d5     la
+${defenderStacks}   ${state.attackerDiscardPile.length ? `\`b${state.attackerDiscardPile.length.toString(36).toUpperCase()} \`${colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``}
 
-lane decks:
-${state.laneDecks[0].length ? `{}` : `\`C[]\``} ${state.laneDecks[1].length ? `{}` : `\`C[]\``} ${state.laneDecks[2].length ? `{}` : `\`C[]\``} ${state.laneDecks[3].length ? state.laneDecks[3][state.laneDecks[3].length - 1] : `\`C[]\``} ${state.laneDecks[4].length ? state.laneDecks[4][state.laneDecks[4].length - 1] : `\`C[]\``} ${state.laneDecks[5].length ? state.laneDecks[5][state.laneDecks[5].length - 1] : `\`C[]\``}
+ l0   l1   l2   l3   l4   l5
+${laneDecks012} ${laneDecks345}
 
-lane discards:
-${state.laneDiscardPiles.map(discardPile => discardPile.length ? discardPile[discardPile.length - 1] : `\`C[]\``).join(` `)}
+ x0   x1   x2   x3   x4   x5
+${state.laneDiscardPiles.map(cards => cards.length ? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``).join(` `)}
 
-defender has ${state.defenderHand.length == 1 ? `1 card` : `${state.defenderHand.length} card`}`
+hd0:
+${defenderHand}`
+}
+
+function colourCard(card: Card) {
+	return `\`${SuitToColourCode[card[1] as CardSuit]}${card}\``
 }
