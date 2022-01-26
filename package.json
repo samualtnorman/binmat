@@ -44,6 +44,7 @@
 		"eslint-plugin-unicorn": "^40.0.0",
 		"hackmud-script-manager": "^0.13.0",
 		"jest": "^27.4.7",
+		"latest-version": "^6.0.0",
 		"rollup": "^2.63.0",
 		"rollup-plugin-preserve-shebang": "^1.0.1",
 		"rollup-plugin-terser": "^7.0.2",
