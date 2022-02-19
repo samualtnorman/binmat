@@ -67,7 +67,7 @@ function $(context: Context, args: unknown) {
 					let move
 
 					try {
-						move = parseMove(args.move)
+						move = parseMove(args.move, true)
 					} catch (error) {
 						assert(error instanceof Error)
 						playMove(game.state, { action: Action.Pass })
@@ -174,12 +174,12 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 				let move
 
 				try {
-					move = parseMove(args.move)
+					move = parseMove(args.move, true)
 				} catch (error) {
 					assert(error instanceof Error)
 					playMove(game.state, { action: Action.Pass })
 					$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
-					$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
+					$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
 
 					return { ok: false, msg: [ error.message, `passing\n`, printStateForDefender(game.state) ] }
 				}
@@ -383,10 +383,10 @@ turn ${state.turn} / ${state.turns}
 ha0:
 ${attackerHand}
 
- a0   a1   a2   a3   a4   a5     xa
+ a0   a1   a2   a3   a4   a5     a
 ${attackerStacks}   ${state.attackerDeck.length ? `{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``}
 
- d0   d1   d2   d3   d4   d5     a
+ d0   d1   d2   d3   d4   d5     xa
 ${defenderStacks}   ${state.attackerDiscardPile.length ? `\`b${state.attackerDiscardPile.length.toString(36).toUpperCase()} \`${colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``}
 
  l0   l1   l2   l3   l4   l5
@@ -412,7 +412,7 @@ function printStateForAttacker(state: State) {
 			cards.length
 				? (faceup
 					? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
-					: `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
+					: `\`D{\`${`\`b${String(cards.length).padStart(2, `0`)}\``}\`D}\``
 				) : `\`C[\`\`b00\`\`C]\``
 		).join(` `)
 
@@ -444,10 +444,10 @@ turn ${state.turn} / ${state.turns}
 ha0:
 ${state.attackerHand.map(card => colourCard(card)).join(` `) || `empty`}
 
- a0   a1   a2   a3   a4   a5     xa
+ a0   a1   a2   a3   a4   a5     a
 ${attackerStacks}   ${state.attackerDeck.length ? `{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``}
 
- d0   d1   d2   d3   d4   d5     a
+ d0   d1   d2   d3   d4   d5     xa
 ${defenderStacks}   ${state.attackerDiscardPile.length ? `\`b${state.attackerDiscardPile.length.toString(36).toUpperCase()} \`${colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``}
 
  l0   l1   l2   l3   l4   l5
