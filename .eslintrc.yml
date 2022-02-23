@@ -344,6 +344,10 @@ rules:
       prev: export
       next: export
 
+    - blankLine: any
+      prev: type
+      next: type
+
   rest-spread-spacing:
     - warn
     - never
