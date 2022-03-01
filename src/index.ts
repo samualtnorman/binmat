@@ -30,6 +30,7 @@ export class BinmatGame {
 
 	reset() {
 		this.state = createState()
+		this.winner = undefined
 	}
 }
 
