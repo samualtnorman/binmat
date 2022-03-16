@@ -301,14 +301,6 @@ rules:
       next: multiline-expression
 
     - blankLine: always
-      prev: multiline-let
-      next: "*"
-
-    - blankLine: always
-      prev: "*"
-      next: multiline-let
-
-    - blankLine: always
       prev: multiline-var
       next: "*"
 
@@ -347,6 +339,14 @@ rules:
     - blankLine: any
       prev: type
       next: type
+
+    - blankLine: always
+      prev: multiline-let
+      next: "*"
+
+    - blankLine: always
+      prev: "*"
+      next: multiline-let
 
   rest-spread-spacing:
     - warn
