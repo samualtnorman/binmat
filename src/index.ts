@@ -1,30 +1,57 @@
 import createState, { Role } from "./createState"
-import playMove, { Action, Move, StatusCode } from "./playMove"
+import doMove from "./doMove"
+import { Action, Move, StatusCode } from "./shared"
 
 export { Role } from "./createState"
-export { Action } from "./playMove"
-export type { Move } from "./playMove"
+export { Action } from "./shared"
+export type { Move } from "./shared"
 
 export class BinmatGame {
 	state = createState()
 	winner: Role | undefined
 
 	play(move: Move) {
-		const status = playMove(this.state, move)
+		const result = doMove(this.state, move)
 
-		switch (status) {
-			case StatusCode.Ok: break
+		switch (result.status) {
+			case StatusCode.Ok:
+				return result.binlog
 
 			case StatusCode.AttackerWin: {
 				this.winner = Role.Attacker
-			} break
+
+				return result.binlog
+			}
 
 			case StatusCode.DefenderWin: {
 				this.winner = Role.Defender
-			} break
 
-			default:
-				playMove(this.state, { action: Action.Pass })
+				return result.binlog
+			}
+
+			default: {
+				const result = doMove(this.state, { action: Action.Pass })
+
+				switch (result.status) {
+					case StatusCode.Ok:
+						return result.binlog
+
+					case StatusCode.AttackerWin: {
+						this.winner = Role.Attacker
+
+						return result.binlog
+					}
+
+					case StatusCode.DefenderWin: {
+						this.winner = Role.Defender
+
+						return result.binlog
+					}
+
+					default:
+						throw new Error(`unexpected status code ${result.status}`)
+				}
+			}
 		}
 	}
 
