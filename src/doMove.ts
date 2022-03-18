@@ -166,10 +166,10 @@ export default doMove
 
 function pushCombatBinlog(binlog: string[], combatData: CombatData, lane: Lane, cardPlayedFaceup?: Card) {
 	const { attackerAttackPower, attackerStack, defenderAttackPower, defenderStack, attackerCardsTrapped, defenderCardsTrapped, attackerBouncesDiscarded, defenderBouncesDiscarded, damageValue } = combatData
-	const attackerSide = attackerStack.join(` `)
+	const attackerSide = cardPlayedFaceup ? `${attackerStack.join(` `)}u` : attackerStack.join(` `)
 	const defenderSide = defenderStack.join(` `)
 
-	binlog.push(`\`n--\` c${lane} / ${attackerSide}u / ${defenderSide}`)
+	binlog.push(`\`n--\` c${lane} / ${attackerSide} / ${defenderSide}`)
 
 	if (defenderCardsTrapped.length)
 		binlog.push(`\`n--\` a@ / ${defenderCardsTrapped.join(` `)} xa`)
