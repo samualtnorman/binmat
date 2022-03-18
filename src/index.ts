@@ -36,12 +36,6 @@ export class BinmatGame {
 					case StatusCode.Ok:
 						return result.binlog
 
-					case StatusCode.AttackerWin: {
-						this.winner = Role.Attacker
-
-						return result.binlog
-					}
-
 					case StatusCode.DefenderWin: {
 						this.winner = Role.Defender
 
