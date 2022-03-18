@@ -70,7 +70,7 @@ function $(context: Context, args: unknown) {
 
 						switch (result.status) {
 							case StatusCode.Ok: {
-								$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
+								$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 								$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
 
 								return {
@@ -108,7 +108,7 @@ function $(context: Context, args: unknown) {
 
 					switch (result.status) {
 						case StatusCode.Ok: {
-							$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
+							$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${move.action == Action.Play && !game.state.defenderStacks[move.lane].faceup ? `pX${move.lane}` : args.move}` })
 
 							return { ok: true, msg: printStateForDefender(game.state) }
@@ -133,7 +133,7 @@ function $(context: Context, args: unknown) {
 
 							switch (result.status) {
 								case StatusCode.Ok: {
-									$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
+									$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 									$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
 
 									return {
@@ -226,7 +226,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 					switch (result.status) {
 						case StatusCode.Ok: {
-							$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
+							$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 							$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
 
 							return { ok: false, msg: [ error.message, `passing\n`, printStateForAttacker(game.state) ] }
@@ -256,7 +256,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 				switch (result.status) {
 					case StatusCode.Ok: {
-						$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
+						$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${move.action == Action.Play ? `pX${move.lane}` : args.move}` })
 
 						return { ok: true, msg: printStateForAttacker(game.state) }
@@ -281,7 +281,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 						switch (result.status) {
 							case StatusCode.Ok: {
-								$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
+								$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 								$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
 
 								return {
@@ -349,7 +349,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 		]
 
 		function cleanup() {
-			$db.us({ _id: `binmat` }, {
+			$db.u({ _id: `binmat` }, {
 				$unset: {
 					[`idToGame/${currentGameID}`]: ``,
 					[`userToID/${game.defender}`]: ``,
