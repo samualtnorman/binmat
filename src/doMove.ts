@@ -28,10 +28,11 @@ export function doMove(state: State, move: Move): { status: Exclude<StatusCode, 
 	status: StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin
 	binlog: string[]
 } {
+	const turn = String(state.turn).padStart(3, `0`)
+	const roleTurn = state.turn % 2 ? `a` : `d`
+
 	switch (move.action) {
 		case Action.Draw: {
-			const turn = String(state.turn).padStart(3, `0`)
-			const roleTurn = state.turn % 2 ? `a` : `d`
 			const result = doMoveDraw(state, move.deck)
 			const deck = move.deck == AttackerDeck ? `a` : move.deck
 
@@ -61,8 +62,6 @@ export function doMove(state: State, move: Move): { status: Exclude<StatusCode, 
 		}
 
 		case Action.Play: {
-			const turn = String(state.turn).padStart(3, `0`)
-			const roleTurn = state.turn % 2 ? `a` : `d`
 			const result = doMovePlay(state, move.card, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
@@ -79,8 +78,6 @@ export function doMove(state: State, move: Move): { status: Exclude<StatusCode, 
 		}
 
 		case Action.PlayFaceup: {
-			const turn = String(state.turn).padStart(3, `0`)
-			const roleTurn = state.turn % 2 ? `a` : `d`
 			const result = doMovePlayFaceup(state, move.card, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.AttackerWin || result.status == StatusCode.DefenderWin) {
@@ -102,8 +99,6 @@ export function doMove(state: State, move: Move): { status: Exclude<StatusCode, 
 		}
 
 		case Action.Combat: {
-			const turn = String(state.turn).padStart(3, `0`)
-			const roleTurn = state.turn % 2 ? `a` : `d`
 			const result = doMoveCombat(state, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin || result.status == StatusCode.AttackerWin) {
@@ -124,8 +119,6 @@ export function doMove(state: State, move: Move): { status: Exclude<StatusCode, 
 		}
 
 		case Action.Discard: {
-			const turn = String(state.turn).padStart(3, `0`)
-			const roleTurn = state.turn % 2 ? `a` : `d`
 			const result = doMoveDiscard(state, move.card, move.discardPile)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
@@ -144,8 +137,6 @@ export function doMove(state: State, move: Move): { status: Exclude<StatusCode, 
 		}
 
 		case Action.Pass: {
-			const turn = String(state.turn).padStart(3, `0`)
-			const roleTurn = state.turn % 2 ? `a` : `d`
 			const status = doMovePass(state)
 
 			if (status == StatusCode.MadeMoveOnFinishedGame)
@@ -160,39 +151,47 @@ export function doMove(state: State, move: Move): { status: Exclude<StatusCode, 
 			}
 		}
 	}
+
+	function pushCombatBinlog(binlog: string[], combatData: CombatData, lane: Lane, cardPlayedFaceup?: Card) {
+		const { attackerAttackPower, attackerStack, defenderAttackPower, defenderStack, attackerCardsTrapped, defenderCardsTrapped, attackerBouncesDiscarded, defenderBouncesDiscarded, damageValue } = combatData
+		const attackerSide = cardPlayedFaceup ? `${attackerStack.join(` `)}u` : attackerStack.join(` `)
+		const defenderSide = defenderStack.join(` `)
+
+		binlog.push(`\`n--\` c${lane} / ${attackerSide} / ${defenderSide}`)
+
+		if (roleTurn == `d`) {
+			if (attackerCardsTrapped.length)
+				binlog.push(`\`n--\` d@ / ${attackerCardsTrapped.join(` `)} x${lane}`)
+
+			if (defenderCardsTrapped.length)
+				binlog.push(`\`n--\` a@ / ${defenderCardsTrapped.join(` `)} xa`)
+		} else /* attacker turn */ {
+			if (defenderCardsTrapped.length)
+				binlog.push(`\`n--\` a@ / ${defenderCardsTrapped.join(` `)} xa`)
+
+			if (attackerCardsTrapped.length)
+				binlog.push(`\`n--\` d@ / ${attackerCardsTrapped.join(` `)} x${lane}`)
+		}
+
+		if (attackerBouncesDiscarded.length)
+			binlog.push(`\`n--\` a? / ${attackerBouncesDiscarded.join(` `)} x${lane}`)
+
+		if (defenderBouncesDiscarded.length)
+			binlog.push(`\`n--\` d? / ${defenderBouncesDiscarded.join(` `)} xa`)
+
+		const attackerStackDiscarded = combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardPlayedFaceup
+			? `${combatData.attackerStackDiscarded.join(` `)}u`
+			: combatData.attackerStackDiscarded.join(` `)
+
+		if (damageValue) {
+			const cardsDrawn = lane < 3 ? `X `.repeat(combatData.cardsDrawn.length) : `${combatData.cardsDrawn.join(` `)} `
+
+			binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} ${damageValue} / ${attackerStackDiscarded} xa / ${cardsDrawn}ha0 `)
+		} else if (!attackerAttackPower && !defenderAttackPower)
+			binlog.push(`\`n--\` 0 0 0 / ${attackerStackDiscarded} x${lane}`)
+		else
+			binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} - / ${attackerStackDiscarded} x${lane}`)
+	}
 }
 
 export default doMove
-
-function pushCombatBinlog(binlog: string[], combatData: CombatData, lane: Lane, cardPlayedFaceup?: Card) {
-	const { attackerAttackPower, attackerStack, defenderAttackPower, defenderStack, attackerCardsTrapped, defenderCardsTrapped, attackerBouncesDiscarded, defenderBouncesDiscarded, damageValue } = combatData
-	const attackerSide = cardPlayedFaceup ? `${attackerStack.join(` `)}u` : attackerStack.join(` `)
-	const defenderSide = defenderStack.join(` `)
-
-	binlog.push(`\`n--\` c${lane} / ${attackerSide} / ${defenderSide}`)
-
-	if (defenderCardsTrapped.length)
-		binlog.push(`\`n--\` a@ / ${defenderCardsTrapped.join(` `)} xa`)
-
-	if (attackerCardsTrapped.length)
-		binlog.push(`\`n--\` d@ / ${attackerCardsTrapped.join(` `)} x${lane}`)
-
-	if (attackerBouncesDiscarded.length)
-		binlog.push(`\`n--\` a? / ${attackerBouncesDiscarded.join(` `)} x${lane}`)
-
-	if (defenderBouncesDiscarded.length)
-		binlog.push(`\`n--\` d? / ${defenderBouncesDiscarded.join(` `)} xa`)
-
-	const attackerStackDiscarded = combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardPlayedFaceup
-		? `${combatData.attackerStackDiscarded.join(` `)}u`
-		: combatData.attackerStackDiscarded.join(` `)
-
-	if (damageValue) {
-		const cardsDrawn = lane < 3 ? `X `.repeat(combatData.cardsDrawn.length) : `${combatData.cardsDrawn.join(` `)} `
-
-		binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} ${damageValue} / ${attackerStackDiscarded} xa / ${cardsDrawn}ha0 `)
-	} else if (!attackerAttackPower && !defenderAttackPower)
-		binlog.push(`\`n--\` 0 0 0 / ${attackerStackDiscarded} x${lane}`)
-	else
-		binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} - / ${attackerStackDiscarded} x${lane}`)
-}
