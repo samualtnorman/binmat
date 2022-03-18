@@ -1,7 +1,8 @@
 import { assert, isRecord } from "@samual/lib"
 import createState, { Card, CardSuit, Role, State } from "../src/createState"
 import parseMove from "../src/parseMove"
-import playMove, { Action, StatusCode } from "../src/playMove"
+import doMove from "../src/doMove"
+import { Action, StatusCode } from "../src/shared"
 
 const StatusCodeMessages: Record<StatusCode, string> = {
 	[StatusCode.Ok]: `ok`,
@@ -70,16 +71,16 @@ function $(context: Context, args: unknown) {
 						move = parseMove(args.move, true)
 					} catch (error) {
 						assert(error instanceof Error)
-						playMove(game.state, { action: Action.Pass })
+						doMove(game.state, { action: Action.Pass })
 						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
 						$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
 
 						return { ok: false, msg: [ error.message, `passing\n`, printStateForDefender(game.state) ] }
 					}
 
-					const status = playMove(game.state, move)
+					const result = doMove(game.state, move)
 
-					switch (status) {
+					switch (result.status) {
 						case StatusCode.Ok: {
 							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
 							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${move.action == Action.Play && !game.state.defenderStacks[move.lane].faceup ? `pX${move.lane}` : args.move}` })
@@ -116,11 +117,11 @@ function $(context: Context, args: unknown) {
 						}
 
 						default: {
-							playMove(game.state, { action: Action.Pass })
+							doMove(game.state, { action: Action.Pass })
 							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
 							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
 
-							return { ok: false, msg: [ StatusCodeMessages[status], `passing\n`, printStateForDefender(game.state) ] }
+							return { ok: false, msg: [ StatusCodeMessages[result.status], `passing\n`, printStateForDefender(game.state) ] }
 						}
 					}
 				}
@@ -177,16 +178,16 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					move = parseMove(args.move, true)
 				} catch (error) {
 					assert(error instanceof Error)
-					playMove(game.state, { action: Action.Pass })
+					doMove(game.state, { action: Action.Pass })
 					$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
 					$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
 
 					return { ok: false, msg: [ error.message, `passing\n`, printStateForDefender(game.state) ] }
 				}
 
-				const status = playMove(game.state, move)
+				const result = doMove(game.state, move)
 
-				switch (status) {
+				switch (result.status) {
 					case StatusCode.Ok: {
 						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
 						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${move.action == Action.Play ? `pX${move.lane}` : args.move}` })
@@ -223,11 +224,11 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					}
 
 					default: {
-						playMove(game.state, { action: Action.Pass })
+						doMove(game.state, { action: Action.Pass })
 						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
 						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
 
-						return { ok: false, msg: [ StatusCodeMessages[status], `passing\n`, printStateForAttacker(game.state) ] }
+						return { ok: false, msg: [ StatusCodeMessages[result.status], `passing\n`, printStateForAttacker(game.state) ] }
 					}
 				}
 			}

@@ -1,6 +1,6 @@
 import { assert } from "@samual/lib"
 import { Card, CardModifier, CardSuit, CardValue } from "./createState"
-import { Action, AttackerDeck, AttackerDiscardPile, Lane, Move } from "./playMove"
+import { Action, AttackerDeck, AttackerDiscardPile, Lane, Move } from "./shared"
 
 export const CardValues: CardValue[] = [
 	`2`,
