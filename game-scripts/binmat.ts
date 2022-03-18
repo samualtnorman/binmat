@@ -71,7 +71,7 @@ function $(context: Context, args: unknown) {
 						switch (result.status) {
 							case StatusCode.Ok: {
 								$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
-								$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
+								$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
 								return {
 									ok: false,
@@ -85,7 +85,7 @@ function $(context: Context, args: unknown) {
 
 							case StatusCode.DefenderWin: {
 								cleanup()
-								$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${args.move} and won` })
+								$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
 								return {
 									ok: false,
@@ -109,21 +109,21 @@ function $(context: Context, args: unknown) {
 					switch (result.status) {
 						case StatusCode.Ok: {
 							$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
-							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${move.action == Action.Play && !game.state.defenderStacks[move.lane].faceup ? `pX${move.lane}` : args.move}` })
+							$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
 							return { ok: true, msg: printStateForDefender(game.state) }
 						}
 
 						case StatusCode.DefenderWin: {
 							cleanup()
-							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${args.move} and won` })
+							$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
 							return [ `you won!\n`, printStateForDefender(game.state), `\`zLOCK_ERROR\`` ]
 						}
 
 						case StatusCode.AttackerWin: {
 							cleanup()
-							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${args.move} and lost` })
+							$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
 							return [ `you lost :(\n`, printStateForDefender(game.state), `\`zLOCK_UNLOCKED\`` ]
 						}
@@ -134,7 +134,7 @@ function $(context: Context, args: unknown) {
 							switch (result.status) {
 								case StatusCode.Ok: {
 									$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
-									$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
+									$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
 									return {
 										ok: false,
@@ -148,7 +148,7 @@ function $(context: Context, args: unknown) {
 
 								case StatusCode.DefenderWin: {
 									cleanup()
-									$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${args.move} and won` })
+									$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
 									return {
 										ok: false,
@@ -227,14 +227,14 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					switch (result.status) {
 						case StatusCode.Ok: {
 							$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
-							$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
+							$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 
 							return { ok: false, msg: [ error.message, `passing\n`, printStateForAttacker(game.state) ] }
 						}
 
 						case StatusCode.DefenderWin: {
 							cleanup()
-							$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${args.move} and lost` })
+							$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 
 							return {
 								ok: false,
@@ -257,21 +257,21 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 				switch (result.status) {
 					case StatusCode.Ok: {
 						$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
-						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${move.action == Action.Play ? `pX${move.lane}` : args.move}` })
+						$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 
 						return { ok: true, msg: printStateForAttacker(game.state) }
 					}
 
 					case StatusCode.DefenderWin: {
 						cleanup()
-						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${args.move} and lost` })
+						$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 
 						return [ `you lost :(\n`, printStateForAttacker(game.state), `\`zLOCK_ERROR\`` ]
 					}
 
 					case StatusCode.AttackerWin: {
 						cleanup()
-						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${args.move} and won` })
+						$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 
 						return [ `you won!\n`, printStateForAttacker(game.state), `\`zLOCK_UNLOCKED\`` ]
 					}
@@ -282,7 +282,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 						switch (result.status) {
 							case StatusCode.Ok: {
 								$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
-								$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
+								$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 
 								return {
 									ok: false,
@@ -296,7 +296,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 							case StatusCode.DefenderWin: {
 								cleanup()
-								$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${args.move} and lost` })
+								$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 
 								return {
 									ok: false,
