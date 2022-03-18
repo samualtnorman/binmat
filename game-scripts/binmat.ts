@@ -362,7 +362,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 	const waitingUser = $db.f({ _id: `binmat` }, { waiting: true }).first()?.waiting as string | undefined
 
 	if (waitingUser == context.caller)
-		return `you are currently waiting for someone to join\nget someone else to run ${context.this_script} { new: true }`
+		return `you are currently waiting for someone to join\nget someone else to run ${_FULL_SCRIPT_NAME} { new: true }`
 
 	if (isRecord(args) && args.new) {
 		if (waitingUser) {
@@ -386,7 +386,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					}
 				})
 
-				$fs.chats.tell({ to: waitingUser, msg: `@${context.caller} has started a game of binmat with you in ${context.this_script}\nyou are the attacker` })
+				$fs.chats.tell({ to: waitingUser, msg: `@${context.caller} has started a game of binmat with you in ${_FULL_SCRIPT_NAME}\nyou are the attacker` })
 
 				return [
 					`created game with @${waitingUser}\nyou are the defender\nit is your turn\n`,
@@ -412,7 +412,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 				}
 			})
 
-			$fs.chats.tell({ to: waitingUser, msg: `@${context.caller} has started a game of binmat with you in ${context.this_script}\nyou are the defender, it is your turn` })
+			$fs.chats.tell({ to: waitingUser, msg: `@${context.caller} has started a game of binmat with you in ${_FULL_SCRIPT_NAME}\nyou are the defender, it is your turn` })
 
 			return [
 				`created game with @${waitingUser}\nyou are the attacker\nit is @${waitingUser}'s turn\n`,
@@ -423,11 +423,11 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 		$db.us({ _id: `binmat` }, { $set: { waiting: context.caller } })
 
-		return `you are now waiting for someone else to join\nget someone else to run ${context.this_script} { new: true }`
+		return `you are now waiting for someone else to join\nget someone else to run ${_FULL_SCRIPT_NAME} { new: true }`
 	}
 
 	if (waitingUser)
-		return `@${waitingUser} is currently waiting for someone to join\nstart a new game with them with ${context.this_script} { new: true }`
+		return `@${waitingUser} is currently waiting for someone to join\nstart a new game with them with ${_FULL_SCRIPT_NAME} { new: true }`
 
 	return `start a new game? new: true`
 }
