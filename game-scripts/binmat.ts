@@ -71,11 +71,50 @@ function $(context: Context, args: unknown) {
 						move = parseMove(args.move, true)
 					} catch (error) {
 						assert(error instanceof Error)
-						doMove(game.state, { action: Action.Pass })
-						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
-						$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
 
-						return { ok: false, msg: [ error.message, `passing\n`, printStateForDefender(game.state) ] }
+						const result = doMove(game.state, { action: Action.Pass })
+
+						switch (result.status) {
+							case StatusCode.Ok: {
+								$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+								$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
+
+								return {
+									ok: false,
+									msg: [
+										error.message,
+										`passing\n`,
+										printStateForDefender(game.state)
+									]
+								}
+							}
+
+							case StatusCode.DefenderWin: {
+								$db.us({ _id: `binmat` }, {
+									$unset: {
+										[`IDToGame/${currentGameID}`]: ``,
+										[`userToID/${game.defender}`]: ``,
+										[`userToID/${game.attacker}`]: ``
+									}
+								})
+
+								$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${args.move} and won` })
+
+								return {
+									ok: false,
+									msg: [
+										error.message,
+										`passing\n`,
+										`you won!\n`,
+										printStateForDefender(game.state),
+										`\`zLOCK_ERROR\``
+									]
+								}
+							}
+
+							default:
+								throw new Error(`unexpected status code ${result.status}`)
+						}
 					}
 
 					const result = doMove(game.state, move)
@@ -117,11 +156,49 @@ function $(context: Context, args: unknown) {
 						}
 
 						default: {
-							doMove(game.state, { action: Action.Pass })
-							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
-							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
+							const result = doMove(game.state, { action: Action.Pass })
 
-							return { ok: false, msg: [ StatusCodeMessages[result.status], `passing\n`, printStateForDefender(game.state) ] }
+							switch (result.status) {
+								case StatusCode.Ok: {
+									$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+									$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
+
+									return {
+										ok: false,
+										msg: [
+											StatusCodeMessages[result.status],
+											`passing\n`,
+											printStateForDefender(game.state)
+										]
+									}
+								}
+
+								case StatusCode.DefenderWin: {
+									$db.us({ _id: `binmat` }, {
+										$unset: {
+											[`IDToGame/${currentGameID}`]: ``,
+											[`userToID/${game.defender}`]: ``,
+											[`userToID/${game.attacker}`]: ``
+										}
+									})
+
+									$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${args.move} and won` })
+
+									return {
+										ok: false,
+										msg: [
+											StatusCodeMessages[result.status],
+											`passing\n`,
+											`you won!\n`,
+											printStateForDefender(game.state),
+											`\`zLOCK_ERROR\``
+										]
+									}
+								}
+
+								default:
+									throw new Error(`unexpected status code ${result.status}`)
+							}
 						}
 					}
 				}
@@ -178,11 +255,42 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					move = parseMove(args.move, true)
 				} catch (error) {
 					assert(error instanceof Error)
-					doMove(game.state, { action: Action.Pass })
-					$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
-					$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
 
-					return { ok: false, msg: [ error.message, `passing\n`, printStateForDefender(game.state) ] }
+					const result = doMove(game.state, { action: Action.Pass })
+
+					switch (result.status) {
+						case StatusCode.Ok: {
+							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+							$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
+
+							return { ok: false, msg: [ error.message, `passing\n`, printStateForAttacker(game.state) ] }
+						}
+
+						case StatusCode.DefenderWin: {
+							$db.us({ _id: `binmat` }, {
+								$unset: {
+									[`IDToGame/${currentGameID}`]: ``,
+									[`userToID/${game.defender}`]: ``,
+									[`userToID/${game.attacker}`]: ``
+								}
+							})
+
+							$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${args.move} and lost` })
+
+							return {
+								ok: false,
+								msg: [
+									error.message,
+									`passing\n`,
+									`you lost :(\n`,
+									printStateForAttacker(game.state), `\`zLOCK_ERROR\``
+								]
+							}
+						}
+
+						default:
+							throw new Error(`unexpected status code ${result.status}`)
+					}
 				}
 
 				const result = doMove(game.state, move)
@@ -224,11 +332,48 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					}
 
 					default: {
-						doMove(game.state, { action: Action.Pass })
-						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
-						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
+						const result = doMove(game.state, { action: Action.Pass })
 
-						return { ok: false, msg: [ StatusCodeMessages[result.status], `passing\n`, printStateForAttacker(game.state) ] }
+						switch (result.status) {
+							case StatusCode.Ok: {
+								$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+								$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
+
+								return {
+									ok: false,
+									msg: [
+										StatusCodeMessages[result.status],
+										`passing\n`,
+										printStateForAttacker(game.state)
+									]
+								}
+							}
+
+							case StatusCode.DefenderWin: {
+								$db.us({ _id: `binmat` }, {
+									$unset: {
+										[`IDToGame/${currentGameID}`]: ``,
+										[`userToID/${game.defender}`]: ``,
+										[`userToID/${game.attacker}`]: ``
+									}
+								})
+
+								$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${args.move} and lost` })
+
+								return {
+									ok: false,
+									msg: [
+										StatusCodeMessages[result.status],
+										`passing\n`,
+										`you lost :(\n`,
+										printStateForAttacker(game.state), `\`zLOCK_ERROR\``
+									]
+								}
+							}
+
+							default:
+								throw new Error(`unexpected status code ${result.status}`)
+						}
 					}
 				}
 			}
