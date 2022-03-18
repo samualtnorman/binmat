@@ -36,12 +36,12 @@ function $(context: Context, args: unknown) {
 	const currentGameID = $db.f({ _id: `binmat` }, { [`userToID/${context.caller}`]: true }).first()?.[`userToID/${context.caller}`] as string | undefined
 
 	if (currentGameID) {
-		const game = $db.f({ _id: `binmat` }, { [`IDToGame/${currentGameID}`]: true }).first()?.[`IDToGame/${currentGameID}`] as { defender: string, attacker: string, state: State }
+		const game = $db.f({ _id: `binmat` }, { [`idToGame/${currentGameID}`]: true }).first()?.[`idToGame/${currentGameID}`] as { defender: string, attacker: string, state: State }
 
 		if (isRecord(args) && args.leave) {
 			$db.us({ _id: `binmat` }, {
 				$unset: {
-					[`IDToGame/${currentGameID}`]: ``,
+					[`idToGame/${currentGameID}`]: ``,
 					[`userToID/${game.defender}`]: ``,
 					[`userToID/${game.attacker}`]: ``
 				}
@@ -76,7 +76,7 @@ function $(context: Context, args: unknown) {
 
 						switch (result.status) {
 							case StatusCode.Ok: {
-								$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+								$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 								$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
 
 								return {
@@ -92,7 +92,7 @@ function $(context: Context, args: unknown) {
 							case StatusCode.DefenderWin: {
 								$db.us({ _id: `binmat` }, {
 									$unset: {
-										[`IDToGame/${currentGameID}`]: ``,
+										[`idToGame/${currentGameID}`]: ``,
 										[`userToID/${game.defender}`]: ``,
 										[`userToID/${game.attacker}`]: ``
 									}
@@ -121,7 +121,7 @@ function $(context: Context, args: unknown) {
 
 					switch (result.status) {
 						case StatusCode.Ok: {
-							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+							$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 							$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played ${move.action == Action.Play && !game.state.defenderStacks[move.lane].faceup ? `pX${move.lane}` : args.move}` })
 
 							return { ok: true, msg: printStateForDefender(game.state) }
@@ -130,7 +130,7 @@ function $(context: Context, args: unknown) {
 						case StatusCode.DefenderWin: {
 							$db.us({ _id: `binmat` }, {
 								$unset: {
-									[`IDToGame/${currentGameID}`]: ``,
+									[`idToGame/${currentGameID}`]: ``,
 									[`userToID/${game.defender}`]: ``,
 									[`userToID/${game.attacker}`]: ``
 								}
@@ -144,7 +144,7 @@ function $(context: Context, args: unknown) {
 						case StatusCode.AttackerWin: {
 							$db.us({ _id: `binmat` }, {
 								$unset: {
-									[`IDToGame/${currentGameID}`]: ``,
+									[`idToGame/${currentGameID}`]: ``,
 									[`userToID/${game.defender}`]: ``,
 									[`userToID/${game.attacker}`]: ``
 								}
@@ -160,7 +160,7 @@ function $(context: Context, args: unknown) {
 
 							switch (result.status) {
 								case StatusCode.Ok: {
-									$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+									$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 									$fs.chats.tell({ to: game.attacker, msg: `@${context.caller} played --` })
 
 									return {
@@ -176,7 +176,7 @@ function $(context: Context, args: unknown) {
 								case StatusCode.DefenderWin: {
 									$db.us({ _id: `binmat` }, {
 										$unset: {
-											[`IDToGame/${currentGameID}`]: ``,
+											[`idToGame/${currentGameID}`]: ``,
 											[`userToID/${game.defender}`]: ``,
 											[`userToID/${game.attacker}`]: ``
 										}
@@ -260,7 +260,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 					switch (result.status) {
 						case StatusCode.Ok: {
-							$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+							$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 							$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
 
 							return { ok: false, msg: [ error.message, `passing\n`, printStateForAttacker(game.state) ] }
@@ -269,7 +269,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 						case StatusCode.DefenderWin: {
 							$db.us({ _id: `binmat` }, {
 								$unset: {
-									[`IDToGame/${currentGameID}`]: ``,
+									[`idToGame/${currentGameID}`]: ``,
 									[`userToID/${game.defender}`]: ``,
 									[`userToID/${game.attacker}`]: ``
 								}
@@ -297,7 +297,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 				switch (result.status) {
 					case StatusCode.Ok: {
-						$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+						$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 						$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played ${move.action == Action.Play ? `pX${move.lane}` : args.move}` })
 
 						return { ok: true, msg: printStateForAttacker(game.state) }
@@ -306,7 +306,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					case StatusCode.DefenderWin: {
 						$db.us({ _id: `binmat` }, {
 							$unset: {
-								[`IDToGame/${currentGameID}`]: ``,
+								[`idToGame/${currentGameID}`]: ``,
 								[`userToID/${game.defender}`]: ``,
 								[`userToID/${game.attacker}`]: ``
 							}
@@ -320,7 +320,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					case StatusCode.AttackerWin: {
 						$db.us({ _id: `binmat` }, {
 							$unset: {
-								[`IDToGame/${currentGameID}`]: ``,
+								[`idToGame/${currentGameID}`]: ``,
 								[`userToID/${game.defender}`]: ``,
 								[`userToID/${game.attacker}`]: ``
 							}
@@ -336,7 +336,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 
 						switch (result.status) {
 							case StatusCode.Ok: {
-								$db.us({ _id: `binmat` }, { $set: { [`IDToGame/${currentGameID}.state`]: game.state } })
+								$db.us({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 								$fs.chats.tell({ to: game.defender, msg: `@${context.caller} played --` })
 
 								return {
@@ -352,7 +352,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 							case StatusCode.DefenderWin: {
 								$db.us({ _id: `binmat` }, {
 									$unset: {
-										[`IDToGame/${currentGameID}`]: ``,
+										[`idToGame/${currentGameID}`]: ``,
 										[`userToID/${game.defender}`]: ``,
 										[`userToID/${game.attacker}`]: ``
 									}
@@ -427,7 +427,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					$unset: { waiting: `` },
 
 					$set: {
-						[`IDToGame/${id}`]: {
+						[`idToGame/${id}`]: {
 							defender: context.caller,
 							attacker: waitingUser,
 							state
@@ -453,7 +453,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 				$unset: { waiting: `` },
 
 				$set: {
-					[`IDToGame/${id}`]: {
+					[`idToGame/${id}`]: {
 						defender: waitingUser,
 						attacker: context.caller,
 						state
