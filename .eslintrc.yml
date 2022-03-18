@@ -409,3 +409,5 @@ rules:
   "@typescript-eslint/lines-between-class-members":
     - warn
     - allowSingleLine: true
+
+  no-inner-declarations: off
