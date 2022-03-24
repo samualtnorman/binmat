@@ -400,6 +400,9 @@ rules:
   unicorn/prevent-abbreviations:
     - warn
     - checkFilenames: false
+      allowList:
+        args: true
+        Args: true
 
   optimize-regex/optimize-regex:
     - warn
