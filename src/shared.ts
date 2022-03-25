@@ -50,3 +50,20 @@ export const enum StatusCode {
 	AttackerDrewFromEmptyDiscardAndDeck,
 	PlayedCardFacedWrongWay
 }
+
+export const statusCodeMessages = [
+	`okay`,
+	`defender won`,
+	`attacker won`,
+	`tried to make a move on a finished game`,
+	`the defender tried to draw from the attacker's deck`,
+	`the attacker tried to drawn from a blocked lane deck`,
+	`tried to play a card not in hand`,
+	`tried to play a break card to an empty stack`,
+	`the defender tried to initiate combat`,
+	`the attacker tried to initiate combat with an empty attacker stack`,
+	`tried to discard to opponent's discard pile`,
+	`attacker tried to discard when the attacker discard pile and attacker deck are empty`,
+	`attacker tried to draw from attacker deck when it and the attacker discard pile are empty`,
+	`tried to play card faced incorrectly`
+] as Record<StatusCode, string>

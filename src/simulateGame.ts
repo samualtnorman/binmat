@@ -4,12 +4,13 @@ import createState, { Role } from "./createState"
 import doMove from "./doMove"
 import { BinmatArgs, generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
 import parseMove from "./parseMove"
-import { Action, StatusCode } from "./shared"
+import { Action, StatusCode, statusCodeMessages } from "./shared"
 
 export type SimulateGameOptions = {
 	timeLimit: number
 	defenderUserName: string
 	attackerUserName: string
+	noThrow: boolean
 }
 
 export type TransformScript = (args: { op: string }) => { ok: boolean }
@@ -27,7 +28,8 @@ export function simulateGame(
 	{
 		timeLimit = 5000,
 		defenderUserName = `defender`,
-		attackerUserName = `attacker`
+		attackerUserName = `attacker`,
+		noThrow = false
 	}: LaxPartial<SimulateGameOptions> = {}
 ) {
 	const state = createState()
@@ -53,8 +55,12 @@ export function simulateGame(
 			xform
 		)
 
-		if (!madeMove as boolean)
-			doDefaultMove()
+		if (!madeMove as boolean) {
+			if (noThrow)
+				doDefaultMove()
+			else
+				throw new Error(`defender brain did not attempt to make a move`)
+		}
 
 		if (winner)
 			return winner
@@ -74,8 +80,12 @@ export function simulateGame(
 			xform
 		)
 
-		if (!madeMove as boolean)
-			doDefaultMove()
+		if (!madeMove as boolean) {
+			if (noThrow)
+				doDefaultMove()
+			else
+				throw new Error(`defender brain did not attempt to make a move`)
+		}
 
 		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		if (winner)
@@ -83,20 +93,31 @@ export function simulateGame(
 	}
 
 	function xform({ op }: { op: string }) {
-		if (madeMove)
+		if (madeMove) {
+			if (noThrow)
+				return { ok: false }
+
 			throw new Error(`only 1 move per turn`)
+		}
 
 		madeMove = true
 
-		if (Date.now() > endTime)
-			return doDefaultMove()
+		if (Date.now() > endTime) {
+			if (noThrow)
+				return doDefaultMove()
+
+			throw new Error(`made move too late`)
+		}
 
 		let move
 
 		try {
 			move = parseMove(op)
-		} catch {
-			return doDefaultMove()
+		} catch (error) {
+			if (noThrow)
+				return doDefaultMove()
+
+			throw error
 		}
 
 		const result = doMove(state, move)
@@ -112,8 +133,12 @@ export function simulateGame(
 				winner = Role.Defender
 			} break
 
-			default:
-				return doDefaultMove()
+			default: {
+				if (noThrow)
+					return doDefaultMove()
+
+				throw new Error(statusCodeMessages[result.status])
+			}
 		}
 
 		if (state.turn % 2) /* attacker turn */
