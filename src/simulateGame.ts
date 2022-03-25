@@ -141,10 +141,10 @@ export function simulateGame(
 			}
 		}
 
-		if (state.turn % 2) /* attacker turn */
-			attackerBinlog = result.binlog
-		else /* defender turn */
+		if (state.turn % 2) /* now attacker turn */
 			defenderBinlog = result.binlog
+		else /* now defender turn */
+			attackerBinlog = result.binlog
 
 		return { ok: true }
 	}
@@ -163,10 +163,10 @@ export function simulateGame(
 				throw new Error(`unexpected status code ${result.status}`)
 		}
 
-		if (state.turn % 2) /* attacker turn */
-			attackerBinlog = result.binlog
-		else /* defender turn */
+		if (state.turn % 2) /* now attacker turn */
 			defenderBinlog = result.binlog
+		else /* now defender turn */
+			attackerBinlog = result.binlog
 
 		return { ok: false }
 	}
