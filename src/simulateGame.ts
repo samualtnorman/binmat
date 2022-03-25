@@ -33,7 +33,7 @@ export function simulateGame(
 	}: LaxPartial<SimulateGameOptions> = {}
 ) {
 	const state = createState()
-	const endTime = Date.now() + timeLimit
+	let endTime: number
 	let winner: Role | undefined
 	let defenderBinlog: string[] = []
 	let attackerBinlog: string[] = []
@@ -41,6 +41,7 @@ export function simulateGame(
 
 	while (true) {
 		madeMove = false
+		endTime = Date.now() + timeLimit
 
 		defenderBrain(
 			{
@@ -66,6 +67,7 @@ export function simulateGame(
 			return winner
 
 		madeMove = false
+		endTime = Date.now() + timeLimit
 
 		attackerBrain(
 			{
