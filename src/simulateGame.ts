@@ -65,10 +65,11 @@ export function simulateGame(
 				throw new Error(`defender brain did not attempt to make a move`)
 		}
 
+		onMove?.(state, defenderBinlog)
+
 		if (winner)
 			return winner
 
-		onMove?.(state, defenderBinlog)
 		madeMove = false
 		endTime = Date.now() + timeLimit
 
@@ -92,11 +93,11 @@ export function simulateGame(
 				throw new Error(`defender brain did not attempt to make a move`)
 		}
 
+		onMove?.(state, attackerBinlog)
+
 		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		if (winner)
 			return winner
-
-		onMove?.(state, attackerBinlog)
 	}
 
 	function xform({ op }: { op: string }) {
