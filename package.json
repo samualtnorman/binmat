@@ -21,7 +21,7 @@
 		"dev": "rollup --config --watch",
 		"lint": "eslint .; tsc",
 		"test": "node --experimental-vm-modules node_modules/jest/bin/jest",
-		"package": "rm -rf dist && rollup --config && npm run gen-types && node scripts/build-package-json && cp LICENSE package-lock.json README.md dist",
+		"package": "rm -rf dist && rollup --config && npm run gen-types && node scripts/build-package-json && cp LICENSE package-lock.json README.md index.cjs dist",
 		"push-script": "hsm push game-scripts \"*.binmat\"",
 		"gen-types": "tsc --project src --declaration true --emitDeclarationOnly true --noEmit false --outDir dist"
 	},
