@@ -35,7 +35,7 @@ export function simulateGame(
 	let winner: Role | undefined
 	let defenderBinlog: string[] = []
 	let attackerBinlog: string[] = []
-	let madeMove
+	let madeMove: boolean
 
 	while (true) {
 		madeMove = false
@@ -53,7 +53,7 @@ export function simulateGame(
 			xform
 		)
 
-		if (!madeMove)
+		if (!madeMove as boolean)
 			doDefaultMove()
 
 		if (winner)
@@ -74,7 +74,7 @@ export function simulateGame(
 			xform
 		)
 
-		if (!madeMove)
+		if (!madeMove as boolean)
 			doDefaultMove()
 
 		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
@@ -83,6 +83,9 @@ export function simulateGame(
 	}
 
 	function xform({ op }: { op: string }) {
+		if (madeMove)
+			throw new Error(`only 1 move per turn`)
+
 		madeMove = true
 
 		if (Date.now() > endTime)
