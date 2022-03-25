@@ -1,6 +1,6 @@
 import { LaxPartial } from "@samual/lib"
 import "../game-scripts/hackmud.d"
-import createState, { Role } from "./createState"
+import createState, { Role, State } from "./createState"
 import doMove from "./doMove"
 import { BinmatArgs, generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
 import parseMove from "./parseMove"
@@ -11,6 +11,7 @@ export type SimulateGameOptions = {
 	defenderUserName: string
 	attackerUserName: string
 	noThrow: boolean
+	onMove: (state: State, binlog: string[]) => void
 }
 
 export type TransformScript = (args: { op: string }) => { ok: boolean }
@@ -29,7 +30,8 @@ export function simulateGame(
 		timeLimit = 5000,
 		defenderUserName = `defender`,
 		attackerUserName = `attacker`,
-		noThrow = false
+		noThrow = false,
+		onMove
 	}: LaxPartial<SimulateGameOptions> = {}
 ) {
 	const state = createState()
@@ -66,6 +68,7 @@ export function simulateGame(
 		if (winner)
 			return winner
 
+		onMove?.(state, defenderBinlog)
 		madeMove = false
 		endTime = Date.now() + timeLimit
 
@@ -92,6 +95,8 @@ export function simulateGame(
 		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		if (winner)
 			return winner
+
+		onMove?.(state, attackerBinlog)
 	}
 
 	function xform({ op }: { op: string }) {
