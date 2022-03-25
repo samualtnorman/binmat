@@ -1,8 +1,8 @@
 # Binmat Simulator
-[![Test](/../../actions/workflows/publish.yml/badge.svg)](/../../actions/workflows/publish.yml)
-[![Lint](/../../actions/workflows/lint.yml/badge.svg)](/../../actions/workflows/lint.yml)
+[![Test](https://github.com/samualtnorman/binmat/actions/workflows/publish.yml/badge.svg)](https://github.com/samualtnorman/binmat/actions/workflows/publish.yml)
+[![Lint](https://github.com/samualtnorman/binmat/actions/workflows/lint.yml/badge.svg)](https://github.com/samualtnorman/binmat/actions/workflows/lint.yml)
 
-If you need any help, [open an issue](/../../issues/new).
+If you need any help, [open an issue](https://github.com/samualtnorman/binmat/issues/new).
 
 ## How to Build for Hackmud
 
