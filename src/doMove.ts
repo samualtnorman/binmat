@@ -179,9 +179,14 @@ export function doMove(state: State, move: Move): { status: Exclude<StatusCode, 
 		if (defenderBouncesDiscarded.length)
 			binlog.push(`\`n--\` d? / ${defenderBouncesDiscarded.join(` `)} xa`)
 
-		const attackerStackDiscarded = combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardPlayedFaceup
-			? `${combatData.attackerStackDiscarded.join(` `)}u`
-			: combatData.attackerStackDiscarded.join(` `)
+		let attackerStackDiscarded
+
+		if (cardPlayedFaceup) {
+			attackerStackDiscarded = combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardPlayedFaceup
+				? `${combatData.attackerStackDiscarded.join(` `)}u`
+				: combatData.attackerStackDiscarded.join(` `)
+		} else
+			attackerStackDiscarded = ``
 
 		if (damageValue) {
 			const cardsDrawn = lane < 3 ? `X `.repeat(combatData.cardsDrawn.length) : `${combatData.cardsDrawn.join(` `)} `
