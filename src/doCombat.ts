@@ -175,10 +175,10 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 			if (cardsToDraw > laneDeck.length)
 				laneDeck.push(...shuffle(laneDiscardPile.splice(0)))
 
-			cardsDrawn = laneDeck.splice(0, cardsToDraw)
+			cardsDrawn = laneDeck.splice(-cardsToDraw)
 			state.attackerHand.push(...cardsDrawn)
 		} else {
-			state.attackerDiscardPile.push(...defenderStack.splice(defenderStack.length - damageValue, damageValue))
+			state.attackerDiscardPile.push(...defenderStack.splice(-damageValue))
 			cardsDrawn = []
 		}
 	}
