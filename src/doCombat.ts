@@ -227,7 +227,7 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 			if (card[0] != CardModifier.Trap)
 				continue
 
-			const trappedCard = attackerStack.pop()!
+			const trappedCard = defenderStack.pop()!
 
 			defenderCardsTrapped.push(trappedCard)
 			state.attackerDiscardPile.push(trappedCard)
