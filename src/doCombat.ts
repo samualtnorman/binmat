@@ -124,7 +124,9 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 	const defenderBouncesDiscarded: `?${CardSuit}`[] = []
 	const attackerBouncesDiscarded: `?${CardSuit}`[] = []
 
-	if (attackerBounceIndexes.length || defenderBounceIndexes.length || (!attackerAttackPower && !defenderAttackPower)) {
+	if (
+		attackerBounceIndexes.length || defenderBounceIndexes.length || (!attackerAttackPower && !defenderAttackPower)
+	) {
 		for (const index of defenderBounceIndexes.reverse()) {
 			const bounceDiscarded = defenderStack.splice(index, 1)[0]!
 

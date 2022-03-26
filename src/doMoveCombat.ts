@@ -3,7 +3,9 @@ import doCombat, { CombatData } from "./doCombat"
 import { Lane, StatusCode } from "./shared"
 
 export function doMoveCombat(state: State, lane: Lane): {
-	status: StatusCode.MadeMoveOnFinishedGame | StatusCode.DefenderInitiatedCombat | StatusCode.AttackerInitiatedCombatWithEmptyStack
+	status: StatusCode.MadeMoveOnFinishedGame
+		| StatusCode.DefenderInitiatedCombat
+		| StatusCode.AttackerInitiatedCombatWithEmptyStack
 } | (
 	CombatData & { status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin }
 ) {

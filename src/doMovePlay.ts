@@ -23,7 +23,9 @@ export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
 		if (card[0] == CardModifier.Break && !state.defenderStacks[lane].cards.length)
 			return { status: StatusCode.PlayedBreakToEmptyStack }
 
-		const index = card.length == 2 ? state.defenderHand.indexOf(card as Card) : state.defenderHand.findIndex(([ value ]) => value == card)
+		const index = card.length == 2
+			? state.defenderHand.indexOf(card as Card)
+			: state.defenderHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }
@@ -34,7 +36,9 @@ export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
 		if (card[0] == CardModifier.Break && !state.attackerStacks[lane].length)
 			return { status: StatusCode.PlayedBreakToEmptyStack }
 
-		const index = card.length == 2 ? state.attackerHand.indexOf(card as Card) : state.attackerHand.findIndex(([ value ]) => value == card)
+		const index = card.length == 2
+			? state.attackerHand.indexOf(card as Card)
+			: state.attackerHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }

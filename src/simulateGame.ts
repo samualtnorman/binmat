@@ -18,7 +18,6 @@ export type TransformScript = (args: { op: string }) => { ok: boolean }
 export type BrainScript = (context: CLIContext, args: BinmatArgs, xform: TransformScript) => void
 
 /**
- *
  * @param defenderBrain defender brain script but with extra `xform` parameter to replace `#fs.binmat.x()` subscript
  * @param attackerBrain attacker brain script but with extra `xform` parameter to replace `#fs.binmat.x()` subscript
  * @param options {@link SimulateGameOptions details}
@@ -55,7 +54,12 @@ export function simulateGame(
 				// eslint-disable-next-line unicorn/no-null
 				calling_script: null
 			},
-			generateArgsForDefender(state, defenderUserName, attackerUserName, [ ...defenderBinlog, ...attackerBinlog ]),
+			generateArgsForDefender(
+				state,
+				defenderUserName,
+				attackerUserName,
+				[ ...defenderBinlog, ...attackerBinlog ]
+			),
 			xform
 		)
 
@@ -83,7 +87,12 @@ export function simulateGame(
 				// eslint-disable-next-line unicorn/no-null
 				calling_script: null
 			},
-			generateArgsForAttacker(state, defenderUserName, attackerUserName, [ ...attackerBinlog, ...defenderBinlog ]),
+			generateArgsForAttacker(
+				state,
+				defenderUserName,
+				attackerUserName,
+				[ ...attackerBinlog, ...defenderBinlog ]
+			),
 			xform
 		)
 

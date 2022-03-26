@@ -21,7 +21,9 @@ export function doMovePlayFaceup(state: State, card: Card | CardValue, lane: Lan
 	let combat: CombatData | undefined
 
 	if (roleTurn == Role.Defender) {
-		const index = card.length == 2 ? state.defenderHand.indexOf(card as Card) : state.defenderHand.findIndex(([ value ]) => value == card)
+		const index = card.length == 2
+			? state.defenderHand.indexOf(card as Card)
+			: state.defenderHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }
@@ -47,7 +49,9 @@ export function doMovePlayFaceup(state: State, card: Card | CardValue, lane: Lan
 			state.defenderStacks[lane].cards.push(cardPlayed)
 		}
 	} else /* attacker turn */ {
-		const index = card.length == 2 ? state.attackerHand.indexOf(card as Card) : state.attackerHand.findIndex(([ value ]) => value == card)
+		const index = card.length == 2
+			? state.attackerHand.indexOf(card as Card)
+			: state.attackerHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }

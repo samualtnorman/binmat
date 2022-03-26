@@ -26,7 +26,9 @@ export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
 	const deck = deckToDrawFrom == AttackerDeck ? state.attackerDeck : state.laneDecks[deckToDrawFrom]
 
 	if (!deck.length) {
-		const discardPile = deckToDrawFrom == AttackerDiscardPile ? state.attackerDiscardPile : state.laneDiscardPiles[deckToDrawFrom]
+		const discardPile = deckToDrawFrom == AttackerDiscardPile
+			? state.attackerDiscardPile
+			: state.laneDiscardPiles[deckToDrawFrom]
 
 		if (!discardPile.length) {
 			if (deckToDrawFrom == AttackerDeck)

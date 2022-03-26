@@ -20,7 +20,9 @@ export function doMoveDiscard(state: State, card: Card | CardValue, discardPile:
 	let cardsDrawn: [ Card, Card ] | undefined
 
 	if (roleTurn == Role.Defender) {
-		const index = card.length == 2 ? state.defenderHand.indexOf(card as Card) : state.defenderHand.findIndex(([ value ]) => value == card)
+		const index = card.length == 2
+			? state.defenderHand.indexOf(card as Card)
+			: state.defenderHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }
@@ -31,7 +33,9 @@ export function doMoveDiscard(state: State, card: Card | CardValue, discardPile:
 		cardDiscarded = state.defenderHand.splice(index, 1)[0]!
 		state.laneDiscardPiles[discardPile].push(cardDiscarded)
 	} else /* attacker turn */ {
-		const index = card.length == 2 ? state.attackerHand.indexOf(card as Card) : state.attackerHand.findIndex(([ value ]) => value == card)
+		const index = card.length == 2
+			? state.attackerHand.indexOf(card as Card)
+			: state.attackerHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }

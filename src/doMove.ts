@@ -24,7 +24,9 @@ export type Move = {
 	discardPile: Lane | AttackerDiscardPile
 } | { action: Action.Pass }
 
-export function doMove(state: State, move: Move): { status: Exclude<StatusCode, StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin> } | {
+export function doMove(state: State, move: Move): {
+	status: Exclude<StatusCode, StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin>
+} | {
 	status: StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin
 	binlog: string[]
 } {
@@ -153,7 +155,11 @@ export function doMove(state: State, move: Move): { status: Exclude<StatusCode, 
 	}
 
 	function pushCombatBinlog(binlog: string[], combatData: CombatData, lane: Lane, cardPlayedFaceup?: Card) {
-		const { attackerAttackPower, attackerStack, defenderAttackPower, defenderStack, attackerCardsTrapped, defenderCardsTrapped, attackerBouncesDiscarded, defenderBouncesDiscarded, damageValue } = combatData
+		const {
+			attackerAttackPower, attackerStack, defenderAttackPower, defenderStack, attackerCardsTrapped,
+			defenderCardsTrapped, attackerBouncesDiscarded, defenderBouncesDiscarded, damageValue
+		} = combatData
+
 		const attackerSide = cardPlayedFaceup ? `${attackerStack.join(` `)}u` : attackerStack.join(` `)
 		const defenderSide = defenderStack.join(` `)
 

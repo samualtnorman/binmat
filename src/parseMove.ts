@@ -71,7 +71,10 @@ export function parseMove(move: string, extra = false): Move {
 		case `p`:
 		case `u`: {
 			if (move.length == 3) {
-				assert(CardValues.includes(move[1] as any), `invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`)
+				assert(
+					CardValues.includes(move[1] as any),
+					`invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`
+				)
 
 				const lane = Number(move[2])
 
@@ -85,8 +88,15 @@ export function parseMove(move: string, extra = false): Move {
 			}
 
 			if (move.length == 4) {
-				assert(CardValues.includes(move[1] as any), `invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`)
-				assert(CardSuits.includes(move[2] as any), `invalid card suit "${move[2]}" (expected one of ${CardSuits.join(`, `)})`)
+				assert(
+					CardValues.includes(move[1] as any),
+					`invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`
+				)
+
+				assert(
+					CardSuits.includes(move[2] as any),
+					`invalid card suit "${move[2]}" (expected one of ${CardSuits.join(`, `)})`
+				)
 
 				const lane = Number(move[3])
 
@@ -103,7 +113,10 @@ export function parseMove(move: string, extra = false): Move {
 		}
 
 		case `x`: {
-			assert(CardValues.includes(move[1] as any), `invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`)
+			assert(
+				CardValues.includes(move[1] as any),
+				`invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`
+			)
 
 			if (extra && move.length == 2) {
 				return {
@@ -142,7 +155,10 @@ export function parseMove(move: string, extra = false): Move {
 			}
 
 			if (move.length == 4) {
-				assert(CardSuits.includes(move[2] as any), `invalid card suit "${move[2]}" (expected one of ${CardSuits.join(`, `)})`)
+				assert(
+					CardSuits.includes(move[2] as any),
+					`invalid card suit "${move[2]}" (expected one of ${CardSuits.join(`, `)})`
+				)
 
 				if (move[3] == `a`) {
 					return {
