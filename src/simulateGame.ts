@@ -15,6 +15,7 @@ export type SimulateGameOptions = {
 }
 
 export type TransformScript = (args: { op: string }) => { ok: boolean }
+export type BrainScript = (context: CLIContext, args: BinmatArgs, xform: TransformScript) => void
 
 /**
  *
@@ -24,8 +25,8 @@ export type TransformScript = (args: { op: string }) => { ok: boolean }
  * @returns who won
  */
 export function simulateGame(
-	defenderBrain: (context: CLIContext, args: BinmatArgs, xform: TransformScript) => void,
-	attackerBrain: (context: CLIContext, args: BinmatArgs, xform: TransformScript) => void,
+	defenderBrain: BrainScript,
+	attackerBrain: BrainScript,
 	{
 		timeLimit = 5000,
 		defenderUserName = `defender`,
