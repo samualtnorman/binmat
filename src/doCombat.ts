@@ -147,8 +147,8 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 		cardsDrawn = []
 	} else {
 		damageValue = breakPresent
-			? attackerAttackPower - defenderAttackPower + 1
-			: Math.max(attackerAttackPower, defenderStack.length)
+			? Math.max(attackerAttackPower, defenderStack.length)
+			: attackerAttackPower - defenderAttackPower + 1
 
 		if (damageValue > defenderStack.length) {
 			const cardsToDraw = damageValue - defenderStack.length
