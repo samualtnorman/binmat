@@ -7,6 +7,7 @@ export function doMovePlayFaceup(state: State, card: Card | CardValue, lane: Lan
 		| StatusCode.PlayedUnownedCard
 		| StatusCode.PlayedBreakToEmptyStack
 		| StatusCode.PlayedCardFacedWrongWay
+		| StatusCode.PlayedFaceUpBreakToStackWithBreak
 } | {
 	status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin
 	cardPlayed: Card
@@ -31,6 +32,9 @@ export function doMovePlayFaceup(state: State, card: Card | CardValue, lane: Lan
 		if (card[0] == CardModifier.Break) {
 			if (!state.defenderStacks[lane].cards.length)
 				return { status: StatusCode.PlayedBreakToEmptyStack }
+
+			if (state.defenderStacks[lane].cards.some(card => card[0] == CardModifier.Break))
+				return { status: StatusCode.PlayedFaceUpBreakToStackWithBreak }
 
 			cardPlayed = state.defenderHand.splice(index, 1)[0]!
 			state.defenderStacks[lane].cards.push(cardPlayed)
@@ -59,6 +63,9 @@ export function doMovePlayFaceup(state: State, card: Card | CardValue, lane: Lan
 		if (card[0] == CardModifier.Break) {
 			if (!state.attackerStacks[lane].length)
 				return { status: StatusCode.PlayedBreakToEmptyStack }
+
+			if (state.defenderStacks[lane].cards.some(card => card[0] == CardModifier.Break))
+				return { status: StatusCode.PlayedFaceUpBreakToStackWithBreak }
 
 			cardPlayed = state.attackerHand.splice(index, 1)[0]!
 			state.attackerStacks[lane].push(cardPlayed)
