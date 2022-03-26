@@ -30,6 +30,7 @@ If you need any help, [open an issue](https://github.com/samualtnorman/binmat/is
         onMove: (state, binlog) => console.log(binlog.join("\n"))
     })
 
+    /** @type {import("binmat/simulateGame").BrainScript} */
     function brain(context, args, xform) {
         // you should fill this function with your brain code
 
