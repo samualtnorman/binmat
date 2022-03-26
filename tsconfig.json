@@ -15,6 +15,6 @@
 		"target": "ES2019", /* ES2019 is oldest properly supported ES version in Node 12 which is the oldest currently supported Node version */
 		"skipLibCheck": true
 	},
-	"include": [ "*", "scripts/*", "game-scripts/*" ],
+	"include": [ "*", "scripts/*", "game-scripts/*", "test/*" ],
 	"exclude": [ "index.cjs" ]
 }
