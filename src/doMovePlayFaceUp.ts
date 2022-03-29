@@ -1,3 +1,4 @@
+import { assert } from "@samual/lib"
 import { Card, CardModifier, CardValue, Role, State } from "./createState"
 import doCombat, { CombatData } from "./doCombat"
 import { Lane, StatusCode } from "./shared"
@@ -64,7 +65,7 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 			if (!state.attackerStacks[lane].length)
 				return { status: StatusCode.PlayedBreakToEmptyStack }
 
-			if (state.defenderStacks[lane].cards.some(card => card[0] == CardModifier.Break))
+			if (state.attackerStacks[lane].some(card => card[0] == CardModifier.Break))
 				return { status: StatusCode.PlayedFaceUpBreakToStackWithBreak }
 
 			cardPlayed = state.attackerHand.splice(index, 1)[0]!
@@ -83,9 +84,7 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 			let status
 
 			({ status, ...combat } = doCombat(state, lane))
-
-			if (status == StatusCode.AttackerWin)
-				return { status, cardPlayed, combat }
+			assert(status != StatusCode.AttackerWin, `attacker won when playing a face up bounce`)
 		} else
 			return { status: StatusCode.PlayedCardFacedWrongWay }
 	}
