@@ -37,7 +37,9 @@ it(`works`, () => {
 		defenderBouncesDiscarded: [ `?+` ],
 		attackerCardsTrapped: [ `3+` ],
 		defenderCardsTrapped: [ `3!` ],
-		attackerStackDiscarded: [ `8%`, `@#`, `*!`, `?!`, `>#`, `a&` ]
+		attackerStackDiscarded: [ `8%`, `@#`, `*!`, `?!`, `>#`, `a&` ],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: []
 	})
 
 	expect(doCombat({
@@ -75,7 +77,9 @@ it(`works`, () => {
 		defenderBouncesDiscarded: [],
 		attackerCardsTrapped: [],
 		defenderCardsTrapped: [],
-		attackerStackDiscarded: []
+		attackerStackDiscarded: [],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: []
 	})
 
 	expect(doCombat({
@@ -113,7 +117,9 @@ it(`works`, () => {
 		defenderBouncesDiscarded: [],
 		attackerCardsTrapped: [],
 		defenderCardsTrapped: [],
-		attackerStackDiscarded: [ `4%`, `>+` ]
+		attackerStackDiscarded: [ `4%`, `>+` ],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: []
 	})
 
 	expect(doCombat({
@@ -150,7 +156,9 @@ it(`works`, () => {
 		defenderBouncesDiscarded: [],
 		attackerCardsTrapped: [],
 		defenderCardsTrapped: [],
-		attackerStackDiscarded: [ `4%` ]
+		attackerStackDiscarded: [ `4%` ],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: []
 	})
 
 	expect(doCombat({
@@ -188,7 +196,9 @@ it(`works`, () => {
 		defenderBouncesDiscarded: [],
 		attackerCardsTrapped: [],
 		defenderCardsTrapped: [],
-		attackerStackDiscarded: []
+		attackerStackDiscarded: [],
+		defenderStackWasFaceUp: true,
+		cardsDrawnToDiscard: []
 	})
 
 	expect(doCombat({
@@ -226,7 +236,9 @@ it(`works`, () => {
 		defenderBouncesDiscarded: [],
 		attackerCardsTrapped: [],
 		defenderCardsTrapped: [],
-		attackerStackDiscarded: [ `4%` ]
+		attackerStackDiscarded: [ `4%` ],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: [ `3+`, `3!`, `4!` ]
 	})
 
 	expect(doCombat({
@@ -263,6 +275,8 @@ it(`works`, () => {
 		defenderBouncesDiscarded: [],
 		attackerCardsTrapped: [],
 		defenderCardsTrapped: [],
-		attackerStackDiscarded: [ `4%` ]
+		attackerStackDiscarded: [ `4%` ],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: []
 	})
 })

@@ -14,6 +14,8 @@ export type CombatData = {
 	attackerCardsTrapped: Card[]
 	defenderCardsTrapped: Card[]
 	attackerStackDiscarded: Card[]
+	defenderStackWasFaceUp: boolean
+	cardsDrawnToDiscard: Card[]
 }
 
 const PowersOfTwo = [ 2, 4, 8, 16, 32, 64, 128, 256 ]
@@ -24,6 +26,7 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 	const laneDiscardPile = state.laneDiscardPiles[lane]
 	const defenderStack = state.defenderStacks[lane].cards
 	const attackerStack = state.attackerStacks[lane]
+	const defenderStackWasFaceUp = state.defenderStacks[lane].faceup
 	const defenderStackBeforeCombat = [ ...defenderStack ]
 	const attackerStackBeforeCombat = [ ...attackerStack ]
 	const attackerCardsTrapped: Card[] = []
@@ -40,6 +43,7 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 	let defenderSum = 0
 	let defenderWildCards = 0
 	let breakPresent = false
+	let cardsDrawnToDiscard: Card[]
 
 	const defenderBounceIndexes = []
 
@@ -141,9 +145,11 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 			laneDiscardPile.push(bounceDiscarded)
 		}
 
+		cardsDrawnToDiscard = []
 		cardsDrawn = []
 	} else if (defenderAttackPower > attackerAttackPower) {
 		laneDiscardPile.push(...attackerStack.splice(0))
+		cardsDrawnToDiscard = []
 		cardsDrawn = []
 	} else {
 		damageValue = breakPresent
@@ -166,11 +172,14 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 					defenderCardsTrapped,
 					attackerBouncesDiscarded,
 					defenderBouncesDiscarded,
-					attackerStackDiscarded
+					attackerStackDiscarded,
+					defenderStackWasFaceUp,
+					cardsDrawnToDiscard: [ ...defenderStack ].reverse()
 				}
 			}
 
-			state.attackerDiscardPile.push(...defenderStack.splice(0))
+			cardsDrawnToDiscard = defenderStack.splice(0).reverse()
+			state.attackerDiscardPile.push(...cardsDrawnToDiscard)
 
 			if (cardsToDraw > laneDeck.length)
 				laneDeck.push(...shuffle(laneDiscardPile.splice(0)))
@@ -178,7 +187,8 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 			cardsDrawn = laneDeck.splice(-cardsToDraw)
 			state.attackerHand.push(...cardsDrawn)
 		} else {
-			state.attackerDiscardPile.push(...defenderStack.splice(-damageValue))
+			cardsDrawnToDiscard = defenderStack.splice(-damageValue).reverse()
+			state.attackerDiscardPile.push(...cardsDrawnToDiscard)
 			cardsDrawn = []
 		}
 	}
@@ -198,7 +208,9 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 		attackerCardsTrapped,
 		attackerStackDiscarded,
 		defenderBouncesDiscarded,
-		defenderCardsTrapped
+		defenderCardsTrapped,
+		defenderStackWasFaceUp,
+		cardsDrawnToDiscard
 	}
 
 	function flipDefenderStack() {

@@ -157,11 +157,17 @@ export function doMove(state: State, move: Move): {
 	function pushCombatBinlog(binlog: string[], combatData: CombatData, lane: Lane, cardPlayedFaceup?: Card) {
 		const {
 			attackerAttackPower, attackerStack, defenderAttackPower, defenderStack, attackerCardsTrapped,
-			defenderCardsTrapped, attackerBouncesDiscarded, defenderBouncesDiscarded, damageValue
+			defenderCardsTrapped, attackerBouncesDiscarded, defenderBouncesDiscarded, damageValue,
+			defenderStackWasFaceUp
 		} = combatData
 
-		const attackerSide = cardPlayedFaceup ? `${attackerStack.join(` `)}u` : attackerStack.join(` `)
-		const defenderSide = defenderStack.join(` `)
+		const attackerSide = roleTurn == `a` && cardPlayedFaceup && attackerStack.length
+			? `${attackerStack.join(` `)}u`
+			: attackerStack.join(` `)
+
+		const defenderSide = defenderStackWasFaceUp
+			? defenderStack.map(card => `${card}u`).join(` `)
+			: defenderStack.join(` `)
 
 		binlog.push(`\`n--\` c${lane} / ${attackerSide} / ${defenderSide}`)
 
@@ -185,19 +191,25 @@ export function doMove(state: State, move: Move): {
 		if (defenderBouncesDiscarded.length)
 			binlog.push(`\`n--\` d? / ${defenderBouncesDiscarded.join(` `)} xa`)
 
-		let attackerStackDiscarded
-
-		if (cardPlayedFaceup) {
-			attackerStackDiscarded = combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardPlayedFaceup
-				? `${combatData.attackerStackDiscarded.join(` `)}u`
-				: combatData.attackerStackDiscarded.join(` `)
-		} else
-			attackerStackDiscarded = ``
+		const attackerStackDiscarded = roleTurn == `a` && cardPlayedFaceup && combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardPlayedFaceup
+			? `${combatData.attackerStackDiscarded.join(` `)}u`
+			: combatData.attackerStackDiscarded.join(` `)
 
 		if (damageValue) {
-			const cardsDrawn = lane < 3 ? `X `.repeat(combatData.cardsDrawn.length) : `${combatData.cardsDrawn.join(` `)} `
+			const cardsDrawnToDiscard = combatData.cardsDrawnToDiscard.length
+				? ` / ${combatData.cardsDrawnToDiscard.join(` `)} xa`
+				: ``
 
-			binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} ${damageValue} / ${attackerStackDiscarded} xa / ${cardsDrawn}ha0 `)
+			let cardsDrawn
+
+			if (combatData.cardsDrawn.length) {
+				cardsDrawn = lane < 3
+					? ` / ${`X `.repeat(combatData.cardsDrawn.length)}ha0 `
+					: ` / ${combatData.cardsDrawn.join(` `)} ha0 `
+			} else
+				cardsDrawn = ``
+
+			binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} ${damageValue} / ${attackerStackDiscarded} xa${cardsDrawnToDiscard}${cardsDrawn}`)
 		} else if (!attackerAttackPower && !defenderAttackPower)
 			binlog.push(`\`n--\` 0 0 0 / ${attackerStackDiscarded} x${lane}`)
 		else
