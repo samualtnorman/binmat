@@ -2,7 +2,7 @@ import { Card, CardModifier, CardValue, Role, State } from "./createState"
 import doCombat, { CombatData } from "./doCombat"
 import { Lane, StatusCode } from "./shared"
 
-export function doMovePlayFaceup(state: State, card: Card | CardValue, lane: Lane): {
+export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lane): {
 	status: StatusCode.MadeMoveOnFinishedGame
 		| StatusCode.PlayedUnownedCard
 		| StatusCode.PlayedBreakToEmptyStack
@@ -46,7 +46,7 @@ export function doMovePlayFaceup(state: State, card: Card | CardValue, lane: Lan
 			if (status == StatusCode.AttackerWin)
 				return { status, cardPlayed, combat }
 		} else {
-			if (!state.defenderStacks[lane].faceup)
+			if (!state.defenderStacks[lane].isFaceUp)
 				return { status: StatusCode.PlayedCardFacedWrongWay }
 
 			cardPlayed = state.defenderHand.splice(index, 1)[0]!
@@ -98,4 +98,4 @@ export function doMovePlayFaceup(state: State, card: Card | CardValue, lane: Lan
 	return { status: StatusCode.Ok, cardPlayed, combat }
 }
 
-export default doMovePlayFaceup
+export default doMovePlayFaceUp

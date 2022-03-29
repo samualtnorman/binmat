@@ -23,7 +23,7 @@ export type Card = `${CardValue}${CardSuit}`
 
 export type DefenderStack = {
 	cards: Card[]
-	faceup: boolean
+	isFaceUp: boolean
 }
 
 export const enum Role {
@@ -59,8 +59,8 @@ export function createState(deck = shuffle([ ...Cards ])): State {
 	return {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			deck.slice(0, 13),

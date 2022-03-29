@@ -17,7 +17,7 @@ export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
 	let cardPlayed
 
 	if (roleTurn == Role.Defender) {
-		if (state.defenderStacks[lane].faceup)
+		if (state.defenderStacks[lane].isFaceUp)
 			return { status: StatusCode.PlayedCardFacedWrongWay }
 
 		if (card[0] == CardModifier.Break && !state.defenderStacks[lane].cards.length)

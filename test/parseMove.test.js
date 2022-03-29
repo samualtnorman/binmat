@@ -22,7 +22,7 @@ test(`play card (only face value)`, () =>
 )
 
 test(`play card face up (only face value)`, () =>
-	expect(parseMove(`u80`)).toEqual({ action: Action.PlayFaceup, card: `8`, lane: 0 })
+	expect(parseMove(`u80`)).toEqual({ action: Action.PlayFaceUp, card: `8`, lane: 0 })
 )
 
 test(`play card (full card)`, () =>
@@ -30,7 +30,7 @@ test(`play card (full card)`, () =>
 )
 
 test(`play card face up (full card)`, () =>
-	expect(parseMove(`u8&0`)).toEqual({ action: Action.PlayFaceup, card: `8&`, lane: 0 })
+	expect(parseMove(`u8&0`)).toEqual({ action: Action.PlayFaceUp, card: `8&`, lane: 0 })
 )
 
 test(`play invalid card`, () =>

@@ -1,7 +1,7 @@
 import { assert, isRecord } from "@samual/lib"
 import createState, { Card, CardSuit, Role, State } from "../src/createState"
-import parseMove from "../src/parseMove"
 import doMove from "../src/doMove"
+import parseMove from "../src/parseMove"
 import { Action, StatusCode } from "../src/shared"
 
 const StatusCodeMessages: Record<StatusCode, string> = {
@@ -326,7 +326,7 @@ attacker stack ${args.inspect}:
 ${game.state.attackerStacks[args.inspect]?.join(` `) || `empty`}
 
 defender stack ${args.inspect}:
-${game.state.defenderStacks[args.inspect]?.faceup ? game.state.defenderStacks[args.inspect]!.cards.join(` `) || `empty` : `defender stack ${args.inspect} has ${game.state.defenderStacks[args.inspect]?.cards.length} cards`}
+${game.state.defenderStacks[args.inspect]?.isFaceUp ? game.state.defenderStacks[args.inspect]!.cards.join(` `) || `empty` : `defender stack ${args.inspect} has ${game.state.defenderStacks[args.inspect]?.cards.length} cards`}
 
 lane deck ${args.inspect} has ${game.state.laneDecks[args.inspect]?.length} cards
 
@@ -448,9 +448,9 @@ function printStateForDefender(state: State) {
 		).join(` `)
 
 	const defenderStacks = state.defenderStacks
-		.map(({ cards, faceup }) =>
+		.map(({ cards, isFaceUp }) =>
 			cards.length
-				? (faceup
+				? (isFaceUp
 					? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
 					: `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
 				) : `\`C[\`\`b00\`\`C]\``
@@ -503,9 +503,9 @@ function printStateForAttacker(state: State) {
 		).join(` `)
 
 	const defenderStacks = state.defenderStacks
-		.map(({ cards, faceup }) =>
+		.map(({ cards, isFaceUp }) =>
 			cards.length
-				? (faceup
+				? (isFaceUp
 					? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
 					: `\`D{\`${`\`b${String(cards.length).padStart(2, `0`)}\``}\`D}\``
 				) : `\`C[\`\`b00\`\`C]\``

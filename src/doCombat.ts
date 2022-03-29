@@ -26,7 +26,7 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 	const laneDiscardPile = state.laneDiscardPiles[lane]
 	const defenderStack = state.defenderStacks[lane].cards
 	const attackerStack = state.attackerStacks[lane]
-	const defenderStackWasFaceUp = state.defenderStacks[lane].faceup
+	const defenderStackWasFaceUp = state.defenderStacks[lane].isFaceUp
 	const defenderStackBeforeCombat = [ ...defenderStack ]
 	const attackerStackBeforeCombat = [ ...attackerStack ]
 	const attackerCardsTrapped: Card[] = []
@@ -194,7 +194,7 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 	}
 
 	state.attackerDiscardPile.push(...attackerStack.splice(0))
-	state.defenderStacks[lane].faceup = Boolean(defenderStack.length)
+	state.defenderStacks[lane].isFaceUp = Boolean(defenderStack.length)
 
 	return {
 		status: StatusCode.Ok,
@@ -214,7 +214,7 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 	}
 
 	function flipDefenderStack() {
-		if (state.defenderStacks[lane].faceup)
+		if (state.defenderStacks[lane].isFaceUp)
 			return
 
 		for (const card of defenderStack) {

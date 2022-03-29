@@ -81,7 +81,7 @@ export function parseMove(move: string, extra = false): Move {
 				assert(lane >= 0 && lane < 6, `invalid lane number "${move[2]}" (expected 0 - 5)`)
 
 				return {
-					action: move[0] == `p` ? Action.Play : Action.PlayFaceup,
+					action: move[0] == `p` ? Action.Play : Action.PlayFaceUp,
 					card: move[1] as CardValue,
 					lane: lane as Lane
 				}
@@ -103,7 +103,7 @@ export function parseMove(move: string, extra = false): Move {
 				assert(lane >= 0 && lane < 6, `invalid lane number "${move[3]}" (expected 0 - 5)`)
 
 				return {
-					action: move[0] == `p` ? Action.Play : Action.PlayFaceup,
+					action: move[0] == `p` ? Action.Play : Action.PlayFaceUp,
 					card: move.slice(1, 3) as Card,
 					lane: lane as Lane
 				}

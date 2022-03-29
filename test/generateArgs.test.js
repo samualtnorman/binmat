@@ -4,8 +4,8 @@ it(`works`, () => {
 	expect(generateArgs({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
@@ -27,8 +27,8 @@ it(`works`, () => {
 	expect(generateArgs({
 		attackerStacks: [ [ `9&` ], [ `6&` ], [ `6!` ], [ `2+` ], [ `3!` ], [ `8%` ] ],
 		defenderStacks: [
-			{ cards: [ `8#` ], faceup: false }, { cards: [ `*&` ], faceup: false }, { cards: [ `a#` ], faceup: false },
-			{ cards: [ `2#` ], faceup: false }, { cards: [ `4!` ], faceup: false }, { cards: [ `a%` ], faceup: false }
+			{ cards: [ `8#` ], isFaceUp: false }, { cards: [ `*&` ], isFaceUp: false }, { cards: [ `a#` ], isFaceUp: false },
+			{ cards: [ `2#` ], isFaceUp: false }, { cards: [ `4!` ], isFaceUp: false }, { cards: [ `a%` ], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&` ],
@@ -88,8 +88,8 @@ it(`works`, () => {
 	expect(generateArgs({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
@@ -111,8 +111,8 @@ it(`works`, () => {
 	expect(generateArgs({
 		attackerStacks: [ [ `9&` ], [ `6&` ], [ `6!` ], [ `2+` ], [ `3!` ], [ `8%` ] ],
 		defenderStacks: [
-			{ cards: [ `8#` ], faceup: false }, { cards: [ `*&` ], faceup: false }, { cards: [ `a#` ], faceup: false },
-			{ cards: [ `2#` ], faceup: false }, { cards: [ `4!` ], faceup: false }, { cards: [ `a%` ], faceup: false }
+			{ cards: [ `8#` ], isFaceUp: false }, { cards: [ `*&` ], isFaceUp: false }, { cards: [ `a#` ], isFaceUp: false },
+			{ cards: [ `2#` ], isFaceUp: false }, { cards: [ `4!` ], isFaceUp: false }, { cards: [ `a%` ], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&` ],
@@ -172,8 +172,8 @@ it(`works`, () => {
 	expect(generateArgs({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `4%` ], faceup: true }, { cards: [ `?+` ], faceup: true }, { cards: [ `6#` ], faceup: true },
-			{ cards: [ `4#` ], faceup: true }, { cards: [ `@%` ], faceup: true }, { cards: [ `9%` ], faceup: true }
+			{ cards: [ `4%` ], isFaceUp: true }, { cards: [ `?+` ], isFaceUp: true }, { cards: [ `6#` ], isFaceUp: true },
+			{ cards: [ `4#` ], isFaceUp: true }, { cards: [ `@%` ], isFaceUp: true }, { cards: [ `9%` ], isFaceUp: true }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],

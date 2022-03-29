@@ -5,14 +5,14 @@ import doMoveDiscard from "./doMoveDiscard"
 import doMoveDraw from "./doMoveDraw"
 import doMovePass from "./doMovePass"
 import doMovePlay from "./doMovePlay"
-import doMovePlayFaceup from "./doMovePlayFaceup"
+import doMovePlayFaceUp from "./doMovePlayFaceUp"
 import { Action, AttackerDeck, AttackerDiscardPile, Lane, StatusCode } from "./shared"
 
 export type Move = {
 	action: Action.Draw
 	deck: Lane | AttackerDeck
 } | {
-	action: Action.Play | Action.PlayFaceup
+	action: Action.Play | Action.PlayFaceUp
 	card: Card | CardValue
 	lane: Lane
 } | {
@@ -79,8 +79,8 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case Action.PlayFaceup: {
-			const result = doMovePlayFaceup(state, move.card, move.lane)
+		case Action.PlayFaceUp: {
+			const result = doMovePlayFaceUp(state, move.card, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.AttackerWin || result.status == StatusCode.DefenderWin) {
 				const binlog = [
@@ -154,14 +154,14 @@ export function doMove(state: State, move: Move): {
 		}
 	}
 
-	function pushCombatBinlog(binlog: string[], combatData: CombatData, lane: Lane, cardPlayedFaceup?: Card) {
+	function pushCombatBinlog(binlog: string[], combatData: CombatData, lane: Lane, cardIsPlayedFaceUp?: Card) {
 		const {
 			attackerAttackPower, attackerStack, defenderAttackPower, defenderStack, attackerCardsTrapped,
 			defenderCardsTrapped, attackerBouncesDiscarded, defenderBouncesDiscarded, damageValue,
 			defenderStackWasFaceUp
 		} = combatData
 
-		const attackerSide = roleTurn == `a` && cardPlayedFaceup && attackerStack.length
+		const attackerSide = roleTurn == `a` && cardIsPlayedFaceUp && attackerStack.length
 			? `${attackerStack.join(` `)}u`
 			: attackerStack.join(` `)
 
@@ -191,7 +191,7 @@ export function doMove(state: State, move: Move): {
 		if (defenderBouncesDiscarded.length)
 			binlog.push(`\`n--\` d? / ${defenderBouncesDiscarded.join(` `)} xa`)
 
-		const attackerStackDiscarded = roleTurn == `a` && cardPlayedFaceup && combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardPlayedFaceup
+		const attackerStackDiscarded = roleTurn == `a` && cardIsPlayedFaceUp && combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardIsPlayedFaceUp
 			? `${combatData.attackerStackDiscarded.join(` `)}u`
 			: combatData.attackerStackDiscarded.join(` `)
 

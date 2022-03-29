@@ -573,37 +573,37 @@ export function generateArgsForAttacker(state: State, defender: string, attacker
 		args.s.a5 = [ ...state.attackerStacks[5] ]
 
 	if (state.defenderStacks[0].cards.length) {
-		args.s.d0 = state.defenderStacks[0].faceup
+		args.s.d0 = state.defenderStacks[0].isFaceUp
 			? [ ...state.defenderStacks[0].cards ]
 			: state.defenderStacks[0].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[1].cards.length) {
-		args.s.d1 = state.defenderStacks[1].faceup
+		args.s.d1 = state.defenderStacks[1].isFaceUp
 			? [ ...state.defenderStacks[1].cards ]
 			: state.defenderStacks[1].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[2].cards.length) {
-		args.s.d2 = state.defenderStacks[2].faceup
+		args.s.d2 = state.defenderStacks[2].isFaceUp
 			? [ ...state.defenderStacks[2].cards ]
 			: state.defenderStacks[2].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[3].cards.length) {
-		args.s.d3 = state.defenderStacks[3].faceup
+		args.s.d3 = state.defenderStacks[3].isFaceUp
 			? [ ...state.defenderStacks[3].cards ]
 			: state.defenderStacks[3].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[4].cards.length) {
-		args.s.d4 = state.defenderStacks[4].faceup
+		args.s.d4 = state.defenderStacks[4].isFaceUp
 			? [ ...state.defenderStacks[4].cards ]
 			: state.defenderStacks[4].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[5].cards.length) {
-		args.s.d5 = state.defenderStacks[5].faceup
+		args.s.d5 = state.defenderStacks[5].isFaceUp
 			? [ ...state.defenderStacks[5].cards ]
 			: state.defenderStacks[5].cards.map(() => `X`)
 	}

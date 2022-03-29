@@ -1,7 +1,7 @@
 export const enum Action {
 	Draw,
 	Play,
-	PlayFaceup,
+	PlayFaceUp,
 	Combat,
 	Discard,
 	Pass

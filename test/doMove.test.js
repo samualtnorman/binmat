@@ -5,8 +5,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
@@ -33,8 +33,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+`, `4%` ],
@@ -61,8 +61,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+`, `4%` ],
@@ -86,8 +86,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+`, `4%` ],
@@ -106,7 +106,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceup, card: `?+`, lane: 0 })).toEqual({
+	}, { action: Action.PlayFaceUp, card: `?+`, lane: 0 })).toEqual({
 		status: StatusCode.DefenderWin,
 		binlog: [
 			`\`V109\` \`n------\``,
@@ -120,8 +120,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `4%` ], faceup: true }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [ `4%` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!` ],
@@ -140,7 +140,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceup, card: `3+`, lane: 0 })).toEqual({
+	}, { action: Action.PlayFaceUp, card: `3+`, lane: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [ `\`V000\` \`n------\``, `d0 u30 / 3+ d0` ]
 	})
@@ -148,8 +148,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+`, `4%` ],
@@ -168,13 +168,13 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceup, card: `4%`, lane: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
+	}, { action: Action.PlayFaceUp, card: `4%`, lane: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
 
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+`, `4%` ],
@@ -198,8 +198,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!` ],
@@ -226,8 +226,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
@@ -254,8 +254,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+`, `4%` ],
@@ -279,8 +279,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+`, `4%` ],
@@ -304,8 +304,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `4%` ], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [ `4%` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
@@ -324,7 +324,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceup, card: `>!`, lane: 0 })).toEqual({
+	}, { action: Action.PlayFaceUp, card: `>!`, lane: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [
 			`\`V000\` \`n------\``,
@@ -337,8 +337,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [ `@%`, `3+` ], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `4%`, `@#` ], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [ `4%`, `@#` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!` ],
@@ -357,7 +357,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceup, card: `>!`, lane: 0 })).toEqual({
+	}, { action: Action.PlayFaceUp, card: `>!`, lane: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [
 			`\`V000\` \`n------\``,
@@ -372,9 +372,9 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [ `@%` ], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `?+`, `4%`, `@#`, `3+` ], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [ `?+`, `4%`, `@#`, `3+` ], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!` ],
@@ -409,8 +409,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [ `4%` ] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
@@ -442,8 +442,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[],
@@ -470,8 +470,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
@@ -498,8 +498,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+`, `4%` ],
@@ -523,8 +523,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+`, `4%` ],
@@ -548,8 +548,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [ `8&` ], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `4%` ], faceup: true }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [ `4%` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
@@ -581,8 +581,8 @@ it(`works`, () => {
 	expect(doMove({
 		attackerStacks: [ [ `4%` ], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `4!`, `3!`, `3+`, `8&` ], faceup: true }, { cards: [], faceup: false }, { cards: [], faceup: false },
-			{ cards: [], faceup: false }, { cards: [], faceup: false }, { cards: [], faceup: false }
+			{ cards: [ `4!`, `3!`, `3+`, `8&` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [
 			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&` ],
