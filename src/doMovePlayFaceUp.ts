@@ -65,9 +65,6 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 			if (!state.attackerStacks[lane].length)
 				return { status: StatusCode.PlayedBreakToEmptyStack }
 
-			if (state.attackerStacks[lane].some(card => card[0] == CardModifier.Break))
-				return { status: StatusCode.PlayedFaceUpBreakToStackWithBreak }
-
 			cardPlayed = state.attackerHand.splice(index, 1)[0]!
 			state.attackerStacks[lane].push(cardPlayed)
 

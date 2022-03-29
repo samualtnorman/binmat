@@ -407,7 +407,7 @@ test(`break to empty stack (attacker)`, () => {
 	}, `>!`, 0)).toEqual({ status: StatusCode.PlayedBreakToEmptyStack })
 })
 
-test(`break to stack with break (attacker)`, () => {
+test(`break to stack with break as attacker is allowed`, () => {
 	expect(doMovePlayFaceUp({
 		attackerStacks: [ [ `>+` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -431,7 +431,25 @@ test(`break to stack with break (attacker)`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, `>!`, 0)).toEqual({ status: StatusCode.PlayedFaceUpBreakToStackWithBreak })
+	}, `>!`, 0)).toEqual({
+		status: StatusCode.Ok,
+		cardPlayed: `>!`,
+		combat: {
+			attackerStack: [ `>+`, `>!` ],
+			defenderStack: [],
+			attackerAttackPower: 0,
+			defenderAttackPower: 0,
+			damageValue: 0,
+			cardsDrawn: [],
+			attackerBouncesDiscarded: [],
+			attackerCardsTrapped: [],
+			attackerStackDiscarded: [ `>+`, `>!` ],
+			defenderBouncesDiscarded: [],
+			defenderCardsTrapped: [],
+			defenderStackWasFaceUp: false,
+			cardsDrawnToDiscard: []
+		}
+	})
 })
 
 test(`combat (attacker)`, () => {
