@@ -19,7 +19,7 @@ const StatusCodeMessages: Record<StatusCode, string> = {
 	[StatusCode.AttackerDiscardedToEmptyDiscardAndDeck]: `attacker discarded to empty discard and deck`,
 	[StatusCode.AttackerDrewFromEmptyDiscardAndDeck]: `attacker drew from empty discard and deck`,
 	[StatusCode.PlayedCardFacedWrongWay]: `played card faced wrong way`,
-	[StatusCode.PlayedFaceUpBreakToStackWithBreak]: `tried to play a face up break to a stack that already contains a break card`
+	[StatusCode.DefenderPlayedFaceUpBreakToStackWithBreak]: `tried to play a face up break to a stack that already contains a break card`
 }
 
 const SuitToColourCode = {

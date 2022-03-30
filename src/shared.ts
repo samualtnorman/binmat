@@ -31,7 +31,7 @@ export const enum StatusCode {
 	AttackerDiscardedToEmptyDiscardAndDeck,
 	AttackerDrewFromEmptyDiscardAndDeck,
 	PlayedCardFacedWrongWay,
-	PlayedFaceUpBreakToStackWithBreak
+	DefenderPlayedFaceUpBreakToStackWithBreak
 }
 
 export const statusCodeMessages = [
@@ -49,5 +49,5 @@ export const statusCodeMessages = [
 	`attacker tried to discard when the attacker discard pile and attacker deck are empty`,
 	`attacker tried to draw from attacker deck when it and the attacker discard pile are empty`,
 	`tried to play card faced incorrectly`,
-	`tried to play a face up break to a stack that already contains a break card`
+	`the defender tried to play a face up break to a stack that already contains a break card`
 ] as Record<StatusCode, string>

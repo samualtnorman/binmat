@@ -161,7 +161,7 @@ test(`break to stack with break (defender)`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, `>!`, 0)).toEqual({ status: StatusCode.PlayedFaceUpBreakToStackWithBreak })
+	}, `>!`, 0)).toEqual({ status: StatusCode.DefenderPlayedFaceUpBreakToStackWithBreak })
 })
 
 test(`combat (defender)`, () => {
