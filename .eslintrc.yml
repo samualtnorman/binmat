@@ -404,6 +404,7 @@ rules:
       allowList:
         args: true
         Args: true
+        lib: true
 
   optimize-regex/optimize-regex:
     - warn

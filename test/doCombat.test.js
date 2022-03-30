@@ -1,6 +1,15 @@
 import doCombat from "../src/doCombat"
 import { StatusCode } from "../src/shared"
 
+jest.mock(`@samual/lib`, () => {
+	const lib = jest.requireActual(`@samual/lib`)
+
+	return {
+		...lib,
+		shuffle: array => array
+	}
+})
+
 test(`trap (defender)`, () => {
 	/** @type {import("../src/createState").State} */
 	const state = {
@@ -581,7 +590,7 @@ test(`shuffling lane discard pile into lane deck`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doCombat(state, 0)).toMatchObject({
+	expect(doCombat(state, 0)).toEqual({
 		status: StatusCode.Ok,
 		attackerStack: [ `8!` ],
 		defenderStack: [],
@@ -591,21 +600,24 @@ test(`shuffling lane discard pile into lane deck`, () => {
 		attackerBouncesDiscarded: [],
 		attackerCardsTrapped: [],
 		attackerStackDiscarded: [ `8!` ],
+		cardsDrawn: [ `3%`, `3&`, `3+`, `3^` ],
 		defenderBouncesDiscarded: [],
 		defenderCardsTrapped: [],
 		defenderStackWasFaceUp: false,
 		cardsDrawnToDiscard: []
 	})
 
-	expect(state).toMatchObject({
+	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
+		laneDecks: [ [ `3!`, `3#` ], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [ `8!` ],
+		attackerHand: [ `3%`, `3&`, `3+`, `3^` ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
