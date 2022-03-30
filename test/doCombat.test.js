@@ -1,21 +1,15 @@
 import doCombat from "../src/doCombat"
 import { StatusCode } from "../src/shared"
 
-it(`works`, () => {
-	expect(doCombat({
-		attackerStacks: [ [ `8%`, `@#`, `*!`, `?!`, `>#`, `a&`, `3+` ], [], [], [], [], [] ],
+test(`trap (defender)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `4%`, `@%`, `*%`, `?+`, `>+`, `a!`, `3!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [ `@!`, `@#` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
-		laneDecks: [
-			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!` ],
-			[ `7#`, `5&`, `*+`, `6+`, `@+`, `8&`, `8+`, `a%`, `7+` ],
-			[ `7%`, `2^`, `>&`, `9#`, `*^`, `9^`, `6%`, `?^`, `9+`, `8#`, `9&`, `6#` ],
-			[ `3#`, `>^`, `5%`, `7&`, `>%`, `8!`, `a^`, `?#`, `*&`, `6&`, `4#` ],
-			[ `a+`, `5+`, `3%`, `@^`, `@&`, `5#`, `7^`, `3^`, `2!`, `a#`, `6!` ],
-			[ `@!`, `4&`, `7!`, `5^`, `2%`, `4^`, `6^`, `?%`, `2#`, `2+`, `9%` ]
-		],
+		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
@@ -25,258 +19,653 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, 0)).toEqual({
-		status: StatusCode.Ok,
-		attackerStack: [ `8%`, `@#`, `*!`, `?!`, `>#`, `a&`, `3+` ],
-		defenderStack: [ `4%`, `@%`, `*%`, `?+`, `>+`, `a!`, `3!` ],
-		attackerAttackPower: 5,
-		defenderAttackPower: 4,
-		damageValue: 0,
-		cardsDrawn: [],
-		attackerBouncesDiscarded: [ `?!` ],
-		defenderBouncesDiscarded: [ `?+` ],
-		attackerCardsTrapped: [ `3+` ],
-		defenderCardsTrapped: [ `3!` ],
-		attackerStackDiscarded: [ `8%`, `@#`, `*!`, `?!`, `>#`, `a&` ],
-		defenderStackWasFaceUp: false,
-		cardsDrawnToDiscard: []
-	})
+	}
 
-	expect(doCombat({
-		attackerStacks: [ [], [], [], [], [], [] ],
-		defenderStacks: [
-			{ cards: [ `4%` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
-			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
-		],
-		laneDecks: [
-			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
-			[ `7#`, `*!`, `5&`, `*+`, `a!`, `6+`, `@+`, `8&`, `8+`, `a%`, `8%`, `7+`, `?+` ],
-			[ `7%`, `2^`, `>&`, `9#`, `*^`, `9^`, `6%`, `?^`, `>+`, `9+`, `8#`, `9&`, `6#` ],
-			[ `3#`, `>^`, `5%`, `7&`, `>%`, `8!`, `a^`, `@#`, `a&`, `?#`, `*&`, `6&`, `4#` ],
-			[ `a+`, `5+`, `3%`, `@^`, `@&`, `>#`, `5#`, `7^`, `3^`, `2!`, `a#`, `6!`, `@%` ],
-			[ `*%`, `@!`, `?!`, `4&`, `7!`, `5^`, `2%`, `4^`, `6^`, `?%`, `2#`, `2+`, `9%` ]
-		],
-		laneDiscardPiles: [ [], [], [], [], [], [] ],
-		attackerDeck: [],
-		attackerDiscardPile: [],
-		attackerHand: [],
-		defenderHand: [],
-		turn: 0,
-		turns: 110,
-		attackerPassedLastTurn: false,
-		defenderPassedLastTurn: false
-	}, 0)).toEqual({
+	expect(doCombat(state, 0)).toEqual({
 		status: StatusCode.Ok,
-		attackerStack: [],
-		defenderStack: [ `4%` ],
+		attackerStack: [ `8!` ],
+		defenderStack: [ `@!`, `@#` ],
 		attackerAttackPower: 0,
-		defenderAttackPower: 2,
+		defenderAttackPower: 0,
 		damageValue: 0,
 		cardsDrawn: [],
 		attackerBouncesDiscarded: [],
-		defenderBouncesDiscarded: [],
-		attackerCardsTrapped: [],
-		defenderCardsTrapped: [],
+		attackerCardsTrapped: [ `8!` ],
 		attackerStackDiscarded: [],
+		defenderBouncesDiscarded: [],
+		defenderCardsTrapped: [],
 		defenderStackWasFaceUp: false,
 		cardsDrawnToDiscard: []
 	})
 
-	expect(doCombat({
-		attackerStacks: [ [ `4%`, `>+` ], [], [], [], [], [] ],
+	expect(state).toEqual({
+		attackerStacks: [ [], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `@!`, `@#` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [ `8!` ], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 0,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`wild (defender)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `5!`, `*!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 0,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	}
+
+	expect(doCombat(state, 0)).toEqual({
+		status: StatusCode.Ok,
+		attackerStack: [ `8!` ],
+		defenderStack: [ `5!`, `*!` ],
+		attackerAttackPower: 3,
+		defenderAttackPower: 3,
+		damageValue: 1,
+		cardsDrawn: [],
+		attackerBouncesDiscarded: [],
+		attackerCardsTrapped: [],
+		attackerStackDiscarded: [ `8!` ],
+		defenderBouncesDiscarded: [],
+		defenderCardsTrapped: [],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: [ `*!` ]
+	})
+
+	expect(state).toEqual({
+		attackerStacks: [ [], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `5!` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [ `*!`, `8!` ],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 0,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`bounce (defender)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `?!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 0,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	}
+
+	expect(doCombat(state, 0)).toEqual({
+		status: StatusCode.Ok,
+		attackerStack: [ `8!` ],
+		defenderStack: [ `?!` ],
+		attackerAttackPower: 3,
+		defenderAttackPower: 0,
+		damageValue: 0,
+		cardsDrawn: [],
+		attackerBouncesDiscarded: [],
+		attackerCardsTrapped: [],
+		attackerStackDiscarded: [ `8!` ],
+		defenderBouncesDiscarded: [ `?!` ],
+		defenderCardsTrapped: [],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: []
+	})
+
+	expect(state).toEqual({
+		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
-		laneDecks: [
-			[],
-			[ `7#`, `*!`, `5&`, `*+`, `a!`, `6+`, `@+`, `8&`, `8+`, `a%`, `8%`, `7+`, `?+` ],
-			[ `7%`, `2^`, `>&`, `9#`, `*^`, `9^`, `6%`, `?^`, `9+`, `8#`, `9&`, `6#` ],
-			[ `3#`, `>^`, `5%`, `7&`, `>%`, `8!`, `a^`, `@#`, `a&`, `?#`, `*&`, `6&`, `4#` ],
-			[ `a+`, `5+`, `3%`, `@^`, `@&`, `>#`, `5#`, `7^`, `3^`, `2!`, `a#`, `6!`, `@%` ],
-			[ `*%`, `@!`, `?!`, `4&`, `7!`, `5^`, `2%`, `4^`, `6^`, `?%`, `2#`, `2+`, `9%` ]
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [ `?!`, `8!` ],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 0,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`break (defender)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `2!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `3!`, `3#`, `>!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
+		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 0,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	}
+
+	expect(doCombat(state, 0)).toEqual({
+		status: StatusCode.Ok,
+		attackerStack: [ `2!` ],
+		defenderStack: [ `3!`, `3#`, `>!` ],
+		attackerAttackPower: 1,
+		defenderAttackPower: 0,
+		damageValue: 3,
+		cardsDrawn: [],
+		attackerBouncesDiscarded: [],
+		attackerCardsTrapped: [],
+		attackerStackDiscarded: [ `2!` ],
+		defenderBouncesDiscarded: [],
+		defenderCardsTrapped: [],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: [ `>!`, `3#`, `3!` ]
+	})
+
+	expect(state).toEqual({
+		attackerStacks: [ [], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [ `>!`, `3#`, `3!`, `2!` ],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 0,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`10 (defender)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `a!`, `6!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 0,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	}
+
+	expect(doCombat(state, 0)).toEqual({
+		status: StatusCode.Ok,
+		attackerStack: [ `8!` ],
+		defenderStack: [ `a!`, `6!` ],
+		attackerAttackPower: 3,
+		defenderAttackPower: 4,
+		damageValue: 0,
+		cardsDrawn: [],
+		attackerBouncesDiscarded: [],
+		attackerCardsTrapped: [],
+		attackerStackDiscarded: [ `8!` ],
+		defenderBouncesDiscarded: [],
+		defenderCardsTrapped: [],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: []
+	})
+
+	expect(state).toEqual({
+		attackerStacks: [ [], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `a!`, `6!` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [ `8!` ], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 0,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`trap (attacker)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `@!`, `8!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `?!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, 0)).toEqual({
+	}
+
+	expect(doCombat(state, 0)).toEqual({
 		status: StatusCode.AttackerWin,
-		attackerStack: [ `4%`, `>+` ],
-		defenderStack: [],
-		attackerAttackPower: 2,
+		attackerStack: [ `@!`, `8!` ],
+		defenderStack: [ `?!` ],
+		attackerAttackPower: 3,
 		defenderAttackPower: 0,
-		damageValue: 2,
+		damageValue: 4,
 		cardsDrawn: [],
+		attackerCardsTrapped: [],
+		defenderCardsTrapped: [ `?!` ],
 		attackerBouncesDiscarded: [],
 		defenderBouncesDiscarded: [],
-		attackerCardsTrapped: [],
-		defenderCardsTrapped: [],
-		attackerStackDiscarded: [ `4%`, `>+` ],
+		attackerStackDiscarded: [ `@!`, `8!` ],
 		defenderStackWasFaceUp: false,
 		cardsDrawnToDiscard: []
 	})
 
-	expect(doCombat({
-		attackerStacks: [ [ `4%` ], [], [], [], [], [] ],
+	expect(state).toEqual({
+		attackerStacks: [ [ `@!`, `8!` ], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
-		laneDecks: [
-			[],
-			[ `7#`, `*!`, `5&`, `*+`, `a!`, `6+`, `@+`, `8&`, `8+`, `a%`, `8%`, `7+`, `?+` ],
-			[ `7%`, `2^`, `>&`, `9#`, `*^`, `9^`, `6%`, `?^`, `>+`, `9+`, `8#`, `9&`, `6#` ],
-			[ `3#`, `>^`, `5%`, `7&`, `>%`, `8!`, `a^`, `@#`, `a&`, `?#`, `*&`, `6&`, `4#` ],
-			[ `a+`, `5+`, `3%`, `@^`, `@&`, `>#`, `5#`, `7^`, `3^`, `2!`, `a#`, `6!`, `@%` ],
-			[ `*%`, `@!`, `?!`, `4&`, `7!`, `5^`, `2%`, `4^`, `6^`, `?%`, `2#`, `2+`, `9%` ]
-		],
-		laneDiscardPiles: [ [ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ], [], [], [], [], [] ],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
-		attackerDiscardPile: [],
+		attackerDiscardPile: [ `?!` ],
 		attackerHand: [],
 		defenderHand: [],
-		turn: 0,
+		turn: 1,
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, 0)).toMatchObject({
-		status: StatusCode.Ok,
-		attackerStack: [ `4%` ],
-		defenderStack: [],
-		attackerAttackPower: 2,
-		defenderAttackPower: 0,
-		damageValue: 3,
-		attackerBouncesDiscarded: [],
-		defenderBouncesDiscarded: [],
-		attackerCardsTrapped: [],
-		defenderCardsTrapped: [],
-		attackerStackDiscarded: [ `4%` ],
-		defenderStackWasFaceUp: false,
-		cardsDrawnToDiscard: []
 	})
+})
 
-	expect(doCombat({
-		attackerStacks: [ [], [], [], [], [], [] ],
+test(`wild (attacker)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `5!`, `*!` ], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `4%` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [ `4!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
-		laneDecks: [
-			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
-			[ `7#`, `*!`, `5&`, `*+`, `a!`, `6+`, `@+`, `8&`, `8+`, `a%`, `8%`, `7+`, `?+` ],
-			[ `7%`, `2^`, `>&`, `9#`, `*^`, `9^`, `6%`, `?^`, `>+`, `9+`, `8#`, `9&`, `6#` ],
-			[ `3#`, `>^`, `5%`, `7&`, `>%`, `8!`, `a^`, `@#`, `a&`, `?#`, `*&`, `6&`, `4#` ],
-			[ `a+`, `5+`, `3%`, `@^`, `@&`, `>#`, `5#`, `7^`, `3^`, `2!`, `a#`, `6!`, `@%` ],
-			[ `*%`, `@!`, `?!`, `4&`, `7!`, `5^`, `2%`, `4^`, `6^`, `?%`, `2#`, `2+`, `9%` ]
-		],
+		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
 		defenderHand: [],
-		turn: 0,
+		turn: 1,
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, 0)).toEqual({
+	}
+
+	expect(doCombat(state, 0)).toEqual({
+		status: StatusCode.AttackerWin,
+		attackerStack: [ `5!`, `*!` ],
+		defenderStack: [ `4!` ],
+		attackerAttackPower: 3,
+		defenderAttackPower: 2,
+		damageValue: 2,
+		cardsDrawn: [],
+		attackerCardsTrapped: [],
+		defenderCardsTrapped: [],
+		attackerBouncesDiscarded: [],
+		defenderBouncesDiscarded: [],
+		attackerStackDiscarded: [ `5!`, `*!` ],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: [ `4!` ]
+	})
+
+	expect(state).toEqual({
+		attackerStacks: [ [ `5!`, `*!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `4!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 1,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`bounce (attacker)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `?!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `4!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 1,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	}
+
+	expect(doCombat(state, 0)).toEqual({
 		status: StatusCode.Ok,
-		attackerStack: [],
-		defenderStack: [ `4%` ],
+		attackerStack: [ `?!` ],
+		defenderStack: [ `4!` ],
 		attackerAttackPower: 0,
 		defenderAttackPower: 2,
 		damageValue: 0,
 		cardsDrawn: [],
-		attackerBouncesDiscarded: [],
-		defenderBouncesDiscarded: [],
+		attackerBouncesDiscarded: [ `?!` ],
 		attackerCardsTrapped: [],
+		attackerStackDiscarded: [ `?!` ],
+		defenderBouncesDiscarded: [],
 		defenderCardsTrapped: [],
-		attackerStackDiscarded: [],
-		defenderStackWasFaceUp: true,
+		defenderStackWasFaceUp: false,
 		cardsDrawnToDiscard: []
 	})
 
-	expect(doCombat({
-		attackerStacks: [ [ `4%` ], [], [], [], [], [] ],
+	expect(state).toEqual({
+		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `4!`, `3!`, `3+` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [ `4!` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
-		laneDecks: [
-			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&` ],
-			[ `7#`, `*!`, `5&`, `*+`, `a!`, `6+`, `@+`, `8&`, `8+`, `a%`, `8%`, `7+`, `?+` ],
-			[ `7%`, `2^`, `>&`, `9#`, `*^`, `9^`, `6%`, `?^`, `>+`, `9+`, `8#`, `9&`, `6#` ],
-			[ `3#`, `>^`, `5%`, `7&`, `>%`, `8!`, `a^`, `@#`, `a&`, `?#`, `*&`, `6&`, `4#` ],
-			[ `a+`, `5+`, `3%`, `@^`, `@&`, `>#`, `5#`, `7^`, `3^`, `2!`, `a#`, `6!`, `@%` ],
-			[ `*%`, `@!`, `?!`, `4&`, `7!`, `5^`, `2%`, `4^`, `6^`, `?%`, `2#`, `2+`, `9%` ]
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [ `?!` ], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 1,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`break (attacker)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `2!`, `>!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `3!`, `3#`, `3%` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
+		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
 		defenderHand: [],
-		turn: 0,
+		turn: 1,
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, 0)).toEqual({
+	}
+
+	expect(doCombat(state, 0)).toEqual({
 		status: StatusCode.Ok,
-		attackerStack: [ `4%` ],
-		defenderStack: [ `4!`, `3!`, `3+` ],
-		attackerAttackPower: 2,
+		attackerStack: [ `2!`, `>!` ],
+		defenderStack: [ `3!`, `3#`, `3%` ],
+		attackerAttackPower: 1,
 		defenderAttackPower: 0,
 		damageValue: 3,
 		cardsDrawn: [],
 		attackerBouncesDiscarded: [],
-		defenderBouncesDiscarded: [],
 		attackerCardsTrapped: [],
+		attackerStackDiscarded: [ `2!`, `>!` ],
+		defenderBouncesDiscarded: [],
 		defenderCardsTrapped: [],
-		attackerStackDiscarded: [ `4%` ],
 		defenderStackWasFaceUp: false,
-		cardsDrawnToDiscard: [ `3+`, `3!`, `4!` ]
+		cardsDrawnToDiscard: [ `3%`, `3#`, `3!` ]
 	})
 
-	expect(doCombat({
-		attackerStacks: [ [ `4%` ], [], [], [], [], [] ],
+	expect(state).toEqual({
+		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
-		laneDecks: [
-			[ `>!`, `9!`, `4+`, `8^`, `*#`, `5!`, `2&`, `3&`, `?&`, `4!`, `3!`, `3+` ],
-			[ `7#`, `*!`, `5&`, `*+`, `a!`, `6+`, `@+`, `8&`, `8+`, `a%`, `8%`, `7+`, `?+` ],
-			[ `7%`, `2^`, `>&`, `9#`, `*^`, `9^`, `6%`, `?^`, `>+`, `9+`, `8#`, `9&`, `6#` ],
-			[ `3#`, `>^`, `5%`, `7&`, `>%`, `8!`, `a^`, `@#`, `a&`, `?#`, `*&`, `6&`, `4#` ],
-			[ `a+`, `5+`, `3%`, `@^`, `@&`, `>#`, `5#`, `7^`, `3^`, `2!`, `a#`, `6!`, `@%` ],
-			[ `*%`, `@!`, `?!`, `4&`, `7!`, `5^`, `2%`, `4^`, `6^`, `?%`, `2#`, `2+`, `9%` ]
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [ `3%`, `3#`, `3!`, `2!`, `>!` ],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 1,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`10 (attacker)`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `a!`, `6!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `8!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
+		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
 		defenderHand: [],
-		turn: 0,
+		turn: 1,
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, 0)).toMatchObject({
-		status: StatusCode.Ok,
-		attackerStack: [ `4%` ],
-		defenderStack: [],
-		attackerAttackPower: 2,
-		defenderAttackPower: 0,
-		damageValue: 3,
-		attackerBouncesDiscarded: [],
-		defenderBouncesDiscarded: [],
+	}
+
+	expect(doCombat(state, 0)).toEqual({
+		status: StatusCode.AttackerWin,
+		attackerStack: [ `a!`, `6!` ],
+		defenderStack: [ `8!` ],
+		attackerAttackPower: 4,
+		defenderAttackPower: 3,
+		damageValue: 2,
+		cardsDrawn: [],
 		attackerCardsTrapped: [],
 		defenderCardsTrapped: [],
-		attackerStackDiscarded: [ `4%` ],
+		attackerBouncesDiscarded: [],
+		defenderBouncesDiscarded: [],
+		attackerStackDiscarded: [ `a!`, `6!` ],
+		defenderStackWasFaceUp: false,
+		cardsDrawnToDiscard: [ `8!` ]
+	})
+
+	expect(state).toEqual({
+		attackerStacks: [ [ `a!`, `6!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `8!` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 1,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`shuffling lane discard pile into lane deck`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [ `3!` ], [], [], [], [], [] ],
+		laneDiscardPiles: [ [ `3#`, `3%`, `3&`, `3+`, `3^` ], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 1,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	}
+
+	expect(doCombat(state, 0)).toMatchObject({
+		status: StatusCode.Ok,
+		attackerStack: [ `8!` ],
+		defenderStack: [],
+		attackerAttackPower: 3,
+		defenderAttackPower: 0,
+		damageValue: 4,
+		attackerBouncesDiscarded: [],
+		attackerCardsTrapped: [],
+		attackerStackDiscarded: [ `8!` ],
+		defenderBouncesDiscarded: [],
+		defenderCardsTrapped: [],
 		defenderStackWasFaceUp: false,
 		cardsDrawnToDiscard: []
+	})
+
+	expect(state).toMatchObject({
+		attackerStacks: [ [], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [ `8!` ],
+		defenderHand: [],
+		turn: 1,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	})
+})
+
+test(`defender stack already face up`, () => {
+	/** @type {import("../src/createState").State} */
+	const state = {
+		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `@!` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 1,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
+	}
+
+	expect(doCombat(state, 0)).toEqual({
+		status: StatusCode.AttackerWin,
+		attackerStack: [ `8!` ],
+		defenderStack: [ `@!` ],
+		attackerAttackPower: 3,
+		defenderAttackPower: 0,
+		damageValue: 4,
+		cardsDrawn: [],
+		attackerCardsTrapped: [],
+		defenderCardsTrapped: [],
+		attackerBouncesDiscarded: [],
+		defenderBouncesDiscarded: [],
+		attackerStackDiscarded: [ `8!` ],
+		defenderStackWasFaceUp: true,
+		cardsDrawnToDiscard: [ `@!` ]
+	})
+
+	expect(state).toEqual({
+		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		defenderStacks: [
+			{ cards: [ `@!` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
+		],
+		laneDecks: [ [], [], [], [], [], [] ],
+		laneDiscardPiles: [ [], [], [], [], [], [] ],
+		attackerDeck: [],
+		attackerDiscardPile: [],
+		attackerHand: [],
+		defenderHand: [],
+		turn: 1,
+		turns: 110,
+		attackerPassedLastTurn: false,
+		defenderPassedLastTurn: false
 	})
 })
