@@ -34,7 +34,7 @@ export const enum StatusCode {
 	DefenderPlayedFaceUpBreakToStackWithBreak
 }
 
-export const statusCodeMessages = [
+export const StatusCodeMessages = [
 	`okay`,
 	`defender won`,
 	`attacker won`,

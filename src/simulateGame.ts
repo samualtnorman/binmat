@@ -4,7 +4,7 @@ import createState, { Role, State } from "./createState"
 import doMove from "./doMove"
 import { BinmatArgs, generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
 import parseMove from "./parseMove"
-import { Action, StatusCode, statusCodeMessages } from "./shared"
+import { Action, StatusCode, StatusCodeMessages } from "./shared"
 
 export type SimulateGameOptions = {
 	timeLimit: number
@@ -155,7 +155,7 @@ export function simulateGame(
 				if (noThrow)
 					return doDefaultMove()
 
-				throw new Error(statusCodeMessages[result.status])
+				throw new Error(StatusCodeMessages[result.status])
 			}
 		}
 
