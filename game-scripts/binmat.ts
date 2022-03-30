@@ -2,25 +2,7 @@ import { assert, isRecord } from "@samual/lib"
 import createState, { Card, CardSuit, Role, State } from "../src/createState"
 import doMove from "../src/doMove"
 import parseMove from "../src/parseMove"
-import { Action, StatusCode } from "../src/shared"
-
-const StatusCodeMessages: Record<StatusCode, string> = {
-	[StatusCode.Ok]: `ok`,
-	[StatusCode.DefenderWin]: `defender won`,
-	[StatusCode.AttackerWin]: `attacker won`,
-	[StatusCode.MadeMoveOnFinishedGame]: `made move on finished game`,
-	[StatusCode.DefenderDrewFromAttackerDeck]: `defender drew from attacker deck`,
-	[StatusCode.AttackerDrewFromBlockedLane]: `attacker drew from blocked lane`,
-	[StatusCode.PlayedUnownedCard]: `played unowned card`,
-	[StatusCode.PlayedBreakToEmptyStack]: `played break to empty stack`,
-	[StatusCode.DefenderInitiatedCombat]: `defender initiated combat`,
-	[StatusCode.AttackerInitiatedCombatWithEmptyStack]: `attacker initiated combat with empty stack`,
-	[StatusCode.DiscardedToOpponentDiscardPile]: `discarded to opponent discard pile`,
-	[StatusCode.AttackerDiscardedToEmptyDiscardAndDeck]: `attacker discarded to empty discard and deck`,
-	[StatusCode.AttackerDrewFromEmptyDiscardAndDeck]: `attacker drew from empty discard and deck`,
-	[StatusCode.PlayedCardFacedWrongWay]: `played card faced wrong way`,
-	[StatusCode.DefenderPlayedFaceUpBreakToStackWithBreak]: `tried to play a face up break to a stack that already contains a break card`
-}
+import { Action, StatusCode, StatusCodeMessages } from "../src/shared"
 
 const SuitToColourCode = {
 	[CardSuit.Form]: `l`,
