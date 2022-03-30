@@ -100,7 +100,7 @@ export function simulateGame(
 			if (noThrow)
 				doDefaultMove()
 			else
-				throw new Error(`defender brain did not attempt to make a move`)
+				throw new Error(`attacker brain did not attempt to make a move`)
 		}
 
 		onMove?.(state, attackerBinlog)
