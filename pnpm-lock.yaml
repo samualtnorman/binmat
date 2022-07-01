@@ -30,6 +30,7 @@ specifiers:
   typescript: ^4.7.4
 
 optionalDependencies:
+  '@samual/lib': 0.3.4
   deasync: 0.1.26
 
 devDependencies:
@@ -41,7 +42,6 @@ devDependencies:
   '@rollup/plugin-json': 4.1.0_rollup@2.75.7
   '@rollup/plugin-node-resolve': 13.3.0_rollup@2.75.7
   '@rollup/plugin-typescript': 8.3.3_okefoyb4o5sittgqayreuhurei
-  '@samual/lib': 0.3.4
   '@types/jest': 27.5.2
   '@types/node': 17.0.45
   '@typescript-eslint/eslint-plugin': 5.30.3_uhfrv6c56y4b7yuzllo3ym4bou
@@ -1843,7 +1843,8 @@ packages:
     engines: {node: ^12.20 || >=14}
     optionalDependencies:
       deasync: 0.1.26
-    dev: true
+    dev: false
+    optional: true
 
   /@sindresorhus/is/4.6.0:
     resolution: {integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==}
