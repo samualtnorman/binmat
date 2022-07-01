@@ -19,17 +19,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.4.2
 
-    - name: Setup node
-      uses: actions/setup-node@v1
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3.1.1
       with:
-        node-version: ^12.20 || >=14
+        node-version: ">=14"
+
+    - name: Setup PNPM
+      uses: pnpm/action-setup@v2.2.1
+      with:
+        version: 7.0.0
+        run_install: true
 
     - run: git config --global user.email github-action@users.noreply.github.com
     - run: git config --global user.name "Github Action"
     - run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-    - run: npm ci
 
     - name: Publish dev
       if: github.event_name == 'push' || github.event_name == 'pull_request' && github.event.pull_request.merged
