@@ -23,7 +23,7 @@
 		"test": "jest --coverage --collectCoverageFrom=\"./src/*.ts\"",
 		"package": "rm -rf dist && rollup --config && npm run gen-types && node scripts/build-package-json && cp LICENSE README.md index.cjs dist",
 		"push-script": "hsm push game-scripts \"*.binmat\"",
-		"gen-types": "tsc --project src --declaration true --emitDeclarationOnly true --noEmit false --outDir dist"
+		"gen-types": "tsc --project src"
 	},
 	"devDependencies": {
 		"@babel/preset-env": "^7.16.7",
