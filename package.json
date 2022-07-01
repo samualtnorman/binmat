@@ -26,6 +26,7 @@
 		"gen-types": "tsc --project src"
 	},
 	"devDependencies": {
+		"@babel/core": ">=7.13.0 <8.0.0",
 		"@babel/preset-env": "^7.16.7",
 		"@babel/preset-typescript": "^7.16.7",
 		"@rollup/plugin-babel": "^5.3.0",
