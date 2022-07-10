@@ -35,6 +35,7 @@ export function doMove(state: State, move: Move): {
 
 	switch (move.action) {
 		case Action.Draw: {
+			const deckIsEmpty = !(move.deck == AttackerDeck ? state.attackerDeck : state.laneDecks[move.deck]).length
 			const result = doMoveDraw(state, move.deck)
 			const deck = move.deck == AttackerDeck ? `a` : move.deck
 
@@ -49,7 +50,7 @@ export function doMove(state: State, move: Move): {
 			}
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
-				const card = move.deck < 3 || move.deck == AttackerDeck ? `X` : result.cardDrawn
+				const card = move.deck < 3 || move.deck == AttackerDeck || deckIsEmpty ? `X` : result.cardDrawn
 
 				return {
 					status: result.status,
