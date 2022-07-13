@@ -37,8 +37,8 @@ export function simulateGame(
 	const state = createState()
 	let endTime: number
 	let winner: Role | undefined
-	let defenderBinlog: string[] = []
-	let attackerBinlog: string[] = []
+	let lastLastBinlog: string[] = []
+	let lastBinlog: string[] = []
 	let madeMove: boolean
 
 	while (true) {
@@ -58,7 +58,7 @@ export function simulateGame(
 				state,
 				defenderUserName,
 				attackerUserName,
-				[ ...defenderBinlog, ...attackerBinlog ]
+				[ ...lastLastBinlog, ...lastBinlog ]
 			),
 			xform
 		)
@@ -70,7 +70,7 @@ export function simulateGame(
 				throw new Error(`defender brain did not attempt to make a move`)
 		}
 
-		onMove?.(state, defenderBinlog)
+		onMove?.(state, lastBinlog)
 
 		if (winner)
 			return winner
@@ -91,7 +91,7 @@ export function simulateGame(
 				state,
 				defenderUserName,
 				attackerUserName,
-				[ ...attackerBinlog, ...defenderBinlog ]
+				[ ...lastLastBinlog, ...lastBinlog ]
 			),
 			xform
 		)
@@ -103,7 +103,7 @@ export function simulateGame(
 				throw new Error(`attacker brain did not attempt to make a move`)
 		}
 
-		onMove?.(state, attackerBinlog)
+		onMove?.(state, lastBinlog)
 
 		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		if (winner)
@@ -159,10 +159,8 @@ export function simulateGame(
 			}
 		}
 
-		if (state.turn % 2) /* now attacker turn */
-			defenderBinlog = result.binlog
-		else /* now defender turn */
-			attackerBinlog = result.binlog
+		lastLastBinlog = lastBinlog
+		lastBinlog = result.binlog
 
 		return { ok: true }
 	}
@@ -181,10 +179,8 @@ export function simulateGame(
 				throw new Error(`unexpected status code ${result.status}`)
 		}
 
-		if (state.turn % 2) /* now attacker turn */
-			defenderBinlog = result.binlog
-		else /* now defender turn */
-			attackerBinlog = result.binlog
+		lastLastBinlog = lastBinlog
+		lastBinlog = result.binlog
 
 		return { ok: false }
 	}
