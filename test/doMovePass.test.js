@@ -2,7 +2,7 @@ import doMovePass from "../src/doMovePass"
 import { StatusCode } from "../src/shared"
 
 test(`finished game`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -43,7 +43,7 @@ test(`finished game`, () => {
 })
 
 test(`defender win`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -84,7 +84,7 @@ test(`defender win`, () => {
 })
 
 test(`normal pass`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -125,7 +125,7 @@ test(`normal pass`, () => {
 })
 
 test(`defender pass twice`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -166,7 +166,7 @@ test(`defender pass twice`, () => {
 })
 
 test(`attacker pass twice`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [

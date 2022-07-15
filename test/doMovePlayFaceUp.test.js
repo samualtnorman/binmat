@@ -1,6 +1,5 @@
-import { CardModifier } from "../src/createState"
 import doMovePlayFaceUp from "../src/doMovePlayFaceUp"
-import { StatusCode } from "../src/shared"
+import { CardModifier, StatusCode } from "../src/shared"
 
 test(`regular card (defender)`, () => {
 	expect(doMovePlayFaceUp({

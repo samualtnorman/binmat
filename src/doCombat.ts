@@ -1,6 +1,5 @@
 import { shuffle } from "@samual/lib"
-import { Card, CardModifier, CardSuit, CardValue, Role, State } from "./createState"
-import { Lane, StatusCode } from "./shared"
+import { Card, CardModifier, CardSuit, CardValue, Lane, Role, State, StatusCode } from "./shared"
 
 export type CombatData = {
 	attackerStack: Card[]
@@ -18,9 +17,9 @@ export type CombatData = {
 	cardsDrawnToDiscard: Card[]
 }
 
-const PowersOfTwo = [ 2, 4, 8, 16, 32, 64, 128, 256 ]
+export const PowersOfTwo = [ 2, 4, 8, 16, 32, 64, 128, 256 ]
 
-function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.Ok | StatusCode.AttackerWin } {
+export function doCombat(state: State, lane: Lane): { status: StatusCode.Ok | StatusCode.AttackerWin } & CombatData {
 	const roleTurn: Role = (state.turn % 2) + 1
 	const laneDeck = state.laneDecks[lane]
 	const laneDiscardPile = state.laneDiscardPiles[lane]
@@ -152,9 +151,9 @@ function doCombat(state: State, lane: Lane): CombatData & { status: StatusCode.O
 		cardsDrawnToDiscard = []
 		cardsDrawn = []
 	} else {
-		damageValue = breakPresent
-			? Math.max(attackerAttackPower, defenderStack.length)
-			: attackerAttackPower - defenderAttackPower + 1
+		damageValue = breakPresent ?
+			Math.max(attackerAttackPower, defenderStack.length) :
+			attackerAttackPower - defenderAttackPower + 1
 
 		if (damageValue > defenderStack.length) {
 			const cardsToDraw = damageValue - defenderStack.length

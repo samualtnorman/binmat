@@ -11,7 +11,7 @@ jest.mock(`@samual/lib`, () => {
 })
 
 test(`trap (defender)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -67,7 +67,7 @@ test(`trap (defender)`, () => {
 })
 
 test(`wild (defender)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -123,7 +123,7 @@ test(`wild (defender)`, () => {
 })
 
 test(`bounce (defender)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -179,7 +179,7 @@ test(`bounce (defender)`, () => {
 })
 
 test(`break (defender)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `2!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -235,7 +235,7 @@ test(`break (defender)`, () => {
 })
 
 test(`10 (defender)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -291,7 +291,7 @@ test(`10 (defender)`, () => {
 })
 
 test(`trap (attacker)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `@!`, `8!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -347,7 +347,7 @@ test(`trap (attacker)`, () => {
 })
 
 test(`wild (attacker)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `5!`, `*!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -403,7 +403,7 @@ test(`wild (attacker)`, () => {
 })
 
 test(`bounce (attacker)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `?!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -459,7 +459,7 @@ test(`bounce (attacker)`, () => {
 })
 
 test(`break (attacker)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `2!`, `>!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -515,7 +515,7 @@ test(`break (attacker)`, () => {
 })
 
 test(`10 (attacker)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `a!`, `6!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -571,7 +571,7 @@ test(`10 (attacker)`, () => {
 })
 
 test(`shuffling lane discard pile into lane deck`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -627,7 +627,7 @@ test(`shuffling lane discard pile into lane deck`, () => {
 })
 
 test(`defender stack already face up`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
 		defenderStacks: [

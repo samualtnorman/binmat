@@ -1,10 +1,10 @@
 import { LaxPartial } from "@samual/lib"
 import "../game-scripts/hackmud.d"
-import createState, { Role, State } from "./createState"
+import createState from "./createState"
 import doMove from "./doMove"
 import { BinmatArgs, generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
 import parseMove from "./parseMove"
-import { Action, StatusCode, StatusCodeMessages } from "./shared"
+import { MoveKind, Role, State, StatusCode, StatusCodeMessages } from "./shared"
 
 export type SimulateGameOptions = {
 	timeLimit: number
@@ -166,7 +166,7 @@ export function simulateGame(
 	}
 
 	function doDefaultMove() {
-		const result = doMove(state, { action: Action.Pass })
+		const result = doMove(state, { kind: MoveKind.Pass })
 
 		switch (result.status) {
 			case StatusCode.Ok: break

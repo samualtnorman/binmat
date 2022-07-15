@@ -1,16 +1,16 @@
 import { shuffle } from "@samual/lib"
-import { Card, Role, State } from "./createState"
-import { AttackerDeck, AttackerDiscardPile, Lane, StatusCode } from "./shared"
+import { AttackerDeck, AttackerDiscardPile, Card, Lane, Role, State, StatusCode } from "./shared"
 
 export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
-	status: StatusCode.MadeMoveOnFinishedGame
-		| StatusCode.DefenderDrewFromAttackerDeck
-		| StatusCode.AttackerDrewFromBlockedLane
-		| StatusCode.AttackerDrewFromEmptyDiscardAndDeck
-		| StatusCode.AttackerWin
-} | {
-	status: StatusCode.DefenderWin | StatusCode.Ok
+	status: StatusCode.Ok | StatusCode.DefenderWin
 	cardDrawn: Card
+} | {
+	status:
+		StatusCode.MadeMoveOnFinishedGame |
+		StatusCode.DefenderDrewFromAttackerDeck |
+		StatusCode.AttackerDrewFromBlockedLane |
+		StatusCode.AttackerDrewFromEmptyDiscardAndDeck |
+		StatusCode.AttackerWin
 } {
 	if (state.turn >= state.turns)
 		return { status: StatusCode.MadeMoveOnFinishedGame }
@@ -26,9 +26,9 @@ export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
 	const deck = deckToDrawFrom == AttackerDeck ? state.attackerDeck : state.laneDecks[deckToDrawFrom]
 
 	if (!deck.length) {
-		const discardPile = deckToDrawFrom == AttackerDiscardPile
-			? state.attackerDiscardPile
-			: state.laneDiscardPiles[deckToDrawFrom]
+		const discardPile = deckToDrawFrom == AttackerDiscardPile ?
+			state.attackerDiscardPile :
+			state.laneDiscardPiles[deckToDrawFrom]
 
 		if (!discardPile.length) {
 			if (deckToDrawFrom == AttackerDeck)

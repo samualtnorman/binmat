@@ -1,4 +1,3 @@
-import { Card, CardValue, State } from "./createState"
 import { CombatData } from "./doCombat"
 import doMoveCombat from "./doMoveCombat"
 import doMoveDiscard from "./doMoveDiscard"
@@ -6,35 +5,17 @@ import doMoveDraw from "./doMoveDraw"
 import doMovePass from "./doMovePass"
 import doMovePlay from "./doMovePlay"
 import doMovePlayFaceUp from "./doMovePlayFaceUp"
-import { Action, AttackerDeck, AttackerDiscardPile, Lane, StatusCode } from "./shared"
-
-export type Move = {
-	action: Action.Draw
-	deck: Lane | AttackerDeck
-} | {
-	action: Action.Play | Action.PlayFaceUp
-	card: Card | CardValue
-	lane: Lane
-} | {
-	action: Action.Combat
-	lane: Lane
-} | {
-	action: Action.Discard
-	card: Card | CardValue
-	discardPile: Lane | AttackerDiscardPile
-} | { action: Action.Pass }
+import { AttackerDeck, Card, Lane, Move, MoveKind, State, StatusCode } from "./shared"
 
 export function doMove(state: State, move: Move): {
-	status: Exclude<StatusCode, StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin>
-} | {
 	status: StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin
 	binlog: string[]
-} {
+} | { status: Exclude<StatusCode, StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin> } {
 	const turn = String(state.turn).padStart(3, `0`)
 	const roleTurn = state.turn % 2 ? `a` : `d`
 
-	switch (move.action) {
-		case Action.Draw: {
+	switch (move.kind) {
+		case MoveKind.Draw: {
 			const deckIsEmpty = !(move.deck == AttackerDeck ? state.attackerDeck : state.laneDecks[move.deck]).length
 			const result = doMoveDraw(state, move.deck)
 			const deck = move.deck == AttackerDeck ? `a` : move.deck
@@ -64,7 +45,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case Action.Play: {
+		case MoveKind.Play: {
 			const result = doMovePlay(state, move.card, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
@@ -80,7 +61,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case Action.PlayFaceUp: {
+		case MoveKind.PlayFaceUp: {
 			const result = doMovePlayFaceUp(state, move.card, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.AttackerWin || result.status == StatusCode.DefenderWin) {
@@ -101,7 +82,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case Action.Combat: {
+		case MoveKind.Combat: {
 			const result = doMoveCombat(state, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin || result.status == StatusCode.AttackerWin) {
@@ -121,7 +102,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case Action.Discard: {
+		case MoveKind.Discard: {
 			const result = doMoveDiscard(state, move.card, move.discardPile)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
@@ -139,7 +120,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case Action.Pass: {
+		case MoveKind.Pass: {
 			const status = doMovePass(state)
 
 			if (status == StatusCode.MadeMoveOnFinishedGame)
@@ -162,13 +143,13 @@ export function doMove(state: State, move: Move): {
 			defenderStackWasFaceUp
 		} = combatData
 
-		const attackerSide = roleTurn == `a` && cardIsPlayedFaceUp && attackerStack.length
-			? `${attackerStack.join(` `)}u`
-			: attackerStack.join(` `)
+		const attackerSide = roleTurn == `a` && cardIsPlayedFaceUp && attackerStack.length ?
+			`${attackerStack.join(` `)}u` :
+			attackerStack.join(` `)
 
-		const defenderSide = defenderStackWasFaceUp
-			? defenderStack.map(card => `${card}u`).join(` `)
-			: defenderStack.join(` `)
+		const defenderSide = defenderStackWasFaceUp ?
+			defenderStack.map(card => `${card}u`).join(` `) :
+			defenderStack.join(` `)
 
 		binlog.push(`\`n--\` c${lane} / ${attackerSide} / ${defenderSide}`)
 
@@ -192,21 +173,25 @@ export function doMove(state: State, move: Move): {
 		if (defenderBouncesDiscarded.length)
 			binlog.push(`\`n--\` d? / ${defenderBouncesDiscarded.join(` `)} xa`)
 
-		const attackerStackDiscarded = roleTurn == `a` && cardIsPlayedFaceUp && combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardIsPlayedFaceUp
-			? `${combatData.attackerStackDiscarded.join(` `)}u`
-			: combatData.attackerStackDiscarded.join(` `)
+		const attackerStackDiscarded = (
+			roleTurn == `a` &&
+			cardIsPlayedFaceUp &&
+			combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardIsPlayedFaceUp
+		) ?
+			`${combatData.attackerStackDiscarded.join(` `)}u` :
+			combatData.attackerStackDiscarded.join(` `)
 
 		if (damageValue) {
-			const cardsDrawnToDiscard = combatData.cardsDrawnToDiscard.length
-				? ` / ${combatData.cardsDrawnToDiscard.join(` `)} xa`
-				: ``
+			const cardsDrawnToDiscard = combatData.cardsDrawnToDiscard.length ?
+				` / ${combatData.cardsDrawnToDiscard.join(` `)} xa` :
+				``
 
 			let cardsDrawn
 
 			if (combatData.cardsDrawn.length) {
-				cardsDrawn = lane < 3
-					? ` / ${`X `.repeat(combatData.cardsDrawn.length)}ha0 `
-					: ` / ${combatData.cardsDrawn.join(` `)} ha0 `
+				cardsDrawn = lane < 3 ?
+					` / ${`X `.repeat(combatData.cardsDrawn.length)}ha0 ` :
+					` / ${combatData.cardsDrawn.join(` `)} ha0 `
 			} else
 				cardsDrawn = ``
 

@@ -1,4 +1,4 @@
-import { Role } from "../src/createState"
+import { Role } from "../src/shared"
 import simulateGame from "../src/simulateGame"
 
 test(`throw when brain doesn't make a move (defender)`, () =>

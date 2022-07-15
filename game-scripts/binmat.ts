@@ -1,8 +1,8 @@
 import { assert, isRecord } from "@samual/lib"
-import createState, { Card, CardSuit, Role, State } from "../src/createState"
+import createState from "../src/createState"
 import doMove from "../src/doMove"
 import parseMove from "../src/parseMove"
-import { Action, StatusCode, StatusCodeMessages } from "../src/shared"
+import { Card, CardSuit, MoveKind, Role, State, StatusCode, StatusCodeMessages } from "../src/shared"
 
 const SuitToColourCode = {
 	[CardSuit.Form]: `l`,
@@ -49,7 +49,7 @@ function $(context: Context, args: unknown) {
 					} catch (error) {
 						assert(error instanceof Error)
 
-						const result = doMove(game.state, { action: Action.Pass })
+						const result = doMove(game.state, { kind: MoveKind.Pass })
 
 						switch (result.status) {
 							case StatusCode.Ok: {
@@ -112,7 +112,7 @@ function $(context: Context, args: unknown) {
 						}
 
 						default: {
-							const result = doMove(game.state, { action: Action.Pass })
+							const result = doMove(game.state, { kind: MoveKind.Pass })
 
 							switch (result.status) {
 								case StatusCode.Ok: {
@@ -205,7 +205,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 				} catch (error) {
 					assert(error instanceof Error)
 
-					const result = doMove(game.state, { action: Action.Pass })
+					const result = doMove(game.state, { kind: MoveKind.Pass })
 
 					switch (result.status) {
 						case StatusCode.Ok: {
@@ -260,7 +260,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					}
 
 					default: {
-						const result = doMove(game.state, { action: Action.Pass })
+						const result = doMove(game.state, { kind: MoveKind.Pass })
 
 						switch (result.status) {
 							case StatusCode.Ok: {
@@ -308,7 +308,10 @@ attacker stack ${args.inspect}:
 ${game.state.attackerStacks[args.inspect]?.join(` `) || `empty`}
 
 defender stack ${args.inspect}:
-${game.state.defenderStacks[args.inspect]?.isFaceUp ? game.state.defenderStacks[args.inspect]!.cards.join(` `) || `empty` : `defender stack ${args.inspect} has ${game.state.defenderStacks[args.inspect]?.cards.length} cards`}
+${game.state.defenderStacks[args.inspect]?.isFaceUp ?
+	game.state.defenderStacks[args.inspect]!.cards.join(` `) || `empty` :
+	`defender stack ${args.inspect} has ${game.state.defenderStacks[args.inspect]?.cards.length} cards`
+}
 
 lane deck ${args.inspect} has ${game.state.laneDecks[args.inspect]?.length} cards
 
@@ -416,43 +419,36 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 }
 
 function printStateForDefender(state: State) {
-	const attackerHand = state.attackerHand.length
-		? (state.attackerHand.length == 1
-			? `1 card`
-			: `${state.attackerHand.length} cards`
-		) : `empty`
+	const attackerHand = state.attackerHand.length ?
+		(state.attackerHand.length == 1 ? `1 card` : `${state.attackerHand.length} cards`) :
+		`empty`
 
 	const attackerStacks = state.attackerStacks
-		.map(cards =>
-			cards.length
-				? `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
-				: `\`C[\`\`b00\`\`C]\``
-		).join(` `)
+		.map(cards => cards.length ? `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``)
+		.join(` `)
 
 	const defenderStacks = state.defenderStacks
-		.map(({ cards, isFaceUp }) =>
-			cards.length
-				? (isFaceUp
-					? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
-					: `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
-				) : `\`C[\`\`b00\`\`C]\``
-		).join(` `)
+		.map(({ cards, isFaceUp }) => cards.length ?
+			(isFaceUp ?
+				`\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` :
+				`{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
+			) :
+			`\`C[\`\`b00\`\`C]\``
+		)
+		.join(` `)
 
 	const laneDecks012 = state.laneDecks
 		.slice(0, 3)
-		.map(cards =>
-			cards.length
-				? `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
-				: `\`C[\`\`b00\`\`C]\``
-		).join(` `)
+		.map(cards => cards.length ? `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``)
+		.join(` `)
 
 	const laneDecks345 = state.laneDecks
 		.slice(3)
-		.map(cards =>
-			cards.length
-				? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
-				: `\`C[\`\`b00\`\`C]\``
-		).join(` `)
+		.map(cards => cards.length ?
+			`\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` :
+			`\`C[\`\`b00\`\`C]\``
+		)
+		.join(` `)
 
 	return `\
 turn ${state.turn} / ${state.turns}
@@ -461,16 +457,34 @@ ha0:
 ${attackerHand}
 
  a0   a1   a2   a3   a4   a5     a
-${attackerStacks}   ${state.attackerDeck.length ? `{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``}
+${attackerStacks}   ${state.attackerDeck.length ?
+	`{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` :
+	`\`C[\`\`b00\`\`C]\``
+}
 
  d0   d1   d2   d3   d4   d5     xa
-${defenderStacks}   ${state.attackerDiscardPile.length ? `\`b${state.attackerDiscardPile.length.toString(36).toUpperCase()} \`${colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``}
+${defenderStacks}   ${state.attackerDiscardPile.length ?
+	(
+		`\`b${
+			state.attackerDiscardPile.length.toString(36).toUpperCase()
+		} \`${
+			colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)
+		}`
+	) :
+	`\`C[\`\`b00\`\`C]\``
+}
 
  l0   l1   l2   l3   l4   l5
 ${laneDecks012} ${laneDecks345}
 
  x0   x1   x2   x3   x4   x5
-${state.laneDiscardPiles.map(cards => cards.length ? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``).join(` `)}
+${state.laneDiscardPiles
+	.map(cards => cards.length ?
+		`\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` :
+		`\`C[\`\`b00\`\`C]\``
+	)
+	.join(` `)
+}
 
 hd0:
 ${state.defenderHand.map(card => colourCard(card)).join(` `) || `empty`}`
@@ -478,42 +492,38 @@ ${state.defenderHand.map(card => colourCard(card)).join(` `) || `empty`}`
 
 function printStateForAttacker(state: State) {
 	const attackerStacks = state.attackerStacks
-		.map(cards =>
-			cards.length
-				? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
-				: `\`C[\`\`b00\`\`C]\``
-		).join(` `)
+		.map(cards => cards.length ?
+			`\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` :
+			`\`C[\`\`b00\`\`C]\``
+		)
+		.join(` `)
 
 	const defenderStacks = state.defenderStacks
-		.map(({ cards, isFaceUp }) =>
-			cards.length
-				? (isFaceUp
-					? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
-					: `\`D{\`${`\`b${String(cards.length).padStart(2, `0`)}\``}\`D}\``
-				) : `\`C[\`\`b00\`\`C]\``
-		).join(` `)
+		.map(({ cards, isFaceUp }) => cards.length ?
+			(isFaceUp ?
+				`\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` :
+				`\`D{\`${`\`b${String(cards.length).padStart(2, `0`)}\``}\`D}\``
+			) :
+			`\`C[\`\`b00\`\`C]\``
+		)
+		.join(` `)
 
 	const laneDecks012 = state.laneDecks
 		.slice(0, 3)
-		.map(cards =>
-			cards.length
-				? `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}`
-				: `\`C[\`\`b00\`\`C]\``
-		).join(` `)
+		.map(cards => cards.length ? `{${`\`b${String(cards.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``)
+		.join(` `)
 
 	const laneDecks345 = state.laneDecks
 		.slice(3)
-		.map(cards =>
-			cards.length
-				? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}`
-				: `\`C[\`\`b00\`\`C]\``
-		).join(` `)
+		.map(cards => cards.length ?
+			`\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` :
+			`\`C[\`\`b00\`\`C]\``
+		)
+		.join(` `)
 
-	const defenderHand = state.attackerHand.length
-		? (state.defenderHand.length == 1
-			? `1 card`
-			: `${state.defenderHand.length} cards`
-		) : `empty`
+	const defenderHand = state.attackerHand.length ?
+		(state.defenderHand.length == 1 ? `1 card` : `${state.defenderHand.length} cards`) :
+		`empty`
 
 	return `\
 turn ${state.turn} / ${state.turns}
@@ -522,16 +532,34 @@ ha0:
 ${state.attackerHand.map(card => colourCard(card)).join(` `) || `empty`}
 
  a0   a1   a2   a3   a4   a5     a
-${attackerStacks}   ${state.attackerDeck.length ? `{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` : `\`C[\`\`b00\`\`C]\``}
+${attackerStacks}   ${state.attackerDeck.length ?
+	`{${`\`b${String(state.attackerDeck.length).padStart(2, `0`)}\``}}` :
+	`\`C[\`\`b00\`\`C]\``
+}
 
  d0   d1   d2   d3   d4   d5     xa
-${defenderStacks}   ${state.attackerDiscardPile.length ? `\`b${state.attackerDiscardPile.length.toString(36).toUpperCase()} \`${colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``}
+${defenderStacks}   ${state.attackerDiscardPile.length ?
+	(
+		`\`b${
+			state.attackerDiscardPile.length.toString(36).toUpperCase()
+		} \`${
+			colourCard(state.attackerDiscardPile[state.attackerDiscardPile.length - 1]!)
+		}`
+	) :
+	`\`C[\`\`b00\`\`C]\``
+}
 
  l0   l1   l2   l3   l4   l5
 ${laneDecks012} ${laneDecks345}
 
  x0   x1   x2   x3   x4   x5
-${state.laneDiscardPiles.map(cards => cards.length ? `\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` : `\`C[\`\`b00\`\`C]\``).join(` `)}
+${state.laneDiscardPiles
+	.map(cards => cards.length ?
+		`\`b${cards.length.toString(36).toUpperCase()} \`${colourCard(cards[cards.length - 1]!)}` :
+		`\`C[\`\`b00\`\`C]\``
+	)
+	.join(` `)
+}
 
 hd0:
 ${defenderHand}`

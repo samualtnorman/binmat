@@ -1,14 +1,14 @@
-import { Role, State } from "./createState"
 import doCombat, { CombatData } from "./doCombat"
-import { Lane, StatusCode } from "./shared"
+import { Lane, Role, State, StatusCode } from "./shared"
 
-export function doMoveCombat(state: State, lane: Lane): {
-	status: StatusCode.MadeMoveOnFinishedGame
-		| StatusCode.DefenderInitiatedCombat
-		| StatusCode.AttackerInitiatedCombatWithEmptyStack
-} | (
-	CombatData & { status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin }
-) {
+export function doMoveCombat(state: State, lane: Lane): (
+	{ status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin } & CombatData
+) | {
+	status:
+		StatusCode.MadeMoveOnFinishedGame |
+		StatusCode.DefenderInitiatedCombat |
+		StatusCode.AttackerInitiatedCombatWithEmptyStack
+} {
 	if (state.turn >= state.turns)
 		return { status: StatusCode.MadeMoveOnFinishedGame }
 

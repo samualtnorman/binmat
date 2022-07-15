@@ -1,50 +1,5 @@
 import { shuffle } from "@samual/lib"
-
-export const enum CardModifier {
-	Trap = `@`,
-	Wild = `*`,
-	Bounce = `?`,
-	Break = `>`
-}
-
-export type CardNumber = "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "a"
-export type CardValue = CardNumber | CardModifier
-
-export const enum CardSuit {
-	Form = `&`,
-	Kin = `%`,
-	Data = `+`,
-	Chaos = `!`,
-	Void = `^`,
-	Choice = `#`
-}
-
-export type Card = `${CardValue}${CardSuit}`
-
-export type DefenderStack = {
-	cards: Card[]
-	isFaceUp: boolean
-}
-
-export const enum Role {
-	Defender = 1,
-	Attacker
-}
-
-export type State = {
-	attackerStacks: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
-	defenderStacks: [ DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack ]
-	laneDecks: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
-	laneDiscardPiles: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
-	attackerDeck: Card[]
-	attackerDiscardPile: Card[]
-	attackerHand: Card[]
-	defenderHand: Card[]
-	turn: number
-	turns: number
-	attackerPassedLastTurn: boolean
-	defenderPassedLastTurn: boolean
-}
+import { Card, State } from "./shared"
 
 export const Cards: Card[] = [
 	`2&`, `3&`, `4&`, `5&`, `6&`, `7&`, `8&`, `9&`, `a&`, `@&`, `*&`, `?&`, `>&`,

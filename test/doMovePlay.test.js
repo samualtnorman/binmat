@@ -2,7 +2,7 @@ import doMovePlay from "../src/doMovePlay"
 import { StatusCode } from "../src/shared"
 
 test(`finished game`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -47,7 +47,7 @@ test(`finished game`, () => {
 })
 
 test(`wrong way (defender)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -92,7 +92,7 @@ test(`wrong way (defender)`, () => {
 })
 
 test(`break to empty stack (defender)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -137,7 +137,7 @@ test(`break to empty stack (defender)`, () => {
 })
 
 test(`unowned card (defender)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -182,7 +182,7 @@ test(`unowned card (defender)`, () => {
 })
 
 test(`card face only (defender)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -227,7 +227,7 @@ test(`card face only (defender)`, () => {
 })
 
 test(`break to stack as attacker is allowed`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -272,7 +272,7 @@ test(`break to stack as attacker is allowed`, () => {
 })
 
 test(`unowned card (attacker)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -317,7 +317,7 @@ test(`unowned card (attacker)`, () => {
 })
 
 test(`card face only (attacker)`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -362,7 +362,7 @@ test(`card face only (attacker)`, () => {
 })
 
 test(`defender win`, () => {
-	/** @type {import("../src/createState").State} */
+	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [

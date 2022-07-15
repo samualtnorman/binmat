@@ -1,5 +1,5 @@
 import doMove from "../src/doMove"
-import { Action, AttackerDeck, AttackerDiscardPile, StatusCode } from "../src/shared"
+import { AttackerDeck, AttackerDiscardPile, MoveKind, StatusCode } from "../src/shared"
 
 it(`works`, () => {
 	expect(doMove({
@@ -25,7 +25,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Draw, deck: AttackerDeck })).toEqual({
+	}, { kind: MoveKind.Draw, deck: AttackerDeck })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [ `\`V001\` \`n------\``, `a0 da / X ha0 ` ]
 	})
@@ -53,7 +53,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Draw, deck: 5 })).toEqual({
+	}, { kind: MoveKind.Draw, deck: 5 })).toEqual({
 		status: StatusCode.DefenderWin,
 		binlog: [ `\`V109\` \`n------\``, `a0 d5 / 9% ha0 ` ]
 	})
@@ -81,7 +81,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Draw, deck: AttackerDeck })).toEqual({ status: StatusCode.DefenderDrewFromAttackerDeck })
+	}, { kind: MoveKind.Draw, deck: AttackerDeck })).toEqual({ status: StatusCode.DefenderDrewFromAttackerDeck })
 
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -106,7 +106,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceUp, card: `?+`, lane: 0 })).toEqual({
+	}, { kind: MoveKind.PlayFaceUp, card: `?+`, lane: 0 })).toEqual({
 		status: StatusCode.DefenderWin,
 		binlog: [
 			`\`V109\` \`n------\``,
@@ -140,7 +140,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceUp, card: `3+`, lane: 0 })).toEqual({
+	}, { kind: MoveKind.PlayFaceUp, card: `3+`, lane: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [ `\`V000\` \`n------\``, `d0 u30 / 3+ d0` ]
 	})
@@ -168,7 +168,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceUp, card: `4%`, lane: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
+	}, { kind: MoveKind.PlayFaceUp, card: `4%`, lane: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
 
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -193,7 +193,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Combat, lane: 0 })).toEqual({ status: StatusCode.DefenderInitiatedCombat })
+	}, { kind: MoveKind.Combat, lane: 0 })).toEqual({ status: StatusCode.DefenderInitiatedCombat })
 
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -218,7 +218,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Discard, card: `3+`, discardPile: AttackerDiscardPile })).toEqual({
+	}, { kind: MoveKind.Discard, card: `3+`, discardPile: AttackerDiscardPile })).toEqual({
 		status: StatusCode.DefenderWin,
 		binlog: [ `\`V109\` \`n------\``, `a0 x3a / 3+ xa` ]
 	})
@@ -246,7 +246,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Discard, card: `4%`, discardPile: 0 })).toEqual({
+	}, { kind: MoveKind.Discard, card: `4%`, discardPile: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [ `\`V000\` \`n------\``, `d0 x40 / 4% x0` ]
 	})
@@ -274,7 +274,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Discard, card: `4%`, discardPile: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
+	}, { kind: MoveKind.Discard, card: `4%`, discardPile: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
 
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -299,7 +299,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Pass })).toEqual({ status: StatusCode.MadeMoveOnFinishedGame })
+	}, { kind: MoveKind.Pass })).toEqual({ status: StatusCode.MadeMoveOnFinishedGame })
 
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -324,7 +324,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceUp, card: `>!`, lane: 0 })).toEqual({
+	}, { kind: MoveKind.PlayFaceUp, card: `>!`, lane: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [
 			`\`V000\` \`n------\``,
@@ -357,7 +357,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.PlayFaceUp, card: `>!`, lane: 0 })).toEqual({
+	}, { kind: MoveKind.PlayFaceUp, card: `>!`, lane: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [
 			`\`V000\` \`n------\``,
@@ -393,7 +393,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Combat, lane: 0 })).toEqual({
+	}, { kind: MoveKind.Combat, lane: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [
 			`\`V001\` \`n------\``,
@@ -429,7 +429,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Combat, lane: 5 })).toEqual({
+	}, { kind: MoveKind.Combat, lane: 5 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [
 			`\`V001\` \`n------\``,
@@ -462,7 +462,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Draw, deck: 0 })).toEqual({
+	}, { kind: MoveKind.Draw, deck: 0 })).toEqual({
 		status: StatusCode.AttackerWin,
 		binlog: [ `\`V001\` \`n------\``, `a0 d0` ]
 	})
@@ -490,7 +490,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Play, card: `4%`, lane: 0 })).toEqual({
+	}, { kind: MoveKind.Play, card: `4%`, lane: 0 })).toEqual({
 		status: StatusCode.DefenderWin,
 		binlog: [ `\`V109\` \`n------\``, `a0 pX0 / X a0` ]
 	})
@@ -518,7 +518,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Play, card: `4%`, lane: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
+	}, { kind: MoveKind.Play, card: `4%`, lane: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
 
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -543,7 +543,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Pass })).toEqual({ status: StatusCode.Ok, binlog: [ `\`V000\` \`n------\``, `d0 \`n--\`` ] })
+	}, { kind: MoveKind.Pass })).toEqual({ status: StatusCode.Ok, binlog: [ `\`V000\` \`n------\``, `d0 \`n--\`` ] })
 
 	expect(doMove({
 		attackerStacks: [ [ `8&` ], [], [], [], [], [] ],
@@ -568,7 +568,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Combat, lane: 0 })).toEqual({
+	}, { kind: MoveKind.Combat, lane: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [
 			`\`V001\` \`n------\``,
@@ -601,7 +601,7 @@ it(`works`, () => {
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { action: Action.Combat, lane: 0 })).toEqual({
+	}, { kind: MoveKind.Combat, lane: 0 })).toEqual({
 		status: StatusCode.Ok,
 		binlog: [
 			`\`V001\` \`n------\``,

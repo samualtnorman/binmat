@@ -1,4 +1,60 @@
-export const enum Action {
+export type State = {
+	attackerStacks: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
+	defenderStacks: [ DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack ]
+	laneDecks: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
+	laneDiscardPiles: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
+	attackerDeck: Card[]
+	attackerDiscardPile: Card[]
+	attackerHand: Card[]
+	defenderHand: Card[]
+	turn: number
+	turns: number
+	attackerPassedLastTurn: boolean
+	defenderPassedLastTurn: boolean
+}
+
+export type Card = `${CardValue}${CardSuit}`
+export type CardValue = CardNumber | CardModifier
+export type CardNumber = "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "a"
+
+export const enum CardModifier {
+	Trap = `@`,
+	Wild = `*`,
+	Bounce = `?`,
+	Break = `>`
+}
+
+export const enum CardSuit {
+	Form = `&`,
+	Kin = `%`,
+	Data = `+`,
+	Chaos = `!`,
+	Void = `^`,
+	Choice = `#`
+}
+
+export type DefenderStack = {
+	cards: Card[]
+	isFaceUp: boolean
+}
+
+export type Move = {
+	kind: MoveKind.Draw
+	deck: Lane | AttackerDeck
+} | {
+	kind: MoveKind.Play | MoveKind.PlayFaceUp
+	card: Card | CardValue
+	lane: Lane
+} | {
+	kind: MoveKind.Combat
+	lane: Lane
+} | {
+	kind: MoveKind.Discard
+	card: Card | CardValue
+	discardPile: Lane | AttackerDiscardPile
+} | { kind: MoveKind.Pass }
+
+export const enum MoveKind {
 	Draw,
 	Play,
 	PlayFaceUp,
@@ -7,8 +63,7 @@ export const enum Action {
 	Pass
 }
 
-export const Lanes = [ 0, 1, 2, 3, 4, 5 ] as const
-export type Lane = typeof Lanes[number]
+export type Lane = 0 | 2 | 1 | 3 | 4 | 5
 
 export const AttackerDeck = 6
 export type AttackerDeck = typeof AttackerDeck
@@ -51,3 +106,8 @@ export const StatusCodeMessages = [
 	`tried to play card faced incorrectly`,
 	`the defender tried to play a face up break to a stack that already contains a break card`
 ] as Record<StatusCode, string>
+
+export const enum Role {
+	Defender = 1,
+	Attacker
+}

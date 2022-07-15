@@ -1,4 +1,4 @@
-import { Card, State } from "./createState"
+import { Card, State } from "./shared"
 
 export type Attacker = `a${0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | `a` | `b` | `c` | `d` | `e` | `f`}`
 export type Defender = `d${0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | `a` | `b` | `c` | `d` | `e` | `f`}`
@@ -390,9 +390,9 @@ export type BinmatArgs = {
 }
 
 export function generateArgs(state: State, defender: string, attacker: string, binlog: string[]) {
-	return state.turn % 2
-		? generateArgsForAttacker(state, defender, attacker, binlog)
-		: generateArgsForDefender(state, defender, attacker, binlog)
+	return state.turn % 2 ?
+		generateArgsForAttacker(state, defender, attacker, binlog) :
+		generateArgsForDefender(state, defender, attacker, binlog)
 }
 
 export default generateArgs
@@ -573,39 +573,39 @@ export function generateArgsForAttacker(state: State, defender: string, attacker
 		args.s.a5 = [ ...state.attackerStacks[5] ]
 
 	if (state.defenderStacks[0].cards.length) {
-		args.s.d0 = state.defenderStacks[0].isFaceUp
-			? [ ...state.defenderStacks[0].cards ]
-			: state.defenderStacks[0].cards.map(() => `X`)
+		args.s.d0 = state.defenderStacks[0].isFaceUp ?
+			[ ...state.defenderStacks[0].cards ] :
+			state.defenderStacks[0].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[1].cards.length) {
-		args.s.d1 = state.defenderStacks[1].isFaceUp
-			? [ ...state.defenderStacks[1].cards ]
-			: state.defenderStacks[1].cards.map(() => `X`)
+		args.s.d1 = state.defenderStacks[1].isFaceUp ?
+			[ ...state.defenderStacks[1].cards ] :
+			state.defenderStacks[1].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[2].cards.length) {
-		args.s.d2 = state.defenderStacks[2].isFaceUp
-			? [ ...state.defenderStacks[2].cards ]
-			: state.defenderStacks[2].cards.map(() => `X`)
+		args.s.d2 = state.defenderStacks[2].isFaceUp ?
+			[ ...state.defenderStacks[2].cards ] :
+			state.defenderStacks[2].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[3].cards.length) {
-		args.s.d3 = state.defenderStacks[3].isFaceUp
-			? [ ...state.defenderStacks[3].cards ]
-			: state.defenderStacks[3].cards.map(() => `X`)
+		args.s.d3 = state.defenderStacks[3].isFaceUp ?
+			[ ...state.defenderStacks[3].cards ] :
+			state.defenderStacks[3].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[4].cards.length) {
-		args.s.d4 = state.defenderStacks[4].isFaceUp
-			? [ ...state.defenderStacks[4].cards ]
-			: state.defenderStacks[4].cards.map(() => `X`)
+		args.s.d4 = state.defenderStacks[4].isFaceUp ?
+			[ ...state.defenderStacks[4].cards ] :
+			state.defenderStacks[4].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[5].cards.length) {
-		args.s.d5 = state.defenderStacks[5].isFaceUp
-			? [ ...state.defenderStacks[5].cards ]
-			: state.defenderStacks[5].cards.map(() => `X`)
+		args.s.d5 = state.defenderStacks[5].isFaceUp ?
+			[ ...state.defenderStacks[5].cards ] :
+			state.defenderStacks[5].cards.map(() => `X`)
 	}
 
 	if (state.attackerHand.length)
