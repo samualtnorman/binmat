@@ -89,7 +89,7 @@ export const enum StatusCode {
 	DefenderPlayedFaceUpBreakToStackWithBreak
 }
 
-export const StatusCodeMessages = [
+export const StatusCodeMessages: Record<StatusCode, string> = [
 	`okay`,
 	`defender won`,
 	`attacker won`,
@@ -105,7 +105,7 @@ export const StatusCodeMessages = [
 	`attacker tried to draw from attacker deck when it and the attacker discard pile are empty`,
 	`tried to play card faced incorrectly`,
 	`the defender tried to play a face up break to a stack that already contains a break card`
-] as Record<StatusCode, string>
+]
 
 export const enum Role {
 	Defender = 1,
