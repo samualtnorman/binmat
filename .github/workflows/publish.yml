@@ -12,12 +12,12 @@ jobs:
     - { name: Setup pnpm, uses: pnpm/action-setup@v2.4.0, with: { version: 8.6.x, run_install: true } }
     - run: git config --global user.email github-action@users.noreply.github.com
     - run: git config --global user.name "Github Action"
-    - run: pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+    - run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
 
     - name: Publish dev
       if: github.event_name == 'push'
-      run: scripts/version-dev.js && pnpm package && cd dist && pnpm publish --tag dev
+      run: scripts/version-dev.js && pnpm package && cd dist && npm publish --no-git-checks --tag dev
 
     - name: Publish release
       if: github.event_name == 'release'
-      run: pnpm package && cd dist && pnpm publish --no-git-checks
+      run: pnpm package && cd dist && npm publish --no-git-checks
