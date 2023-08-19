@@ -1,0 +1,8 @@
+{
+	"name": "test-binmat-brain",
+	"private": true,
+	"type": "module",
+	"dependencies": {
+		"binmat": "^0.1.0-53b5ee0"
+	}
+}

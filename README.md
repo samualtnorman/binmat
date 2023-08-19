@@ -5,23 +5,13 @@
 
 If you need any help, [open an issue](https://github.com/samualtnorman/binmat/issues/new).
 
-## How to Build for Hackmud
-
-0. Install [Node.js](https://nodejs.org/en/), [clone this repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository), and open a command window in the newly cloned repo folder.
-1. Run `npm install`.
-1. Run `npm run push-script`.
-    - This will print the number of characters needed to upload the script.
-1. Open hackmud, pick a user, and run `#up binmat`.
-
 ## Using To Test Your Binmat Bot
 
 0. Install [Node.js](https://nodejs.org/en/), make a new folder, and open a command window in that folder.
-1. Run `npm init -y`.
-1. Run `npm install binmat`.
-1. Make an `index.js` file in that directory.
-1. In that new file, paste in this template.
+1. Run `npx degit samualtnorman/binmat/examples/test-binmat-brain`.
+1. Edit `index.js`
     ```js
-    const { simulateGame } = require("binmat")
+    import { simulateGame } from "binmat"
 
     // the first argument is the defender's brain
     // and the second is the attacker's brain
@@ -39,4 +29,12 @@ If you need any help, [open an issue](https://github.com/samualtnorman/binmat/is
         xform({ op: "--" })
     }
     ```
-1. Run `node index.js`.
+1. Run `node index.js`
+
+## How to Build for Hackmud
+
+0. Install [Node.js](https://nodejs.org/en/), [clone this repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository), and open a command window in the newly cloned repo folder.
+1. Run `npm install`.
+1. Run `npm run push-script`.
+    - This will print the number of characters needed to upload the script.
+1. Open hackmud, pick a user, and run `#up binmat`.

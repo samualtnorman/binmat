@@ -1,5 +1,4 @@
 import type { LaxPartial } from "@samual/lib"
-import "../game-scripts/hackmud.d"
 import { doMove } from "./doMove"
 import type { BinmatArgs } from "./generateArgs"
 import { generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
@@ -14,6 +13,24 @@ export type SimulateGameOptions = {
 	attackerUserName: string
 	noThrow: boolean
 	onMove: (state: State, binlog: string[]) => void
+}
+
+export type CLIContext = {
+	/** The name of the user who is calling the script (i.e. n00b) */
+	caller: string
+
+	/** The name of this script */
+	this_script: string
+
+	/** The number of columns in the caller’s terminal, if reported by the client */
+	cols: number
+
+	/** The number of rows in the caller’s terminal, if reported by the client */
+	rows: number
+
+	/** The name of the script that directly called this script, or null if called on the command line or as a scriptor
+	  */
+	calling_script: null
 }
 
 export type TransformScript = (args: { op: string }) => { ok: boolean }
