@@ -1,4 +1,4 @@
-export { createState } from "./createState"
+export { makeState } from "./makeState"
 export { doMove } from "./doMove"
 export { parseMove } from "./parseMove"
 export { MoveKind, StatusCode, StatusCodeMessages } from "./shared"

@@ -1,6 +1,6 @@
 import type { LaxPartial } from "@samual/lib"
 import "../game-scripts/hackmud.d"
-import createState from "./createState"
+import makeState from "./makeState"
 import doMove from "./doMove"
 import type { BinmatArgs } from "./generateArgs"
 import { generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
@@ -36,7 +36,7 @@ export function simulateGame(
 		onMove
 	}: LaxPartial<SimulateGameOptions> = {}
 ) {
-	const state = createState()
+	const state = makeState()
 	let endTime: number
 	let winner: Role | undefined
 	let lastLastBinlog: string[] = []

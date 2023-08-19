@@ -10,7 +10,7 @@ export const Cards: Card[] = [
 	`2#`, `3#`, `4#`, `5#`, `6#`, `7#`, `8#`, `9#`, `a#`, `@#`, `*#`, `?#`, `>#`
 ]
 
-export function createState(deck = shuffle([ ...Cards ])): State {
+export function makeState(deck = shuffle([ ...Cards ])): State {
 	return {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -37,4 +37,4 @@ export function createState(deck = shuffle([ ...Cards ])): State {
 	}
 }
 
-export default createState
+export default makeState

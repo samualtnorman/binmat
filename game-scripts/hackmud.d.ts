@@ -139,15 +139,15 @@ type Fullsec = Subscripts & PlayerFullsec & {
 		/**
 		 * **FULLSEC**
 		 *
-		 * @summary Create a new chat channel
+		 * @summary Make a new chat channel
 		 *
-		 * @description This script lets you create a new chat channel.
-		 * You cannot create a channel that already exists (including any of the default ports from `0000` to `FFFF`).
+		 * @description This script lets you make a new chat channel.
+		 * You cannot make a channel that already exists (including any of the default ports from `0000` to `FFFF`).
 		 * If you do not supply a password, anyone can join your channel (but the channel name is not displayed anywhere, so they would have to discover it in some way first).
 		 */
 		create: ((args: {
 			/**
-			 * The name of the channel to create
+			 * The name of the channel to make
 			 */
 			name: string
 
@@ -157,7 +157,7 @@ type Fullsec = Subscripts & PlayerFullsec & {
 			password?: string
 		}) => ScriptResponse) & ((args: {
 			/**
-			 * The name of the channel to create
+			 * The name of the channel to make
 			 */
 			c: string
 

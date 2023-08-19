@@ -1,6 +1,6 @@
 import { assert } from "@samual/lib/assert"
 import { isRecord } from "@samual/lib/isRecord"
-import createState from "../src/createState"
+import makeState from "../src/makeState"
 import doMove from "../src/doMove"
 import parseMove from "../src/parseMove"
 import type { Card, State } from "../src/shared"
@@ -356,7 +356,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 		if (waitingUser) {
 			const id = Math.floor(Math.random() * (2 ** 51)).toString(36).padStart(10, `0`)
 			const callerRole: Role = Math.round(Math.random()) + 1
-			const state = createState()
+			const state = makeState()
 
 			if (callerRole == Role.Defender) {
 				$db.us({ _id: `binmat` }, {
@@ -377,7 +377,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 				$fs.chats.tell({ to: waitingUser, msg: `@${context.caller} has started a game of binmat with you in ${_FULL_SCRIPT_NAME}\nyou are the attacker` })
 
 				return [
-					`created game with @${waitingUser}\nyou are the defender\nit is your turn\n`,
+					`made game with @${waitingUser}\nyou are the defender\nit is your turn\n`,
 					printStateForDefender(state),
 					`\nmake a move with move: "d0"\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
 				]
@@ -403,7 +403,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 			$fs.chats.tell({ to: waitingUser, msg: `@${context.caller} has started a game of binmat with you in ${_FULL_SCRIPT_NAME}\nyou are the defender, it is your turn` })
 
 			return [
-				`created game with @${waitingUser}\nyou are the attacker\nit is @${waitingUser}'s turn\n`,
+				`made game with @${waitingUser}\nyou are the attacker\nit is @${waitingUser}'s turn\n`,
 				printStateForAttacker(state),
 				`\ninspect a lane with inspect: 3\ninspect attacker discard pile with inspect: "a"`
 			]

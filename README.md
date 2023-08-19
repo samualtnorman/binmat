@@ -15,10 +15,10 @@ If you need any help, [open an issue](https://github.com/samualtnorman/binmat/is
 
 ## Using To Test Your Binmat Bot
 
-0. Install [Node.js](https://nodejs.org/en/), create a new folder, and open a command window in that folder.
+0. Install [Node.js](https://nodejs.org/en/), make a new folder, and open a command window in that folder.
 1. Run `npm init -y`.
 1. Run `npm install binmat`.
-1. Create an `index.js` file in that directory.
+1. Make an `index.js` file in that directory.
 1. In that new file, paste in this template.
     ```js
     const { simulateGame } = require("binmat")
