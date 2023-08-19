@@ -8,28 +8,25 @@ import type { State } from "./shared"
 import { MoveKind, Role, StatusCode, StatusCodeMessages } from "./shared"
 
 export type SimulateGameOptions = {
-	timeLimit: number
-	defenderUserName: string
-	attackerUserName: string
+	/** How many milliseconds the brain is allowed @default 5000 */ timeLimit: number
+	/** @default "defender" */ defenderUserName: string
+	/** @default "attacker" */ attackerUserName: string
+
+	/** Pass instead of throwing when brain acts incorrectly (too slow, making move twice, etc) @default false */
 	noThrow: boolean
-	onMove: (state: State, binlog: string[]) => void
+
+	/** Callback that is called after every move */ onMove: (state: State, binlog: string[]) => void
+	/** Initial state of the game */ state: State
 }
 
 export type CLIContext = {
-	/** The name of the user who is calling the script (i.e. n00b) */
-	caller: string
+	/** The name of the user who is calling the script (i.e. n00b) */ caller: string
+	/** The name of this script */ this_script: string
+	/** The number of columns in the caller’s terminal, if reported by the client */ cols: number
+	/** The number of rows in the caller’s terminal, if reported by the client */ rows: number
 
-	/** The name of this script */
-	this_script: string
-
-	/** The number of columns in the caller’s terminal, if reported by the client */
-	cols: number
-
-	/** The number of rows in the caller’s terminal, if reported by the client */
-	rows: number
-
-	/** The name of the script that directly called this script, or null if called on the command line or as a scriptor
-	  */
+	/** The name of the script that directly called this script, or null if called on the command line or as a
+	  * scriptor */
 	calling_script: null
 }
 
@@ -50,10 +47,10 @@ export function simulateGame(
 		defenderUserName = `defender`,
 		attackerUserName = `attacker`,
 		noThrow = false,
-		onMove
+		onMove,
+		state = makeState()
 	}: LaxPartial<SimulateGameOptions> = {}
 ) {
-	const state = makeState()
 	let endTime: number
 	let winner: Role | undefined
 	let lastLastBinlog: string[] = []
