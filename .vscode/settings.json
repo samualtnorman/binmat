@@ -1,10 +1,7 @@
 {
 	"files.exclude": {
 		"LICENSE": true,
-		"node_modules": true,
-		".github": true,
-		"package-lock.json": true,
-		"index.cjs": true
+		"node_modules": true
 	},
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"liveServer.settings.root": "/coverage/lcov-report"
