@@ -1,6 +1,8 @@
-import { assert } from "@samual/lib"
-import doCombat, { CombatData } from "./doCombat"
-import { Card, CardModifier, CardValue, Lane, Role, State, StatusCode } from "./shared"
+import { assert } from "@samual/lib/assert"
+import type { CombatData } from "./doCombat"
+import doCombat from "./doCombat"
+import type { Card, CardValue, Lane, State } from "./shared"
+import { CardModifier, Role, StatusCode } from "./shared"
 
 export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lane): {
 	status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin
@@ -22,9 +24,9 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 	let combat: CombatData | undefined
 
 	if (roleTurn == Role.Defender) {
-		const index = card.length == 2 ?
-			state.defenderHand.indexOf(card as Card) :
-			state.defenderHand.findIndex(([ value ]) => value == card)
+		const index = card.length == 2
+			? state.defenderHand.indexOf(card as Card)
+			: state.defenderHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }
@@ -53,9 +55,9 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 			state.defenderStacks[lane].cards.push(cardPlayed)
 		}
 	} else /* attacker turn */ {
-		const index = card.length == 2 ?
-			state.attackerHand.indexOf(card as Card) :
-			state.attackerHand.findIndex(([ value ]) => value == card)
+		const index = card.length == 2
+			? state.attackerHand.indexOf(card as Card)
+			: state.attackerHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }

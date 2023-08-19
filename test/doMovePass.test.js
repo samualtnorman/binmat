@@ -1,7 +1,7 @@
 import doMovePass from "../src/doMovePass"
 import { StatusCode } from "../src/shared"
 
-test(`finished game`, () => {
+test("finished game", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -42,7 +42,7 @@ test(`finished game`, () => {
 	})
 })
 
-test(`defender win`, () => {
+test("defender win", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -83,7 +83,7 @@ test(`defender win`, () => {
 	})
 })
 
-test(`normal pass`, () => {
+test("normal pass", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -124,7 +124,7 @@ test(`normal pass`, () => {
 	})
 })
 
-test(`defender pass twice`, () => {
+test("defender pass twice", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -133,11 +133,11 @@ test(`defender pass twice`, () => {
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
-		laneDiscardPiles: [ [], [ `5!` ], [], [], [], [] ],
+		laneDiscardPiles: [ [], [ "5!" ], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
-		defenderHand: [ `3!`, `3#`, `3%`, `3&`, `3+`, `3^` ],
+		defenderHand: [ "3!", "3#", "3%", "3&", "3+", "3^" ],
 		turn: 0,
 		turns: 110,
 		attackerPassedLastTurn: false,
@@ -153,7 +153,7 @@ test(`defender pass twice`, () => {
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
-		laneDiscardPiles: [ [ `3!`, `3^` ], [ `5!` ], [ `3#` ], [ `3%` ], [ `3&` ], [ `3+` ] ],
+		laneDiscardPiles: [ [ "3!", "3^" ], [ "5!" ], [ "3#" ], [ "3%" ], [ "3&" ], [ "3+" ] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
@@ -165,7 +165,7 @@ test(`defender pass twice`, () => {
 	})
 })
 
-test(`attacker pass twice`, () => {
+test("attacker pass twice", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -177,7 +177,7 @@ test(`attacker pass twice`, () => {
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `3!`, `3#` ],
+		attackerHand: [ "3!", "3#" ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
@@ -196,7 +196,7 @@ test(`attacker pass twice`, () => {
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
-		attackerDiscardPile: [ `3!`, `3#` ],
+		attackerDiscardPile: [ "3!", "3#" ],
 		attackerHand: [],
 		defenderHand: [],
 		turn: 2,

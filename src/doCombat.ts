@@ -1,5 +1,6 @@
-import { shuffle } from "@samual/lib"
-import { Card, CardModifier, CardSuit, CardValue, Lane, Role, State, StatusCode } from "./shared"
+import { shuffle } from "@samual/lib/shuffle"
+import type { Card, CardSuit, CardValue, Lane, State } from "./shared"
+import { CardModifier, Role, StatusCode } from "./shared"
 
 export type CombatData = {
 	attackerStack: Card[]
@@ -151,9 +152,9 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Ok | St
 		cardsDrawnToDiscard = []
 		cardsDrawn = []
 	} else {
-		damageValue = breakPresent ?
-			Math.max(attackerAttackPower, defenderStack.length) :
-			attackerAttackPower - defenderAttackPower + 1
+		damageValue = breakPresent
+			? Math.max(attackerAttackPower, defenderStack.length)
+			: attackerAttackPower - defenderAttackPower + 1
 
 		if (damageValue > defenderStack.length) {
 			const cardsToDraw = damageValue - defenderStack.length

@@ -1,10 +1,12 @@
-import { LaxPartial } from "@samual/lib"
+import type { LaxPartial } from "@samual/lib"
 import "../game-scripts/hackmud.d"
 import createState from "./createState"
 import doMove from "./doMove"
-import { BinmatArgs, generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
+import type { BinmatArgs } from "./generateArgs"
+import { generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
 import parseMove from "./parseMove"
-import { MoveKind, Role, State, StatusCode, StatusCodeMessages } from "./shared"
+import type { State } from "./shared"
+import { MoveKind, Role, StatusCode, StatusCodeMessages } from "./shared"
 
 export type SimulateGameOptions = {
 	timeLimit: number
@@ -105,7 +107,6 @@ export function simulateGame(
 
 		onMove?.(state, lastBinlog)
 
-		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		if (winner)
 			return winner
 	}

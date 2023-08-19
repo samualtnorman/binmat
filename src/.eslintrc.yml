@@ -1,7 +1,1 @@
-extends:
-  - ../.eslintrc.yml
-
-rules:
-  "@typescript-eslint/no-unnecessary-condition":
-    - warn
-    - allowConstantLoopConditions: true
+extends: "@samual/eslint-config/typescript.yml"

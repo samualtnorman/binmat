@@ -1,5 +1,4 @@
-extends:
-  - ../.eslintrc.yml
+extends: "@samual/eslint-config/typescript.yml"
 
 rules:
   unicorn/prevent-abbreviations:

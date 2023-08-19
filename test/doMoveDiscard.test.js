@@ -1,16 +1,9 @@
 import doMoveDiscard from "../src/doMoveDiscard"
 import { AttackerDeck, AttackerDiscardPile, StatusCode } from "../src/shared"
 
-jest.mock(`@samual/lib`, () => {
-	const lib = jest.requireActual(`@samual/lib`)
+jest.mock("@samual/lib", () => ({ ...jest.requireActual("@samual/lib"), shuffle: array => array }))
 
-	return {
-		...lib,
-		shuffle: array => array
-	}
-})
-
-test(`finished game`, () => {
+test("finished game", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -23,14 +16,14 @@ test(`finished game`, () => {
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
-		defenderHand: [ `2!` ],
+		defenderHand: [ "2!" ],
 		turn: 110,
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, 0)).toEqual({ status: StatusCode.MadeMoveOnFinishedGame })
+	expect(doMoveDiscard(state, "2!", 0)).toEqual({ status: StatusCode.MadeMoveOnFinishedGame })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -47,7 +40,7 @@ test(`finished game`, () => {
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
-		defenderHand: [ `2!` ],
+		defenderHand: [ "2!" ],
 		turn: 110,
 		turns: 110,
 		attackerPassedLastTurn: false,
@@ -55,7 +48,7 @@ test(`finished game`, () => {
 	})
 })
 
-test(`unowned card (defender)`, () => {
+test("unowned card (defender)", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -75,7 +68,7 @@ test(`unowned card (defender)`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, 0)).toEqual({ status: StatusCode.PlayedUnownedCard })
+	expect(doMoveDiscard(state, "2!", 0)).toEqual({ status: StatusCode.PlayedUnownedCard })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -100,7 +93,7 @@ test(`unowned card (defender)`, () => {
 	})
 })
 
-test(`defender trying to discard to attacker's discard pile`, () => {
+test("defender trying to discard to attacker's discard pile", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -113,14 +106,14 @@ test(`defender trying to discard to attacker's discard pile`, () => {
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
-		defenderHand: [ `2!` ],
+		defenderHand: [ "2!" ],
 		turn: 0,
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, AttackerDiscardPile))
+	expect(doMoveDiscard(state, "2!", AttackerDiscardPile))
 		.toEqual({ status: StatusCode.DiscardedToOpponentDiscardPile })
 
 	expect(state).toEqual({
@@ -138,7 +131,7 @@ test(`defender trying to discard to attacker's discard pile`, () => {
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
-		defenderHand: [ `2!` ],
+		defenderHand: [ "2!" ],
 		turn: 0,
 		turns: 110,
 		attackerPassedLastTurn: false,
@@ -146,7 +139,7 @@ test(`defender trying to discard to attacker's discard pile`, () => {
 	})
 })
 
-test(`normal play (defender)`, () => {
+test("normal play (defender)", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -159,14 +152,14 @@ test(`normal play (defender)`, () => {
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
-		defenderHand: [ `2!` ],
+		defenderHand: [ "2!" ],
 		turn: 0,
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, 0)).toEqual({ status: StatusCode.Ok, cardDiscarded: `2!`, cardsDrawn: undefined })
+	expect(doMoveDiscard(state, "2!", 0)).toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: undefined })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -179,7 +172,7 @@ test(`normal play (defender)`, () => {
 			{ cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
-		laneDiscardPiles: [ [ `2!` ], [], [], [], [], [] ],
+		laneDiscardPiles: [ [ "2!" ], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
@@ -191,7 +184,7 @@ test(`normal play (defender)`, () => {
 	})
 })
 
-test(`card face only (defender)`, () => {
+test("card face only (defender)", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -204,14 +197,14 @@ test(`card face only (defender)`, () => {
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
-		defenderHand: [ `2!` ],
+		defenderHand: [ "2!" ],
 		turn: 0,
 		turns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2`, 0)).toEqual({ status: StatusCode.Ok, cardDiscarded: `2!`, cardsDrawn: undefined })
+	expect(doMoveDiscard(state, "2", 0)).toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: undefined })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -224,7 +217,7 @@ test(`card face only (defender)`, () => {
 			{ cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
-		laneDiscardPiles: [ [ `2!` ], [], [], [], [], [] ],
+		laneDiscardPiles: [ [ "2!" ], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
 		attackerHand: [],
@@ -236,7 +229,7 @@ test(`card face only (defender)`, () => {
 	})
 })
 
-test(`unowned card (attacker)`, () => {
+test("unowned card (attacker)", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -256,7 +249,7 @@ test(`unowned card (attacker)`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, AttackerDeck)).toEqual({ status: StatusCode.PlayedUnownedCard })
+	expect(doMoveDiscard(state, "2!", AttackerDeck)).toEqual({ status: StatusCode.PlayedUnownedCard })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -281,7 +274,7 @@ test(`unowned card (attacker)`, () => {
 	})
 })
 
-test(`attacker trying to discard to lane discard pile`, () => {
+test("attacker trying to discard to lane discard pile", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -293,7 +286,7 @@ test(`attacker trying to discard to lane discard pile`, () => {
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `2!` ],
+		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
@@ -301,7 +294,7 @@ test(`attacker trying to discard to lane discard pile`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, 0)).toEqual({ status: StatusCode.DiscardedToOpponentDiscardPile })
+	expect(doMoveDiscard(state, "2!", 0)).toEqual({ status: StatusCode.DiscardedToOpponentDiscardPile })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -317,7 +310,7 @@ test(`attacker trying to discard to lane discard pile`, () => {
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `2!` ],
+		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
@@ -326,7 +319,7 @@ test(`attacker trying to discard to lane discard pile`, () => {
 	})
 })
 
-test(`attacker discarding when attacker stack is empty`, () => {
+test("attacker discarding when attacker stack is empty", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -338,7 +331,7 @@ test(`attacker discarding when attacker stack is empty`, () => {
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `2!` ],
+		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
@@ -346,7 +339,7 @@ test(`attacker discarding when attacker stack is empty`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, AttackerDiscardPile))
+	expect(doMoveDiscard(state, "2!", AttackerDiscardPile))
 		.toEqual({ status: StatusCode.AttackerDiscardedToEmptyDiscardAndDeck })
 
 	expect(state).toEqual({
@@ -363,7 +356,7 @@ test(`attacker discarding when attacker stack is empty`, () => {
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `2!` ],
+		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
@@ -372,7 +365,7 @@ test(`attacker discarding when attacker stack is empty`, () => {
 	})
 })
 
-test(`attacker discarding with one card in attacker deck`, () => {
+test("attacker discarding with one card in attacker deck", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -382,9 +375,9 @@ test(`attacker discarding with one card in attacker deck`, () => {
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
-		attackerDeck: [ `3!` ],
+		attackerDeck: [ "3!" ],
 		attackerDiscardPile: [],
-		attackerHand: [ `2!` ],
+		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
@@ -392,8 +385,8 @@ test(`attacker discarding with one card in attacker deck`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, AttackerDiscardPile))
-		.toEqual({ status: StatusCode.Ok, cardDiscarded: `2!`, cardsDrawn: [ `3!`, `2!` ] })
+	expect(doMoveDiscard(state, "2!", AttackerDiscardPile))
+		.toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: [ "3!", "2!" ] })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -409,7 +402,7 @@ test(`attacker discarding with one card in attacker deck`, () => {
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `3!`, `2!` ],
+		attackerHand: [ "3!", "2!" ],
 		defenderHand: [],
 		turn: 2,
 		turns: 110,
@@ -418,7 +411,7 @@ test(`attacker discarding with one card in attacker deck`, () => {
 	})
 })
 
-test(`attacker discarding with one card in attacker discard pile`, () => {
+test("attacker discarding with one card in attacker discard pile", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -429,8 +422,8 @@ test(`attacker discarding with one card in attacker discard pile`, () => {
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
-		attackerDiscardPile: [ `3!` ],
-		attackerHand: [ `2!` ],
+		attackerDiscardPile: [ "3!" ],
+		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
@@ -438,8 +431,8 @@ test(`attacker discarding with one card in attacker discard pile`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, AttackerDiscardPile))
-		.toEqual({ status: StatusCode.Ok, cardDiscarded: `2!`, cardsDrawn: [ `2!`, `3!` ] })
+	expect(doMoveDiscard(state, "2!", AttackerDiscardPile))
+		.toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: [ "2!", "3!" ] })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -455,7 +448,7 @@ test(`attacker discarding with one card in attacker discard pile`, () => {
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `2!`, `3!` ],
+		attackerHand: [ "2!", "3!" ],
 		defenderHand: [],
 		turn: 2,
 		turns: 110,
@@ -464,7 +457,7 @@ test(`attacker discarding with one card in attacker discard pile`, () => {
 	})
 })
 
-test(`card face only (attacker)`, () => {
+test("card face only (attacker)", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -475,8 +468,8 @@ test(`card face only (attacker)`, () => {
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
-		attackerDiscardPile: [ `3!` ],
-		attackerHand: [ `2!` ],
+		attackerDiscardPile: [ "3!" ],
+		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
@@ -484,8 +477,8 @@ test(`card face only (attacker)`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2`, AttackerDiscardPile))
-		.toEqual({ status: StatusCode.Ok, cardDiscarded: `2!`, cardsDrawn: [ `2!`, `3!` ] })
+	expect(doMoveDiscard(state, "2", AttackerDiscardPile))
+		.toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: [ "2!", "3!" ] })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -501,7 +494,7 @@ test(`card face only (attacker)`, () => {
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `2!`, `3!` ],
+		attackerHand: [ "2!", "3!" ],
 		defenderHand: [],
 		turn: 2,
 		turns: 110,
@@ -510,7 +503,7 @@ test(`card face only (attacker)`, () => {
 	})
 })
 
-test(`defender win`, () => {
+test("defender win", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -521,8 +514,8 @@ test(`defender win`, () => {
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
-		attackerDiscardPile: [ `3!` ],
-		attackerHand: [ `2!` ],
+		attackerDiscardPile: [ "3!" ],
+		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 109,
 		turns: 110,
@@ -530,8 +523,8 @@ test(`defender win`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, AttackerDiscardPile))
-		.toEqual({ status: StatusCode.DefenderWin, cardDiscarded: `2!`, cardsDrawn: [ `2!`, `3!` ] })
+	expect(doMoveDiscard(state, "2!", AttackerDiscardPile))
+		.toEqual({ status: StatusCode.DefenderWin, cardDiscarded: "2!", cardsDrawn: [ "2!", "3!" ] })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -547,7 +540,7 @@ test(`defender win`, () => {
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
 		attackerDiscardPile: [],
-		attackerHand: [ `2!`, `3!` ],
+		attackerHand: [ "2!", "3!" ],
 		defenderHand: [],
 		turn: 110,
 		turns: 110,
@@ -556,7 +549,7 @@ test(`defender win`, () => {
 	})
 })
 
-test(`attacker discarding with more than one card in attacker deck`, () => {
+test("attacker discarding with more than one card in attacker deck", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -566,9 +559,9 @@ test(`attacker discarding with more than one card in attacker deck`, () => {
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
-		attackerDeck: [ `3!`, `3#` ],
+		attackerDeck: [ "3!", "3#" ],
 		attackerDiscardPile: [],
-		attackerHand: [ `2!` ],
+		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
 		turns: 110,
@@ -576,8 +569,8 @@ test(`attacker discarding with more than one card in attacker deck`, () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, `2!`, AttackerDiscardPile))
-		.toEqual({ status: StatusCode.Ok, cardDiscarded: `2!`, cardsDrawn: [ `3#`, `3!` ] })
+	expect(doMoveDiscard(state, "2!", AttackerDiscardPile))
+		.toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: [ "3#", "3!" ] })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -592,8 +585,8 @@ test(`attacker discarding with more than one card in attacker deck`, () => {
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
-		attackerDiscardPile: [ `2!` ],
-		attackerHand: [ `3#`, `3!` ],
+		attackerDiscardPile: [ "2!" ],
+		attackerHand: [ "3#", "3!" ],
 		defenderHand: [],
 		turn: 2,
 		turns: 110,

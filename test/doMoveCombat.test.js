@@ -1,10 +1,10 @@
 import doMoveCombat from "../src/doMoveCombat"
 import { StatusCode } from "../src/shared"
 
-test(`finished game`, () => {
+test("finished game", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
-		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
@@ -24,7 +24,7 @@ test(`finished game`, () => {
 	expect(doMoveCombat(state, 0)).toEqual({ status: StatusCode.MadeMoveOnFinishedGame })
 
 	expect(state).toEqual({
-		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
@@ -42,10 +42,10 @@ test(`finished game`, () => {
 	})
 })
 
-test(`defender trying to initiate combat`, () => {
+test("defender trying to initiate combat", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
-		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
@@ -65,7 +65,7 @@ test(`defender trying to initiate combat`, () => {
 	expect(doMoveCombat(state, 0)).toEqual({ status: StatusCode.DefenderInitiatedCombat })
 
 	expect(state).toEqual({
-		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
@@ -83,7 +83,7 @@ test(`defender trying to initiate combat`, () => {
 	})
 })
 
-test(`attacker trying to initiate combat with empty stack`, () => {
+test("attacker trying to initiate combat with empty stack", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -124,12 +124,12 @@ test(`attacker trying to initiate combat with empty stack`, () => {
 	})
 })
 
-test(`normal combat`, () => {
+test("normal combat", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
-		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `3!`, `3#`, `3%`, `3&`, `3+` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [ "3!", "3#", "3%", "3&", "3+" ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
@@ -146,8 +146,8 @@ test(`normal combat`, () => {
 
 	expect(doMoveCombat(state, 0)).toEqual({
 		status: StatusCode.Ok,
-		attackerStack: [ `8!` ],
-		defenderStack: [ `3!`, `3#`, `3%`, `3&`, `3+` ],
+		attackerStack: [ "8!" ],
+		defenderStack: [ "3!", "3#", "3%", "3&", "3+" ],
 		attackerAttackPower: 3,
 		defenderAttackPower: 0,
 		damageValue: 4,
@@ -156,21 +156,21 @@ test(`normal combat`, () => {
 		defenderCardsTrapped: [],
 		attackerBouncesDiscarded: [],
 		defenderBouncesDiscarded: [],
-		attackerStackDiscarded: [ `8!` ],
+		attackerStackDiscarded: [ "8!" ],
 		defenderStackWasFaceUp: false,
-		cardsDrawnToDiscard: [ `3+`, `3&`, `3%`, `3#` ]
+		cardsDrawnToDiscard: [ "3+", "3&", "3%", "3#" ]
 	})
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `3!` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [ "3!" ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
-		attackerDiscardPile: [ `3+`, `3&`, `3%`, `3#`, `8!` ],
+		attackerDiscardPile: [ "3+", "3&", "3%", "3#", "8!" ],
 		attackerHand: [],
 		defenderHand: [],
 		turn: 2,
@@ -180,10 +180,10 @@ test(`normal combat`, () => {
 	})
 })
 
-test(`attacker win`, () => {
+test("attacker win", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
-		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
@@ -202,7 +202,7 @@ test(`attacker win`, () => {
 
 	expect(doMoveCombat(state, 0)).toEqual({
 		status: StatusCode.AttackerWin,
-		attackerStack: [ `8!` ],
+		attackerStack: [ "8!" ],
 		defenderStack: [],
 		attackerAttackPower: 3,
 		defenderAttackPower: 0,
@@ -212,13 +212,13 @@ test(`attacker win`, () => {
 		defenderCardsTrapped: [],
 		attackerBouncesDiscarded: [],
 		defenderBouncesDiscarded: [],
-		attackerStackDiscarded: [ `8!` ],
+		attackerStackDiscarded: [ "8!" ],
 		defenderStackWasFaceUp: false,
 		cardsDrawnToDiscard: []
 	})
 
 	expect(state).toEqual({
-		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
@@ -236,12 +236,12 @@ test(`attacker win`, () => {
 	})
 })
 
-test(`defender win`, () => {
+test("defender win", () => {
 	/** @type {import("../src/shared").State} */
 	const state = {
-		attackerStacks: [ [ `8!` ], [], [], [], [], [] ],
+		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `3!`, `3#`, `3%`, `3&`, `3+` ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [ "3!", "3#", "3%", "3&", "3+" ], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
@@ -258,8 +258,8 @@ test(`defender win`, () => {
 
 	expect(doMoveCombat(state, 0)).toEqual({
 		status: StatusCode.DefenderWin,
-		attackerStack: [ `8!` ],
-		defenderStack: [ `3!`, `3#`, `3%`, `3&`, `3+` ],
+		attackerStack: [ "8!" ],
+		defenderStack: [ "3!", "3#", "3%", "3&", "3+" ],
 		attackerAttackPower: 3,
 		defenderAttackPower: 0,
 		damageValue: 4,
@@ -268,21 +268,21 @@ test(`defender win`, () => {
 		defenderCardsTrapped: [],
 		attackerBouncesDiscarded: [],
 		defenderBouncesDiscarded: [],
-		attackerStackDiscarded: [ `8!` ],
+		attackerStackDiscarded: [ "8!" ],
 		defenderStackWasFaceUp: false,
-		cardsDrawnToDiscard: [ `3+`, `3&`, `3%`, `3#` ]
+		cardsDrawnToDiscard: [ "3+", "3&", "3%", "3#" ]
 	})
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
-			{ cards: [ `3!` ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
+			{ cards: [ "3!" ], isFaceUp: true }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
 			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
 		],
 		laneDecks: [ [], [], [], [], [], [] ],
 		laneDiscardPiles: [ [], [], [], [], [], [] ],
 		attackerDeck: [],
-		attackerDiscardPile: [ `3+`, `3&`, `3%`, `3#`, `8!` ],
+		attackerDiscardPile: [ "3+", "3&", "3%", "3#", "8!" ],
 		attackerHand: [],
 		defenderHand: [],
 		turn: 110,

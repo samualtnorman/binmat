@@ -1,11 +1,12 @@
-import { CombatData } from "./doCombat"
+import type { CombatData } from "./doCombat"
 import doMoveCombat from "./doMoveCombat"
 import doMoveDiscard from "./doMoveDiscard"
 import doMoveDraw from "./doMoveDraw"
 import doMovePass from "./doMovePass"
 import doMovePlay from "./doMovePlay"
 import doMovePlayFaceUp from "./doMovePlayFaceUp"
-import { AttackerDeck, Card, Lane, Move, MoveKind, State, StatusCode } from "./shared"
+import type { Card, Lane, Move, State } from "./shared"
+import { AttackerDeck, MoveKind, StatusCode } from "./shared"
 
 export function doMove(state: State, move: Move): {
 	status: StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin
@@ -143,13 +144,13 @@ export function doMove(state: State, move: Move): {
 			defenderStackWasFaceUp
 		} = combatData
 
-		const attackerSide = roleTurn == `a` && cardIsPlayedFaceUp && attackerStack.length ?
-			`${attackerStack.join(` `)}u` :
-			attackerStack.join(` `)
+		const attackerSide = roleTurn == `a` && cardIsPlayedFaceUp && attackerStack.length
+			? `${attackerStack.join(` `)}u`
+			: attackerStack.join(` `)
 
-		const defenderSide = defenderStackWasFaceUp ?
-			defenderStack.map(card => `${card}u`).join(` `) :
-			defenderStack.join(` `)
+		const defenderSide = defenderStackWasFaceUp
+			? defenderStack.map(card => `${card}u`).join(` `)
+			: defenderStack.join(` `)
 
 		binlog.push(`\`n--\` c${lane} / ${attackerSide} / ${defenderSide}`)
 
@@ -176,22 +177,22 @@ export function doMove(state: State, move: Move): {
 		const attackerStackDiscarded = (
 			roleTurn == `a` &&
 			cardIsPlayedFaceUp &&
-			combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardIsPlayedFaceUp
-		) ?
-			`${combatData.attackerStackDiscarded.join(` `)}u` :
-			combatData.attackerStackDiscarded.join(` `)
+			combatData.attackerStackDiscarded.at(-1) == cardIsPlayedFaceUp
+		)
+			? `${combatData.attackerStackDiscarded.join(` `)}u`
+			: combatData.attackerStackDiscarded.join(` `)
 
 		if (damageValue) {
-			const cardsDrawnToDiscard = combatData.cardsDrawnToDiscard.length ?
-				` / ${combatData.cardsDrawnToDiscard.join(` `)} xa` :
-				``
+			const cardsDrawnToDiscard = combatData.cardsDrawnToDiscard.length
+				? ` / ${combatData.cardsDrawnToDiscard.join(` `)} xa`
+				: ``
 
 			let cardsDrawn
 
 			if (combatData.cardsDrawn.length) {
-				cardsDrawn = lane < 3 ?
-					` / ${`X `.repeat(combatData.cardsDrawn.length)}ha0 ` :
-					` / ${combatData.cardsDrawn.join(` `)} ha0 `
+				cardsDrawn = lane < 3
+					? ` / ${`X `.repeat(combatData.cardsDrawn.length)}ha0 `
+					: ` / ${combatData.cardsDrawn.join(` `)} ha0 `
 			} else
 				cardsDrawn = ``
 

@@ -1,20 +1,20 @@
-import findFiles from "@samual/lib/findFiles"
-import { readFile, writeFile } from "fs/promises"
+#!/usr/bin/env node
+import { mkdirSync as makeDirectorySync, readdirSync as readDirectorySync, writeFileSync } from "fs"
+import packageConfig from "../package.json" assert { type: "json" }
 
-const packageJSON = JSON.parse(await readFile(`package.json`, { encoding: `utf-8` }))
+delete packageConfig.private
+delete packageConfig.scripts
+delete packageConfig.devDependencies
 
-delete packageJSON.private
-delete packageJSON.scripts
-packageJSON.bin = {}
-
-for (let name of await findFiles(`dist`)) {
-	name = `.${name.slice(4)}`
-
-	if (name.startsWith(`./bin/`) && name.endsWith(`.js`)) {
-		packageJSON.bin[name.slice(6, -3)] = name
-
-		continue
-	}
+try {
+	/** @type {any} */ (packageConfig).bin = Object.fromEntries(
+		readDirectorySync("dist/bin").map(name => [ name.slice(0, -3), `bin/${name}` ])
+	)
+} catch (error) {
+	if (error.syscall != "scandir" || error.code != "ENOENT" || error.path != "dist/bin")
+		throw error
 }
 
-writeFile(`dist/package.json`, JSON.stringify(packageJSON, undefined, `\t`))
+makeDirectorySync("dist", { recursive: true })
+writeFileSync("dist/package.json", JSON.stringify(packageConfig, undefined, "\t"))
+process.exit()
