@@ -1,5 +1,5 @@
 # Binmat Simulator
-[![Tests](https://github.com/samualtnorman/binmat/actions/workflows/tests.yml/badge.svg)](https://github.com/samualtnorman/binmat/actions/workflows/tests.yml)
+[![Test](https://github.com/samualtnorman/binmat/actions/workflows/test.yml/badge.svg)](https://github.com/samualtnorman/binmat/actions/workflows/test.yml)
 [![Lint](https://github.com/samualtnorman/binmat/actions/workflows/lint.yml/badge.svg)](https://github.com/samualtnorman/binmat/actions/workflows/lint.yml)
 [![Publish](https://github.com/samualtnorman/binmat/actions/workflows/publish.yml/badge.svg)](https://github.com/samualtnorman/binmat/actions/workflows/publish.yml)
 
