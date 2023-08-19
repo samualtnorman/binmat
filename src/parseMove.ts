@@ -185,5 +185,3 @@ export function parseMove(move: string, extra = false): Move {
 			throw new Error(`invalid move kind "${move[0]}" in "${move}"`)
 	}
 }
-
-export default parseMove

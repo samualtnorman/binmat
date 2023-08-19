@@ -1,5 +1,5 @@
 import type { CombatData } from "./doCombat"
-import doCombat from "./doCombat"
+import { doCombat } from "./doCombat"
 import type { Lane, State } from "./shared"
 import { Role, StatusCode } from "./shared"
 
@@ -34,5 +34,3 @@ export function doMoveCombat(state: State, lane: Lane): (
 
 	return combatResult
 }
-
-export default doMoveCombat

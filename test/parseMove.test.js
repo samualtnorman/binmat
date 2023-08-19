@@ -1,4 +1,4 @@
-import parseMove from "../src/parseMove"
+import { parseMove } from "../src/parseMove"
 import { AttackerDeck, AttackerDiscardPile, MoveKind } from "../src/shared"
 
 test("pass", () =>

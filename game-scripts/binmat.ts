@@ -1,8 +1,8 @@
 import { assert } from "@samual/lib/assert"
 import { isRecord } from "@samual/lib/isRecord"
-import makeState from "../src/makeState"
-import doMove from "../src/doMove"
-import parseMove from "../src/parseMove"
+import { doMove } from "../src/doMove"
+import { makeState } from "../src/makeState"
+import { parseMove } from "../src/parseMove"
 import type { Card, State } from "../src/shared"
 import { CardSuit, MoveKind, Role, StatusCode, StatusCodeMessages } from "../src/shared"
 

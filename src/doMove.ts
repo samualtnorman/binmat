@@ -1,10 +1,10 @@
 import type { CombatData } from "./doCombat"
-import doMoveCombat from "./doMoveCombat"
-import doMoveDiscard from "./doMoveDiscard"
-import doMoveDraw from "./doMoveDraw"
-import doMovePass from "./doMovePass"
-import doMovePlay from "./doMovePlay"
-import doMovePlayFaceUp from "./doMovePlayFaceUp"
+import { doMoveCombat } from "./doMoveCombat"
+import { doMoveDiscard } from "./doMoveDiscard"
+import { doMoveDraw } from "./doMoveDraw"
+import { doMovePass } from "./doMovePass"
+import { doMovePlay } from "./doMovePlay"
+import { doMovePlayFaceUp } from "./doMovePlayFaceUp"
 import type { Card, Lane, Move, State } from "./shared"
 import { AttackerDeck, MoveKind, StatusCode } from "./shared"
 
@@ -203,5 +203,3 @@ export function doMove(state: State, move: Move): {
 			binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} - / ${attackerStackDiscarded} x${lane}`)
 	}
 }
-
-export default doMove

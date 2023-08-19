@@ -1,10 +1,10 @@
 import type { LaxPartial } from "@samual/lib"
 import "../game-scripts/hackmud.d"
-import makeState from "./makeState"
-import doMove from "./doMove"
+import { doMove } from "./doMove"
 import type { BinmatArgs } from "./generateArgs"
 import { generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
-import parseMove from "./parseMove"
+import { makeState } from "./makeState"
+import { parseMove } from "./parseMove"
 import type { State } from "./shared"
 import { MoveKind, Role, StatusCode, StatusCodeMessages } from "./shared"
 
@@ -186,5 +186,3 @@ export function simulateGame(
 		return { ok: false }
 	}
 }
-
-export default simulateGame

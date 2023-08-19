@@ -1,6 +1,6 @@
 import { assert } from "@samual/lib/assert"
 import type { CombatData } from "./doCombat"
-import doCombat from "./doCombat"
+import { doCombat } from "./doCombat"
 import type { Card, CardValue, Lane, State } from "./shared"
 import { CardModifier, Role, StatusCode } from "./shared"
 
@@ -94,5 +94,3 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 
 	return { status: StatusCode.Ok, cardPlayed, combat }
 }
-
-export default doMovePlayFaceUp

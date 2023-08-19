@@ -33,5 +33,3 @@ export function doMovePass(state: State) {
 
 	return StatusCode.Ok
 }
-
-export default doMovePass

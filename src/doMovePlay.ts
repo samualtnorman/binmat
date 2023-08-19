@@ -52,5 +52,3 @@ export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
 
 	return { status: StatusCode.Ok, cardPlayed }
 }
-
-export default doMovePlay

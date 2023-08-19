@@ -1,4 +1,4 @@
-import doMovePlay from "../src/doMovePlay"
+import { doMovePlay } from "../src/doMovePlay"
 import { StatusCode } from "../src/shared"
 
 test("finished game", () => {

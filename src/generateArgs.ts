@@ -395,8 +395,6 @@ export function generateArgs(state: State, defender: string, attacker: string, b
 		: generateArgsForDefender(state, defender, attacker, binlog)
 }
 
-export default generateArgs
-
 export function generateArgsForDefender(state: State, defender: string, attacker: string, binlog: string[]) {
 	const args: BinmatArgs = {
 		plr: `d0`,

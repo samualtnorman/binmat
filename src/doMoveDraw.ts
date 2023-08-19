@@ -55,5 +55,3 @@ export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
 
 	return { status: StatusCode.Ok, cardDrawn }
 }
-
-export default doMoveDraw

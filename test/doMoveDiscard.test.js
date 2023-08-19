@@ -1,7 +1,7 @@
-import doMoveDiscard from "../src/doMoveDiscard"
+import { doMoveDiscard } from "../src/doMoveDiscard"
 import { AttackerDeck, AttackerDiscardPile, StatusCode } from "../src/shared"
 
-jest.mock("@samual/lib", () => ({ ...jest.requireActual("@samual/lib"), shuffle: array => array }))
+jest.mock("@samual/lib/shuffle", () => ({ ...jest.requireActual("@samual/lib/shuffle"), shuffle: array => array }))
 
 test("finished game", () => {
 	/** @type {import("../src/shared").State} */

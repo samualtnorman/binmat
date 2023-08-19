@@ -73,5 +73,3 @@ export function doMoveDiscard(state: State, card: Card | CardValue, discardPile:
 
 	return { status: StatusCode.Ok, cardDiscarded, cardsDrawn }
 }
-
-export default doMoveDiscard

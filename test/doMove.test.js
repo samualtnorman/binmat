@@ -1,4 +1,4 @@
-import doMove from "../src/doMove"
+import { doMove } from "../src/doMove"
 import { AttackerDeck, AttackerDiscardPile, MoveKind, StatusCode } from "../src/shared"
 
 it("works", () => {

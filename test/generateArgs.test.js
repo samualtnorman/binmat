@@ -1,4 +1,4 @@
-import generateArgs from "../src/generateArgs"
+import { generateArgs } from "../src/generateArgs"
 
 it("works", () => {
 	expect(generateArgs({

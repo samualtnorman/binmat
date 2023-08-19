@@ -26,11 +26,7 @@ export default findFiles(SOURCE_FOLDER).then(foundFiles => /** @type {import("ro
 	plugins: [
 		babel({
 			babelHelpers: "bundled",
-			extensions: [ ".ts" ],
-			presets: [
-				[ "@babel/preset-env", { targets: { node: "18" } } ],
-				[ "@babel/preset-typescript", { allowDeclareFields: true } ]
-			]
+			extensions: [ ".ts" ]
 		}),
 		nodeResolve({ extensions: [ ".ts" ] }),
 		terser(/** @type {Parameters<typeof terser>[0] & { maxWorkers: number }} */ ({

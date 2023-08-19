@@ -246,5 +246,3 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Ok | St
 		}
 	}
 }
-
-export default doCombat

@@ -36,5 +36,3 @@ export function makeState(deck = shuffle([ ...Cards ])): State {
 		defenderPassedLastTurn: false
 	}
 }
-
-export default makeState
