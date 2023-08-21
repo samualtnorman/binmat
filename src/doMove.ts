@@ -174,13 +174,10 @@ export function doMove(state: State, move: Move): {
 		if (defenderBouncesDiscarded.length)
 			binlog.push(`\`n--\` d? / ${defenderBouncesDiscarded.join(` `)} xa`)
 
-		const attackerStackDiscarded = (
-			roleTurn == `a` &&
-			cardIsPlayedFaceUp &&
-			combatData.attackerStackDiscarded.at(-1) == cardIsPlayedFaceUp
-		)
-			? `${combatData.attackerStackDiscarded.join(` `)}u`
-			: combatData.attackerStackDiscarded.join(` `)
+		const attackerStackDiscarded =
+			roleTurn == `a` && cardIsPlayedFaceUp && combatData.attackerStackDiscarded.at(-1) == cardIsPlayedFaceUp
+				? `${combatData.attackerStackDiscarded.join(` `)}u`
+				: combatData.attackerStackDiscarded.join(` `)
 
 		if (damageValue) {
 			const cardsDrawnToDiscard = combatData.cardsDrawnToDiscard.length
@@ -198,7 +195,7 @@ export function doMove(state: State, move: Move): {
 
 			binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} ${damageValue} / ${attackerStackDiscarded} xa${cardsDrawnToDiscard}${cardsDrawn}`)
 		} else if (!attackerAttackPower && !defenderAttackPower)
-			binlog.push(`\`n--\` 0 0 0 / ${attackerStackDiscarded} x${lane}`)
+			binlog.push(`\`n--\` 0 0 0 / ${attackerStackDiscarded} xa`)
 		else
 			binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} - / ${attackerStackDiscarded} x${lane}`)
 	}

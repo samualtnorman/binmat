@@ -425,7 +425,7 @@ test("bounce (attacker)", () => {
 		cardsDrawn: [],
 		attackerBouncesDiscarded: [ "?!" ],
 		attackerCardsTrapped: [],
-		attackerStackDiscarded: [ "?!" ],
+		attackerStackDiscarded: [],
 		defenderBouncesDiscarded: [],
 		defenderCardsTrapped: [],
 		defenderStackWasFaceUp: false,

@@ -123,8 +123,8 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Ok | St
 
 	let cardsDrawn: Card[]
 	let damageValue = 0
+	let attackerStackDiscarded
 
-	const attackerStackDiscarded = [ ...attackerStack ]
 	const defenderBouncesDiscarded: `?${CardSuit}`[] = []
 	const attackerBouncesDiscarded: `?${CardSuit}`[] = []
 
@@ -145,13 +145,17 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Ok | St
 			laneDiscardPile.push(bounceDiscarded)
 		}
 
+		attackerStackDiscarded = [ ...attackerStack ]
 		cardsDrawnToDiscard = []
 		cardsDrawn = []
 	} else if (defenderAttackPower > attackerAttackPower) {
+		attackerStackDiscarded = [ ...attackerStack ]
 		laneDiscardPile.push(...attackerStack.splice(0))
 		cardsDrawnToDiscard = []
 		cardsDrawn = []
 	} else {
+		attackerStackDiscarded = [ ...attackerStack ]
+
 		damageValue = breakPresent
 			? Math.max(attackerAttackPower, defenderStack.length)
 			: attackerAttackPower - defenderAttackPower + 1
