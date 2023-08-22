@@ -1,7 +1,10 @@
+import { expect, test, vi } from "vitest"
 import { doMoveDiscard } from "../src/doMoveDiscard"
 import { AttackerDeck, AttackerDiscardPile, StatusCode } from "../src/shared"
 
-jest.mock("@samual/lib/shuffle", () => ({ ...jest.requireActual("@samual/lib/shuffle"), shuffle: array => array }))
+vi.mock("@samual/lib/shuffle", () =>
+	/** @satisfies {typeof import("@samual/lib/shuffle")} */ ({ default: array => array, shuffle: array => array })
+)
 
 test("finished game", () => {
 	/** @type {import("../src/shared").State} */

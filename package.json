@@ -23,7 +23,7 @@
 		"emit-declarations": "tsc --project src --declaration --emitDeclarationOnly --noEmit false --outDir dist",
 		"package": "rm -rf dist && pnpm build && pnpm emit-declarations && scripts/build-package-json.js && cp LICENSE README.md dist",
 		"update": "pnpm update --latest !@types/node && pnpm update @types/node",
-		"test": "jest --coverage --collectCoverageFrom=\"./src/*.ts\"",
+		"test": "vitest run --coverage",
 		"push-script": "hsm push game-scripts \"*.binmat\""
 	},
 	"dependencies": {
@@ -36,15 +36,15 @@
 		"@rollup/plugin-node-resolve": "^15.2.0",
 		"@rollup/plugin-terser": "^0.4.3",
 		"@samual/eslint-config": "^0.0.1",
-		"@types/jest": "^29.5.3",
 		"@types/node": "^18.17.6",
+		"@vitest/coverage-v8": "^0.34.2",
 		"eslint": "^8.47.0",
 		"hackmud-script-manager": "^0.18.0",
-		"jest": "^29.6.2",
 		"magic-string": "^0.30.2",
 		"rollup": "^3.28.0",
 		"semver": "^7.5.4",
-		"typescript": "5.1.6"
+		"typescript": "5.1.6",
+		"vitest": "^0.34.2"
 	},
 	"engines": {
 		"node": ">=18"

@@ -1,3 +1,4 @@
+import { expect, test } from "vitest"
 import { Role } from "../src/shared"
 import { simulateGame } from "../src/simulateGame"
 

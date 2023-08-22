@@ -1,3 +1,4 @@
+import { expect, test } from "vitest"
 import { doMovePlayFaceUp } from "../src/doMovePlayFaceUp"
 import { CardModifier, StatusCode } from "../src/shared"
 

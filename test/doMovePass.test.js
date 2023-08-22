@@ -1,3 +1,4 @@
+import { expect, test } from "vitest"
 import { doMovePass } from "../src/doMovePass"
 import { StatusCode } from "../src/shared"
 

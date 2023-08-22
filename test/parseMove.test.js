@@ -1,3 +1,4 @@
+import { expect, test } from "vitest"
 import { parseMove } from "../src/parseMove"
 import { AttackerDeck, AttackerDiscardPile, MoveKind } from "../src/shared"
 

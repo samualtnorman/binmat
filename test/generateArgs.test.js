@@ -1,3 +1,4 @@
+import { expect, it } from "vitest"
 import { generateArgs } from "../src/generateArgs"
 
 it("works", () => {
