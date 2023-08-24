@@ -3,7 +3,7 @@ import { doCombat } from "../src/doCombat"
 import { StatusCode } from "../src/shared"
 
 vi.mock("@samual/lib/shuffle", () =>
-	/** @satisfies {typeof import("@samual/lib/shuffle")} */ ({ default: array => array, shuffle: array => array })
+	/** @satisfies {typeof import("@samual/lib/shuffle")} */ ({ shuffle: array => array })
 )
 
 test("trap (defender)", () => {

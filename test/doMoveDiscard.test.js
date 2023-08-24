@@ -3,7 +3,7 @@ import { doMoveDiscard } from "../src/doMoveDiscard"
 import { AttackerDeck, AttackerDiscardPile, StatusCode } from "../src/shared"
 
 vi.mock("@samual/lib/shuffle", () =>
-	/** @satisfies {typeof import("@samual/lib/shuffle")} */ ({ default: array => array, shuffle: array => array })
+	/** @satisfies {typeof import("@samual/lib/shuffle")} */ ({ shuffle: array => array })
 )
 
 test("finished game", () => {
