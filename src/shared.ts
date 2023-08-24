@@ -8,6 +8,7 @@ export type State = {
 	attackerHand: Card[]
 	defenderHand: Card[]
 	turn: number
+	// TODO think about renaming or removing `turns`
 	turns: number
 	attackerPassedLastTurn: boolean
 	defenderPassedLastTurn: boolean
@@ -18,49 +19,24 @@ export type CardValue = CardNumber | CardModifier
 export type CardNumber = "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "a"
 
 export const enum CardModifier {
-	Trap = `@`,
-	Wild = `*`,
-	Bounce = `?`,
-	Break = `>`
+	Trap = `@`, Wild = `*`, Bounce = `?`, Break = `>`
 }
 
 export const enum CardSuit {
-	Form = `&`,
-	Kin = `%`,
-	Data = `+`,
-	Chaos = `!`,
-	Void = `^`,
-	Choice = `#`
+	Form = `&`, Kin = `%`, Data = `+`, Chaos = `!`, Void = `^`, Choice = `#`
 }
 
-export type DefenderStack = {
-	cards: Card[]
-	isFaceUp: boolean
-}
+export type DefenderStack = { cards: Card[], isFaceUp: boolean }
 
-export type Move = {
-	kind: MoveKind.Draw
-	deck: Lane | AttackerDeck
-} | {
-	kind: MoveKind.Play | MoveKind.PlayFaceUp
-	card: Card | CardValue
-	lane: Lane
-} | {
-	kind: MoveKind.Combat
-	lane: Lane
-} | {
-	kind: MoveKind.Discard
-	card: Card | CardValue
-	discardPile: Lane | AttackerDiscardPile
-} | { kind: MoveKind.Pass }
+export type Move =
+	{ kind: MoveKind.Draw, deck: Lane | AttackerDeck } |
+	{ kind: MoveKind.Play | MoveKind.PlayFaceUp, card: Card | CardValue, lane: Lane } |
+	{ kind: MoveKind.Combat, lane: Lane } |
+	{ kind: MoveKind.Discard, card: Card | CardValue, discardPile: Lane | AttackerDiscardPile } |
+	{ kind: MoveKind.Pass }
 
 export const enum MoveKind {
-	Draw,
-	Play,
-	PlayFaceUp,
-	Combat,
-	Discard,
-	Pass
+	Draw, Play, PlayFaceUp, Combat, Discard, Pass
 }
 
 export type Lane = 0 | 2 | 1 | 3 | 4 | 5
@@ -72,21 +48,10 @@ export const AttackerDiscardPile = 6
 export type AttackerDiscardPile = typeof AttackerDiscardPile
 
 export const enum StatusCode {
-	Ok,
-	DefenderWin,
-	AttackerWin,
-	MadeMoveOnFinishedGame,
-	DefenderDrewFromAttackerDeck,
-	AttackerDrewFromBlockedLane,
-	PlayedUnownedCard,
-	PlayedBreakToEmptyStack,
-	DefenderInitiatedCombat,
-	AttackerInitiatedCombatWithEmptyStack,
-	DiscardedToOpponentDiscardPile,
-	AttackerDiscardedToEmptyDiscardAndDeck,
-	AttackerDrewFromEmptyDiscardAndDeck,
-	PlayedCardFacedWrongWay,
-	DefenderPlayedFaceUpBreakToStackWithBreak
+	Ok, DefenderWin, AttackerWin, MadeMoveOnFinishedGame, DefenderDrewFromAttackerDeck, AttackerDrewFromBlockedLane,
+	PlayedUnownedCard, PlayedBreakToEmptyStack, DefenderInitiatedCombat, AttackerInitiatedCombatWithEmptyStack,
+	DiscardedToOpponentDiscardPile, AttackerDiscardedToEmptyDiscardAndDeck, AttackerDrewFromEmptyDiscardAndDeck,
+	PlayedCardFacedWrongWay, DefenderPlayedFaceUpBreakToStackWithBreak
 }
 
 export const StatusCodeMessages: Record<StatusCode, string> = [
@@ -108,6 +73,5 @@ export const StatusCodeMessages: Record<StatusCode, string> = [
 ]
 
 export const enum Role {
-	Defender = 1,
-	Attacker
+	Defender = 1, Attacker
 }

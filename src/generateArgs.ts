@@ -76,22 +76,22 @@ export type BinmatArgs = {
 		a5?: `X`[]
 
 		/** defender stack 0 */
-		d0?: Card[]
+		d0?: (Card | `${Card}u`)[]
 
 		/** defender stack 1 */
-		d1?: Card[]
+		d1?: (Card | `${Card}u`)[]
 
 		/** defender stack 2 */
-		d2?: Card[]
+		d2?: (Card | `${Card}u`)[]
 
 		/** defender stack 3 */
-		d3?: Card[]
+		d3?: (Card | `${Card}u`)[]
 
 		/** defender stack 4 */
-		d4?: Card[]
+		d4?: (Card | `${Card}u`)[]
 
 		/** defender stack 5 */
-		d5?: Card[]
+		d5?: (Card | `${Card}u`)[]
 
 		/** attacker 0 hand */
 		ha0?: number
@@ -268,22 +268,22 @@ export type BinmatArgs = {
 		a5?: Card[]
 
 		/** defender stack 0 */
-		d0?: Card[] | `X`[]
+		d0?: `${Card}u`[] | `X`[]
 
 		/** defender stack 1 */
-		d1?: Card[] | `X`[]
+		d1?: `${Card}u`[] | `X`[]
 
 		/** defender stack 2 */
-		d2?: Card[] | `X`[]
+		d2?: `${Card}u`[] | `X`[]
 
 		/** defender stack 3 */
-		d3?: Card[] | `X`[]
+		d3?: `${Card}u`[] | `X`[]
 
 		/** defender stack 4 */
-		d4?: Card[] | `X`[]
+		d4?: `${Card}u`[] | `X`[]
 
 		/** defender stack 5 */
-		d5?: Card[] | `X`[]
+		d5?: `${Card}u`[] | `X`[]
 
 		/** attacker 0 hand */
 		ha0?: Card[]
@@ -469,23 +469,41 @@ export function generateArgsForDefender(state: State, defender: string, attacker
 	if (state.attackerStacks[5].length)
 		args.s.a5 = state.attackerStacks[5].map(() => `X`)
 
-	if (state.defenderStacks[0].cards.length)
-		args.s.d0 = [ ...state.defenderStacks[0].cards ]
+	if (state.defenderStacks[0].cards.length) {
+		args.s.d0 = state.defenderStacks[0].isFaceUp
+			? state.defenderStacks[0].cards.map(card => `${card}u` as const)
+			: [ ...state.defenderStacks[0].cards ]
+	}
 
-	if (state.defenderStacks[1].cards.length)
-		args.s.d1 = [ ...state.defenderStacks[1].cards ]
+	if (state.defenderStacks[1].cards.length) {
+		args.s.d1 = state.defenderStacks[1].isFaceUp
+			? state.defenderStacks[1].cards.map(card => `${card}u` as const)
+			: [ ...state.defenderStacks[1].cards ]
+	}
 
-	if (state.defenderStacks[2].cards.length)
-		args.s.d2 = [ ...state.defenderStacks[2].cards ]
+	if (state.defenderStacks[2].cards.length) {
+		args.s.d2 = state.defenderStacks[2].isFaceUp
+			? state.defenderStacks[2].cards.map(card => `${card}u` as const)
+			: [ ...state.defenderStacks[2].cards ]
+	}
 
-	if (state.defenderStacks[3].cards.length)
-		args.s.d3 = [ ...state.defenderStacks[3].cards ]
+	if (state.defenderStacks[3].cards.length) {
+		args.s.d3 = state.defenderStacks[3].isFaceUp
+			? state.defenderStacks[3].cards.map(card => `${card}u` as const)
+			: [ ...state.defenderStacks[3].cards ]
+	}
 
-	if (state.defenderStacks[4].cards.length)
-		args.s.d4 = [ ...state.defenderStacks[4].cards ]
+	if (state.defenderStacks[4].cards.length) {
+		args.s.d4 = state.defenderStacks[4].isFaceUp
+			? state.defenderStacks[4].cards.map(card => `${card}u` as const)
+			: [ ...state.defenderStacks[4].cards ]
+	}
 
-	if (state.defenderStacks[5].cards.length)
-		args.s.d5 = [ ...state.defenderStacks[5].cards ]
+	if (state.defenderStacks[5].cards.length) {
+		args.s.d5 = state.defenderStacks[5].isFaceUp
+			? state.defenderStacks[5].cards.map(card => `${card}u` as const)
+			: [ ...state.defenderStacks[5].cards ]
+	}
 
 	if (state.attackerHand.length)
 		args.s.ha0 = state.attackerHand.length
@@ -572,37 +590,37 @@ export function generateArgsForAttacker(state: State, defender: string, attacker
 
 	if (state.defenderStacks[0].cards.length) {
 		args.s.d0 = state.defenderStacks[0].isFaceUp
-			? [ ...state.defenderStacks[0].cards ]
+			? state.defenderStacks[0].cards.map(card => `${card}u` as const)
 			: state.defenderStacks[0].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[1].cards.length) {
 		args.s.d1 = state.defenderStacks[1].isFaceUp
-			? [ ...state.defenderStacks[1].cards ]
+			? state.defenderStacks[1].cards.map(card => `${card}u` as const)
 			: state.defenderStacks[1].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[2].cards.length) {
 		args.s.d2 = state.defenderStacks[2].isFaceUp
-			? [ ...state.defenderStacks[2].cards ]
+			? state.defenderStacks[2].cards.map(card => `${card}u` as const)
 			: state.defenderStacks[2].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[3].cards.length) {
 		args.s.d3 = state.defenderStacks[3].isFaceUp
-			? [ ...state.defenderStacks[3].cards ]
+			? state.defenderStacks[3].cards.map(card => `${card}u` as const)
 			: state.defenderStacks[3].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[4].cards.length) {
 		args.s.d4 = state.defenderStacks[4].isFaceUp
-			? [ ...state.defenderStacks[4].cards ]
+			? state.defenderStacks[4].cards.map(card => `${card}u` as const)
 			: state.defenderStacks[4].cards.map(() => `X`)
 	}
 
 	if (state.defenderStacks[5].cards.length) {
 		args.s.d5 = state.defenderStacks[5].isFaceUp
-			? [ ...state.defenderStacks[5].cards ]
+			? state.defenderStacks[5].cards.map(card => `${card}u` as const)
 			: state.defenderStacks[5].cards.map(() => `X`)
 	}
 
