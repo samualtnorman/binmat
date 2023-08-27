@@ -1,5 +1,6 @@
-import { shuffle } from "@samual/lib/shuffle"
-import type { Card, CardSuit, CardValue, Lane, State } from "./shared"
+import type { LaxPartial } from "@samual/lib"
+import { shuffle as shuffle_ } from "@samual/lib/shuffle"
+import type { Card, CardSuit, CardValue, InjectShuffleOptions, Lane, State } from "./shared"
 import { CardModifier, Role, StatusCode } from "./shared"
 
 export type CombatData = {
@@ -20,7 +21,11 @@ export type CombatData = {
 
 export const PowersOfTwo = [ 2, 4, 8, 16, 32, 64, 128, 256 ]
 
-export function doCombat(state: State, lane: Lane): { status: StatusCode.Ok | StatusCode.AttackerWin } & CombatData {
+export function doCombat(
+	state: State,
+	lane: Lane,
+	{ shuffle = shuffle_ }: LaxPartial<InjectShuffleOptions> = {}
+): { status: StatusCode.Ok | StatusCode.AttackerWin } & CombatData {
 	const roleTurn: Role = (state.turn % 2) + 1
 	const laneDeck = state.laneDecks[lane]
 	const laneDiscardPile = state.laneDiscardPiles[lane]

@@ -1,10 +1,16 @@
+import type { LaxPartial } from "@samual/lib"
 import { assert } from "@samual/lib/assert"
 import type { CombatData } from "./doCombat"
 import { doCombat } from "./doCombat"
-import type { Card, CardValue, Lane, State } from "./shared"
+import type { Card, CardValue, InjectShuffleOptions, Lane, State } from "./shared"
 import { CardModifier, Role, StatusCode } from "./shared"
 
-export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lane): {
+export function doMovePlayFaceUp(
+	state: State,
+	card: Card | CardValue,
+	lane: Lane,
+	options?: LaxPartial<InjectShuffleOptions>
+): {
 	status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin
 	cardPlayed: Card
 	combat: CombatData | undefined
@@ -43,7 +49,7 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 
 			let status
 
-			({ status, ...combat } = doCombat(state, lane))
+			({ status, ...combat } = doCombat(state, lane, options))
 
 			if (status == StatusCode.AttackerWin)
 				return { status, cardPlayed, combat }
@@ -71,7 +77,7 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 
 			let status
 
-			({ status, ...combat } = doCombat(state, lane))
+			({ status, ...combat } = doCombat(state, lane, options))
 
 			if (status == StatusCode.AttackerWin)
 				return { status, cardPlayed, combat }
@@ -81,7 +87,7 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 
 			let status
 
-			({ status, ...combat } = doCombat(state, lane))
+			({ status, ...combat } = doCombat(state, lane, options))
 			assert(status != StatusCode.AttackerWin, `attacker won when playing a face up bounce`)
 		} else
 			return { status: StatusCode.PlayedCardFacedWrongWay }

@@ -1,3 +1,5 @@
+import type { shuffle } from "@samual/lib/shuffle"
+
 export type State = {
 	attackerStacks: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
 	defenderStacks: [ DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack ]
@@ -75,3 +77,5 @@ export const StatusCodeMessages: Record<StatusCode, string> = [
 export const enum Role {
 	Defender = 1, Attacker
 }
+
+export type InjectShuffleOptions = { /** Override `shuffle()` function, useful for tests */ shuffle: typeof shuffle }

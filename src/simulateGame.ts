@@ -4,10 +4,10 @@ import type { BinmatArgs } from "./generateArgs"
 import { generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
 import { makeState } from "./makeState"
 import { parseMove } from "./parseMove"
-import type { State } from "./shared"
+import type { InjectShuffleOptions, State } from "./shared"
 import { MoveKind, Role, StatusCode, StatusCodeMessages } from "./shared"
 
-export type SimulateGameOptions = {
+export type SimulateGameOptions = InjectShuffleOptions & {
 	/** How many milliseconds the brain is allowed @default 5000 */ timeLimit: number
 	/** @default "defender" */ defenderUserName: string
 	/** @default "attacker" */ attackerUserName: string
@@ -48,7 +48,8 @@ export function simulateGame(
 		attackerUserName = `attacker`,
 		noThrow = false,
 		onMove,
-		state = makeState()
+		state = makeState(),
+		shuffle
 	}: LaxPartial<SimulateGameOptions> = {}
 ) {
 	let endTime: number
@@ -153,7 +154,7 @@ export function simulateGame(
 			throw error
 		}
 
-		const result = doMove(state, move)
+		const result = doMove(state, move, { shuffle })
 
 		switch (result.status) {
 			case StatusCode.Ok: break
@@ -181,7 +182,7 @@ export function simulateGame(
 	}
 
 	function doDefaultMove() {
-		const result = doMove(state, { kind: MoveKind.Pass })
+		const result = doMove(state, { kind: MoveKind.Pass }, { shuffle })
 
 		switch (result.status) {
 			case StatusCode.Ok: break

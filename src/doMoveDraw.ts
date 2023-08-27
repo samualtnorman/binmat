@@ -1,17 +1,15 @@
-import { shuffle } from "@samual/lib/shuffle"
-import type { Card, Lane, State } from "./shared"
+import type { LaxPartial } from "@samual/lib"
+import { shuffle as shuffle_ } from "@samual/lib/shuffle"
+import type { Card, InjectShuffleOptions, Lane, State } from "./shared"
 import { AttackerDeck, AttackerDiscardPile, Role, StatusCode } from "./shared"
 
-export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
-	status: StatusCode.Ok | StatusCode.DefenderWin
-	cardDrawn: Card
-} | {
-	status:
-		StatusCode.MadeMoveOnFinishedGame |
-		StatusCode.DefenderDrewFromAttackerDeck |
-		StatusCode.AttackerDrewFromBlockedLane |
-		StatusCode.AttackerDrewFromEmptyDiscardAndDeck |
-		StatusCode.AttackerWin
+export function doMoveDraw(
+	state: State,
+	deckToDrawFrom: Lane | AttackerDeck,
+	{ shuffle = shuffle_ }: LaxPartial<InjectShuffleOptions> = {}
+): { status: StatusCode.Ok | StatusCode.DefenderWin, cardDrawn: Card } | {
+	status: StatusCode.MadeMoveOnFinishedGame | StatusCode.DefenderDrewFromAttackerDeck |
+		StatusCode.AttackerDrewFromBlockedLane | StatusCode.AttackerDrewFromEmptyDiscardAndDeck | StatusCode.AttackerWin
 } {
 	if (state.turn >= state.turns)
 		return { status: StatusCode.MadeMoveOnFinishedGame }
