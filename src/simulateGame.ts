@@ -53,8 +53,8 @@ export function simulateGame(
 ) {
 	let endTime: number
 	let winner: Role | undefined
-	let lastLastBinlog: string[] = []
-	let lastBinlog: string[] = []
+	let defenderBinlog: string[] = []
+	let attackerBinlog: string[] = []
 	let madeMove: boolean
 
 	while (true) {
@@ -74,7 +74,7 @@ export function simulateGame(
 				state,
 				defenderUserName,
 				attackerUserName,
-				[ ...lastLastBinlog, ...lastBinlog ]
+				[ ...defenderBinlog, ...attackerBinlog ]
 			),
 			xform
 		)
@@ -86,7 +86,7 @@ export function simulateGame(
 				throw new Error(`defender brain did not attempt to make a move`)
 		}
 
-		onMove?.(state, lastBinlog)
+		onMove?.(state, defenderBinlog)
 
 		if (winner)
 			return winner
@@ -107,7 +107,7 @@ export function simulateGame(
 				state,
 				defenderUserName,
 				attackerUserName,
-				[ ...lastLastBinlog, ...lastBinlog ]
+				[ ...attackerBinlog, ...defenderBinlog ]
 			),
 			xform
 		)
@@ -119,7 +119,7 @@ export function simulateGame(
 				throw new Error(`attacker brain did not attempt to make a move`)
 		}
 
-		onMove?.(state, lastBinlog)
+		onMove?.(state, attackerBinlog)
 
 		if (winner)
 			return winner
@@ -174,8 +174,10 @@ export function simulateGame(
 			}
 		}
 
-		lastLastBinlog = lastBinlog
-		lastBinlog = result.binlog
+		if ((state.turn % 2) + 1 == Role.Defender)
+			attackerBinlog = result.binlog
+		else
+			defenderBinlog = result.binlog
 
 		return { ok: true }
 	}
@@ -194,8 +196,10 @@ export function simulateGame(
 				throw new Error(`unexpected status code ${result.status}`)
 		}
 
-		lastLastBinlog = lastBinlog
-		lastBinlog = result.binlog
+		if ((state.turn % 2) + 1 == Role.Defender)
+			attackerBinlog = result.binlog
+		else
+			defenderBinlog = result.binlog
 
 		return { ok: false }
 	}
