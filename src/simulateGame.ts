@@ -17,6 +17,12 @@ export type SimulateGameOptions = {
 
 	/** Callback that is called after every move */ onMove: (state: State, binlog: string[]) => void
 	/** Initial state of the game */ state: State
+
+	/** Intial state of binlog from defender's last turn (should be even numbered turn) @default [] */
+	defenderBinlog: string[]
+
+	/** Intial state of binlog from attacker's last turn (should be odd numbered turn) @default [] */
+	attackerBinlog: string[]
 }
 
 export type CLIContext = {
@@ -48,13 +54,13 @@ export function simulateGame(
 		attackerUserName = `attacker`,
 		noThrow = false,
 		onMove,
-		state = makeState()
+		state = makeState(),
+		defenderBinlog = [],
+		attackerBinlog = []
 	}: LaxPartial<SimulateGameOptions> = {}
 ) {
 	let endTime: number
 	let winner: Role | undefined
-	let defenderBinlog: string[] = []
-	let attackerBinlog: string[] = []
 	let madeMove: boolean
 
 	while (true) {
