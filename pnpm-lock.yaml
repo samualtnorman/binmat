@@ -16,6 +16,9 @@ devDependencies:
   '@babel/preset-typescript':
     specifier: ^7.23.3
     version: 7.23.3(@babel/core@7.23.7)
+  '@rescript/core':
+    specifier: ^0.6.0
+    version: 0.6.0(rescript@11.0.1)
   '@rollup/plugin-babel':
     specifier: ^6.0.4
     version: 6.0.4(@babel/core@7.23.7)(rollup@4.9.5)
@@ -43,6 +46,9 @@ devDependencies:
   magic-string:
     specifier: ^0.30.5
     version: 0.30.5
+  rescript:
+    specifier: ^11.0.1
+    version: 11.0.1
   rollup:
     specifier: ^4.9.5
     version: 4.9.5
@@ -1854,6 +1860,14 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.16.0
+    dev: true
+
+  /@rescript/core@0.6.0(rescript@11.0.1):
+    resolution: {integrity: sha512-D4ykxSpbmxbQa99kCg6/DztwCNt1tV3t11BLSOvJPHNLSIuQxfAU3ddgRruaH9LQSKOrMUjxQS9z6RdG5iFPoA==}
+    peerDependencies:
+      rescript: ^10.1.0 || ^11.0.0-alpha.0 || next
+    dependencies:
+      rescript: 11.0.1
     dev: true
 
   /@rollup/plugin-babel@6.0.4(@babel/core@7.23.7)(rollup@4.9.5):
@@ -3802,6 +3816,13 @@ packages:
     hasBin: true
     dependencies:
       jsesc: 0.5.0
+    dev: true
+
+  /rescript@11.0.1:
+    resolution: {integrity: sha512-7T4PRp/d0+CBNnY6PYKffFqo9tGZlvnZpboF/n+8SKS+JZ6VvXJO7W538VPZXf3EYx1COGAWWvkF9e/HgSAqHg==}
+    engines: {node: '>=10'}
+    hasBin: true
+    requiresBuild: true
     dev: true
 
   /resolve-from@4.0.0:

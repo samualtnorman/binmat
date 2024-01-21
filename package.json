@@ -24,7 +24,10 @@
 		"package": "rm -rf dist && pnpm build && pnpm emit-declarations && scripts/build-package-json.js && cp LICENSE README.md dist",
 		"update": "pnpm update --latest !@types/node && pnpm update @types/node",
 		"test": "vitest run --coverage",
-		"push-script": "hsm push game-scripts \"*.binmat\""
+		"push-script": "hsm push game-scripts \"*.binmat\"",
+		"res:build": "rescript",
+		"res:clean": "rescript clean",
+		"res:dev": "rescript -w"
 	},
 	"dependencies": {
 		"@samual/lib": "0.9.1"
@@ -32,6 +35,7 @@
 	"devDependencies": {
 		"@babel/preset-env": "^7.23.8",
 		"@babel/preset-typescript": "^7.23.3",
+		"@rescript/core": "^0.6.0",
 		"@rollup/plugin-babel": "^6.0.4",
 		"@rollup/plugin-node-resolve": "^15.2.3",
 		"@rollup/plugin-terser": "^0.4.4",
@@ -41,6 +45,7 @@
 		"eslint": "^8.56.0",
 		"hackmud-script-manager": "^0.19.0",
 		"magic-string": "^0.30.5",
+		"rescript": "^11.0.1",
 		"rollup": "^4.9.5",
 		"semver": "^7.5.4",
 		"typescript": "5.3.3",
