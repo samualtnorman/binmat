@@ -3,3 +3,5 @@ dist
 coverage
 lib
 .bsb.lock
+src/*.d.ts
+src/*.js
