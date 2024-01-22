@@ -36,9 +36,16 @@ type state = {
 
 @genType type lane = Zero | One | Two | Three | Four | Five
 
-@genType type laneOrAttackerDeck = | ...lane | AttackerDeck
+@genType type laneOrAttacker = | ...lane | Attacker
 
-@genType type move = Draw({deck: laneOrAttackerDeck}) | Play({card: cardOrCardFace, lane: lane})
+@genType
+type move =
+  | Draw({deck: laneOrAttacker})
+  | Play({card: cardOrCardFace, lane: lane})
+  | PlayFaceUp({card: cardOrCardFace, lane: lane})
+  | Combat({lane: lane})
+  | Discard({card: cardOrCardFace, discardPile: laneOrAttacker})
+  | Pass({})
 
 @genType
 type status =
@@ -114,4 +121,55 @@ let cardNumberToInt = (number: cardNumber) =>
   | Eight => 8
   | Nine => 9
   | Ten => 10
+  }
+
+@genType
+let laneIsOfFirstThree = lane =>
+  switch lane {
+  | Zero | One | Two => true
+  | _ => false
+  }
+
+@genType
+let cardFaceToString = (face: cardFace) =>
+  switch face {
+  | Two => `2`
+  | Three => `3`
+  | Four => `4`
+  | Five => `5`
+  | Six => `6`
+  | Seven => `7`
+  | Eight => `8`
+  | Nine => `9`
+  | Ten => `a`
+  | Trap => `@`
+  | Wild => `*`
+  | Bounce => `?`
+  | Break => `>`
+  }
+
+@genType
+let cardSuitToString = suit =>
+  switch suit {
+  | Form => `&`
+  | Kin => `%`
+  | Data => `+`
+  | Chaos => `!`
+  | Void => `^`
+  | Choice => `#`
+  }
+
+@genType let cardToString = card => `${cardFaceToString(card.face)}${cardSuitToString(card.suit)}`
+
+@genType let equal = (a, b) => a == b
+
+@genType
+let laneToString = (lane: lane) =>
+  switch lane {
+  | Zero => `0`
+  | One => `1`
+  | Two => `2`
+  | Three => `3`
+  | Four => `4`
+  | Five => `5`
   }

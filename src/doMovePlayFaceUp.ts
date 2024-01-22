@@ -1,96 +1,105 @@
 import { assert } from "@samual/lib/assert"
 import type { CombatData } from "./doCombat"
 import { doCombat } from "./doCombat"
-import type { Card, CardValue, Lane, State } from "./shared"
-import { CardModifier, Role, StatusCode } from "./shared"
+import {
+	equal,
+	getLaneStack,
+	turnToRole,
+	type card as Card,
+	type cardFace as CardFace,
+	type lane as Lane,
+	type state as State
+} from "./shared"
 
-export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lane): {
-	status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin
+export function doMovePlayFaceUp(state: State, card: Card | CardFace, lane: Lane): {
+	status: `Okay` | `DefenderWin` | `AttackerWin`
 	cardPlayed: Card
 	combat: CombatData | undefined
 } | {
 	status:
-		StatusCode.MadeMoveOnFinishedGame |
-		StatusCode.PlayedUnownedCard |
-		StatusCode.PlayedBreakToEmptyStack |
-		StatusCode.PlayedCardFacedWrongWay |
-		StatusCode.DefenderPlayedFaceUpBreakToStackWithBreak
+		`MadeMoveOnFinishedGame` |
+		`PlayedUnownedCard` |
+		`PlayedBreakToEmptyStack` |
+		`PlayedCardFacedWrongWay` |
+		`DefenderPlayedFaceUpBreakToStackWithBreak`
 } {
 	if (state.turn >= state.turns)
-		return { status: StatusCode.MadeMoveOnFinishedGame }
+		return { status: `MadeMoveOnFinishedGame` }
 
-	const roleTurn: Role = (state.turn % 2) + 1
+	const roleTurn = turnToRole(state.turn)
+	const face = typeof card == `string` ? card : card.face
 	let cardPlayed
 	let combat: CombatData | undefined
 
-	if (roleTurn == Role.Defender) {
-		const index = card.length == 2
-			? state.defenderHand.indexOf(card as Card)
-			: state.defenderHand.findIndex(([ value ]) => value == card)
+	if (roleTurn == `Defender`) {
+		const index = state.defenderHand
+		// eslint-disable-next-line unicorn/no-array-callback-reference
+			.findIndex(typeof card == `string` ? ({ face }) => face == card : handCard => equal(handCard, card))
 
 		if (index == -1)
-			return { status: StatusCode.PlayedUnownedCard }
+			return { status: `PlayedUnownedCard` }
 
-		if (card[0] == CardModifier.Break) {
-			if (!state.defenderStacks[lane].cards.length)
-				return { status: StatusCode.PlayedBreakToEmptyStack }
+		if (face == `Break`) {
+			if (!getLaneStack(state.defenderStacks, lane).cards.length)
+				return { status: `PlayedBreakToEmptyStack` }
 
-			if (state.defenderStacks[lane].cards.some(card => card[0] == CardModifier.Break))
-				return { status: StatusCode.DefenderPlayedFaceUpBreakToStackWithBreak }
+			if (getLaneStack(state.defenderStacks, lane).cards.some(card => card.face == `Break`))
+				return { status: `DefenderPlayedFaceUpBreakToStackWithBreak` }
 
 			cardPlayed = state.defenderHand.splice(index, 1)[0]!
-			state.defenderStacks[lane].cards.push(cardPlayed)
+			getLaneStack(state.defenderStacks, lane).cards.push(cardPlayed)
 
 			let status
 
 			({ status, ...combat } = doCombat(state, lane))
 
-			if (status == StatusCode.AttackerWin)
+			if (status == `AttackerWin`)
 				return { status, cardPlayed, combat }
 		} else {
-			if (!state.defenderStacks[lane].isFaceUp)
-				return { status: StatusCode.PlayedCardFacedWrongWay }
+			if (!getLaneStack(state.defenderStacks, lane).isFaceUp)
+				return { status: `PlayedCardFacedWrongWay` }
 
 			cardPlayed = state.defenderHand.splice(index, 1)[0]!
-			state.defenderStacks[lane].cards.push(cardPlayed)
+			getLaneStack(state.defenderStacks, lane).cards.push(cardPlayed)
 		}
 	} else /* attacker turn */ {
-		const index = card.length == 2
-			? state.attackerHand.indexOf(card as Card)
-			: state.attackerHand.findIndex(([ value ]) => value == card)
+		const index = state.attackerHand
+		// eslint-disable-next-line unicorn/no-array-callback-reference
+			.findIndex(typeof card == `string` ? ({ face }) => face == card : handCard => equal(handCard, card))
 
 		if (index == -1)
-			return { status: StatusCode.PlayedUnownedCard }
+			return { status: `PlayedUnownedCard` }
 
-		if (card[0] == CardModifier.Break) {
-			if (!state.attackerStacks[lane].length)
-				return { status: StatusCode.PlayedBreakToEmptyStack }
+		if (face == `Break`) {
+			if (!getLaneStack(state.attackerStacks, lane).length)
+				return { status: `PlayedBreakToEmptyStack` }
 
 			cardPlayed = state.attackerHand.splice(index, 1)[0]!
-			state.attackerStacks[lane].push(cardPlayed)
+			getLaneStack(state.attackerStacks, lane).push(cardPlayed)
 
 			let status
 
 			({ status, ...combat } = doCombat(state, lane))
 
-			if (status == StatusCode.AttackerWin)
+			if (status == `AttackerWin`)
 				return { status, cardPlayed, combat }
-		} else if (card[0] == CardModifier.Bounce) {
+		} else if (face == `Bounce`) {
 			cardPlayed = state.attackerHand.splice(index, 1)[0]!
-			state.attackerStacks[lane].push(cardPlayed)
+			getLaneStack(state.attackerStacks, lane).push(cardPlayed)
 
 			let status
 
 			({ status, ...combat } = doCombat(state, lane))
-			assert(status != StatusCode.AttackerWin, `attacker won when playing a face up bounce`)
+			assert(status != `AttackerWin`, `attacker won when playing a face up bounce`)
 		} else
-			return { status: StatusCode.PlayedCardFacedWrongWay }
+			return { status: `PlayedCardFacedWrongWay` }
 	}
 
+	// @ts-expect-error -- override rescript readonly
 	state.turn++
 
 	if (state.turn == state.turns)
-		return { status: StatusCode.DefenderWin, cardPlayed, combat }
+		return { status: `DefenderWin`, cardPlayed, combat }
 
-	return { status: StatusCode.Ok, cardPlayed, combat }
+	return { status: `Okay`, cardPlayed, combat }
 }

@@ -1,36 +1,36 @@
 import type { CombatData } from "./doCombat"
 import { doCombat } from "./doCombat"
-import type { Lane, State } from "./shared"
-import { Role, StatusCode } from "./shared"
+import { type state as State, type lane as Lane, turnToRole, getLaneStack } from "./shared"
 
 export function doMoveCombat(state: State, lane: Lane): (
-	{ status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin } & CombatData
+	{ status: `Okay` | `DefenderWin` | `AttackerWin` } & CombatData
 ) | {
 	status:
-		StatusCode.MadeMoveOnFinishedGame |
-		StatusCode.DefenderInitiatedCombat |
-		StatusCode.AttackerInitiatedCombatWithEmptyStack
+		`MadeMoveOnFinishedGame` |
+		`DefenderInitiatedCombat` |
+		`AttackerInitiatedCombatWithEmptyStack`
 } {
 	if (state.turn >= state.turns)
-		return { status: StatusCode.MadeMoveOnFinishedGame }
+		return { status: `MadeMoveOnFinishedGame` }
 
-	const roleTurn: Role = (state.turn % 2) + 1
+	const roleTurn = turnToRole(state.turn)
 
-	if (roleTurn == Role.Defender)
-		return { status: StatusCode.DefenderInitiatedCombat }
+	if (roleTurn == `Defender`)
+		return { status: `DefenderInitiatedCombat` }
 
-	if (!state.attackerStacks[lane].length)
-		return { status: StatusCode.AttackerInitiatedCombatWithEmptyStack }
+	if (!getLaneStack(state.attackerStacks, lane).length)
+		return { status: `AttackerInitiatedCombatWithEmptyStack` }
 
 	const combatResult = doCombat(state, lane)
 
-	if (combatResult.status == StatusCode.AttackerWin)
+	if (combatResult.status == `AttackerWin`)
 		return combatResult
 
+	// @ts-expect-error -- rescript
 	state.turn++
 
 	if (state.turn == state.turns)
-		return { ...combatResult, status: StatusCode.DefenderWin }
+		return { ...combatResult, status: `DefenderWin` }
 
 	return combatResult
 }
