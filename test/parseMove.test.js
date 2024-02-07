@@ -58,6 +58,10 @@ test("discard card to attacker discard pile (full card)", () =>
 	expect(parseMove("x8&a")).toEqual({ kind: MoveKind.Discard, card: "8&", discardPile: AttackerDiscardPile })
 )
 
+test("discard card to lane discard pile (only face value)", () =>
+	expect(parseMove("x80")).toEqual({ kind: MoveKind.Discard, card: "8", discardPile: 0 })
+)
+
 test("discard card to lane discard pile (full card)", () =>
 	expect(parseMove("x8&0")).toEqual({ kind: MoveKind.Discard, card: "8&", discardPile: 0 })
 )
