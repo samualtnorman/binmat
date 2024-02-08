@@ -12,6 +12,9 @@
 	},
 	"license": "MIT",
 	"author": "Samual Norman",
+	"contributors": [
+		"Fayti1703 <fayti1703@protonmail.com>"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/samualtnorman/binmat"
