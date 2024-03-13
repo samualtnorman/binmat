@@ -7,8 +7,8 @@ If you need any help, [open an issue](https://github.com/samualtnorman/binmat/is
 
 ## Using To Test Your Binmat Bot
 
-0. Install [Node.js](https://nodejs.org/en/), make a new folder, and open a command window in that folder.
-1. Run `npx degit samualtnorman/binmat/examples/test-binmat-brain`.
+0. Install [Node.js](https://nodejs.org/en/), make a new folder, and open a command window in that folder
+1. Run `npx tiged samualtnorman/binmat/examples/test-binmat-brain`
 1. Run `npm install`
 1. Edit `index.js`
     ```js
