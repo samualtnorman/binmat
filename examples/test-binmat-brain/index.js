@@ -5,6 +5,7 @@ import { simulateGame } from "binmat"
 // in this case we are using the same brain for both
 simulateGame(brain, brain, {
 	timeLimit: 5000, // in milliseconds
+	// console.log() prints its arguments, here we are printing the binlog
 	onMove: (state, binlog) => console.log(binlog.join("\n"))
 })
 
