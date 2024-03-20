@@ -1,6 +1,5 @@
-export { makeState } from "./makeState"
 export { doMove } from "./doMove"
+export { makeState } from "./makeState"
 export { parseMove } from "./parseMove"
-export { MoveKind, StatusCode, StatusCodeMessages } from "./shared"
-export type { Move, Role, State } from "./shared"
+export { MoveKind, Role, StatusCode, StatusCodeMessages, type Move, type State } from "./shared"
 export { simulateGame } from "./simulateGame"
