@@ -1,14 +1,10 @@
 #!/usr/bin/env node
 import { spawnSync } from "child_process"
-import * as semver from "semver"
+import * as Semver from "semver"
 import packageConfig from "../package.json" assert { type: "json" }
 
+const incrementedVersion = Semver.inc(packageConfig.version || "0.0.0", "minor")
 const hash = spawnSync("git", [ "rev-parse", "--short", "HEAD" ], { encoding: "utf8" }).stdout.trim()
 
-spawnSync(
-	"pnpm",
-	[ "version", `${semver.inc(/** @type {any} */ (packageConfig).version || "0.0.0", "minor")}-${hash}` ],
-	{ stdio: "inherit" }
-)
-
+spawnSync("pnpm", [ "version", `${incrementedVersion}-${hash}` ], { stdio: "inherit" })
 process.exit()

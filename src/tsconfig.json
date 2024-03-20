@@ -1,11 +1,9 @@
 {
+	"extends": "..",
 	"compilerOptions": {
 		"exactOptionalPropertyTypes": true,
-		"noUncheckedIndexedAccess": true,
-		"strict": true,
-		"useUnknownInCatchVariables": true,
-		"strictNullChecks": true
+		"declaration": true,
+		"outDir": "../dist"
 	},
-	"extends": "..",
 	"include": [ "**/*" ]
 }

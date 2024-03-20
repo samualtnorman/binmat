@@ -4,5 +4,8 @@
 		"node_modules": true
 	},
 	"typescript.tsdk": "node_modules/typescript/lib",
-	"liveServer.settings.root": "/coverage/lcov-report"
+	"liveServer.settings.root": "/coverage/lcov-report",
+	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true
 }
