@@ -1,7 +1,7 @@
 import { shuffle } from "@samual/lib/shuffle"
-import type { Card, State } from "./common"
+import type { CardString, State } from "./common"
 
-export const Cards: Card[] = [
+export const Cards: CardString[] = [
 	`2&`, `3&`, `4&`, `5&`, `6&`, `7&`, `8&`, `9&`, `a&`, `@&`, `*&`, `?&`, `>&`,
 	`2%`, `3%`, `4%`, `5%`, `6%`, `7%`, `8%`, `9%`, `a%`, `@%`, `*%`, `?%`, `>%`,
 	`2+`, `3+`, `4+`, `5+`, `6+`, `7+`, `8+`, `9+`, `a+`, `@+`, `*+`, `?+`, `>+`,

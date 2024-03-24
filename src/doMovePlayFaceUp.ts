@@ -1,12 +1,12 @@
 import { assert } from "@samual/lib/assert"
 import type { CombatData } from "./doCombat"
 import { doCombat } from "./doCombat"
-import type { Card, CardValue, Lane, State } from "./common"
-import { CardModifier, Role, StatusCode } from "./common"
+import type { CardString, CardStringFace, Lane, State } from "./common"
+import { CardStringFaceModifier, Role, StatusCode } from "./common"
 
-export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lane): {
+export function doMovePlayFaceUp(state: State, card: CardString | CardStringFace, lane: Lane): {
 	status: StatusCode.Okay | StatusCode.DefenderWin | StatusCode.AttackerWin
-	cardPlayed: Card
+	cardPlayed: CardString
 	combat: CombatData | undefined
 } | {
 	status:
@@ -25,17 +25,17 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 
 	if (roleTurn == Role.Defender) {
 		const index = card.length == 2
-			? state.defenderHand.indexOf(card as Card)
+			? state.defenderHand.indexOf(card as CardString)
 			: state.defenderHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }
 
-		if (card[0] == CardModifier.Break) {
+		if (card[0] == CardStringFaceModifier.Break) {
 			if (!state.defenderStacks[lane].cards.length)
 				return { status: StatusCode.PlayedBreakToEmptyStack }
 
-			if (state.defenderStacks[lane].cards.some(card => card[0] == CardModifier.Break))
+			if (state.defenderStacks[lane].cards.some(card => card[0] == CardStringFaceModifier.Break))
 				return { status: StatusCode.DefenderPlayedFaceUpBreakToStackWithBreak }
 
 			cardPlayed = state.defenderHand.splice(index, 1)[0]!
@@ -56,13 +56,13 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 		}
 	} else /* attacker turn */ {
 		const index = card.length == 2
-			? state.attackerHand.indexOf(card as Card)
+			? state.attackerHand.indexOf(card as CardString)
 			: state.attackerHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
 			return { status: StatusCode.PlayedUnownedCard }
 
-		if (card[0] == CardModifier.Break) {
+		if (card[0] == CardStringFaceModifier.Break) {
 			if (!state.attackerStacks[lane].length)
 				return { status: StatusCode.PlayedBreakToEmptyStack }
 
@@ -75,7 +75,7 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 
 			if (status == StatusCode.AttackerWin)
 				return { status, cardPlayed, combat }
-		} else if (card[0] == CardModifier.Bounce) {
+		} else if (card[0] == CardStringFaceModifier.Bounce) {
 			cardPlayed = state.attackerHand.splice(index, 1)[0]!
 			state.attackerStacks[lane].push(cardPlayed)
 

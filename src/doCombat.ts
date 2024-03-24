@@ -1,21 +1,21 @@
 import { shuffle } from "@samual/lib/shuffle"
-import type { Card, CardSuit, CardValue, Lane, State } from "./common"
-import { CardModifier, Role, StatusCode } from "./common"
+import type { CardString, CardStringSuit, CardStringFace, Lane, State } from "./common"
+import { CardStringFaceModifier, Role, StatusCode } from "./common"
 
 export type CombatData = {
-	attackerStack: Card[]
-	defenderStack: Card[]
+	attackerStack: CardString[]
+	defenderStack: CardString[]
 	attackerAttackPower: number
 	defenderAttackPower: number
 	damageValue: number
-	cardsDrawn: Card[]
-	attackerBouncesDiscarded: `?${CardSuit}`[]
-	defenderBouncesDiscarded: `?${CardSuit}`[]
-	attackerCardsTrapped: Card[]
-	defenderCardsTrapped: Card[]
-	attackerStackDiscarded: Card[]
+	cardsDrawn: CardString[]
+	attackerBouncesDiscarded: `?${CardStringSuit}`[]
+	defenderBouncesDiscarded: `?${CardStringSuit}`[]
+	attackerCardsTrapped: CardString[]
+	defenderCardsTrapped: CardString[]
+	attackerStackDiscarded: CardString[]
 	defenderStackWasFaceUp: boolean
-	cardsDrawnToDiscard: Card[]
+	cardsDrawnToDiscard: CardString[]
 }
 
 export const PowersOfTwo = [ 2, 4, 8, 16, 32, 64, 128, 256 ]
@@ -29,8 +29,8 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | 
 	const defenderStackWasFaceUp = state.defenderStacks[lane].isFaceUp
 	const defenderStackBeforeCombat = [ ...defenderStack ]
 	const attackerStackBeforeCombat = [ ...attackerStack ]
-	const attackerCardsTrapped: Card[] = []
-	const defenderCardsTrapped: Card[] = []
+	const attackerCardsTrapped: CardString[] = []
+	const defenderCardsTrapped: CardString[] = []
 
 	if (roleTurn == Role.Defender) {
 		flipDefenderStack()
@@ -43,23 +43,23 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | 
 	let defenderSum = 0
 	let defenderWildCards = 0
 	let breakPresent = false
-	let cardsDrawnToDiscard: Card[]
+	let cardsDrawnToDiscard: CardString[]
 
 	const defenderBounceIndexes = []
 
 	for (const [ index, card ] of defenderStack.entries()) {
-		switch (card[0] as CardValue) {
-			case CardModifier.Trap: break
+		switch (card[0] as CardStringFace) {
+			case CardStringFaceModifier.Trap: break
 
-			case CardModifier.Wild: {
+			case CardStringFaceModifier.Wild: {
 				defenderWildCards++
 			} break
 
-			case CardModifier.Bounce: {
+			case CardStringFaceModifier.Bounce: {
 				defenderBounceIndexes.push(index)
 			} break
 
-			case CardModifier.Break: {
+			case CardStringFaceModifier.Break: {
 				breakPresent = true
 			} break
 
@@ -77,18 +77,18 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | 
 	let attackerWildCards = 0
 
 	for (const [ index, card ] of attackerStack.entries()) {
-		switch (card[0] as CardValue) {
-			case CardModifier.Trap: break
+		switch (card[0] as CardStringFace) {
+			case CardStringFaceModifier.Trap: break
 
-			case CardModifier.Wild: {
+			case CardStringFaceModifier.Wild: {
 				attackerWildCards++
 			} break
 
-			case CardModifier.Bounce: {
+			case CardStringFaceModifier.Bounce: {
 				attackerBounceIndexes.push(index)
 			} break
 
-			case CardModifier.Break: {
+			case CardStringFaceModifier.Break: {
 				breakPresent = true
 			} break
 
@@ -121,12 +121,12 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | 
 	} else
 		defenderAttackPower = PowersOfTwo.indexOf(defenderSum) + 1
 
-	let cardsDrawn: Card[]
+	let cardsDrawn: CardString[]
 	let damageValue = 0
 	let attackerStackDiscarded
 
-	const defenderBouncesDiscarded: `?${CardSuit}`[] = []
-	const attackerBouncesDiscarded: `?${CardSuit}`[] = []
+	const defenderBouncesDiscarded: `?${CardStringSuit}`[] = []
+	const attackerBouncesDiscarded: `?${CardStringSuit}`[] = []
 
 	if (
 		attackerBounceIndexes.length || defenderBounceIndexes.length || (!attackerAttackPower && !defenderAttackPower)
@@ -134,14 +134,14 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | 
 		for (const index of defenderBounceIndexes.reverse()) {
 			const bounceDiscarded = defenderStack.splice(index, 1)[0]!
 
-			defenderBouncesDiscarded.push(bounceDiscarded as `?${CardSuit}`)
+			defenderBouncesDiscarded.push(bounceDiscarded as `?${CardStringSuit}`)
 			state.attackerDiscardPile.push(bounceDiscarded)
 		}
 
 		for (const index of attackerBounceIndexes.reverse()) {
 			const bounceDiscarded = attackerStack.splice(index, 1)[0]!
 
-			attackerBouncesDiscarded.push(bounceDiscarded as `?${CardSuit}`)
+			attackerBouncesDiscarded.push(bounceDiscarded as `?${CardStringSuit}`)
 			laneDiscardPile.push(bounceDiscarded)
 		}
 
@@ -225,7 +225,7 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | 
 			if (!attackerStack.length)
 				break
 
-			if (card[0] != CardModifier.Trap)
+			if (card[0] != CardStringFaceModifier.Trap)
 				continue
 
 			const trappedCard = attackerStack.pop()!
@@ -240,7 +240,7 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | 
 			if (!defenderStack.length)
 				break
 
-			if (card[0] != CardModifier.Trap)
+			if (card[0] != CardStringFaceModifier.Trap)
 				continue
 
 			const trappedCard = defenderStack.pop()!

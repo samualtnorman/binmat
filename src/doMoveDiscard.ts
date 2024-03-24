@@ -1,11 +1,11 @@
 import { shuffle } from "@samual/lib/shuffle"
-import type { Card, CardValue, Lane, State } from "./common"
+import type { CardString, CardStringFace, Lane, State } from "./common"
 import { AttackerDiscardPile, Role, StatusCode } from "./common"
 
-export function doMoveDiscard(state: State, card: Card | CardValue, discardPile: Lane | AttackerDiscardPile): {
+export function doMoveDiscard(state: State, card: CardString | CardStringFace, discardPile: Lane | AttackerDiscardPile): {
 	status: StatusCode.Okay | StatusCode.DefenderWin
-	cardDiscarded: Card
-	cardsDrawn: [ Card, Card ] | undefined
+	cardDiscarded: CardString
+	cardsDrawn: [ CardString, CardString ] | undefined
 } | {
 	status:
 		StatusCode.MadeMoveOnFinishedGame |
@@ -18,11 +18,11 @@ export function doMoveDiscard(state: State, card: Card | CardValue, discardPile:
 
 	const roleTurn: Role = (state.turn % 2) + 1
 	let cardDiscarded
-	let cardsDrawn: [ Card, Card ] | undefined
+	let cardsDrawn: [ CardString, CardString ] | undefined
 
 	if (roleTurn == Role.Defender) {
 		const index = card.length == 2
-			? state.defenderHand.indexOf(card as Card)
+			? state.defenderHand.indexOf(card as CardString)
 			: state.defenderHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
@@ -35,7 +35,7 @@ export function doMoveDiscard(state: State, card: Card | CardValue, discardPile:
 		state.laneDiscardPiles[discardPile].push(cardDiscarded)
 	} else /* attacker turn */ {
 		const index = card.length == 2
-			? state.attackerHand.indexOf(card as Card)
+			? state.attackerHand.indexOf(card as CardString)
 			: state.attackerHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)

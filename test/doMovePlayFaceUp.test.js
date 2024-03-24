@@ -1,6 +1,6 @@
 import { expect, test } from "vitest"
 import { doMovePlayFaceUp } from "../src/doMovePlayFaceUp"
-import { CardModifier, StatusCode } from "../src/common"
+import { CardStringFaceModifier, StatusCode } from "../src/common"
 
 test("regular card (defender)", () => {
 	expect(doMovePlayFaceUp({
@@ -332,7 +332,7 @@ test("face value only (attacker)", () => {
 		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, CardModifier.Bounce, 0)).toEqual({
+	}, CardStringFaceModifier.Bounce, 0)).toEqual({
 		status: 0,
 		cardPlayed: "?+",
 		combat: {

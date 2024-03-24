@@ -3,16 +3,16 @@ import { isRecord } from "@samual/lib/isRecord"
 import { doMove } from "../src/doMove"
 import { makeState } from "../src/makeState"
 import { parseMove } from "../src/parseMove"
-import type { Card, State } from "../src/common"
-import { CardSuit, MoveTag, Role, StatusCode, StatusCodeMessages } from "../src/common"
+import type { CardString, State } from "../src/common"
+import { CardStringSuit, MoveTag, Role, StatusCode, StatusCodeMessages } from "../src/common"
 
 const SuitToColourCode = {
-	[CardSuit.Form]: `l`,
-	[CardSuit.Kin]: `N`,
-	[CardSuit.Data]: `q`,
-	[CardSuit.Chaos]: `D`,
-	[CardSuit.Void]: `I`,
-	[CardSuit.Choice]: `F`
+	[CardStringSuit.Form]: `l`,
+	[CardStringSuit.Kin]: `N`,
+	[CardStringSuit.Data]: `q`,
+	[CardStringSuit.Chaos]: `D`,
+	[CardStringSuit.Void]: `I`,
+	[CardStringSuit.Choice]: `F`
 } as const
 
 export default (context: Context, args: unknown) => $(context, args)
@@ -567,6 +567,6 @@ hd0:
 ${defenderHand}`
 }
 
-function colourCard(card: Card) {
-	return `\`${SuitToColourCode[card[1] as CardSuit]}${card}\``
+function colourCard(card: CardString) {
+	return `\`${SuitToColourCode[card[1] as CardStringSuit]}${card}\``
 }

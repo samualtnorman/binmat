@@ -1,9 +1,9 @@
-import type { Card, CardValue, Lane, State } from "./common"
-import { CardModifier, Role, StatusCode } from "./common"
+import type { CardString, CardStringFace, Lane, State } from "./common"
+import { CardStringFaceModifier, Role, StatusCode } from "./common"
 
-export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
+export function doMovePlay(state: State, card: CardString | CardStringFace, lane: Lane): {
 	status: StatusCode.Okay | StatusCode.DefenderWin
-	cardPlayed: Card
+	cardPlayed: CardString
 } | {
 	status:
 		StatusCode.MadeMoveOnFinishedGame |
@@ -21,11 +21,11 @@ export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
 		if (state.defenderStacks[lane].isFaceUp)
 			return { status: StatusCode.PlayedCardFacedWrongWay }
 
-		if (card[0] == CardModifier.Break && !state.defenderStacks[lane].cards.length)
+		if (card[0] == CardStringFaceModifier.Break && !state.defenderStacks[lane].cards.length)
 			return { status: StatusCode.PlayedBreakToEmptyStack }
 
 		const index = card.length == 2
-			? state.defenderHand.indexOf(card as Card)
+			? state.defenderHand.indexOf(card as CardString)
 			: state.defenderHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
@@ -35,7 +35,7 @@ export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
 		state.defenderStacks[lane].cards.push(cardPlayed)
 	} else /* attacker turn */ {
 		const index = card.length == 2
-			? state.attackerHand.indexOf(card as Card)
+			? state.attackerHand.indexOf(card as CardString)
 			: state.attackerHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)

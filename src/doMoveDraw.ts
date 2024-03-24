@@ -1,10 +1,10 @@
 import { shuffle } from "@samual/lib/shuffle"
-import type { Card, Lane, State } from "./common"
+import type { CardString, Lane, State } from "./common"
 import { AttackerDeck, AttackerDiscardPile, Role, StatusCode } from "./common"
 
 export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
 	status: StatusCode.Okay | StatusCode.DefenderWin
-	cardDrawn: Card
+	cardDrawn: CardString
 } | {
 	status:
 		StatusCode.MadeMoveOnFinishedGame |

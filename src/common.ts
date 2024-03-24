@@ -1,39 +1,34 @@
-export type State = {
-	attackerStacks: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
-	defenderStacks: [ DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack ]
-	laneDecks: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
-	laneDiscardPiles: [ Card[], Card[], Card[], Card[], Card[], Card[] ]
-	attackerDeck: Card[]
-	attackerDiscardPile: Card[]
-	attackerHand: Card[]
-	defenderHand: Card[]
-	turn: number
-	// TODO think about removing `maxTurns`
-	maxTurns: number
-	attackerPassedLastTurn: boolean
-	defenderPassedLastTurn: boolean
-}
+export const Lanes = [ 0, 1, 2, 3, 4, 5 ] as const
+export type Lane = typeof Lanes[any]
+export type CardStringFaceNumber = `2` | `3` | `4` | `5` | `6` | `7` | `8` | `9` | `a`
+export const enum CardStringFaceModifier { Trap = `@`, Wild = `*`, Bounce = `?`, Break = `>` }
+export type CardStringFace = CardStringFaceNumber | CardStringFaceModifier
+export const enum CardStringSuit { Form = `&`, Kin = `%`, Data = `+`, Chaos = `!`, Void = `^`, Choice = `#` }
+export type CardString = `${CardStringFace}${CardStringSuit}`
+export const AttackerDeck = 6
+export type AttackerDeck = 6
+export const AttackerDiscardPile = 6
+export type AttackerDiscardPile = 6
+export const AttackerDeckString = `a`
+export type AttackerDeckString = `a`
+export type MoveStringDraw = `d${Lane | AttackerDeckString}`
+export type MoveStringCombat = `c${Lane}`
+export type MoveStringPlay = `p${CardString | CardStringFace}${Lane}`
+export type MoveStringPlayFaceup = `u${CardString | CardStringFace}${Lane}`
+export type MoveStringDiscard = `x${CardString | CardStringFace}${Lane | `a`}`
+export type MoveStringPass = "--"
 
-export type Card = `${CardValue}${CardSuit}`
-export type CardValue = CardNumber | CardModifier
-export type CardNumber = "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "a"
-export const enum CardModifier { Trap = `@`, Wild = `*`, Bounce = `?`, Break = `>` }
-export const enum CardSuit { Form = `&`, Kin = `%`, Data = `+`, Chaos = `!`, Void = `^`, Choice = `#` }
-export type DefenderStack = { cards: Card[], isFaceUp: boolean }
+export type MoveString =
+	MoveStringDraw | MoveStringCombat | MoveStringPlay | MoveStringPlayFaceup | MoveStringDiscard | MoveStringPass
+
+export const enum MoveTag { Draw = 1, Play, PlayFaceUp, Combat, Discard, Pass }
 
 export type Move =
 	{ tag: MoveTag.Draw, deck: Lane | AttackerDeck } |
-	{ tag: MoveTag.Play | MoveTag.PlayFaceUp, card: Card | CardValue, lane: Lane } |
+	{ tag: MoveTag.Play | MoveTag.PlayFaceUp, card: CardString | CardStringFace, lane: Lane } |
 	{ tag: MoveTag.Combat, lane: Lane } |
-	{ tag: MoveTag.Discard, card: Card | CardValue, discardPile: Lane | AttackerDiscardPile } |
+	{ tag: MoveTag.Discard, card: CardString | CardStringFace, discardPile: Lane | AttackerDiscardPile } |
 	{ tag: MoveTag.Pass }
-
-export const enum MoveTag { Draw = 1, Play, PlayFaceUp, Combat, Discard, Pass }
-export type Lane = 0 | 2 | 1 | 3 | 4 | 5
-export const AttackerDeck = 6
-export type AttackerDeck = typeof AttackerDeck
-export const AttackerDiscardPile = 6
-export type AttackerDiscardPile = typeof AttackerDiscardPile
 
 export const enum StatusCode {
 	Okay, DefenderWin, AttackerWin, MadeMoveOnFinishedGame, DefenderDrewFromAttackerDeck, AttackerDrewFromBlockedLane,
@@ -61,3 +56,20 @@ export const StatusCodeMessages: Record<StatusCode, string> = [
 ]
 
 export const enum Role { Defender = 1, Attacker }
+export type DefenderStack = { cards: CardString[], isFaceUp: boolean }
+
+export type State = {
+	attackerStacks: [ CardString[], CardString[], CardString[], CardString[], CardString[], CardString[] ]
+	defenderStacks: [ DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack, DefenderStack ]
+	laneDecks: [ CardString[], CardString[], CardString[], CardString[], CardString[], CardString[] ]
+	laneDiscardPiles: [ CardString[], CardString[], CardString[], CardString[], CardString[], CardString[] ]
+	attackerDeck: CardString[]
+	attackerDiscardPile: CardString[]
+	attackerHand: CardString[]
+	defenderHand: CardString[]
+	turn: number
+	// TODO think about removing `maxTurns`
+	maxTurns: number
+	attackerPassedLastTurn: boolean
+	defenderPassedLastTurn: boolean
+}

@@ -1,4 +1,4 @@
-import type { Card, State } from "./common"
+import type { CardString, State } from "./common"
 
 export type Attacker = `a${0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | `a` | `b` | `c` | `d` | `e` | `f`}`
 export type Defender = `d${0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | `a` | `b` | `c` | `d` | `e` | `f`}`
@@ -22,34 +22,34 @@ export type BinmatArgs = {
 		l2?: { c: number, t: `X` }
 
 		/** lane deck 3 */
-		l3?: { c: number, t: Card }
+		l3?: { c: number, t: CardString }
 
 		/** lane deck 4 */
-		l4?: { c: number, t: Card }
+		l4?: { c: number, t: CardString }
 
 		/** lane deck 5 */
-		l5?: { c: number, t: Card }
+		l5?: { c: number, t: CardString }
 
 		/** lane discard pile 0 */
-		x0?: `${Card}u`[]
+		x0?: `${CardString}u`[]
 
 		/** lane discard pile 1 */
-		x1?: `${Card}u`[]
+		x1?: `${CardString}u`[]
 
 		/** lane discard pile 2 */
-		x2?: `${Card}u`[]
+		x2?: `${CardString}u`[]
 
 		/** lane discard pile 3 */
-		x3?: `${Card}u`[]
+		x3?: `${CardString}u`[]
 
 		/** lane discard pile 4 */
-		x4?: `${Card}u`[]
+		x4?: `${CardString}u`[]
 
 		/** lane discard pile 5 */
-		x5?: `${Card}u`[]
+		x5?: `${CardString}u`[]
 
 		/** attacker discard pile */
-		xa?: Card[]
+		xa?: CardString[]
 
 		/** attacker deck */
 		a?: { c: number, t: `X` }
@@ -76,22 +76,22 @@ export type BinmatArgs = {
 		a5?: `X`[]
 
 		/** defender stack 0 */
-		d0?: (Card | `${Card}u`)[]
+		d0?: (CardString | `${CardString}u`)[]
 
 		/** defender stack 1 */
-		d1?: (Card | `${Card}u`)[]
+		d1?: (CardString | `${CardString}u`)[]
 
 		/** defender stack 2 */
-		d2?: (Card | `${Card}u`)[]
+		d2?: (CardString | `${CardString}u`)[]
 
 		/** defender stack 3 */
-		d3?: (Card | `${Card}u`)[]
+		d3?: (CardString | `${CardString}u`)[]
 
 		/** defender stack 4 */
-		d4?: (Card | `${Card}u`)[]
+		d4?: (CardString | `${CardString}u`)[]
 
 		/** defender stack 5 */
-		d5?: (Card | `${Card}u`)[]
+		d5?: (CardString | `${CardString}u`)[]
 
 		/** attacker 0 hand */
 		ha0?: number
@@ -142,52 +142,52 @@ export type BinmatArgs = {
 		haf?: number
 
 		/** defender 0 hand */
-		hd0?: Card[]
+		hd0?: CardString[]
 
 		/** defender 1 hand */
-		hd1?: Card[]
+		hd1?: CardString[]
 
 		/** defender 2 hand */
-		hd2?: Card[]
+		hd2?: CardString[]
 
 		/** defender 3 hand */
-		hd3?: Card[]
+		hd3?: CardString[]
 
 		/** defender 4 hand */
-		hd4?: Card[]
+		hd4?: CardString[]
 
 		/** defender 5 hand */
-		hd5?: Card[]
+		hd5?: CardString[]
 
 		/** defender 6 hand */
-		hd6?: Card[]
+		hd6?: CardString[]
 
 		/** defender 7 hand */
-		hd7?: Card[]
+		hd7?: CardString[]
 
 		/** defender 8 hand */
-		hd8?: Card[]
+		hd8?: CardString[]
 
 		/** defender 9 hand */
-		hd9?: Card[]
+		hd9?: CardString[]
 
 		/** defender 10 hand */
-		hda?: Card[]
+		hda?: CardString[]
 
 		/** defender 11 hand */
-		hdb?: Card[]
+		hdb?: CardString[]
 
 		/** defender 12 hand */
-		hdc?: Card[]
+		hdc?: CardString[]
 
 		/** defender 13 hand */
-		hdd?: Card[]
+		hdd?: CardString[]
 
 		/** defender 14 hand */
-		hde?: Card[]
+		hde?: CardString[]
 
 		/** defender 15 hand */
-		hdf?: Card[]
+		hdf?: CardString[]
 	}
 
 	/** player list */
@@ -214,34 +214,34 @@ export type BinmatArgs = {
 		l2?: { c: number, t: `X` }
 
 		/** lane deck 3 */
-		l3?: { c: number, t: Card }
+		l3?: { c: number, t: CardString }
 
 		/** lane deck 4 */
-		l4?: { c: number, t: Card }
+		l4?: { c: number, t: CardString }
 
 		/** lane deck 5 */
-		l5?: { c: number, t: Card }
+		l5?: { c: number, t: CardString }
 
 		/** lane discard pile 0 */
-		x0?: `${Card}u`[]
+		x0?: `${CardString}u`[]
 
 		/** lane discard pile 1 */
-		x1?: `${Card}u`[]
+		x1?: `${CardString}u`[]
 
 		/** lane discard pile 2 */
-		x2?: `${Card}u`[]
+		x2?: `${CardString}u`[]
 
 		/** lane discard pile 3 */
-		x3?: `${Card}u`[]
+		x3?: `${CardString}u`[]
 
 		/** lane discard pile 4 */
-		x4?: `${Card}u`[]
+		x4?: `${CardString}u`[]
 
 		/** lane discard pile 5 */
-		x5?: `${Card}u`[]
+		x5?: `${CardString}u`[]
 
 		/** attacker discard pile */
-		xa?: Card[]
+		xa?: CardString[]
 
 		/** attacker deck */
 		a?: { c: number, t: `X` }
@@ -250,88 +250,88 @@ export type BinmatArgs = {
 		ord: number
 
 		/** attacker stack 0 */
-		a0?: Card[]
+		a0?: CardString[]
 
 		/** attacker stack 1 */
-		a1?: Card[]
+		a1?: CardString[]
 
 		/** attacker stack 2 */
-		a2?: Card[]
+		a2?: CardString[]
 
 		/** attacker stack 3 */
-		a3?: Card[]
+		a3?: CardString[]
 
 		/** attacker stack 4 */
-		a4?: Card[]
+		a4?: CardString[]
 
 		/** attacker stack 5 */
-		a5?: Card[]
+		a5?: CardString[]
 
 		/** defender stack 0 */
-		d0?: `${Card}u`[] | `X`[]
+		d0?: `${CardString}u`[] | `X`[]
 
 		/** defender stack 1 */
-		d1?: `${Card}u`[] | `X`[]
+		d1?: `${CardString}u`[] | `X`[]
 
 		/** defender stack 2 */
-		d2?: `${Card}u`[] | `X`[]
+		d2?: `${CardString}u`[] | `X`[]
 
 		/** defender stack 3 */
-		d3?: `${Card}u`[] | `X`[]
+		d3?: `${CardString}u`[] | `X`[]
 
 		/** defender stack 4 */
-		d4?: `${Card}u`[] | `X`[]
+		d4?: `${CardString}u`[] | `X`[]
 
 		/** defender stack 5 */
-		d5?: `${Card}u`[] | `X`[]
+		d5?: `${CardString}u`[] | `X`[]
 
 		/** attacker 0 hand */
-		ha0?: Card[]
+		ha0?: CardString[]
 
 		/** attacker 1 hand */
-		ha1?: Card[]
+		ha1?: CardString[]
 
 		/** attacker 2 hand */
-		ha2?: Card[]
+		ha2?: CardString[]
 
 		/** attacker 3 hand */
-		ha3?: Card[]
+		ha3?: CardString[]
 
 		/** attacker 4 hand */
-		ha4?: Card[]
+		ha4?: CardString[]
 
 		/** attacker 5 hand */
-		ha5?: Card[]
+		ha5?: CardString[]
 
 		/** attacker 6 hand */
-		ha6?: Card[]
+		ha6?: CardString[]
 
 		/** attacker 7 hand */
-		ha7?: Card[]
+		ha7?: CardString[]
 
 		/** attacker 8 hand */
-		ha8?: Card[]
+		ha8?: CardString[]
 
 		/** attacker 9 hand */
-		ha9?: Card[]
+		ha9?: CardString[]
 
 		/** attacker 10 hand */
-		haa?: Card[]
+		haa?: CardString[]
 
 		/** attacker 11 hand */
-		hab?: Card[]
+		hab?: CardString[]
 
 		/** attacker 12 hand */
-		hac?: Card[]
+		hac?: CardString[]
 
 		/** attacker 13 hand */
-		had?: Card[]
+		had?: CardString[]
 
 		/** attacker 14 hand */
-		hae?: Card[]
+		hae?: CardString[]
 
 		/** attacker 15 hand */
-		haf?: Card[]
+		haf?: CardString[]
 
 		/** defender 0 hand */
 		hd0?: number

@@ -1,8 +1,8 @@
 import { assert } from "@samual/lib/assert"
-import type { Card, CardValue, Lane, Move } from "./common"
-import { AttackerDeck, AttackerDiscardPile, CardModifier, CardSuit, MoveTag } from "./common"
+import type { CardString, CardStringFace, Lane, Move } from "./common"
+import { AttackerDeck, AttackerDiscardPile, CardStringFaceModifier, CardStringSuit, MoveTag } from "./common"
 
-export const CardValues: CardValue[] = [
+export const CardValues: CardStringFace[] = [
 	`2`,
 	`3`,
 	`4`,
@@ -12,19 +12,19 @@ export const CardValues: CardValue[] = [
 	`8`,
 	`9`,
 	`a`,
-	CardModifier.Trap,
-	CardModifier.Wild,
-	CardModifier.Bounce,
-	CardModifier.Break
+	CardStringFaceModifier.Trap,
+	CardStringFaceModifier.Wild,
+	CardStringFaceModifier.Bounce,
+	CardStringFaceModifier.Break
 ]
 
-export const CardSuits: CardSuit[] = [
-	CardSuit.Form,
-	CardSuit.Kin,
-	CardSuit.Data,
-	CardSuit.Chaos,
-	CardSuit.Void,
-	CardSuit.Choice
+export const CardSuits: CardStringSuit[] = [
+	CardStringSuit.Form,
+	CardStringSuit.Kin,
+	CardStringSuit.Data,
+	CardStringSuit.Chaos,
+	CardStringSuit.Void,
+	CardStringSuit.Choice
 ]
 
 export function parseMove(move: string, extra = false): Move {
@@ -81,7 +81,7 @@ export function parseMove(move: string, extra = false): Move {
 
 				return {
 					tag: move[0] == `p` ? MoveTag.Play : MoveTag.PlayFaceUp,
-					card: move[1] as CardValue,
+					card: move[1] as CardStringFace,
 					lane: lane as Lane
 				}
 			}
@@ -103,7 +103,7 @@ export function parseMove(move: string, extra = false): Move {
 
 				return {
 					tag: move[0] == `p` ? MoveTag.Play : MoveTag.PlayFaceUp,
-					card: move.slice(1, 3) as Card,
+					card: move.slice(1, 3) as CardString,
 					lane: lane as Lane
 				}
 			}
@@ -120,7 +120,7 @@ export function parseMove(move: string, extra = false): Move {
 			if (extra && move.length == 2) {
 				return {
 					tag: MoveTag.Discard,
-					card: move[1] as CardValue,
+					card: move[1] as CardStringFace,
 					discardPile: AttackerDiscardPile
 				}
 			}
@@ -129,7 +129,7 @@ export function parseMove(move: string, extra = false): Move {
 				if (move[2] == `a`) {
 					return {
 						tag: MoveTag.Discard,
-						card: move[1] as CardValue,
+						card: move[1] as CardStringFace,
 						discardPile: AttackerDiscardPile
 					}
 				}
@@ -137,7 +137,7 @@ export function parseMove(move: string, extra = false): Move {
 				if (extra && CardSuits.includes(move[2] as any)) {
 					return {
 						tag: MoveTag.Discard,
-						card: move.slice(1, 3) as Card,
+						card: move.slice(1, 3) as CardString,
 						discardPile: AttackerDiscardPile
 					}
 				}
@@ -148,7 +148,7 @@ export function parseMove(move: string, extra = false): Move {
 
 				return {
 					tag: MoveTag.Discard,
-					card: move[1] as CardValue,
+					card: move[1] as CardStringFace,
 					discardPile: lane as Lane
 				}
 			}
@@ -162,7 +162,7 @@ export function parseMove(move: string, extra = false): Move {
 				if (move[3] == `a`) {
 					return {
 						tag: MoveTag.Discard,
-						card: move.slice(1, 3) as Card,
+						card: move.slice(1, 3) as CardString,
 						discardPile: AttackerDiscardPile
 					}
 				}
@@ -173,7 +173,7 @@ export function parseMove(move: string, extra = false): Move {
 
 				return {
 					tag: MoveTag.Discard,
-					card: move.slice(1, 3) as Card,
+					card: move.slice(1, 3) as CardString,
 					discardPile: lane as Lane
 				}
 			}

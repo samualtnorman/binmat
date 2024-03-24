@@ -4,7 +4,7 @@ import type { BinmatArgs } from "./generateArgs"
 import { generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
 import { makeState } from "./makeState"
 import { parseMove } from "./parseMove"
-import type { State } from "./common"
+import type { MoveString, State } from "./common"
 import { MoveTag, Role, StatusCode, StatusCodeMessages } from "./common"
 
 export type SimulateGameOptions = {
@@ -36,7 +36,8 @@ export type CLIContext = {
 	calling_script: null
 }
 
-export type TransformScript = (args: { op: string }) => { ok: boolean }
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type TransformScript = (args: { op: (string & {}) | MoveString }) => { ok: boolean }
 export type BrainScript = (context: CLIContext, args: BinmatArgs, xform: TransformScript) => void
 
 /**

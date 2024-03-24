@@ -5,7 +5,7 @@ import { doMoveDraw } from "./doMoveDraw"
 import { doMovePass } from "./doMovePass"
 import { doMovePlay } from "./doMovePlay"
 import { doMovePlayFaceUp } from "./doMovePlayFaceUp"
-import type { Card, Lane, Move, State } from "./common"
+import type { CardString, Lane, Move, State } from "./common"
 import { AttackerDeck, MoveTag, StatusCode } from "./common"
 
 export function doMove(state: State, move: Move): {
@@ -137,7 +137,7 @@ export function doMove(state: State, move: Move): {
 		}
 	}
 
-	function pushCombatBinlog(binlog: string[], combatData: CombatData, lane: Lane, cardIsPlayedFaceUp?: Card) {
+	function pushCombatBinlog(binlog: string[], combatData: CombatData, lane: Lane, cardIsPlayedFaceUp?: CardString) {
 		const {
 			attackerAttackPower, attackerStack, defenderAttackPower, defenderStack, attackerCardsTrapped,
 			defenderCardsTrapped, attackerBouncesDiscarded, defenderBouncesDiscarded, damageValue,
