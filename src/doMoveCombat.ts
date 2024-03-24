@@ -11,7 +11,7 @@ export function doMoveCombat(state: State, lane: Lane): (
 		StatusCode.DefenderInitiatedCombat |
 		StatusCode.AttackerInitiatedCombatWithEmptyStack
 } {
-	if (state.turn >= state.turns)
+	if (state.turn >= state.maxTurns)
 		return { status: StatusCode.MadeMoveOnFinishedGame }
 
 	const roleTurn: Role = (state.turn % 2) + 1
@@ -29,7 +29,7 @@ export function doMoveCombat(state: State, lane: Lane): (
 
 	state.turn++
 
-	if (state.turn == state.turns)
+	if (state.turn == state.maxTurns)
 		return { ...combatResult, status: StatusCode.DefenderWin }
 
 	return combatResult

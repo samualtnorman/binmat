@@ -17,7 +17,7 @@ test("finished game", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -37,7 +37,7 @@ test("finished game", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -58,7 +58,7 @@ test("defender win", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 109,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -78,7 +78,7 @@ test("defender win", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: true,
 		defenderPassedLastTurn: false
 	})
@@ -99,7 +99,7 @@ test("normal pass", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -119,7 +119,7 @@ test("normal pass", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: true
 	})
@@ -140,7 +140,7 @@ test("defender pass twice", () => {
 		attackerHand: [],
 		defenderHand: [ "3!", "3#", "3%", "3&", "3+", "3^" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: true
 	}
@@ -160,7 +160,7 @@ test("defender pass twice", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: true
 	})
@@ -181,7 +181,7 @@ test("attacker pass twice", () => {
 		attackerHand: [ "3!", "3#" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: true,
 		defenderPassedLastTurn: false
 	}
@@ -201,7 +201,7 @@ test("attacker pass twice", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 2,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: true,
 		defenderPassedLastTurn: false
 	})

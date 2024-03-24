@@ -2,7 +2,7 @@ import type { State } from "./common"
 import { Role, StatusCode } from "./common"
 
 export function doMovePass(state: State) {
-	if (state.turn >= state.turns)
+	if (state.turn >= state.maxTurns)
 		return StatusCode.MadeMoveOnFinishedGame
 
 	const roleTurn: Role = (state.turn % 2) + 1
@@ -28,7 +28,7 @@ export function doMovePass(state: State) {
 
 	state.turn++
 
-	if (state.turn == state.turns)
+	if (state.turn == state.maxTurns)
 		return StatusCode.DefenderWin
 
 	return StatusCode.Ok

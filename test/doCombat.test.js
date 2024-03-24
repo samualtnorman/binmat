@@ -21,7 +21,7 @@ test("trap (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -56,7 +56,7 @@ test("trap (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -77,7 +77,7 @@ test("wild (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -112,7 +112,7 @@ test("wild (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -133,7 +133,7 @@ test("bounce (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -168,7 +168,7 @@ test("bounce (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -189,7 +189,7 @@ test("break (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -224,7 +224,7 @@ test("break (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -245,7 +245,7 @@ test("10 (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -280,7 +280,7 @@ test("10 (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -301,7 +301,7 @@ test("trap (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -336,7 +336,7 @@ test("trap (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -357,7 +357,7 @@ test("wild (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -392,7 +392,7 @@ test("wild (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -413,7 +413,7 @@ test("bounce (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -448,7 +448,7 @@ test("bounce (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -469,7 +469,7 @@ test("break (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -504,7 +504,7 @@ test("break (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -525,7 +525,7 @@ test("10 (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -560,7 +560,7 @@ test("10 (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -581,7 +581,7 @@ test("shuffling lane discard pile into lane deck", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -616,7 +616,7 @@ test("shuffling lane discard pile into lane deck", () => {
 		attackerHand: [ "3%", "3&", "3+", "3^" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -637,7 +637,7 @@ test("defender stack already face up", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -672,7 +672,7 @@ test("defender stack already face up", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})

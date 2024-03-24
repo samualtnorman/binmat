@@ -21,7 +21,7 @@ test("finished game", () => {
 		attackerHand: [],
 		defenderHand: [ "2!" ],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -45,7 +45,7 @@ test("finished game", () => {
 		attackerHand: [],
 		defenderHand: [ "2!" ],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -66,7 +66,7 @@ test("unowned card (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -90,7 +90,7 @@ test("unowned card (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -111,7 +111,7 @@ test("defender trying to discard to attacker's discard pile", () => {
 		attackerHand: [],
 		defenderHand: [ "2!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -136,7 +136,7 @@ test("defender trying to discard to attacker's discard pile", () => {
 		attackerHand: [],
 		defenderHand: [ "2!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -157,7 +157,7 @@ test("normal play (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ "2!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -181,7 +181,7 @@ test("normal play (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -202,7 +202,7 @@ test("card face only (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ "2!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -226,7 +226,7 @@ test("card face only (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -247,7 +247,7 @@ test("unowned card (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -271,7 +271,7 @@ test("unowned card (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -292,7 +292,7 @@ test("attacker trying to discard to lane discard pile", () => {
 		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -316,7 +316,7 @@ test("attacker trying to discard to lane discard pile", () => {
 		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -337,7 +337,7 @@ test("attacker discarding when attacker stack is empty", () => {
 		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -362,7 +362,7 @@ test("attacker discarding when attacker stack is empty", () => {
 		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -383,7 +383,7 @@ test("attacker discarding with one card in attacker deck", () => {
 		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -408,7 +408,7 @@ test("attacker discarding with one card in attacker deck", () => {
 		attackerHand: [ "3!", "2!" ],
 		defenderHand: [],
 		turn: 2,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -429,7 +429,7 @@ test("attacker discarding with one card in attacker discard pile", () => {
 		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -454,7 +454,7 @@ test("attacker discarding with one card in attacker discard pile", () => {
 		attackerHand: [ "2!", "3!" ],
 		defenderHand: [],
 		turn: 2,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -475,7 +475,7 @@ test("card face only (attacker)", () => {
 		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -500,7 +500,7 @@ test("card face only (attacker)", () => {
 		attackerHand: [ "2!", "3!" ],
 		defenderHand: [],
 		turn: 2,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -521,7 +521,7 @@ test("defender win", () => {
 		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 109,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -546,7 +546,7 @@ test("defender win", () => {
 		attackerHand: [ "2!", "3!" ],
 		defenderHand: [],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -567,7 +567,7 @@ test("attacker discarding with more than one card in attacker deck", () => {
 		attackerHand: [ "2!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -592,7 +592,7 @@ test("attacker discarding with more than one card in attacker deck", () => {
 		attackerHand: [ "3#", "3!" ],
 		defenderHand: [],
 		turn: 2,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})

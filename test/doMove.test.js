@@ -23,7 +23,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Draw, deck: AttackerDeck })).toEqual({
@@ -51,7 +51,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 109,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Draw, deck: 5 })).toEqual({
@@ -79,7 +79,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Draw, deck: AttackerDeck })).toEqual({ status: StatusCode.DefenderDrewFromAttackerDeck })
@@ -104,7 +104,7 @@ it("works", () => {
 		attackerHand: [ "?+" ],
 		defenderHand: [],
 		turn: 109,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.PlayFaceUp, card: "?+", lane: 0 })).toEqual({
@@ -138,7 +138,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [ "3+" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.PlayFaceUp, card: "3+", lane: 0 })).toEqual({
@@ -166,7 +166,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.PlayFaceUp, card: "4%", lane: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
@@ -191,7 +191,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Combat, lane: 0 })).toEqual({ status: StatusCode.DefenderInitiatedCombat })
@@ -216,7 +216,7 @@ it("works", () => {
 		attackerHand: [ "3+" ],
 		defenderHand: [],
 		turn: 109,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Discard, card: "3+", discardPile: AttackerDiscardPile })).toEqual({
@@ -244,7 +244,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [ "4%" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Discard, card: "4%", discardPile: 0 })).toEqual({
@@ -272,7 +272,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Discard, card: "4%", discardPile: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
@@ -297,7 +297,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Pass })).toEqual({ status: StatusCode.MadeMoveOnFinishedGame })
@@ -322,7 +322,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [ ">!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.PlayFaceUp, card: ">!", lane: 0 })).toEqual({
@@ -355,7 +355,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [ ">!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.PlayFaceUp, card: ">!", lane: 0 })).toEqual({
@@ -391,7 +391,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Combat, lane: 0 })).toEqual({
@@ -427,7 +427,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Combat, lane: 5 })).toEqual({
@@ -460,7 +460,7 @@ it("works", () => {
 		attackerHand: [ ">!", "9!", "4+", "8^", "*#", "5!", "2&", "3&", "?&", "4!", "3!", "3+", "4%" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Draw, deck: 0 })).toEqual({
@@ -488,7 +488,7 @@ it("works", () => {
 		attackerHand: [ "4%" ],
 		defenderHand: [],
 		turn: 109,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Play, card: "4%", lane: 0 })).toEqual({
@@ -516,7 +516,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Play, card: "4%", lane: 0 })).toEqual({ status: StatusCode.PlayedUnownedCard })
@@ -541,7 +541,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Pass })).toEqual({ status: StatusCode.Ok, binlog: [ "`V000` `n------`", "d0 `n--`" ] })
@@ -566,7 +566,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Combat, lane: 0 })).toEqual({
@@ -599,7 +599,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Combat, lane: 0 })).toEqual({

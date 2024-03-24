@@ -453,7 +453,7 @@ function printStateForDefender(state: State) {
 		.join(` `)
 
 	return `\
-turn ${state.turn} / ${state.turns}
+turn ${state.turn} / ${state.maxTurns}
 
 ha0:
 ${attackerHand}
@@ -528,7 +528,7 @@ function printStateForAttacker(state: State) {
 		: `empty`
 
 	return `\
-turn ${state.turn} / ${state.turns}
+turn ${state.turn} / ${state.maxTurns}
 
 ha0:
 ${state.attackerHand.map(card => colourCard(card)).join(` `) || `empty`}

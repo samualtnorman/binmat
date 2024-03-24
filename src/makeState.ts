@@ -31,7 +31,7 @@ export function makeState(deck = shuffle([ ...Cards ])): State {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}

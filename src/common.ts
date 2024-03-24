@@ -8,8 +8,8 @@ export type State = {
 	attackerHand: Card[]
 	defenderHand: Card[]
 	turn: number
-	// TODO think about renaming or removing `turns`
-	turns: number
+	// TODO think about removing `maxTurns`
+	maxTurns: number
 	attackerPassedLastTurn: boolean
 	defenderPassedLastTurn: boolean
 }

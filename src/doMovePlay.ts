@@ -11,7 +11,7 @@ export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
 		StatusCode.PlayedBreakToEmptyStack |
 		StatusCode.PlayedUnownedCard
 } {
-	if (state.turn >= state.turns)
+	if (state.turn >= state.maxTurns)
 		return { status: StatusCode.MadeMoveOnFinishedGame }
 
 	const roleTurn: Role = (state.turn % 2) + 1
@@ -47,7 +47,7 @@ export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
 
 	state.turn++
 
-	if (state.turn == state.turns)
+	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardPlayed }
 
 	return { status: StatusCode.Ok, cardPlayed }

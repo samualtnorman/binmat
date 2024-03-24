@@ -23,7 +23,7 @@ test("regular card (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ "6#" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "6#", 0)).toEqual({ status: StatusCode.Ok, cardPlayed: "6#", combat: undefined })
@@ -50,7 +50,7 @@ test("finished game", () => {
 		attackerHand: [],
 		defenderHand: [ "6#" ],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "6#", 0)).toEqual({ status: StatusCode.MadeMoveOnFinishedGame })
@@ -77,7 +77,7 @@ test("face value only (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ "6#" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "6", 0)).toEqual({ status: StatusCode.Ok, cardPlayed: "6#", combat: undefined })
@@ -104,7 +104,7 @@ test("unowned card (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ "6#" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "4#", 0)).toEqual({ status: StatusCode.PlayedUnownedCard })
@@ -131,7 +131,7 @@ test("break to empty stack (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ ">!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({ status: StatusCode.PlayedBreakToEmptyStack })
@@ -158,7 +158,7 @@ test("break to stack with break (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ ">!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({ status: StatusCode.DefenderPlayedFaceUpBreakToStackWithBreak })
@@ -185,7 +185,7 @@ test("combat (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ ">!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({
@@ -230,7 +230,7 @@ test("attacker win (defender's turn)", () => {
 		attackerHand: [ "9!", "4+", "8^", "*#", "5!", "2&", "3&", "?&", "4!", "3!", "3+", "4%" ],
 		defenderHand: [ ">!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({
@@ -275,7 +275,7 @@ test("played wrong way (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ "4%" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "4%", 0)).toEqual({ status: StatusCode.PlayedCardFacedWrongWay })
@@ -302,7 +302,7 @@ test("played wrong way (attacker)", () => {
 		attackerHand: [ "6#" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "6#", 0)).toEqual({ status: StatusCode.PlayedCardFacedWrongWay })
@@ -329,7 +329,7 @@ test("face value only (attacker)", () => {
 		attackerHand: [ "?+" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, CardModifier.Bounce, 0)).toEqual({
@@ -374,7 +374,7 @@ test("unowned card (attacker)", () => {
 		attackerHand: [ "6#" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "4#", 0)).toEqual({ status: StatusCode.PlayedUnownedCard })
@@ -401,7 +401,7 @@ test("break to empty stack (attacker)", () => {
 		attackerHand: [ ">!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({ status: StatusCode.PlayedBreakToEmptyStack })
@@ -428,7 +428,7 @@ test("break to stack with break as attacker is allowed", () => {
 		attackerHand: [ ">!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({
@@ -473,7 +473,7 @@ test("combat (attacker)", () => {
 		attackerHand: [ ">!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({
@@ -518,7 +518,7 @@ test("attacker win (attacker's turn)", () => {
 		attackerHand: [ ">!" ],
 		defenderHand: [ "9!", "4+", "8^", "*#", "5!", "2&", "3&", "?&", "4!", "3!", "3+", "4%" ],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({
@@ -563,7 +563,7 @@ test("bounce", () => {
 		attackerHand: [ "?+" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "?+", 0)).toEqual({
@@ -608,7 +608,7 @@ test("defender win", () => {
 		attackerHand: [ ">!" ],
 		defenderHand: [],
 		turn: 109,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({

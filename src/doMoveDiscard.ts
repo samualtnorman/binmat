@@ -13,7 +13,7 @@ export function doMoveDiscard(state: State, card: Card | CardValue, discardPile:
 		StatusCode.DiscardedToOpponentDiscardPile |
 		StatusCode.AttackerDiscardedToEmptyDiscardAndDeck
 } {
-	if (state.turn >= state.turns)
+	if (state.turn >= state.maxTurns)
 		return { status: StatusCode.MadeMoveOnFinishedGame }
 
 	const roleTurn: Role = (state.turn % 2) + 1
@@ -68,7 +68,7 @@ export function doMoveDiscard(state: State, card: Card | CardValue, discardPile:
 
 	state.turn++
 
-	if (state.turn == state.turns)
+	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardDiscarded, cardsDrawn }
 
 	return { status: StatusCode.Ok, cardDiscarded, cardsDrawn }

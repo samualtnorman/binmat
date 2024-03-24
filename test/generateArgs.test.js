@@ -15,7 +15,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "defender", "attacker", [])).toEqual({
@@ -45,7 +45,7 @@ it("works", () => {
 		attackerHand: [ "9+" ],
 		defenderHand: [ "?#" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "defender", "attacker", [])).toEqual({
@@ -99,7 +99,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "defender", "attacker", [])).toEqual({
@@ -129,7 +129,7 @@ it("works", () => {
 		attackerHand: [ "9+" ],
 		defenderHand: [ "?#" ],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "defender", "attacker", [])).toEqual({
@@ -190,7 +190,7 @@ it("works", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "defender", "attacker", [])).toEqual({

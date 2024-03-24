@@ -17,7 +17,7 @@ test("finished game", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -37,7 +37,7 @@ test("finished game", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -58,7 +58,7 @@ test("defender trying to initiate combat", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -78,7 +78,7 @@ test("defender trying to initiate combat", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -99,7 +99,7 @@ test("attacker trying to initiate combat with empty stack", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -119,7 +119,7 @@ test("attacker trying to initiate combat with empty stack", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -140,7 +140,7 @@ test("normal combat", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -175,7 +175,7 @@ test("normal combat", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 2,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -196,7 +196,7 @@ test("attacker win", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -231,7 +231,7 @@ test("attacker win", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -252,7 +252,7 @@ test("defender win", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 109,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -287,7 +287,7 @@ test("defender win", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})

@@ -13,7 +13,7 @@ export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
 		StatusCode.AttackerDrewFromEmptyDiscardAndDeck |
 		StatusCode.AttackerWin
 } {
-	if (state.turn >= state.turns)
+	if (state.turn >= state.maxTurns)
 		return { status: StatusCode.MadeMoveOnFinishedGame }
 
 	const roleTurn: Role = (state.turn % 2) + 1
@@ -50,7 +50,7 @@ export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
 
 	state.turn++
 
-	if (state.turn == state.turns)
+	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardDrawn }
 
 	return { status: StatusCode.Ok, cardDrawn }

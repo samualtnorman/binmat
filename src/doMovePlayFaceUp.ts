@@ -16,7 +16,7 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 		StatusCode.PlayedCardFacedWrongWay |
 		StatusCode.DefenderPlayedFaceUpBreakToStackWithBreak
 } {
-	if (state.turn >= state.turns)
+	if (state.turn >= state.maxTurns)
 		return { status: StatusCode.MadeMoveOnFinishedGame }
 
 	const roleTurn: Role = (state.turn % 2) + 1
@@ -89,7 +89,7 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 
 	state.turn++
 
-	if (state.turn == state.turns)
+	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardPlayed, combat }
 
 	return { status: StatusCode.Ok, cardPlayed, combat }

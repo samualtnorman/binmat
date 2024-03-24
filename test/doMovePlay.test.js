@@ -17,7 +17,7 @@ test("finished game", () => {
 		attackerHand: [],
 		defenderHand: [ "2!" ],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -41,7 +41,7 @@ test("finished game", () => {
 		attackerHand: [],
 		defenderHand: [ "2!" ],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -62,7 +62,7 @@ test("wrong way (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ "3#" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -86,7 +86,7 @@ test("wrong way (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ "3#" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -107,7 +107,7 @@ test("break to empty stack (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ ">!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -131,7 +131,7 @@ test("break to empty stack (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ ">!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -152,7 +152,7 @@ test("unowned card (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -176,7 +176,7 @@ test("unowned card (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -197,7 +197,7 @@ test("card face only (defender)", () => {
 		attackerHand: [],
 		defenderHand: [ "3!" ],
 		turn: 0,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -221,7 +221,7 @@ test("card face only (defender)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -242,7 +242,7 @@ test("break to stack as attacker is allowed", () => {
 		attackerHand: [ ">!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -266,7 +266,7 @@ test("break to stack as attacker is allowed", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 2,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -287,7 +287,7 @@ test("unowned card (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -311,7 +311,7 @@ test("unowned card (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -332,7 +332,7 @@ test("card face only (attacker)", () => {
 		attackerHand: [ "3!" ],
 		defenderHand: [],
 		turn: 1,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -356,7 +356,7 @@ test("card face only (attacker)", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 2,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
@@ -377,7 +377,7 @@ test("defender win", () => {
 		attackerHand: [ "3!" ],
 		defenderHand: [],
 		turn: 109,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}
@@ -401,7 +401,7 @@ test("defender win", () => {
 		attackerHand: [],
 		defenderHand: [],
 		turn: 110,
-		turns: 110,
+		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	})
