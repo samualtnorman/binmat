@@ -108,7 +108,7 @@ export function parseMove(move: string, extra = false): Move {
 				}
 			}
 
-			throw new Error(`play moves must be 3 or 4 characters, got ${move.length}`)
+			throw Error(`play moves must be 3 or 4 characters, got ${move.length}`)
 		}
 
 		case `x`: {
@@ -178,10 +178,10 @@ export function parseMove(move: string, extra = false): Move {
 				}
 			}
 
-			throw new Error(`discard moves must be 3 or 4 characters, got ${move.length}`)
+			throw Error(`discard moves must be 3 or 4 characters, got ${move.length}`)
 		}
 
 		default:
-			throw new Error(`Invalid move tag "${move[0]}" in "${move}"`)
+			throw Error(`Invalid move tag "${move[0]}" in "${move}"`)
 	}
 }

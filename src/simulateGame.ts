@@ -89,7 +89,7 @@ export function simulateGame(
 			if (noThrow)
 				doDefaultMove()
 			else
-				throw new Error(`defender brain did not attempt to make a move`)
+				throw Error(`defender brain did not attempt to make a move`)
 		}
 
 		onMove?.(state, defenderBinlog)
@@ -122,7 +122,7 @@ export function simulateGame(
 			if (noThrow)
 				doDefaultMove()
 			else
-				throw new Error(`attacker brain did not attempt to make a move`)
+				throw Error(`attacker brain did not attempt to make a move`)
 		}
 
 		onMove?.(state, attackerBinlog)
@@ -136,7 +136,7 @@ export function simulateGame(
 			if (noThrow)
 				return { ok: false }
 
-			throw new Error(`only 1 move per turn`)
+			throw Error(`only 1 move per turn`)
 		}
 
 		madeMove = true
@@ -145,7 +145,7 @@ export function simulateGame(
 			if (noThrow)
 				return doDefaultMove()
 
-			throw new Error(`made move too late`)
+			throw Error(`made move too late`)
 		}
 
 		let move
@@ -176,7 +176,7 @@ export function simulateGame(
 				if (noThrow)
 					return doDefaultMove()
 
-				throw new Error(StatusCodeMessages[result.status])
+				throw Error(StatusCodeMessages[result.status])
 			}
 		}
 
@@ -199,7 +199,7 @@ export function simulateGame(
 			} break
 
 			default:
-				throw new Error(`unexpected status code ${result.status}`)
+				throw Error(`unexpected status code ${result.status}`)
 		}
 
 		if ((state.turn % 2) + 1 == Role.Defender)

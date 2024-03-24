@@ -85,7 +85,7 @@ function $(context: Context, args: unknown) {
 							}
 
 							default:
-								throw new Error(`unexpected status code ${result.status}`)
+								throw Error(`unexpected status code ${result.status}`)
 						}
 					}
 
@@ -148,7 +148,7 @@ function $(context: Context, args: unknown) {
 								}
 
 								default:
-									throw new Error(`unexpected status code ${result.status}`)
+									throw Error(`unexpected status code ${result.status}`)
 							}
 						}
 					}
@@ -233,7 +233,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 						}
 
 						default:
-							throw new Error(`unexpected status code ${result.status}`)
+							throw Error(`unexpected status code ${result.status}`)
 					}
 				}
 
@@ -295,7 +295,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 							}
 
 							default:
-								throw new Error(`unexpected status code ${result.status}`)
+								throw Error(`unexpected status code ${result.status}`)
 						}
 					}
 				}
