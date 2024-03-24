@@ -5,8 +5,8 @@ import { doMoveDraw } from "./doMoveDraw"
 import { doMovePass } from "./doMovePass"
 import { doMovePlay } from "./doMovePlay"
 import { doMovePlayFaceUp } from "./doMovePlayFaceUp"
-import type { Card, Lane, Move, State } from "./shared"
-import { AttackerDeck, MoveKind, StatusCode } from "./shared"
+import type { Card, Lane, Move, State } from "./common"
+import { AttackerDeck, MoveKind, StatusCode } from "./common"
 
 export function doMove(state: State, move: Move): {
 	status: StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin

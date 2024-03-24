@@ -1,7 +1,7 @@
 import type { CombatData } from "./doCombat"
 import { doCombat } from "./doCombat"
-import type { Lane, State } from "./shared"
-import { Role, StatusCode } from "./shared"
+import type { Lane, State } from "./common"
+import { Role, StatusCode } from "./common"
 
 export function doMoveCombat(state: State, lane: Lane): (
 	{ status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin } & CombatData

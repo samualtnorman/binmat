@@ -1,6 +1,6 @@
 import { expect, test } from "vitest"
 import { parseMove } from "../src/parseMove"
-import { AttackerDeck, AttackerDiscardPile, MoveKind } from "../src/shared"
+import { AttackerDeck, AttackerDiscardPile, MoveKind } from "../src/common"
 
 test("pass", () =>
 	expect(parseMove("--")).toEqual({ kind: MoveKind.Pass })

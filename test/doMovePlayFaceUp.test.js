@@ -1,6 +1,6 @@
 import { expect, test } from "vitest"
 import { doMovePlayFaceUp } from "../src/doMovePlayFaceUp"
-import { CardModifier, StatusCode } from "../src/shared"
+import { CardModifier, StatusCode } from "../src/common"
 
 test("regular card (defender)", () => {
 	expect(doMovePlayFaceUp({

@@ -3,8 +3,8 @@ import { isRecord } from "@samual/lib/isRecord"
 import { doMove } from "../src/doMove"
 import { makeState } from "../src/makeState"
 import { parseMove } from "../src/parseMove"
-import type { Card, State } from "../src/shared"
-import { CardSuit, MoveKind, Role, StatusCode, StatusCodeMessages } from "../src/shared"
+import type { Card, State } from "../src/common"
+import { CardSuit, MoveKind, Role, StatusCode, StatusCodeMessages } from "../src/common"
 
 const SuitToColourCode = {
 	[CardSuit.Form]: `l`,

@@ -1,5 +1,5 @@
 export { doMove } from "./doMove"
 export { makeState } from "./makeState"
 export { parseMove } from "./parseMove"
-export { MoveKind, Role, StatusCode, StatusCodeMessages, type Move, type State } from "./shared"
+export { MoveKind, Role, StatusCode, StatusCodeMessages, type Move, type State } from "./common"
 export { simulateGame } from "./simulateGame"

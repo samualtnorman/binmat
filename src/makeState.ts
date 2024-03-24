@@ -1,5 +1,5 @@
 import { shuffle } from "@samual/lib/shuffle"
-import type { Card, State } from "./shared"
+import type { Card, State } from "./common"
 
 export const Cards: Card[] = [
 	`2&`, `3&`, `4&`, `5&`, `6&`, `7&`, `8&`, `9&`, `a&`, `@&`, `*&`, `?&`, `>&`,

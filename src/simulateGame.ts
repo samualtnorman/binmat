@@ -4,8 +4,8 @@ import type { BinmatArgs } from "./generateArgs"
 import { generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
 import { makeState } from "./makeState"
 import { parseMove } from "./parseMove"
-import type { State } from "./shared"
-import { MoveKind, Role, StatusCode, StatusCodeMessages } from "./shared"
+import type { State } from "./common"
+import { MoveKind, Role, StatusCode, StatusCodeMessages } from "./common"
 
 export type SimulateGameOptions = {
 	/** How many milliseconds the brain is allowed @default 5000 */ timeLimit: number

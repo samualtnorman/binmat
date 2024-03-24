@@ -1,5 +1,5 @@
-import type { State } from "./shared"
-import { Role, StatusCode } from "./shared"
+import type { State } from "./common"
+import { Role, StatusCode } from "./common"
 
 export function doMovePass(state: State) {
 	if (state.turn >= state.turns)

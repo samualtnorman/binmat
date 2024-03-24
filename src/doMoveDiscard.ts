@@ -1,6 +1,6 @@
 import { shuffle } from "@samual/lib/shuffle"
-import type { Card, CardValue, Lane, State } from "./shared"
-import { AttackerDiscardPile, Role, StatusCode } from "./shared"
+import type { Card, CardValue, Lane, State } from "./common"
+import { AttackerDiscardPile, Role, StatusCode } from "./common"
 
 export function doMoveDiscard(state: State, card: Card | CardValue, discardPile: Lane | AttackerDiscardPile): {
 	status: StatusCode.Ok | StatusCode.DefenderWin

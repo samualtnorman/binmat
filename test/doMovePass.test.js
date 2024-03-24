@@ -1,9 +1,9 @@
 import { expect, test } from "vitest"
 import { doMovePass } from "../src/doMovePass"
-import { StatusCode } from "../src/shared"
+import { StatusCode } from "../src/common"
 
 test("finished game", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -44,7 +44,7 @@ test("finished game", () => {
 })
 
 test("defender win", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -85,7 +85,7 @@ test("defender win", () => {
 })
 
 test("normal pass", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -126,7 +126,7 @@ test("normal pass", () => {
 })
 
 test("defender pass twice", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -167,7 +167,7 @@ test("defender pass twice", () => {
 })
 
 test("attacker pass twice", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [

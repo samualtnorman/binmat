@@ -1,6 +1,6 @@
 import { shuffle } from "@samual/lib/shuffle"
-import type { Card, Lane, State } from "./shared"
-import { AttackerDeck, AttackerDiscardPile, Role, StatusCode } from "./shared"
+import type { Card, Lane, State } from "./common"
+import { AttackerDeck, AttackerDiscardPile, Role, StatusCode } from "./common"
 
 export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
 	status: StatusCode.Ok | StatusCode.DefenderWin

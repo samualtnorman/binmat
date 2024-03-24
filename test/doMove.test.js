@@ -1,6 +1,6 @@
 import { expect, it } from "vitest"
 import { doMove } from "../src/doMove"
-import { AttackerDeck, AttackerDiscardPile, MoveKind, StatusCode } from "../src/shared"
+import { AttackerDeck, AttackerDiscardPile, MoveKind, StatusCode } from "../src/common"
 
 it("works", () => {
 	expect(doMove({

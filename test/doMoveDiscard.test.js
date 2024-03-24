@@ -1,13 +1,13 @@
 import { expect, test, vi } from "vitest"
 import { doMoveDiscard } from "../src/doMoveDiscard"
-import { AttackerDeck, AttackerDiscardPile, StatusCode } from "../src/shared"
+import { AttackerDeck, AttackerDiscardPile, StatusCode } from "../src/common"
 
 vi.mock("@samual/lib/shuffle", () =>
 	/** @satisfies {typeof import("@samual/lib/shuffle")} */ ({ shuffle: array => array })
 )
 
 test("finished game", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -52,7 +52,7 @@ test("finished game", () => {
 })
 
 test("unowned card (defender)", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -97,7 +97,7 @@ test("unowned card (defender)", () => {
 })
 
 test("defender trying to discard to attacker's discard pile", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -143,7 +143,7 @@ test("defender trying to discard to attacker's discard pile", () => {
 })
 
 test("normal play (defender)", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -188,7 +188,7 @@ test("normal play (defender)", () => {
 })
 
 test("card face only (defender)", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -233,7 +233,7 @@ test("card face only (defender)", () => {
 })
 
 test("unowned card (attacker)", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -278,7 +278,7 @@ test("unowned card (attacker)", () => {
 })
 
 test("attacker trying to discard to lane discard pile", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -323,7 +323,7 @@ test("attacker trying to discard to lane discard pile", () => {
 })
 
 test("attacker discarding when attacker stack is empty", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -369,7 +369,7 @@ test("attacker discarding when attacker stack is empty", () => {
 })
 
 test("attacker discarding with one card in attacker deck", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -415,7 +415,7 @@ test("attacker discarding with one card in attacker deck", () => {
 })
 
 test("attacker discarding with one card in attacker discard pile", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -461,7 +461,7 @@ test("attacker discarding with one card in attacker discard pile", () => {
 })
 
 test("card face only (attacker)", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -507,7 +507,7 @@ test("card face only (attacker)", () => {
 })
 
 test("defender win", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -553,7 +553,7 @@ test("defender win", () => {
 })
 
 test("attacker discarding with more than one card in attacker deck", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [

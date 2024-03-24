@@ -1,6 +1,6 @@
 import { shuffle } from "@samual/lib/shuffle"
-import type { Card, CardSuit, CardValue, Lane, State } from "./shared"
-import { CardModifier, Role, StatusCode } from "./shared"
+import type { Card, CardSuit, CardValue, Lane, State } from "./common"
+import { CardModifier, Role, StatusCode } from "./common"
 
 export type CombatData = {
 	attackerStack: Card[]

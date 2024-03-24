@@ -1,9 +1,9 @@
 import { expect, test } from "vitest"
 import { doMoveCombat } from "../src/doMoveCombat"
-import { StatusCode } from "../src/shared"
+import { StatusCode } from "../src/common"
 
 test("finished game", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -44,7 +44,7 @@ test("finished game", () => {
 })
 
 test("defender trying to initiate combat", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -85,7 +85,7 @@ test("defender trying to initiate combat", () => {
 })
 
 test("attacker trying to initiate combat with empty stack", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [], [], [], [], [], [] ],
 		defenderStacks: [
@@ -126,7 +126,7 @@ test("attacker trying to initiate combat with empty stack", () => {
 })
 
 test("normal combat", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -182,7 +182,7 @@ test("normal combat", () => {
 })
 
 test("attacker win", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [
@@ -238,7 +238,7 @@ test("attacker win", () => {
 })
 
 test("defender win", () => {
-	/** @type {import("../src/shared").State} */
+	/** @type {import("../src/common").State} */
 	const state = {
 		attackerStacks: [ [ "8!" ], [], [], [], [], [] ],
 		defenderStacks: [

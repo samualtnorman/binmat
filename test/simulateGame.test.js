@@ -1,5 +1,5 @@
 import { expect, test } from "vitest"
-import { Role } from "../src/shared"
+import { Role } from "../src/common"
 import { simulateGame } from "../src/simulateGame"
 
 test("throw when brain doesn't make a move (defender)", () =>
