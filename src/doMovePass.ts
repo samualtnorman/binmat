@@ -31,5 +31,5 @@ export function doMovePass(state: State) {
 	if (state.turn == state.maxTurns)
 		return StatusCode.DefenderWin
 
-	return StatusCode.Ok
+	return StatusCode.Okay
 }

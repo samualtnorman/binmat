@@ -5,7 +5,7 @@ import type { Card, CardValue, Lane, State } from "./common"
 import { CardModifier, Role, StatusCode } from "./common"
 
 export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lane): {
-	status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin
+	status: StatusCode.Okay | StatusCode.DefenderWin | StatusCode.AttackerWin
 	cardPlayed: Card
 	combat: CombatData | undefined
 } | {
@@ -92,5 +92,5 @@ export function doMovePlayFaceUp(state: State, card: Card | CardValue, lane: Lan
 	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardPlayed, combat }
 
-	return { status: StatusCode.Ok, cardPlayed, combat }
+	return { status: StatusCode.Okay, cardPlayed, combat }
 }

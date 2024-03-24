@@ -146,7 +146,7 @@ test("normal combat", () => {
 	}
 
 	expect(doMoveCombat(state, 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: [ "8!" ],
 		defenderStack: [ "3!", "3#", "3%", "3&", "3+" ],
 		attackerAttackPower: 3,

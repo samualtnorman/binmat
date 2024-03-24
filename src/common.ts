@@ -36,7 +36,7 @@ export const AttackerDiscardPile = 6
 export type AttackerDiscardPile = typeof AttackerDiscardPile
 
 export const enum StatusCode {
-	Ok, DefenderWin, AttackerWin, MadeMoveOnFinishedGame, DefenderDrewFromAttackerDeck, AttackerDrewFromBlockedLane,
+	Okay, DefenderWin, AttackerWin, MadeMoveOnFinishedGame, DefenderDrewFromAttackerDeck, AttackerDrewFromBlockedLane,
 	PlayedUnownedCard, PlayedBreakToEmptyStack, DefenderInitiatedCombat, AttackerInitiatedCombatWithEmptyStack,
 	DiscardedToOpponentDiscardPile, AttackerDiscardedToEmptyDiscardAndDeck, AttackerDrewFromEmptyDiscardAndDeck,
 	PlayedCardFacedWrongWay, DefenderPlayedFaceUpBreakToStackWithBreak

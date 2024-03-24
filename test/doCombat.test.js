@@ -27,7 +27,7 @@ test("trap (defender)", () => {
 	}
 
 	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: [ "8!" ],
 		defenderStack: [ "@!", "@#" ],
 		attackerAttackPower: 0,
@@ -83,7 +83,7 @@ test("wild (defender)", () => {
 	}
 
 	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: [ "8!" ],
 		defenderStack: [ "5!", "*!" ],
 		attackerAttackPower: 3,
@@ -139,7 +139,7 @@ test("bounce (defender)", () => {
 	}
 
 	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: [ "8!" ],
 		defenderStack: [ "?!" ],
 		attackerAttackPower: 3,
@@ -195,7 +195,7 @@ test("break (defender)", () => {
 	}
 
 	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: [ "2!" ],
 		defenderStack: [ "3!", "3#", ">!" ],
 		attackerAttackPower: 1,
@@ -251,7 +251,7 @@ test("10 (defender)", () => {
 	}
 
 	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: [ "8!" ],
 		defenderStack: [ "a!", "6!" ],
 		attackerAttackPower: 3,
@@ -419,7 +419,7 @@ test("bounce (attacker)", () => {
 	}
 
 	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: [ "?!" ],
 		defenderStack: [ "4!" ],
 		attackerAttackPower: 0,
@@ -475,7 +475,7 @@ test("break (attacker)", () => {
 	}
 
 	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: [ "2!", ">!" ],
 		defenderStack: [ "3!", "3#", "3%" ],
 		attackerAttackPower: 1,
@@ -587,7 +587,7 @@ test("shuffling lane discard pile into lane deck", () => {
 	}
 
 	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: [ "8!" ],
 		defenderStack: [],
 		attackerAttackPower: 3,

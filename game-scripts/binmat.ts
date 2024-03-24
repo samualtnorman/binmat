@@ -54,7 +54,7 @@ function $(context: Context, args: unknown) {
 						const result = doMove(game.state, { tag: MoveTag.Pass })
 
 						switch (result.status) {
-							case StatusCode.Ok: {
+							case StatusCode.Okay: {
 								$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 								$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
@@ -92,7 +92,7 @@ function $(context: Context, args: unknown) {
 					const result = doMove(game.state, move)
 
 					switch (result.status) {
-						case StatusCode.Ok: {
+						case StatusCode.Okay: {
 							$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 							$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
@@ -117,7 +117,7 @@ function $(context: Context, args: unknown) {
 							const result = doMove(game.state, { tag: MoveTag.Pass })
 
 							switch (result.status) {
-								case StatusCode.Ok: {
+								case StatusCode.Okay: {
 									$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 									$fs.chats.tell({ to: game.attacker, msg: result.binlog.join(`\n`) })
 
@@ -210,7 +210,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					const result = doMove(game.state, { tag: MoveTag.Pass })
 
 					switch (result.status) {
-						case StatusCode.Ok: {
+						case StatusCode.Okay: {
 							$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 							$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 
@@ -240,7 +240,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 				const result = doMove(game.state, move)
 
 				switch (result.status) {
-					case StatusCode.Ok: {
+					case StatusCode.Okay: {
 						$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 						$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 
@@ -265,7 +265,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 						const result = doMove(game.state, { tag: MoveTag.Pass })
 
 						switch (result.status) {
-							case StatusCode.Ok: {
+							case StatusCode.Okay: {
 								$db.u({ _id: `binmat` }, { $set: { [`idToGame/${currentGameID}.state`]: game.state } })
 								$fs.chats.tell({ to: game.defender, msg: result.binlog.join(`\n`) })
 

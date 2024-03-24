@@ -20,7 +20,7 @@ export type CombatData = {
 
 export const PowersOfTwo = [ 2, 4, 8, 16, 32, 64, 128, 256 ]
 
-export function doCombat(state: State, lane: Lane): { status: StatusCode.Ok | StatusCode.AttackerWin } & CombatData {
+export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | StatusCode.AttackerWin } & CombatData {
 	const roleTurn: Role = (state.turn % 2) + 1
 	const laneDeck = state.laneDecks[lane]
 	const laneDiscardPile = state.laneDiscardPiles[lane]
@@ -201,7 +201,7 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Ok | St
 	state.defenderStacks[lane].isFaceUp = Boolean(defenderStack.length)
 
 	return {
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		attackerStack: attackerStackBeforeCombat,
 		defenderStack: defenderStackBeforeCombat,
 		attackerAttackPower,

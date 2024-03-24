@@ -202,7 +202,7 @@ test("card face only (defender)", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMovePlay(state, "3", 0)).toEqual({ status: StatusCode.Ok, cardPlayed: "3!" })
+	expect(doMovePlay(state, "3", 0)).toEqual({ status: StatusCode.Okay, cardPlayed: "3!" })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -247,7 +247,7 @@ test("break to stack as attacker is allowed", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMovePlay(state, ">!", 0)).toEqual({ status: StatusCode.Ok, cardPlayed: ">!" })
+	expect(doMovePlay(state, ">!", 0)).toEqual({ status: StatusCode.Okay, cardPlayed: ">!" })
 
 	expect(state).toEqual({
 		attackerStacks: [ [ ">!" ], [], [], [], [], [] ],
@@ -337,7 +337,7 @@ test("card face only (attacker)", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMovePlay(state, "3", 0)).toEqual({ status: StatusCode.Ok, cardPlayed: "3!" })
+	expect(doMovePlay(state, "3", 0)).toEqual({ status: StatusCode.Okay, cardPlayed: "3!" })
 
 	expect(state).toEqual({
 		attackerStacks: [ [ "3!" ], [], [], [], [], [] ],

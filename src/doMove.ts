@@ -9,9 +9,9 @@ import type { Card, Lane, Move, State } from "./common"
 import { AttackerDeck, MoveTag, StatusCode } from "./common"
 
 export function doMove(state: State, move: Move): {
-	status: StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin
+	status: StatusCode.Okay | StatusCode.AttackerWin | StatusCode.DefenderWin
 	binlog: string[]
-} | { status: Exclude<StatusCode, StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin> } {
+} | { status: Exclude<StatusCode, StatusCode.Okay | StatusCode.AttackerWin | StatusCode.DefenderWin> } {
 	const turn = String(state.turn).padStart(3, `0`)
 	const roleTurn = state.turn % 2 ? `a` : `d`
 
@@ -31,7 +31,7 @@ export function doMove(state: State, move: Move): {
 				}
 			}
 
-			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
+			if (result.status == StatusCode.Okay || result.status == StatusCode.DefenderWin) {
 				const card = move.deck < 3 || move.deck == AttackerDeck || deckIsEmpty ? `X` : result.cardDrawn
 
 				return {
@@ -49,7 +49,7 @@ export function doMove(state: State, move: Move): {
 		case MoveTag.Play: {
 			const result = doMovePlay(state, move.card, move.lane)
 
-			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
+			if (result.status == StatusCode.Okay || result.status == StatusCode.DefenderWin) {
 				return {
 					status: result.status,
 					binlog: [
@@ -65,7 +65,7 @@ export function doMove(state: State, move: Move): {
 		case MoveTag.PlayFaceUp: {
 			const result = doMovePlayFaceUp(state, move.card, move.lane)
 
-			if (result.status == StatusCode.Ok || result.status == StatusCode.AttackerWin || result.status == StatusCode.DefenderWin) {
+			if (result.status == StatusCode.Okay || result.status == StatusCode.AttackerWin || result.status == StatusCode.DefenderWin) {
 				const binlog = [
 					`\`V${turn}\` \`n------\``,
 					`${roleTurn}0 u${result.cardPlayed[0]}${move.lane} / ${result.cardPlayed} ${roleTurn}${move.lane}`
@@ -86,7 +86,7 @@ export function doMove(state: State, move: Move): {
 		case MoveTag.Combat: {
 			const result = doMoveCombat(state, move.lane)
 
-			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin || result.status == StatusCode.AttackerWin) {
+			if (result.status == StatusCode.Okay || result.status == StatusCode.DefenderWin || result.status == StatusCode.AttackerWin) {
 				const binlog = [
 					`\`V${turn}\` \`n------\``,
 					`${roleTurn}0 c${move.lane}`
@@ -106,7 +106,7 @@ export function doMove(state: State, move: Move): {
 		case MoveTag.Discard: {
 			const result = doMoveDiscard(state, move.card, move.discardPile)
 
-			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
+			if (result.status == StatusCode.Okay || result.status == StatusCode.DefenderWin) {
 				const discardPile = move.discardPile == AttackerDeck ? `a` : move.discardPile
 
 				return {

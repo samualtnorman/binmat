@@ -3,7 +3,7 @@ import type { Card, Lane, State } from "./common"
 import { AttackerDeck, AttackerDiscardPile, Role, StatusCode } from "./common"
 
 export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
-	status: StatusCode.Ok | StatusCode.DefenderWin
+	status: StatusCode.Okay | StatusCode.DefenderWin
 	cardDrawn: Card
 } | {
 	status:
@@ -53,5 +53,5 @@ export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
 	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardDrawn }
 
-	return { status: StatusCode.Ok, cardDrawn }
+	return { status: StatusCode.Okay, cardDrawn }
 }

@@ -26,7 +26,7 @@ test("regular card (defender)", () => {
 		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, "6#", 0)).toEqual({ status: StatusCode.Ok, cardPlayed: "6#", combat: undefined })
+	}, "6#", 0)).toEqual({ status: StatusCode.Okay, cardPlayed: "6#", combat: undefined })
 })
 
 test("finished game", () => {
@@ -80,7 +80,7 @@ test("face value only (defender)", () => {
 		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, "6", 0)).toEqual({ status: StatusCode.Ok, cardPlayed: "6#", combat: undefined })
+	}, "6", 0)).toEqual({ status: StatusCode.Okay, cardPlayed: "6#", combat: undefined })
 })
 
 test("unowned card (defender)", () => {
@@ -189,7 +189,7 @@ test("combat (defender)", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		cardPlayed: ">!",
 		combat: {
 			attackerStack: [],
@@ -432,7 +432,7 @@ test("break to stack with break as attacker is allowed", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		cardPlayed: ">!",
 		combat: {
 			attackerStack: [ ">+", ">!" ],
@@ -477,7 +477,7 @@ test("combat (attacker)", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, ">!", 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		cardPlayed: ">!",
 		combat: {
 			attackerStack: [ "4#", ">!" ],
@@ -567,7 +567,7 @@ test("bounce", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, "?+", 0)).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		cardPlayed: "?+",
 		combat: {
 			attackerStack: [ "?+" ],

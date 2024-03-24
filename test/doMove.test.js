@@ -27,7 +27,7 @@ it("works", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Draw, deck: AttackerDeck })).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		binlog: [ "`V001` `n------`", "a0 da / X ha0 " ]
 	})
 
@@ -142,7 +142,7 @@ it("works", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.PlayFaceUp, card: "3+", lane: 0 })).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		binlog: [ "`V000` `n------`", "d0 u30 / 3+ d0" ]
 	})
 
@@ -248,7 +248,7 @@ it("works", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Discard, card: "4%", discardPile: 0 })).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		binlog: [ "`V000` `n------`", "d0 x40 / 4% x0" ]
 	})
 
@@ -326,7 +326,7 @@ it("works", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.PlayFaceUp, card: ">!", lane: 0 })).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		binlog: [
 			"`V000` `n------`",
 			"d0 u>0 / >! d0",
@@ -359,7 +359,7 @@ it("works", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.PlayFaceUp, card: ">!", lane: 0 })).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		binlog: [
 			"`V000` `n------`",
 			"d0 u>0 / >! d0",
@@ -395,7 +395,7 @@ it("works", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Combat, lane: 0 })).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		binlog: [
 			"`V001` `n------`",
 			"a0 c0",
@@ -431,7 +431,7 @@ it("works", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Combat, lane: 5 })).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		binlog: [
 			"`V001` `n------`",
 			"a0 c5",
@@ -544,7 +544,7 @@ it("works", () => {
 		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { tag: MoveTag.Pass })).toEqual({ status: StatusCode.Ok, binlog: [ "`V000` `n------`", "d0 `n--`" ] })
+	}, { tag: MoveTag.Pass })).toEqual({ status: StatusCode.Okay, binlog: [ "`V000` `n------`", "d0 `n--`" ] })
 
 	expect(doMove({
 		attackerStacks: [ [ "8&" ], [], [], [], [], [] ],
@@ -570,7 +570,7 @@ it("works", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Combat, lane: 0 })).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		binlog: [
 			"`V001` `n------`",
 			"a0 c0",
@@ -603,7 +603,7 @@ it("works", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, { tag: MoveTag.Combat, lane: 0 })).toEqual({
-		status: StatusCode.Ok,
+		status: StatusCode.Okay,
 		binlog: [
 			"`V001` `n------`",
 			"a0 c0",

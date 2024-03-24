@@ -104,7 +104,7 @@ test("normal pass", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMovePass(state)).toEqual(StatusCode.Ok)
+	expect(doMovePass(state)).toEqual(StatusCode.Okay)
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -145,7 +145,7 @@ test("defender pass twice", () => {
 		defenderPassedLastTurn: true
 	}
 
-	expect(doMovePass(state)).toEqual(StatusCode.Ok)
+	expect(doMovePass(state)).toEqual(StatusCode.Okay)
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -186,7 +186,7 @@ test("attacker pass twice", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMovePass(state)).toEqual(StatusCode.Ok)
+	expect(doMovePass(state)).toEqual(StatusCode.Okay)
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],

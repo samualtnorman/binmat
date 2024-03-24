@@ -162,7 +162,7 @@ test("normal play (defender)", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, "2!", 0)).toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: undefined })
+	expect(doMoveDiscard(state, "2!", 0)).toEqual({ status: StatusCode.Okay, cardDiscarded: "2!", cardsDrawn: undefined })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -207,7 +207,7 @@ test("card face only (defender)", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doMoveDiscard(state, "2", 0)).toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: undefined })
+	expect(doMoveDiscard(state, "2", 0)).toEqual({ status: StatusCode.Okay, cardDiscarded: "2!", cardsDrawn: undefined })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -389,7 +389,7 @@ test("attacker discarding with one card in attacker deck", () => {
 	}
 
 	expect(doMoveDiscard(state, "2!", AttackerDiscardPile))
-		.toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: [ "3!", "2!" ] })
+		.toEqual({ status: StatusCode.Okay, cardDiscarded: "2!", cardsDrawn: [ "3!", "2!" ] })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -435,7 +435,7 @@ test("attacker discarding with one card in attacker discard pile", () => {
 	}
 
 	expect(doMoveDiscard(state, "2!", AttackerDiscardPile))
-		.toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: [ "2!", "3!" ] })
+		.toEqual({ status: StatusCode.Okay, cardDiscarded: "2!", cardsDrawn: [ "2!", "3!" ] })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -481,7 +481,7 @@ test("card face only (attacker)", () => {
 	}
 
 	expect(doMoveDiscard(state, "2", AttackerDiscardPile))
-		.toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: [ "2!", "3!" ] })
+		.toEqual({ status: StatusCode.Okay, cardDiscarded: "2!", cardsDrawn: [ "2!", "3!" ] })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -573,7 +573,7 @@ test("attacker discarding with more than one card in attacker deck", () => {
 	}
 
 	expect(doMoveDiscard(state, "2!", AttackerDiscardPile))
-		.toEqual({ status: StatusCode.Ok, cardDiscarded: "2!", cardsDrawn: [ "3#", "3!" ] })
+		.toEqual({ status: StatusCode.Okay, cardDiscarded: "2!", cardsDrawn: [ "3#", "3!" ] })
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],

@@ -4,7 +4,7 @@ import type { Lane, State } from "./common"
 import { Role, StatusCode } from "./common"
 
 export function doMoveCombat(state: State, lane: Lane): (
-	{ status: StatusCode.Ok | StatusCode.DefenderWin | StatusCode.AttackerWin } & CombatData
+	{ status: StatusCode.Okay | StatusCode.DefenderWin | StatusCode.AttackerWin } & CombatData
 ) | {
 	status:
 		StatusCode.MadeMoveOnFinishedGame |

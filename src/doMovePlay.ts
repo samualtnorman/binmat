@@ -2,7 +2,7 @@ import type { Card, CardValue, Lane, State } from "./common"
 import { CardModifier, Role, StatusCode } from "./common"
 
 export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
-	status: StatusCode.Ok | StatusCode.DefenderWin
+	status: StatusCode.Okay | StatusCode.DefenderWin
 	cardPlayed: Card
 } | {
 	status:
@@ -50,5 +50,5 @@ export function doMovePlay(state: State, card: Card | CardValue, lane: Lane): {
 	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardPlayed }
 
-	return { status: StatusCode.Ok, cardPlayed }
+	return { status: StatusCode.Okay, cardPlayed }
 }

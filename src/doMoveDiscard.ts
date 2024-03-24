@@ -3,7 +3,7 @@ import type { Card, CardValue, Lane, State } from "./common"
 import { AttackerDiscardPile, Role, StatusCode } from "./common"
 
 export function doMoveDiscard(state: State, card: Card | CardValue, discardPile: Lane | AttackerDiscardPile): {
-	status: StatusCode.Ok | StatusCode.DefenderWin
+	status: StatusCode.Okay | StatusCode.DefenderWin
 	cardDiscarded: Card
 	cardsDrawn: [ Card, Card ] | undefined
 } | {
@@ -71,5 +71,5 @@ export function doMoveDiscard(state: State, card: Card | CardValue, discardPile:
 	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardDiscarded, cardsDrawn }
 
-	return { status: StatusCode.Ok, cardDiscarded, cardsDrawn }
+	return { status: StatusCode.Okay, cardDiscarded, cardsDrawn }
 }

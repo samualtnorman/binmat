@@ -162,7 +162,7 @@ export function simulateGame(
 		const result = doMove(state, move)
 
 		switch (result.status) {
-			case StatusCode.Ok: break
+			case StatusCode.Okay: break
 
 			case StatusCode.AttackerWin: {
 				winner = Role.Attacker
@@ -192,7 +192,7 @@ export function simulateGame(
 		const result = doMove(state, { tag: MoveTag.Pass })
 
 		switch (result.status) {
-			case StatusCode.Ok: break
+			case StatusCode.Okay: break
 
 			case StatusCode.DefenderWin: {
 				winner = Role.Defender
