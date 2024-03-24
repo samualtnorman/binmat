@@ -43,6 +43,9 @@ devDependencies:
   '@vitest/coverage-v8':
     specifier: ^1.4.0
     version: 1.4.0(vitest@1.4.0)
+  babel-plugin-here:
+    specifier: ^1.0.0
+    version: 1.0.0
   eslint:
     specifier: ^8.57.0
     version: 8.57.0
@@ -2395,6 +2398,13 @@ packages:
 
   /assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
+    dev: true
+
+  /babel-plugin-here@1.0.0:
+    resolution: {integrity: sha512-7YRnHUiOVOLsRs04vZ4XofrV44DBlxHsOowAGY13mHqkSNYuvtMA56KYaiMjWJoGg+QBI6X1TAFErcn51p65/Q==}
+    dependencies:
+      '@babel/types': 7.24.0
+      '@samual/lib': 0.9.1
     dev: true
 
   /babel-plugin-polyfill-corejs2@0.4.10(@babel/core@7.24.3):

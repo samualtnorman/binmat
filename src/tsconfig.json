@@ -3,7 +3,8 @@
 	"compilerOptions": {
 		"exactOptionalPropertyTypes": true,
 		"declaration": true,
-		"outDir": "../dist"
+		"outDir": "../dist",
+		"types": [ "@types/node", "@total-typescript/ts-reset", "babel-plugin-here/env" ]
 	},
 	"include": [ "**/*" ]
 }
