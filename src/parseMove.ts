@@ -1,6 +1,6 @@
 import { assert } from "@samual/lib/assert"
 import type { Card, CardValue, Lane, Move } from "./common"
-import { AttackerDeck, AttackerDiscardPile, CardModifier, CardSuit, MoveKind } from "./common"
+import { AttackerDeck, AttackerDiscardPile, CardModifier, CardSuit, MoveTag } from "./common"
 
 export const CardValues: CardValue[] = [
 	`2`,
@@ -31,7 +31,7 @@ export function parseMove(move: string, extra = false): Move {
 	assert(move.length > 1, `move must at least than 2 character, got ${move.length}`)
 
 	if (move == `--`)
-		return { kind: MoveKind.Pass }
+		return { tag: MoveTag.Pass }
 
 	switch (move[0]) {
 		case `d`: {
@@ -39,7 +39,7 @@ export function parseMove(move: string, extra = false): Move {
 
 			if (move[1] == `a`) {
 				return {
-					kind: MoveKind.Draw,
+					tag: MoveTag.Draw,
 					deck: AttackerDeck
 				}
 			}
@@ -49,7 +49,7 @@ export function parseMove(move: string, extra = false): Move {
 			assert(lane >= 0 && lane < 6, `invalid lane number "${move[1]}" (expected 0 - 5 or "a")`)
 
 			return {
-				kind: MoveKind.Draw,
+				tag: MoveTag.Draw,
 				deck: lane as Lane
 			}
 		}
@@ -62,7 +62,7 @@ export function parseMove(move: string, extra = false): Move {
 			assert(lane >= 0 && lane < 6, `invalid lane number "${move[1]}" (expected 0 - 5)`)
 
 			return {
-				kind: MoveKind.Combat,
+				tag: MoveTag.Combat,
 				lane: lane as Lane
 			}
 		}
@@ -80,7 +80,7 @@ export function parseMove(move: string, extra = false): Move {
 				assert(lane >= 0 && lane < 6, `invalid lane number "${move[2]}" (expected 0 - 5)`)
 
 				return {
-					kind: move[0] == `p` ? MoveKind.Play : MoveKind.PlayFaceUp,
+					tag: move[0] == `p` ? MoveTag.Play : MoveTag.PlayFaceUp,
 					card: move[1] as CardValue,
 					lane: lane as Lane
 				}
@@ -102,7 +102,7 @@ export function parseMove(move: string, extra = false): Move {
 				assert(lane >= 0 && lane < 6, `invalid lane number "${move[3]}" (expected 0 - 5)`)
 
 				return {
-					kind: move[0] == `p` ? MoveKind.Play : MoveKind.PlayFaceUp,
+					tag: move[0] == `p` ? MoveTag.Play : MoveTag.PlayFaceUp,
 					card: move.slice(1, 3) as Card,
 					lane: lane as Lane
 				}
@@ -119,7 +119,7 @@ export function parseMove(move: string, extra = false): Move {
 
 			if (extra && move.length == 2) {
 				return {
-					kind: MoveKind.Discard,
+					tag: MoveTag.Discard,
 					card: move[1] as CardValue,
 					discardPile: AttackerDiscardPile
 				}
@@ -128,7 +128,7 @@ export function parseMove(move: string, extra = false): Move {
 			if (move.length == 3) {
 				if (move[2] == `a`) {
 					return {
-						kind: MoveKind.Discard,
+						tag: MoveTag.Discard,
 						card: move[1] as CardValue,
 						discardPile: AttackerDiscardPile
 					}
@@ -136,7 +136,7 @@ export function parseMove(move: string, extra = false): Move {
 
 				if (extra && CardSuits.includes(move[2] as any)) {
 					return {
-						kind: MoveKind.Discard,
+						tag: MoveTag.Discard,
 						card: move.slice(1, 3) as Card,
 						discardPile: AttackerDiscardPile
 					}
@@ -147,7 +147,7 @@ export function parseMove(move: string, extra = false): Move {
 				assert(lane >= 0 && lane < 6, `invalid discard pile "${move[2]}" (expected 0 - 5 or "a")`)
 
 				return {
-					kind: MoveKind.Discard,
+					tag: MoveTag.Discard,
 					card: move[1] as CardValue,
 					discardPile: lane as Lane
 				}
@@ -161,7 +161,7 @@ export function parseMove(move: string, extra = false): Move {
 
 				if (move[3] == `a`) {
 					return {
-						kind: MoveKind.Discard,
+						tag: MoveTag.Discard,
 						card: move.slice(1, 3) as Card,
 						discardPile: AttackerDiscardPile
 					}
@@ -172,7 +172,7 @@ export function parseMove(move: string, extra = false): Move {
 				assert(lane >= 0 && lane < 6, `invalid discard pile "${move[3]}" (expected 0 - 5 or "a")`)
 
 				return {
-					kind: MoveKind.Discard,
+					tag: MoveTag.Discard,
 					card: move.slice(1, 3) as Card,
 					discardPile: lane as Lane
 				}
@@ -182,6 +182,6 @@ export function parseMove(move: string, extra = false): Move {
 		}
 
 		default:
-			throw new Error(`invalid move kind "${move[0]}" in "${move}"`)
+			throw new Error(`Invalid move tag "${move[0]}" in "${move}"`)
 	}
 }

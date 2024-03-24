@@ -5,7 +5,7 @@ import { generateArgsForAttacker, generateArgsForDefender } from "./generateArgs
 import { makeState } from "./makeState"
 import { parseMove } from "./parseMove"
 import type { State } from "./common"
-import { MoveKind, Role, StatusCode, StatusCodeMessages } from "./common"
+import { MoveTag, Role, StatusCode, StatusCodeMessages } from "./common"
 
 export type SimulateGameOptions = {
 	/** How many milliseconds the brain is allowed @default 5000 */ timeLimit: number
@@ -189,7 +189,7 @@ export function simulateGame(
 	}
 
 	function doDefaultMove() {
-		const result = doMove(state, { kind: MoveKind.Pass })
+		const result = doMove(state, { tag: MoveTag.Pass })
 
 		switch (result.status) {
 			case StatusCode.Ok: break

@@ -29,13 +29,13 @@ export const enum CardSuit {
 export type DefenderStack = { cards: Card[], isFaceUp: boolean }
 
 export type Move =
-	{ kind: MoveKind.Draw, deck: Lane | AttackerDeck } |
-	{ kind: MoveKind.Play | MoveKind.PlayFaceUp, card: Card | CardValue, lane: Lane } |
-	{ kind: MoveKind.Combat, lane: Lane } |
-	{ kind: MoveKind.Discard, card: Card | CardValue, discardPile: Lane | AttackerDiscardPile } |
-	{ kind: MoveKind.Pass }
+	{ tag: MoveTag.Draw, deck: Lane | AttackerDeck } |
+	{ tag: MoveTag.Play | MoveTag.PlayFaceUp, card: Card | CardValue, lane: Lane } |
+	{ tag: MoveTag.Combat, lane: Lane } |
+	{ tag: MoveTag.Discard, card: Card | CardValue, discardPile: Lane | AttackerDiscardPile } |
+	{ tag: MoveTag.Pass }
 
-export const enum MoveKind {
+export const enum MoveTag {
 	Draw, Play, PlayFaceUp, Combat, Discard, Pass
 }
 

@@ -4,7 +4,7 @@ import { doMove } from "../src/doMove"
 import { makeState } from "../src/makeState"
 import { parseMove } from "../src/parseMove"
 import type { Card, State } from "../src/common"
-import { CardSuit, MoveKind, Role, StatusCode, StatusCodeMessages } from "../src/common"
+import { CardSuit, MoveTag, Role, StatusCode, StatusCodeMessages } from "../src/common"
 
 const SuitToColourCode = {
 	[CardSuit.Form]: `l`,
@@ -51,7 +51,7 @@ function $(context: Context, args: unknown) {
 					} catch (error) {
 						assert(error instanceof Error)
 
-						const result = doMove(game.state, { kind: MoveKind.Pass })
+						const result = doMove(game.state, { tag: MoveTag.Pass })
 
 						switch (result.status) {
 							case StatusCode.Ok: {
@@ -114,7 +114,7 @@ function $(context: Context, args: unknown) {
 						}
 
 						default: {
-							const result = doMove(game.state, { kind: MoveKind.Pass })
+							const result = doMove(game.state, { tag: MoveTag.Pass })
 
 							switch (result.status) {
 								case StatusCode.Ok: {
@@ -207,7 +207,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 				} catch (error) {
 					assert(error instanceof Error)
 
-					const result = doMove(game.state, { kind: MoveKind.Pass })
+					const result = doMove(game.state, { tag: MoveTag.Pass })
 
 					switch (result.status) {
 						case StatusCode.Ok: {
@@ -262,7 +262,7 @@ ${game.state.laneDiscardPiles[args.inspect]?.join(` `) || `empty`}`
 					}
 
 					default: {
-						const result = doMove(game.state, { kind: MoveKind.Pass })
+						const result = doMove(game.state, { tag: MoveTag.Pass })
 
 						switch (result.status) {
 							case StatusCode.Ok: {

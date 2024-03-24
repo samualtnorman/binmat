@@ -6,7 +6,7 @@ import { doMovePass } from "./doMovePass"
 import { doMovePlay } from "./doMovePlay"
 import { doMovePlayFaceUp } from "./doMovePlayFaceUp"
 import type { Card, Lane, Move, State } from "./common"
-import { AttackerDeck, MoveKind, StatusCode } from "./common"
+import { AttackerDeck, MoveTag, StatusCode } from "./common"
 
 export function doMove(state: State, move: Move): {
 	status: StatusCode.Ok | StatusCode.AttackerWin | StatusCode.DefenderWin
@@ -15,8 +15,8 @@ export function doMove(state: State, move: Move): {
 	const turn = String(state.turn).padStart(3, `0`)
 	const roleTurn = state.turn % 2 ? `a` : `d`
 
-	switch (move.kind) {
-		case MoveKind.Draw: {
+	switch (move.tag) {
+		case MoveTag.Draw: {
 			const deckIsEmpty = !(move.deck == AttackerDeck ? state.attackerDeck : state.laneDecks[move.deck]).length
 			const result = doMoveDraw(state, move.deck)
 			const deck = move.deck == AttackerDeck ? `a` : move.deck
@@ -46,7 +46,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case MoveKind.Play: {
+		case MoveTag.Play: {
 			const result = doMovePlay(state, move.card, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
@@ -62,7 +62,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case MoveKind.PlayFaceUp: {
+		case MoveTag.PlayFaceUp: {
 			const result = doMovePlayFaceUp(state, move.card, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.AttackerWin || result.status == StatusCode.DefenderWin) {
@@ -83,7 +83,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case MoveKind.Combat: {
+		case MoveTag.Combat: {
 			const result = doMoveCombat(state, move.lane)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin || result.status == StatusCode.AttackerWin) {
@@ -103,7 +103,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case MoveKind.Discard: {
+		case MoveTag.Discard: {
 			const result = doMoveDiscard(state, move.card, move.discardPile)
 
 			if (result.status == StatusCode.Ok || result.status == StatusCode.DefenderWin) {
@@ -121,7 +121,7 @@ export function doMove(state: State, move: Move): {
 			return { status: result.status }
 		}
 
-		case MoveKind.Pass: {
+		case MoveTag.Pass: {
 			const status = doMovePass(state)
 
 			if (status == StatusCode.MadeMoveOnFinishedGame)
