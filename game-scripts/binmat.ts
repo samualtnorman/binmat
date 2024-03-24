@@ -567,6 +567,4 @@ hd0:
 ${defenderHand}`
 }
 
-function colourCard(card: CardString) {
-	return `\`${SuitToColourCode[card[1] as CardStringSuit]}${card}\``
-}
+const colourCard = (card: CardString) => `\`${SuitToColourCode[card[1] as CardStringSuit]}${card}\``

@@ -389,11 +389,9 @@ export type BinmatArgs = {
 	ops: string[]
 }
 
-export function generateArgs(state: State, defender: string, attacker: string, binlog: string[]) {
-	return state.turn % 2
-		? generateArgsForAttacker(state, defender, attacker, binlog)
-		: generateArgsForDefender(state, defender, attacker, binlog)
-}
+export const generateArgs = (state: State, defender: string, attacker: string, binlog: string[]) => state.turn % 2
+	? generateArgsForAttacker(state, defender, attacker, binlog)
+	: generateArgsForDefender(state, defender, attacker, binlog)
 
 export function generateArgsForDefender(state: State, defender: string, attacker: string, binlog: string[]) {
 	const args: BinmatArgs = {
