@@ -73,3 +73,28 @@ export type State = {
 	attackerPassedLastTurn: boolean
 	defenderPassedLastTurn: boolean
 }
+
+export const CardStringFaces: CardStringFace[] = [
+	`2`,
+	`3`,
+	`4`,
+	`5`,
+	`6`,
+	`7`,
+	`8`,
+	`9`,
+	`a`,
+	CardStringFaceModifier.Trap,
+	CardStringFaceModifier.Wild,
+	CardStringFaceModifier.Bounce,
+	CardStringFaceModifier.Break
+]
+
+export const CardStringSuits: CardStringSuit[] = [
+	CardStringSuit.Form,
+	CardStringSuit.Kin,
+	CardStringSuit.Data,
+	CardStringSuit.Chaos,
+	CardStringSuit.Void,
+	CardStringSuit.Choice
+]
