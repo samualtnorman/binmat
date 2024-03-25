@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@babel/plugin-transform-typescript@7.24.1':
+    hash: eijf6v7pe477hey6dzss5uk7ke
+    path: patches/@babel__plugin-transform-typescript@7.24.1.patch
+
 dependencies:
   '@samual/lib':
     specifier: 0.9.1
@@ -1292,7 +1297,7 @@ packages:
       '@babel/helper-plugin-utils': 7.24.0
     dev: true
 
-  /@babel/plugin-transform-typescript@7.24.1(@babel/core@7.24.3):
+  /@babel/plugin-transform-typescript@7.24.1(patch_hash=eijf6v7pe477hey6dzss5uk7ke)(@babel/core@7.24.3):
     resolution: {integrity: sha512-liYSESjX2fZ7JyBFkYG78nfvHlMKE6IpNdTVnxmlYUR+j5ZLsitFbaAE+eJSK2zPPkNWNw4mXL51rQ8WrvdK0w==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
@@ -1304,6 +1309,7 @@ packages:
       '@babel/helper-plugin-utils': 7.24.0
       '@babel/plugin-syntax-typescript': 7.24.1(@babel/core@7.24.3)
     dev: true
+    patched: true
 
   /@babel/plugin-transform-unicode-escapes@7.24.1(@babel/core@7.24.3):
     resolution: {integrity: sha512-RlkVIcWT4TLI96zM660S877E7beKlQw7Ig+wqkKBiWfj0zH5Q4h50q6er4wzZKRNSYpfo6ILJ+hrJAGSX2qcNw==}
@@ -1461,7 +1467,7 @@ packages:
       '@babel/helper-validator-option': 7.23.5
       '@babel/plugin-syntax-jsx': 7.24.1(@babel/core@7.24.3)
       '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.24.3)
-      '@babel/plugin-transform-typescript': 7.24.1(@babel/core@7.24.3)
+      '@babel/plugin-transform-typescript': 7.24.1(patch_hash=eijf6v7pe477hey6dzss5uk7ke)(@babel/core@7.24.3)
     dev: true
 
   /@babel/regjsgen@0.8.0:
@@ -3110,7 +3116,7 @@ packages:
       '@babel/plugin-transform-optional-catch-binding': 7.24.1(@babel/core@7.24.3)
       '@babel/plugin-transform-optional-chaining': 7.24.1(@babel/core@7.24.3)
       '@babel/plugin-transform-private-property-in-object': 7.24.1(@babel/core@7.24.3)
-      '@babel/plugin-transform-typescript': 7.24.1(@babel/core@7.24.3)
+      '@babel/plugin-transform-typescript': 7.24.1(patch_hash=eijf6v7pe477hey6dzss5uk7ke)(@babel/core@7.24.3)
       '@babel/plugin-transform-unicode-sets-regex': 7.24.1(@babel/core@7.24.3)
       '@babel/traverse': 7.24.1
       '@babel/types': 7.24.0

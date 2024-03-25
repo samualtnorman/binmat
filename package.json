@@ -63,5 +63,10 @@
 		".": "./index.js",
 		"./*": "./*.js",
 		"./*.js": "./*.js"
+	},
+	"pnpm": {
+		"patchedDependencies": {
+			"@babel/plugin-transform-typescript@7.24.1": "patches/@babel__plugin-transform-typescript@7.24.1.patch"
+		}
 	}
 }

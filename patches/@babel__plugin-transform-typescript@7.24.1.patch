@@ -1,0 +1,13 @@
+diff --git a/lib/const-enum.js b/lib/const-enum.js
+index 50bc2cb957ad252912f8f4b5d6b69ed9ad27647e..f5b7908c908f37909b5eb5cb523511beab63497c 100644
+--- a/lib/const-enum.js
++++ b/lib/const-enum.js
+@@ -22,7 +22,7 @@ function transpileConstEnum(path, t) {
+     if (path.scope.hasOwnBinding(name)) {
+       (parentIsExport ? path.parentPath : path).replaceWith(t.expressionStatement(t.callExpression(t.memberExpression(t.identifier("Object"), t.identifier("assign")), [path.node.id, obj])));
+     } else {
+-      path.replaceWith(t.variableDeclaration("var", [t.variableDeclarator(path.node.id, obj)]));
++      path.replaceWith(t.variableDeclaration("const", [t.variableDeclarator(path.node.id, obj)]));
+       path.scope.registerDeclaration(path);
+     }
+     return;
