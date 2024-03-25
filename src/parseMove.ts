@@ -1,31 +1,6 @@
 import { assert } from "@samual/lib/assert"
 import type { CardString, CardStringFace, Lane, Move } from "./common"
-import { AttackerDeck, AttackerDiscardPile, CardStringFaceModifier, CardStringSuit, MoveTag } from "./common"
-
-export const CardValues: CardStringFace[] = [
-	`2`,
-	`3`,
-	`4`,
-	`5`,
-	`6`,
-	`7`,
-	`8`,
-	`9`,
-	`a`,
-	CardStringFaceModifier.Trap,
-	CardStringFaceModifier.Wild,
-	CardStringFaceModifier.Bounce,
-	CardStringFaceModifier.Break
-]
-
-export const CardSuits: CardStringSuit[] = [
-	CardStringSuit.Form,
-	CardStringSuit.Kin,
-	CardStringSuit.Data,
-	CardStringSuit.Chaos,
-	CardStringSuit.Void,
-	CardStringSuit.Choice
-]
+import { AttackerDeck, AttackerDiscardPile, CardStringFaces, CardStringSuits, MoveTag } from "./common"
 
 export function parseMove(move: string, extra = false): Move {
 	assert(move.length > 1, `move must at least than 2 character, got ${move.length}`)
@@ -71,8 +46,8 @@ export function parseMove(move: string, extra = false): Move {
 		case `u`: {
 			if (move.length == 3) {
 				assert(
-					CardValues.includes(move[1] as any),
-					`invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`
+					CardStringFaces.includes(move[1] as any),
+					`invalid card value "${move[1]}" (expected one of ${CardStringFaces.join(`, `)})`
 				)
 
 				const lane = Number(move[2])
@@ -88,13 +63,13 @@ export function parseMove(move: string, extra = false): Move {
 
 			if (move.length == 4) {
 				assert(
-					CardValues.includes(move[1] as any),
-					`invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`
+					CardStringFaces.includes(move[1] as any),
+					`invalid card value "${move[1]}" (expected one of ${CardStringFaces.join(`, `)})`
 				)
 
 				assert(
-					CardSuits.includes(move[2] as any),
-					`invalid card suit "${move[2]}" (expected one of ${CardSuits.join(`, `)})`
+					CardStringSuits.includes(move[2] as any),
+					`invalid card suit "${move[2]}" (expected one of ${CardStringSuits.join(`, `)})`
 				)
 
 				const lane = Number(move[3])
@@ -113,8 +88,8 @@ export function parseMove(move: string, extra = false): Move {
 
 		case `x`: {
 			assert(
-				CardValues.includes(move[1] as any),
-				`invalid card value "${move[1]}" (expected one of ${CardValues.join(`, `)})`
+				CardStringFaces.includes(move[1] as any),
+				`invalid card value "${move[1]}" (expected one of ${CardStringFaces.join(`, `)})`
 			)
 
 			if (extra && move.length == 2) {
@@ -134,7 +109,7 @@ export function parseMove(move: string, extra = false): Move {
 					}
 				}
 
-				if (extra && CardSuits.includes(move[2] as any)) {
+				if (extra && CardStringSuits.includes(move[2] as any)) {
 					return {
 						tag: MoveTag.Discard,
 						card: move.slice(1, 3) as CardString,
@@ -155,8 +130,8 @@ export function parseMove(move: string, extra = false): Move {
 
 			if (move.length == 4) {
 				assert(
-					CardSuits.includes(move[2] as any),
-					`invalid card suit "${move[2]}" (expected one of ${CardSuits.join(`, `)})`
+					CardStringSuits.includes(move[2] as any),
+					`invalid card suit "${move[2]}" (expected one of ${CardStringSuits.join(`, `)})`
 				)
 
 				if (move[3] == `a`) {
