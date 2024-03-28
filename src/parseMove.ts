@@ -12,21 +12,14 @@ export function parseMove(move: string, extra = false): Move {
 		case `d`: {
 			assert(move.length == 2, `draw moves must always be 2 characters, got ${move.length}`)
 
-			if (move[1] == `a`) {
-				return {
-					tag: MoveTag.Draw,
-					deck: AttackerDeck
-				}
-			}
+			if (move[1] == `a`)
+				return { tag: MoveTag.Draw, deck: AttackerDeck }
 
 			const lane = Number(move[1])
 
 			assert(lane >= 0 && lane < 6, `invalid lane number "${move[1]}" (expected 0 - 5 or "a")`)
 
-			return {
-				tag: MoveTag.Draw,
-				deck: lane as Lane
-			}
+			return { tag: MoveTag.Draw, deck: lane as Lane }
 		}
 
 		case `c`: {
@@ -36,17 +29,14 @@ export function parseMove(move: string, extra = false): Move {
 
 			assert(lane >= 0 && lane < 6, `invalid lane number "${move[1]}" (expected 0 - 5)`)
 
-			return {
-				tag: MoveTag.Combat,
-				lane: lane as Lane
-			}
+			return { tag: MoveTag.Combat, lane: lane as Lane }
 		}
 
 		case `p`:
 		case `u`: {
 			if (move.length == 3) {
 				assert(
-					CardStringFaces.includes(move[1] as any),
+					CardStringFaces.includes(move[1]!),
 					`invalid card value "${move[1]}" (expected one of ${CardStringFaces.join(`, `)})`
 				)
 
@@ -63,12 +53,12 @@ export function parseMove(move: string, extra = false): Move {
 
 			if (move.length == 4) {
 				assert(
-					CardStringFaces.includes(move[1] as any),
+					CardStringFaces.includes(move[1]!),
 					`invalid card value "${move[1]}" (expected one of ${CardStringFaces.join(`, `)})`
 				)
 
 				assert(
-					CardStringSuits.includes(move[2] as any),
+					CardStringSuits.includes(move[2]!),
 					`invalid card suit "${move[2]}" (expected one of ${CardStringSuits.join(`, `)})`
 				)
 
@@ -88,28 +78,18 @@ export function parseMove(move: string, extra = false): Move {
 
 		case `x`: {
 			assert(
-				CardStringFaces.includes(move[1] as any),
+				CardStringFaces.includes(move[1]!),
 				`invalid card value "${move[1]}" (expected one of ${CardStringFaces.join(`, `)})`
 			)
 
-			if (extra && move.length == 2) {
-				return {
-					tag: MoveTag.Discard,
-					card: move[1] as CardStringFace,
-					discardPile: AttackerDiscardPile
-				}
-			}
+			if (extra && move.length == 2)
+				return { tag: MoveTag.Discard, card: move[1] as CardStringFace, discardPile: AttackerDiscardPile }
 
 			if (move.length == 3) {
-				if (move[2] == `a`) {
-					return {
-						tag: MoveTag.Discard,
-						card: move[1] as CardStringFace,
-						discardPile: AttackerDiscardPile
-					}
-				}
+				if (move[2] == `a`)
+					return { tag: MoveTag.Discard, card: move[1] as CardStringFace, discardPile: AttackerDiscardPile }
 
-				if (extra && CardStringSuits.includes(move[2] as any)) {
+				if (extra && CardStringSuits.includes(move[2]!)) {
 					return {
 						tag: MoveTag.Discard,
 						card: move.slice(1, 3) as CardString,
@@ -121,16 +101,12 @@ export function parseMove(move: string, extra = false): Move {
 
 				assert(lane >= 0 && lane < 6, `invalid discard pile "${move[2]}" (expected 0 - 5 or "a")`)
 
-				return {
-					tag: MoveTag.Discard,
-					card: move[1] as CardStringFace,
-					discardPile: lane as Lane
-				}
+				return { tag: MoveTag.Discard, card: move[1] as CardStringFace, discardPile: lane as Lane }
 			}
 
 			if (move.length == 4) {
 				assert(
-					CardStringSuits.includes(move[2] as any),
+					CardStringSuits.includes(move[2]!),
 					`invalid card suit "${move[2]}" (expected one of ${CardStringSuits.join(`, `)})`
 				)
 
@@ -146,11 +122,7 @@ export function parseMove(move: string, extra = false): Move {
 
 				assert(lane >= 0 && lane < 6, `invalid discard pile "${move[3]}" (expected 0 - 5 or "a")`)
 
-				return {
-					tag: MoveTag.Discard,
-					card: move.slice(1, 3) as CardString,
-					discardPile: lane as Lane
-				}
+				return { tag: MoveTag.Discard, card: move.slice(1, 3) as CardString, discardPile: lane as Lane }
 			}
 
 			throw Error(`discard moves must be 3 or 4 characters, got ${move.length}`)

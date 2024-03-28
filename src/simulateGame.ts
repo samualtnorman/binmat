@@ -86,11 +86,11 @@ export function simulateGame(
 			xform
 		)
 
-		if (!madeMove as boolean) {
-			if (noThrow)
-				doDefaultMove()
-			else
+		if (!madeMove) {
+			if (!noThrow)
 				throw Error(`defender brain did not attempt to make a move`)
+
+			doDefaultMove()
 		}
 
 		onMove?.(state, defenderBinlog)
@@ -119,11 +119,11 @@ export function simulateGame(
 			xform
 		)
 
-		if (!madeMove as boolean) {
-			if (noThrow)
-				doDefaultMove()
-			else
+		if (!madeMove) {
+			if (!noThrow)
 				throw Error(`attacker brain did not attempt to make a move`)
+
+			doDefaultMove()
 		}
 
 		onMove?.(state, attackerBinlog)

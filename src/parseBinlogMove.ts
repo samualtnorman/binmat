@@ -30,21 +30,14 @@ export function parseMove(move: string): BinlogMove {
 		case `d`: {
 			assert(move.length == 2, `${HERE} "${move}"`)
 
-			if (move[1] == `a`) {
-				return {
-					tag: MoveTag.Draw,
-					deck: AttackerDeck
-				}
-			}
+			if (move[1] == `a`)
+				return { tag: MoveTag.Draw, deck: AttackerDeck }
 
 			const lane = Number(move[1])
 
 			assert(lane >= 0 && lane < 6, HERE)
 
-			return {
-				tag: MoveTag.Draw,
-				deck: lane as Lane
-			}
+			return { tag: MoveTag.Draw, deck: lane as Lane }
 		}
 
 		case `c`: {
@@ -54,10 +47,7 @@ export function parseMove(move: string): BinlogMove {
 
 			assert(lane >= 0 && lane < 6, HERE)
 
-			return {
-				tag: MoveTag.Combat,
-				lane: lane as Lane
-			}
+			return { tag: MoveTag.Combat, lane: lane as Lane }
 		}
 
 		case `p`: {
@@ -68,25 +58,18 @@ export function parseMove(move: string): BinlogMove {
 
 			assert(lane >= 0 && lane < 6, HERE)
 
-			return {
-				tag: MoveTag.Play,
-				lane: lane as Lane
-			}
+			return { tag: MoveTag.Play, lane: lane as Lane }
 		}
 
 		case `u`: {
 			if (move.length == 3) {
-				assert(CardStringFaces.includes(move[1] as any), HERE)
+				assert(CardStringFaces.includes(move[1]!), HERE)
 
 				const lane = Number(move[2])
 
 				assert(lane >= 0 && lane < 6, HERE)
 
-				return {
-					tag: MoveTag.PlayFaceUp,
-					card: move[1] as CardStringFace,
-					lane: lane as Lane
-				}
+				return { tag: MoveTag.PlayFaceUp, card: move[1] as CardStringFace, lane: lane as Lane }
 			}
 
 			if (move.length == 4) {
@@ -98,11 +81,7 @@ export function parseMove(move: string): BinlogMove {
 
 				assert(lane >= 0 && lane < 6, HERE)
 
-				return {
-					tag: MoveTag.PlayFaceUp,
-					card,
-					lane: lane as Lane
-				}
+				return { tag: MoveTag.PlayFaceUp, card, lane: lane as Lane }
 			}
 
 			break
@@ -110,25 +89,16 @@ export function parseMove(move: string): BinlogMove {
 
 		case `x`: {
 			if (move.length == 3) {
-				assert(CardStringFaces.includes(move[1] as any), HERE)
+				assert(CardStringFaces.includes(move[1]!), HERE)
 
-				if (move[2] == `a`) {
-					return {
-						tag: MoveTag.Discard,
-						card: move[1] as CardStringFace,
-						discardPile: AttackerDiscardPile
-					}
-				}
+				if (move[2] == `a`)
+					return { tag: MoveTag.Discard, card: move[1] as CardStringFace, discardPile: AttackerDiscardPile }
 
 				const lane = Number(move[2])
 
 				assert(lane >= 0 && lane < 6, HERE)
 
-				return {
-					tag: MoveTag.Discard,
-					card: move[1] as CardStringFace,
-					discardPile: lane as Lane
-				}
+				return { tag: MoveTag.Discard, card: move[1] as CardStringFace, discardPile: lane as Lane }
 			}
 
 			if (move.length == 4) {
@@ -136,23 +106,14 @@ export function parseMove(move: string): BinlogMove {
 
 				assert(isCard(card), HERE)
 
-				if (move[3] == `a`) {
-					return {
-						tag: MoveTag.Discard,
-						card,
-						discardPile: AttackerDiscardPile
-					}
-				}
+				if (move[3] == `a`)
+					return { tag: MoveTag.Discard, card, discardPile: AttackerDiscardPile }
 
 				const lane = Number(move[3])
 
 				assert(lane >= 0 && lane < 6, HERE)
 
-				return {
-					tag: MoveTag.Discard,
-					card,
-					discardPile: lane as Lane
-				}
+				return { tag: MoveTag.Discard, card, discardPile: lane as Lane }
 			}
 		}
 	}

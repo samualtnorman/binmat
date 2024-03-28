@@ -25,7 +25,7 @@ export function doMovePlay(state: State, card: CardString | CardStringFace, lane
 			return { status: StatusCode.PlayedBreakToEmptyStack }
 
 		const index = card.length == 2
-			? state.defenderHand.indexOf(card as CardString)
+			? state.defenderHand.indexOf(card)
 			: state.defenderHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
@@ -35,7 +35,7 @@ export function doMovePlay(state: State, card: CardString | CardStringFace, lane
 		state.defenderStacks[lane].cards.push(cardPlayed)
 	} else /* attacker turn */ {
 		const index = card.length == 2
-			? state.attackerHand.indexOf(card as CardString)
+			? state.attackerHand.indexOf(card)
 			: state.attackerHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)

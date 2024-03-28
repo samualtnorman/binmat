@@ -22,7 +22,7 @@ export function doMoveDiscard(state: State, card: CardString | CardStringFace, d
 
 	if (roleTurn == Role.Defender) {
 		const index = card.length == 2
-			? state.defenderHand.indexOf(card as CardString)
+			? state.defenderHand.indexOf(card)
 			: state.defenderHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
@@ -35,7 +35,7 @@ export function doMoveDiscard(state: State, card: CardString | CardStringFace, d
 		state.laneDiscardPiles[discardPile].push(cardDiscarded)
 	} else /* attacker turn */ {
 		const index = card.length == 2
-			? state.attackerHand.indexOf(card as CardString)
+			? state.attackerHand.indexOf(card)
 			: state.attackerHand.findIndex(([ value ]) => value == card)
 
 		if (index == -1)
