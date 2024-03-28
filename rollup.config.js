@@ -31,9 +31,11 @@ export default findFiles(SOURCE_PATH).then(foundFiles => /** @type {import("roll
 			plugins: [ babelPluginHere() ]
 		}),
 		nodeResolve({ extensions: [ ".ts" ] }),
-		terser(
-			{ compress: { passes: Infinity, unsafe: true }, maxWorkers: Math.floor(cpus().length / 2), mangle: false }
-		),
+		terser({
+			compress: { passes: Infinity, unsafe: true, sequences: false },
+			maxWorkers: Math.floor(cpus().length / 2),
+			mangle: false
+		}),
 		prettier({
 			parser: "espree",
 			useTabs: true,
