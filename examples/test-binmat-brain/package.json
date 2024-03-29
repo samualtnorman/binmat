@@ -3,6 +3,6 @@
 	"private": true,
 	"type": "module",
 	"dependencies": {
-		"binmat": "^0.0.3"
+		"binmat": "0.1.0-bd2d006"
 	}
 }
