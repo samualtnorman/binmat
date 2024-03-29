@@ -1,4 +1,5 @@
 extends: "@samual/eslint-config/typescript.yml"
+ignorePatterns:  [ "*.js" ]
 
 rules:
   unicorn/prevent-abbreviations:
