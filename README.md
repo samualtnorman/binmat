@@ -39,7 +39,7 @@ If you need any help, you can `@samualn` in the [hackmud discord server](https:/
 
 ## Building Yourself
 Setup:
-1. Install [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/downloads)
+1. Install [Node.js](https://nodejs.org/en/), [PNPM](https://pnpm.io/installation), and [Git](https://git-scm.com/downloads)
 2. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this
    [repository](https://github.com/samualtnorman/binmat)
 3. Open a command prompt `cd`'d into the cloned repository folder
