@@ -1,6 +1,6 @@
 import { MoveTag, type Move, type MoveString } from "./common"
 
-export function abreviateMove(move: Move): MoveString {
+export function moveToString(move: Move): MoveString {
 	switch (move.tag) {
 		case MoveTag.Draw:
 			return `d${move.deck == 6 ? `a` : move.deck}`

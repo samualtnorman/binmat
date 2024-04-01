@@ -1,5 +1,4 @@
 /* eslint-disable unicorn/prevent-abbreviations */
-import { abreviateMove } from "../dist/abreviateMove"
 import { CardStringFaceModifier, CardStringFaces, CardStringSuit, CardStringSuits, Lanes, MoveTag, Role, StatusCode, StatusCodeMessages } from "../dist/common"
 import { PowersOfTwo, doCombat } from "../dist/doCombat"
 import { doMove } from "../dist/doMove"
@@ -14,12 +13,12 @@ import { isCard } from "../dist/isCard"
 import { isCardStringFace } from "../dist/isCardStringFace"
 import { isCardStringSuit } from "../dist/isCardStringSuit"
 import { Cards, makeState } from "../dist/makeState"
+import { moveToString } from "../dist/moveToString"
 import { parseBinlog } from "../dist/parseBinlog"
 import { parseMove } from "../dist/parseMove"
 
 export default (context: Context) => {
 	const library = {
-		abreviateMove,
 		CardStringFaceModifier:
 		// @ts-expect-error although it's a const enum, it's a real js runtime object
 		CardStringFaceModifier,
@@ -52,6 +51,7 @@ export default (context: Context) => {
 		isCardStringSuit,
 		Cards,
 		makeState,
+		moveToString,
 		parseBinlog,
 		parseMove
 	}
