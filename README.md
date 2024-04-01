@@ -4,7 +4,7 @@ Simulator and utility functions for the card game [binmat](https://github.com/Dr
 If you need any help, you can `@samualn` in the [hackmud discord server](https://discord.gg/gxpEdwU8CC) or
 [open an issue](https://github.com/samualtnorman/binmat/issues/new).
 
-Supports Node.js 18 and >20.
+Supports Node.js 18 and >=20.
 
 ## Using Binmat Simulator To Test Your Binmat Bot
 0. Install [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/downloads), make a new folder, and open a
