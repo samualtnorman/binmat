@@ -2,7 +2,7 @@ export const Lanes = [ 0, 1, 2, 3, 4, 5 ] as const
 export type Lane = typeof Lanes[any]
 export type CardStringFaceNumber = `2` | `3` | `4` | `5` | `6` | `7` | `8` | `9` | `a`
 export const enum CardStringFaceModifier { Trap = `@`, Wild = `*`, Bounce = `?`, Break = `>` }
-export type CardStringFace = CardStringFaceNumber | CardStringFaceModifier
+export type CardStringFace = CardStringFaceNumber | `${CardStringFaceModifier}`
 export const enum CardStringSuit { Form = `&`, Kin = `%`, Data = `+`, Chaos = `!`, Void = `^`, Choice = `#` }
 export type CardString = `${CardStringFace}${CardStringSuit}`
 export const AttackerDeck = 6
