@@ -2,10 +2,8 @@
 import { mkdirSync as makeDirectorySync, writeFileSync } from "fs"
 import packageJson_ from "../package.json" assert { type: "json" }
 
-const /** @type {Partial<typeof packageJson_>} */ packageJson = packageJson_
+const { private: _0, devDependencies: _1, pnpm: _2, scripts: _3, engines: { pnpm, ...engines }, ...packageJson } = packageJson_
 
-delete packageJson.private
-delete packageJson.devDependencies
 makeDirectorySync("dist", { recursive: true })
-writeFileSync("dist/package.json", JSON.stringify(packageJson, undefined, "\t"))
+writeFileSync("dist/package.json", JSON.stringify({ ...packageJson, engines }, undefined, "\t"))
 process.exit()
