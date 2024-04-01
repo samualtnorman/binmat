@@ -1,7 +1,9 @@
-import { CardStringFaces, CardStringSuits, type CardString } from "./common"
+import type { CardString } from "./common"
+import { isCardStringFace } from "./isCardStringFace"
+import { isCardStringSuit } from "./isCardStringSuit"
 
 export const isCard = (card: string): card is CardString =>
-	card.length == 2 && CardStringFaces.includes(card[0]!) && CardStringSuits.includes(card[1]!)
+	card.length == 2 && isCardStringFace(card[0]!) && isCardStringSuit(card[1]!)
 
 if (import.meta.vitest) {
 	const { test, expect } = import.meta.vitest
