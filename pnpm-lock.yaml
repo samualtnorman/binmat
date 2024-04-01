@@ -15,30 +15,15 @@ dependencies:
     version: 0.9.1
 
 devDependencies:
-  '@babel/preset-env':
-    specifier: ^7.24.3
-    version: 7.24.3(@babel/core@7.24.3)
-  '@babel/preset-typescript':
-    specifier: ^7.24.1
-    version: 7.24.1(@babel/core@7.24.3)
-  '@rollup/plugin-babel':
-    specifier: ^6.0.4
-    version: 6.0.4(@babel/core@7.24.3)(rollup@4.13.2)
-  '@rollup/plugin-node-resolve':
-    specifier: ^15.2.3
-    version: 15.2.3(rollup@4.13.2)
-  '@rollup/plugin-terser':
-    specifier: ^0.4.4
-    version: 0.4.4(rollup@4.13.2)
   '@samual/eslint-config':
     specifier: ^0.0.3
     version: 0.0.3(@typescript-eslint/eslint-plugin@6.21.0)(@typescript-eslint/parser@6.21.0)(eslint-plugin-array-func@4.0.0)(eslint-plugin-eslint-comments@3.2.0)(eslint-plugin-regexp@2.4.0)(eslint-plugin-unicorn@49.0.0)
+  '@samual/rollup-config':
+    specifier: ^0.0.0
+    version: 0.0.0(@babel/core@7.24.3)(prettier@3.2.5)(rollup@4.13.2)
   '@total-typescript/ts-reset':
     specifier: ^0.5.1
     version: 0.5.1
-  '@types/babel__preset-env':
-    specifier: ^7.9.6
-    version: 7.9.6
   '@types/node':
     specifier: ^20.11.30
     version: 20.11.30
@@ -60,9 +45,6 @@ devDependencies:
   rollup:
     specifier: ^4.13.2
     version: 4.13.2
-  rollup-plugin-prettier:
-    specifier: ^4.1.1
-    version: 4.1.1(prettier@3.2.5)(rollup@4.13.2)
   semver:
     specifier: ^7.6.0
     version: 7.6.0
@@ -2095,11 +2077,36 @@ packages:
       eslint-plugin-unicorn: 49.0.0(eslint@8.57.0)
     dev: true
 
+  /@samual/lib@0.10.0:
+    resolution: {integrity: sha512-kaEMCOgSz2vGk9L2/kcXxeNOWR3Fl3d5anE/sQqNsamEftFcF/Yl1fxPJ3GtGzHN83+aC91IWFxKJ4s7b5mpow==}
+    engines: {node: ^18 || >=20, pnpm: ^8.15.4}
+    dev: true
+
   /@samual/lib@0.9.1:
     resolution: {integrity: sha512-Sotk9j4UtJH0nchK9qIxYShZUu6LKl7mKl+F39aY8hba0EbSQ7dJ17m2vBGAcz5K5aodHJ1E72+6L8e405LMqQ==}
     engines: {node: '>=20'}
     optionalDependencies:
       valibot: 0.25.0
+
+  /@samual/rollup-config@0.0.0(@babel/core@7.24.3)(prettier@3.2.5)(rollup@4.13.2):
+    resolution: {integrity: sha512-QYghLTaF8QusBHCzHPj/AF/4ISZyLQOuuf+9Vr6iR+jLsAW1++kz+Gms26FNr5/zb6bkzxWzwOAamC61JrBCFg==}
+    engines: {node: ^18 || >=20}
+    dependencies:
+      '@babel/preset-env': 7.24.3(@babel/core@7.24.3)
+      '@babel/preset-typescript': 7.24.1(@babel/core@7.24.3)
+      '@rollup/plugin-babel': 6.0.4(@babel/core@7.24.3)(rollup@4.13.2)
+      '@rollup/plugin-node-resolve': 15.2.3(rollup@4.13.2)
+      '@rollup/plugin-terser': 0.4.4(rollup@4.13.2)
+      '@samual/lib': 0.10.0
+      babel-plugin-here: 1.0.0
+      rollup-plugin-prettier: 4.1.1(prettier@3.2.5)(rollup@4.13.2)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@types/babel__core'
+      - prettier
+      - rollup
+      - supports-color
+    dev: true
 
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -2107,10 +2114,6 @@ packages:
 
   /@total-typescript/ts-reset@0.5.1:
     resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
-    dev: true
-
-  /@types/babel__preset-env@7.9.6:
-    resolution: {integrity: sha512-PaOA2V4J3CZZopQaTGT1e8WEWCqHWc1k12zLlci4T9eR2lQIlA/GbnVbloFDqYVFr1BNiCXnotH32Up8WdgTxQ==}
     dev: true
 
   /@types/estree@1.0.5:
