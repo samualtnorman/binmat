@@ -30,13 +30,13 @@
 		"push-script": "hsm push game-scripts \"*.binmat\""
 	},
 	"dependencies": {
-		"@samual/lib": "0.9.1"
+		"@samual/lib": "0.10.0"
 	},
 	"devDependencies": {
 		"@samual/eslint-config": "^0.0.3",
 		"@samual/rollup-config": "^0.0.0",
 		"@total-typescript/ts-reset": "^0.5.1",
-		"@types/node": "^20.11.30",
+		"@types/node": "^18.19.28",
 		"@types/semver": "^7.5.8",
 		"@vitest/coverage-v8": "^1.4.0",
 		"babel-plugin-here": "^1.0.0",

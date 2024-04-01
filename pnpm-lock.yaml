@@ -11,8 +11,8 @@ patchedDependencies:
 
 dependencies:
   '@samual/lib':
-    specifier: 0.9.1
-    version: 0.9.1
+    specifier: 0.10.0
+    version: 0.10.0
 
 devDependencies:
   '@samual/eslint-config':
@@ -25,8 +25,8 @@ devDependencies:
     specifier: ^0.5.1
     version: 0.5.1
   '@types/node':
-    specifier: ^20.11.30
-    version: 20.11.30
+    specifier: ^18.19.28
+    version: 18.19.28
   '@types/semver':
     specifier: ^7.5.8
     version: 7.5.8
@@ -53,7 +53,7 @@ devDependencies:
     version: 5.4.3
   vitest:
     specifier: ^1.4.0
-    version: 1.4.0(@types/node@20.11.30)
+    version: 1.4.0(@types/node@18.19.28)
 
 packages:
 
@@ -1920,8 +1920,8 @@ packages:
     dependencies:
       rollup: 4.13.2
       serialize-javascript: 6.0.2
-      smob: 1.4.1
-      terser: 5.30.0
+      smob: 1.5.0
+      terser: 5.30.1
     dev: true
 
   /@rollup/pluginutils@5.1.0(rollup@4.13.2):
@@ -2080,13 +2080,13 @@ packages:
   /@samual/lib@0.10.0:
     resolution: {integrity: sha512-kaEMCOgSz2vGk9L2/kcXxeNOWR3Fl3d5anE/sQqNsamEftFcF/Yl1fxPJ3GtGzHN83+aC91IWFxKJ4s7b5mpow==}
     engines: {node: ^18 || >=20, pnpm: ^8.15.4}
-    dev: true
 
   /@samual/lib@0.9.1:
     resolution: {integrity: sha512-Sotk9j4UtJH0nchK9qIxYShZUu6LKl7mKl+F39aY8hba0EbSQ7dJ17m2vBGAcz5K5aodHJ1E72+6L8e405LMqQ==}
     engines: {node: '>=20'}
     optionalDependencies:
       valibot: 0.25.0
+    dev: true
 
   /@samual/rollup-config@0.0.0(@babel/core@7.24.3)(prettier@3.2.5)(rollup@4.13.2):
     resolution: {integrity: sha512-QYghLTaF8QusBHCzHPj/AF/4ISZyLQOuuf+9Vr6iR+jLsAW1++kz+Gms26FNr5/zb6bkzxWzwOAamC61JrBCFg==}
@@ -2128,8 +2128,8 @@ packages:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: true
 
-  /@types/node@20.11.30:
-    resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
+  /@types/node@18.19.28:
+    resolution: {integrity: sha512-J5cOGD9n4x3YGgVuaND6khm5x07MMdAKkRyXnjVR6KFhLMNh2yONGiP7Z+4+tBOt5mK+GvDTiacTOVGGpqiecw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -2305,10 +2305,10 @@ packages:
       magicast: 0.3.3
       picocolors: 1.0.0
       std-env: 3.7.0
-      strip-literal: 2.0.0
+      strip-literal: 2.1.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.4.0(@types/node@20.11.30)
+      vitest: 1.4.0(@types/node@18.19.28)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2502,8 +2502,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001600
-      electron-to-chromium: 1.4.720
+      caniuse-lite: 1.0.30001603
+      electron-to-chromium: 1.4.723
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
@@ -2527,8 +2527,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite@1.0.30001600:
-    resolution: {integrity: sha512-+2S9/2JFhYmYaDpZvo0lKkfvuKIglrx68MwOBqMGHhQsNkLjB5xtc/TGoEPs+MxjSyN/72qer2g97nzR641mOQ==}
+  /caniuse-lite@1.0.30001603:
+    resolution: {integrity: sha512-iL2iSS0eDILMb9n5yKQoTBim9jMZ0Yrk8g0N9K7UzYyWnfIKzXBZD5ngpM37ZcL/cv0Mli8XtVMRYMQAfFpi5Q==}
     dev: true
 
   /chai@4.4.1:
@@ -2708,8 +2708,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /electron-to-chromium@1.4.720:
-    resolution: {integrity: sha512-5zwcKNkOj3GN0jBzpcpGonNPkn667VJpQwRYWdo/TiJEHTQswZyA/vALhZFiAXgL5NuK9UarX1tbdvXu3hG6Yw==}
+  /electron-to-chromium@1.4.723:
+    resolution: {integrity: sha512-rxFVtrMGMFROr4qqU6n95rUi9IlfIm+lIAt+hOToy/9r6CDv0XiEcQdC3VP71y1pE5CFTzKV0RvxOGYCPWWHPw==}
     dev: true
 
   /error-ex@1.3.2:
@@ -3152,7 +3152,7 @@ packages:
       prettier: 3.2.5
       proxy-polyfill: 0.3.2
       rollup: 4.13.2
-      terser: 5.30.0
+      terser: 5.30.1
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/babel__core'
@@ -3329,8 +3329,8 @@ packages:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: true
 
-  /js-tokens@8.0.3:
-    resolution: {integrity: sha512-UfJMcSJc+SEXEl9lH/VLHSZbThQyLpw1vLO1Lb+j4RWDvG3N2f7yj3PVQA3cmkTBNldJ9eFnM+xEXxHIXrYiJw==}
+  /js-tokens@9.0.0:
+    resolution: {integrity: sha512-WriZw1luRMlmV3LGJaR6QOJjWwgLUTf89OwT2lUOyjX2dJGBwgmIkbcz+7WFZjrZM635JOIR517++e/67CP9dQ==}
     dev: true
 
   /js-yaml@4.1.0:
@@ -4019,8 +4019,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /smob@1.4.1:
-    resolution: {integrity: sha512-9LK+E7Hv5R9u4g4C3p+jjLstaLe11MDsL21UpYaCNmapvMkYhqCV4A/f/3gyH8QjMyh6l68q9xC85vihY9ahMQ==}
+  /smob@1.5.0:
+    resolution: {integrity: sha512-g6T+p7QO8npa+/hNx9ohv1E5pVCmWrVCUzUXJyLdMmftX6ER0oiWY/w9knEonLpnOp6b6FenKnMfR8gqwWdwig==}
     dev: true
 
   /source-map-js@1.2.0:
@@ -4094,10 +4094,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /strip-literal@2.0.0:
-    resolution: {integrity: sha512-f9vHgsCWBq2ugHAkGMiiYY+AYG0D/cbloKKg0nhaaaSNsujdGIpVXCNsrJpCKr5M0f4aI31mr13UjY6GAuXCKA==}
+  /strip-literal@2.1.0:
+    resolution: {integrity: sha512-Op+UycaUt/8FbN/Z2TWPBLge3jWrP3xj10f3fnYxf052bKuS3EKs1ZQcVGjnEMdsNVAM+plXRdmjrZ/KgG3Skw==}
     dependencies:
-      js-tokens: 8.0.3
+      js-tokens: 9.0.0
     dev: true
 
   /supports-color@5.5.0:
@@ -4119,8 +4119,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /terser@5.30.0:
-    resolution: {integrity: sha512-Y/SblUl5kEyEFzhMAQdsxVHh+utAxd4IuRNJzKywY/4uzSogh3G219jqbDDxYu4MXO9CzY3tSEqmZvW6AoEDJw==}
+  /terser@5.30.1:
+    resolution: {integrity: sha512-PJhOnRttZqqmIujxOQOMu4QuFGvh43lR7Youln3k6OJvmxwZ5FxK5rbCEh8XABRCpLf7ZnhrZuclCNCASsScnA==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -4271,6 +4271,7 @@ packages:
   /valibot@0.25.0:
     resolution: {integrity: sha512-cmD0ca15oyAbT75iYLNW6uU6doAeIwYfOshpXka/E1Bx4frzbkrgb7gvkI7K0YK/DVOksei4FfxWfRoBP3NFTg==}
     requiresBuild: true
+    dev: true
     optional: true
 
   /validate-npm-package-license@3.0.4:
@@ -4280,7 +4281,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-node@1.4.0(@types/node@20.11.30):
+  /vite-node@1.4.0(@types/node@18.19.28):
     resolution: {integrity: sha512-VZDAseqjrHgNd4Kh8icYHWzTKSCZMhia7GyHfhtzLW33fZlG9SwsB6CEhgyVOWkJfJ2pFLrp/Gj1FSfAiqH9Lw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -4289,7 +4290,7 @@ packages:
       debug: 4.3.4
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.2.6(@types/node@20.11.30)
+      vite: 5.2.7(@types/node@18.19.28)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4301,8 +4302,8 @@ packages:
       - terser
     dev: true
 
-  /vite@5.2.6(@types/node@20.11.30):
-    resolution: {integrity: sha512-FPtnxFlSIKYjZ2eosBQamz4CbyrTizbZ3hnGJlh/wMtCrlp1Hah6AzBLjGI5I2urTfNnpovpHdrL6YRuBOPnCA==}
+  /vite@5.2.7(@types/node@18.19.28):
+    resolution: {integrity: sha512-k14PWOKLI6pMaSzAuGtT+Cf0YmIx12z9YGon39onaJNy8DLBfBJrzg9FQEmkAM5lpHBZs9wksWAsyF/HkpEwJA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -4329,7 +4330,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 18.19.28
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.13.2
@@ -4337,7 +4338,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.4.0(@types/node@20.11.30):
+  /vitest@1.4.0(@types/node@18.19.28):
     resolution: {integrity: sha512-gujzn0g7fmwf83/WzrDTnncZt2UiXP41mHuFYFrdwaLRVQ6JYQEiME2IfEjU3vcFL3VKa75XhI3lFgn+hfVsQw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -4362,7 +4363,7 @@ packages:
       jsdom:
         optional: true
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 18.19.28
       '@vitest/expect': 1.4.0
       '@vitest/runner': 1.4.0
       '@vitest/snapshot': 1.4.0
@@ -4377,11 +4378,11 @@ packages:
       pathe: 1.1.2
       picocolors: 1.0.0
       std-env: 3.7.0
-      strip-literal: 2.0.0
+      strip-literal: 2.1.0
       tinybench: 2.6.0
       tinypool: 0.8.3
-      vite: 5.2.6(@types/node@20.11.30)
-      vite-node: 1.4.0(@types/node@20.11.30)
+      vite: 5.2.7(@types/node@18.19.28)
+      vite-node: 1.4.0(@types/node@18.19.28)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
