@@ -1,4 +1,6 @@
 import { assert } from "@samual/lib/assert"
+import { readdir as readDirectory, readFile } from "fs/promises"
+import * as Path from "path"
 import type { AttackerDeck, AttackerDiscardPile, CardString, Lane } from "./common"
 import { MoveTag, Role } from "./common"
 import { isCard } from "./isCard"
@@ -314,5 +316,21 @@ export function* parseBinlog(binlog: string[]): Generator<BinlogEntry, void, und
 					yield { turn, ...move, card, order, role }
 			}
 		}
+	}
+}
+
+if (import.meta.vitest) {
+	const { describe, test } = import.meta.vitest
+
+	const binlogs = await Promise.all((await readDirectory(`test/binmat-games`)).map(async fileName => ({
+		name: fileName,
+		gameData: JSON.parse(await readFile(Path.resolve(`test/binmat-games`, fileName), { encoding: `utf8` })) as any[]
+	})))
+
+	for (const { name, gameData } of binlogs) {
+		describe(name, () => {
+			for (const { s: { turns }, ops } of gameData)
+				test(`turn ${turns}`, () => [ ...parseBinlog(ops) ])
+		})
 	}
 }

@@ -33,6 +33,7 @@
 		"@samual/lib": "0.10.0"
 	},
 	"devDependencies": {
+		"@rollup/plugin-babel": "^6.0.4",
 		"@samual/eslint-config": "^0.0.3",
 		"@samual/rollup-config": "^0.0.0",
 		"@total-typescript/ts-reset": "^0.5.1",
