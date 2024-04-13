@@ -30,27 +30,27 @@
 		"push-script": "hsm push game-scripts \"*.binmat\""
 	},
 	"dependencies": {
-		"@samual/lib": "0.10.0"
+		"@samual/lib": "0.10.1"
 	},
 	"devDependencies": {
 		"@rollup/plugin-babel": "^6.0.4",
 		"@samual/eslint-config": "^0.0.3",
-		"@samual/rollup-config": "^0.0.0",
+		"@samual/rollup-config": "^0.0.2",
 		"@total-typescript/ts-reset": "^0.5.1",
-		"@types/node": "^18.19.28",
+		"@types/node": "^18.19.31",
 		"@types/semver": "^7.5.8",
-		"@vitest/coverage-v8": "^1.4.0",
-		"babel-plugin-here": "^1.0.0",
+		"@vitest/coverage-v8": "^1.5.0",
+		"babel-plugin-here": "^1.0.1",
 		"eslint": "^8.57.0",
 		"hackmud-script-manager": "^0.19.0",
-		"rollup": "^4.13.2",
+		"rollup": "^4.14.2",
 		"semver": "^7.6.0",
-		"typescript": "^5.4.3",
-		"vitest": "^1.4.0"
+		"typescript": "^5.4.5",
+		"vitest": "^1.5.0"
 	},
 	"engines": {
 		"node": "^18 || >=20",
-		"pnpm": "^8.15.5"
+		"pnpm": "^8.15.6"
 	},
 	"private": true,
 	"type": "module",
@@ -61,7 +61,7 @@
 	},
 	"pnpm": {
 		"patchedDependencies": {
-			"@babel/plugin-transform-typescript@7.24.1": "patches/@babel__plugin-transform-typescript@7.24.1.patch"
+			"@babel/plugin-transform-typescript@7.24.4": "patches/@babel__plugin-transform-typescript@7.24.1.patch"
 		}
 	}
 }
