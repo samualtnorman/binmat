@@ -37,7 +37,7 @@
 		"@samual/eslint-config": "^0.0.3",
 		"@samual/rollup-config": "^0.0.2",
 		"@total-typescript/ts-reset": "^0.5.1",
-		"@types/node": "^18.0.6",
+		"@types/node": "~18.0.6",
 		"@types/semver": "^7.5.8",
 		"@vitest/coverage-v8": "^1.5.0",
 		"babel-plugin-here": "^1.0.1",
