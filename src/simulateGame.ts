@@ -36,7 +36,6 @@ export type CLIContext = {
 	calling_script: null
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export type TransformScript = (args: { op: (string & {}) | MoveString }) => { ok: boolean }
 export type BrainScript = (context: CLIContext, args: BinmatArgs, xform: TransformScript) => void
 
@@ -74,7 +73,6 @@ export function simulateGame(
 				this_script: `${defenderUserName}.binmat_brain`,
 				cols: 0,
 				rows: 0,
-				// eslint-disable-next-line unicorn/no-null
 				calling_script: null
 			},
 			generateArgsForDefender(
@@ -107,7 +105,6 @@ export function simulateGame(
 				this_script: `${attackerUserName}.binmat_brain`,
 				cols: 0,
 				rows: 0,
-				// eslint-disable-next-line unicorn/no-null
 				calling_script: null
 			},
 			generateArgsForAttacker(

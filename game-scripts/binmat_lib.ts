@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prevent-abbreviations */
 import { CardStringFaceModifier, CardStringFaces, CardStringSuit, CardStringSuits, Lanes, MoveTag, Role, StatusCode, StatusCodeMessages } from "../dist/common"
 import { PowersOfTwo, doCombat } from "../dist/doCombat"
 import { doMove } from "../dist/doMove"

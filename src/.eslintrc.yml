@@ -1,4 +1,0 @@
-extends: "@samual/eslint-config/typescript.yml"
-
-rules:
-  "@typescript-eslint/brace-style": off

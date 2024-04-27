@@ -1,6 +1,5 @@
 {
 	"recommendations": [
-		"dbaeumer.vscode-eslint",
 		"orta.vscode-jest",
 		"ritwickdey.LiveServer"
 	]

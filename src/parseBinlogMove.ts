@@ -25,7 +25,6 @@ export function parseMove(move: string): BinlogMove {
 	if (move == `\`n--\``)
 		return { tag: MoveTag.Pass }
 
-	// eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
 	switch (move[0]) {
 		case `d`: {
 			assert(move.length == 2, `${HERE} "${move}"`)
