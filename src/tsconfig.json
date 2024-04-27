@@ -4,7 +4,8 @@
 		"exactOptionalPropertyTypes": true,
 		"declaration": true,
 		"outDir": "../dist",
-		"types": [ "@types/node", "@total-typescript/ts-reset", "babel-plugin-here/env", "vitest/importMeta" ]
+		"types": [ "@types/node", "@total-typescript/ts-reset", "babel-plugin-here/env", "vitest/importMeta" ],
+		"lib": [ "es2021" ]
 	},
 	"include": [ "**/*" ]
 }

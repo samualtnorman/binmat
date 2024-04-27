@@ -1,5 +1,5 @@
 {
-	"include": [ "*", "scripts/*", "game-scripts/*", "test/*" ],
+	"include": [ "*", "scripts/*", "test/*" ],
 	"compilerOptions": {
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
@@ -17,7 +17,8 @@
 		"checkJs": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"target": "ES2022",
-		"skipLibCheck": true
+		"target": "ESNext",
+		"skipLibCheck": true,
+		"lib": [ "ES2021" ]
 	}
 }

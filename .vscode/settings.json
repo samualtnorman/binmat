@@ -7,5 +7,6 @@
 	"liveServer.settings.root": "/coverage/lcov-report",
 	"files.insertFinalNewline": true,
 	"files.trimFinalNewlines": true,
-	"files.trimTrailingWhitespace": true
+	"files.trimTrailingWhitespace": true,
+	"hackmud-color.enabled": true
 }

@@ -37,7 +37,7 @@
 		"@samual/eslint-config": "^0.0.3",
 		"@samual/rollup-config": "^0.1.0",
 		"@total-typescript/ts-reset": "^0.5.1",
-		"@types/node": "~18.0.6",
+		"@types/node": "^18.19.31",
 		"@types/semver": "^7.5.8",
 		"@vitest/coverage-v8": "^1.5.2",
 		"babel-plugin-here": "^1.0.1",
@@ -61,7 +61,8 @@
 	},
 	"pnpm": {
 		"patchedDependencies": {
-			"@babel/plugin-transform-typescript@7.24.4": "patches/@babel__plugin-transform-typescript@7.24.1.patch"
+			"@babel/plugin-transform-typescript@7.24.4": "patches/@babel__plugin-transform-typescript@7.24.1.patch",
+			"@types/node@18.19.31": "patches/@types__node@18.19.31.patch"
 		}
 	}
 }

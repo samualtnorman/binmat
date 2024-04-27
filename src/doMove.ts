@@ -175,7 +175,7 @@ export function doMove(state: State, move: Move): {
 			binlog.push(`\`n--\` d? / ${defenderBouncesDiscarded.join(` `)} xa`)
 
 		const attackerStackDiscarded =
-			roleTurn == `a` && cardIsPlayedFaceUp && combatData.attackerStackDiscarded.at(-1) == cardIsPlayedFaceUp
+			roleTurn == `a` && cardIsPlayedFaceUp && combatData.attackerStackDiscarded[combatData.attackerStackDiscarded.length - 1] == cardIsPlayedFaceUp
 				? `${combatData.attackerStackDiscarded.join(` `)}u`
 				: combatData.attackerStackDiscarded.join(` `)
 

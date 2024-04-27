@@ -417,13 +417,13 @@ export function generateArgsForDefender(state: State, defender: string, attacker
 		args.s.l2 = { c: state.laneDecks[2].length, t: `X` }
 
 	if (state.laneDecks[3].length)
-		args.s.l3 = { c: state.laneDecks[3].length, t: state.laneDecks[3].at(-1)! }
+		args.s.l3 = { c: state.laneDecks[3].length, t: state.laneDecks[3][state.laneDecks[3].length - 1]! }
 
 	if (state.laneDecks[4].length)
-		args.s.l4 = { c: state.laneDecks[4].length, t: state.laneDecks[4].at(-1)! }
+		args.s.l4 = { c: state.laneDecks[4].length, t: state.laneDecks[4][state.laneDecks[4].length - 1]! }
 
 	if (state.laneDecks[5].length)
-		args.s.l5 = { c: state.laneDecks[5].length, t: state.laneDecks[5].at(-1)! }
+		args.s.l5 = { c: state.laneDecks[5].length, t: state.laneDecks[5][state.laneDecks[5].length - 1]! }
 
 	if (state.laneDiscardPiles[0].length)
 		args.s.x0 = state.laneDiscardPiles[0].map(card => `${card}u` as const)
@@ -536,13 +536,13 @@ export function generateArgsForAttacker(state: State, defender: string, attacker
 		args.s.l2 = { c: state.laneDecks[2].length, t: `X` }
 
 	if (state.laneDecks[3].length)
-		args.s.l3 = { c: state.laneDecks[3].length, t: state.laneDecks[3].at(-1)! }
+		args.s.l3 = { c: state.laneDecks[3].length, t: state.laneDecks[3][state.laneDecks[3].length - 1]! }
 
 	if (state.laneDecks[4].length)
-		args.s.l4 = { c: state.laneDecks[4].length, t: state.laneDecks[4].at(-1)! }
+		args.s.l4 = { c: state.laneDecks[4].length, t: state.laneDecks[4][state.laneDecks[4].length - 1]! }
 
 	if (state.laneDecks[5].length)
-		args.s.l5 = { c: state.laneDecks[5].length, t: state.laneDecks[5].at(-1)! }
+		args.s.l5 = { c: state.laneDecks[5].length, t: state.laneDecks[5][state.laneDecks[5].length - 1]! }
 
 	if (state.laneDiscardPiles[0].length)
 		args.s.x0 = state.laneDiscardPiles[0].map(card => `${card}u` as const)
