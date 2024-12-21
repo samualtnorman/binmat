@@ -59,6 +59,7 @@ export type Move =
 	{ tag: MoveTag.Pass }
 
 export const StatusCodeMessages: Record<StatusCode, string> = [
+	``,
 	`okay`,
 	`defender won`,
 	`attacker won`,
