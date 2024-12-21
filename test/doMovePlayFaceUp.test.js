@@ -333,7 +333,7 @@ test("face value only (attacker)", () => {
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
 	}, CardStringFaceModifier.Bounce, 0)).toEqual({
-		status: 0,
+		status: StatusCode.Okay,
 		cardPlayed: "?+",
 		combat: {
 			attackerStack: [ "?+" ],
