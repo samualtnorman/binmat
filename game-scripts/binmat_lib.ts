@@ -53,7 +53,7 @@ export default (context: Context) => {
 	if (!(context.calling_script || `is_scriptor` in context)) {
 		return `This is a library script. Use this library script in your script like so:\n\n\`Tconst\` \`A{\` ${
 			Object.keys(library).sort().map(name => `\`N${name}\``).join(`\`A,\` `)
-		} \`A}\` \`O=\` \`A#${`nlmhf`[_SECLEVEL]}s.\`\`C${_SCRIPT_USER}\`\`A.\`\`L${_SCRIPT_NAME}\`\`A()\`\n\nThe source code for this script can be found in this GitHub repository:\n\`Phttps://github\`\`P.com/samualtnorman/binmat\`\n\nThis returned values of this script does not yet have any documentation but maybe that could be an opportunity for you to contribute :).`
+		} \`A}\` \`O=\` \`A#${`nlmhf`[_SECLEVEL]}s.\`\`C${_SCRIPT_USER}\`\`A.\`\`L${_SCRIPT_SUBNAME}\`\`A()\`\n\nThe source code for this script can be found in this GitHub repository:\n\`Phttps://github\`\`P.com/samualtnorman/binmat\`\n\nThis returned values of this script does not yet have any documentation but maybe that could be an opportunity for you to contribute :).`
 	}
 
 	return library
