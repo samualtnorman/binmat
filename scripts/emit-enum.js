@@ -21,7 +21,6 @@ const members = readFileSync(target, { encoding: "utf8" })
 	.split("\n")
 	.flatMap(name => Braces.expand(name))
 	.filter(Boolean)
-	.sort()
 
 const code = `\
 declare enum ${enumName}Enum {\n\t${members.join(`,\n\t`)}\n}
