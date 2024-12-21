@@ -58,7 +58,7 @@ export function simulateGame(
 		defenderBinlog = [],
 		attackerBinlog = []
 	}: LaxPartial<SimulateGameOptions> = {}
-) {
+): Role {
 	let endTime: number
 	let winner: Role | undefined
 	let madeMove: boolean

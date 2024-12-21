@@ -76,7 +76,6 @@ export const StatusCodeMessages: Record<StatusCode, string> = [
 	`the defender tried to play a face up break to a stack that already contains a break card`
 ]
 
-export const enum Role { Defender = 1, Attacker }
 export type DefenderStack = { cards: CardString[], isFaceUp: boolean }
 
 export type State = {
@@ -121,4 +120,5 @@ export const CardStringSuits: CardStringSuit[] = [
 ]
 
 export { MoveTag } from "./MoveTag"
+export { Role } from "./Role"
 export { StatusCode } from "./StatusCode"
