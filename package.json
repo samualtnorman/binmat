@@ -19,15 +19,6 @@
 		"type": "git",
 		"url": "https://github.com/samualtnorman/binmat"
 	},
-	"scripts": {
-		"build": "rollup --config",
-		"dev": "pnpm build --watch",
-		"emit-declarations": "tsc --project src --declaration --emitDeclarationOnly --noEmit false --outDir dist",
-		"package": "rm -rf dist && pnpm build && pnpm emit-declarations && scripts/emit-package-json.js && cp LICENSE README.md dist",
-		"update": "pnpm update --latest !@types/node && pnpm update @types/node",
-		"test": "vitest run --coverage",
-		"push-script": "hsm push game-scripts \"*.binmat\""
-	},
 	"dependencies": {
 		"@samual/lib": "0.13.0"
 	},

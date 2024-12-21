@@ -16,8 +16,8 @@ jobs:
 
     - name: Publish dev
       if: github.event_name == 'push'
-      run: scripts/version-dev.js && pnpm package && cd dist && npm publish --no-git-checks --tag dev
+      run: scripts/version-dev.js && scripts/package.sh && cd dist && npm publish --no-git-checks --tag dev
 
     - name: Publish release
       if: github.event_name == 'release'
-      run: pnpm package && cd dist && npm publish --no-git-checks
+      run: scripts/package.sh && cd dist && npm publish --no-git-checks
