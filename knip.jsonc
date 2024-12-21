@@ -6,5 +6,5 @@
 		"examples/test-binmat-brain/index.js",
 		"game-scripts/*.ts"
 	],
-	"ignoreDependencies": [ "@vitest/coverage-v8" ]
+	"ignoreDependencies": [ "@vitest/coverage-v8", "hackmud-script-manager" ]
 }
