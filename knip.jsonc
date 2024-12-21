@@ -1,0 +1,10 @@
+{
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"entry": [
+		"src/**/*.ts",
+		"scripts/*.js",
+		"examples/test-binmat-brain/index.js",
+		"game-scripts/*.ts"
+	],
+	"ignoreDependencies": [ "@vitest/coverage-v8" ]
+}

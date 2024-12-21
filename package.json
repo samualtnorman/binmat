@@ -33,6 +33,7 @@
 		"babel-plugin-here": "^1.0.2",
 		"braces": "^3.0.3",
 		"hackmud-script-manager": "^0.21.0",
+		"knip": "^5.41.1",
 		"rollup": "^4.29.0",
 		"semver": "^7.6.3",
 		"typescript": "^5.7.2",
