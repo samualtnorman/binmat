@@ -1,10 +1,10 @@
 import { assert } from "@samual/lib/assert"
 import { isRecord } from "@samual/lib/isRecord"
-import { doMove } from "../src/doMove"
-import { makeState } from "../src/makeState"
-import { parseMove } from "../src/parseMove"
-import type { CardString, State } from "../src/common"
-import { CardStringSuit, MoveTag, Role, StatusCode, StatusCodeMessages } from "../src/common"
+import type { CardString, State } from "../dist/common"
+import { CardStringSuit, MoveTag, Role, StatusCode, StatusCodeMessages } from "../dist/common"
+import { doMove } from "../dist/doMove"
+import { makeState } from "../dist/makeState"
+import { parseMove } from "../dist/parseMove"
 
 const SuitToColourCode = {
 	[CardStringSuit.Form]: `l`,
@@ -369,6 +369,7 @@ function $(context: Context, args: unknown) {
 					$db.us({ _id: `binmat` }, {
 						$unset: { waiting: `` },
 
+						// @ts-expect-error
 						$set: {
 							[`idToGame/${id}`]: {
 								defender: context.caller,
@@ -396,6 +397,7 @@ function $(context: Context, args: unknown) {
 				$db.us({ _id: `binmat` }, {
 					$unset: { waiting: `` },
 
+					// @ts-expect-error
 					$set: {
 						[`idToGame/${id}`]: {
 							defender: waitingUser,
