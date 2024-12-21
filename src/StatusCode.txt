@@ -1,0 +1,15 @@
+Okay
+DefenderWin
+AttackerWin
+MadeMoveOnFinishedGame
+DefenderDrewFromAttackerDeck
+AttackerDrewFromBlockedLane
+PlayedUnownedCard
+PlayedBreakToEmptyStack
+DefenderInitiatedCombat
+AttackerInitiatedCombatWithEmptyStack
+DiscardedToOpponentDiscardPile
+AttackerDiscardedToEmptyDiscardAndDeck
+AttackerDrewFromEmptyDiscardAndDeck
+PlayedCardFacedWrongWay
+DefenderPlayedFaceUpBreakToStackWithBreak

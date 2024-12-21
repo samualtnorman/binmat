@@ -1,0 +1,6 @@
+Draw
+Play
+PlayFaceUp
+Combat
+Discard
+Pass

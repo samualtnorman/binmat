@@ -1,9 +1,38 @@
+import { MoveTag } from "./MoveTag"
+import { StatusCode } from "./StatusCode"
+
 export const Lanes = [ 0, 1, 2, 3, 4, 5 ] as const
 export type Lane = typeof Lanes[any]
 export type CardStringFaceNumber = `2` | `3` | `4` | `5` | `6` | `7` | `8` | `9` | `a`
-export const enum CardStringFaceModifier { Trap = `@`, Wild = `*`, Bounce = `?`, Break = `>` }
+
+export const CardStringFaceModifier = { Trap: `@`, Wild: `*`, Bounce: `?`, Break: `>` }
+
+export namespace CardStringFaceModifier {
+	export type Trap = typeof CardStringFaceModifier.Trap
+	export type Wild = typeof CardStringFaceModifier.Wild
+	export type Bounce = typeof CardStringFaceModifier.Bounce
+	export type Break = typeof CardStringFaceModifier.Break
+}
+
+export type CardStringFaceModifier = CardStringFaceModifier.Trap | CardStringFaceModifier.Wild |
+	CardStringFaceModifier.Bounce | CardStringFaceModifier.Break
+
 export type CardStringFace = CardStringFaceNumber | `${CardStringFaceModifier}`
-export const enum CardStringSuit { Form = `&`, Kin = `%`, Data = `+`, Chaos = `!`, Void = `^`, Choice = `#` }
+export const CardStringSuit = { Form: `&`, Kin: `%`, Data: `+`, Chaos: `!`, Void: `^`, Choice: `#` }
+
+export namespace CardStringSuit {
+	export type Form = typeof CardStringSuit.Form
+	export type Kin = typeof CardStringSuit.Kin
+	export type Data = typeof CardStringSuit.Data
+	export type Chaos = typeof CardStringSuit.Chaos
+	export type Void = typeof CardStringSuit.Void
+	export type Choice = typeof CardStringSuit.Choice
+}
+
+export type CardStringSuit = CardStringSuit.Form | CardStringSuit.Kin |
+	CardStringSuit.Data | CardStringSuit.Chaos | CardStringSuit.Void |
+	CardStringSuit.Choice
+
 export type CardString = `${CardStringFace}${CardStringSuit}`
 export const AttackerDeck = 6
 export type AttackerDeck = 6
@@ -21,7 +50,6 @@ export type MoveStringPass = "--"
 export type MoveString =
 	MoveStringDraw | MoveStringCombat | MoveStringPlay | MoveStringPlayFaceup | MoveStringDiscard | MoveStringPass
 
-export const enum MoveTag { Draw = 1, Play, PlayFaceUp, Combat, Discard, Pass }
 
 export type Move =
 	{ tag: MoveTag.Draw, deck: Lane | AttackerDeck } |
@@ -29,13 +57,6 @@ export type Move =
 	{ tag: MoveTag.Combat, lane: Lane } |
 	{ tag: MoveTag.Discard, card: CardString | CardStringFace, discardPile: Lane | AttackerDiscardPile } |
 	{ tag: MoveTag.Pass }
-
-export const enum StatusCode {
-	Okay, DefenderWin, AttackerWin, MadeMoveOnFinishedGame, DefenderDrewFromAttackerDeck, AttackerDrewFromBlockedLane,
-	PlayedUnownedCard, PlayedBreakToEmptyStack, DefenderInitiatedCombat, AttackerInitiatedCombatWithEmptyStack,
-	DiscardedToOpponentDiscardPile, AttackerDiscardedToEmptyDiscardAndDeck, AttackerDrewFromEmptyDiscardAndDeck,
-	PlayedCardFacedWrongWay, DefenderPlayedFaceUpBreakToStackWithBreak
-}
 
 export const StatusCodeMessages: Record<StatusCode, string> = [
 	`okay`,
@@ -98,3 +119,6 @@ export const CardStringSuits: CardStringSuit[] = [
 	CardStringSuit.Void,
 	CardStringSuit.Choice
 ]
+
+export { MoveTag } from "./MoveTag"
+export { StatusCode } from "./StatusCode"

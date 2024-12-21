@@ -1,7 +1,7 @@
 import type { State } from "./common"
 import { Role, StatusCode } from "./common"
 
-export function doMovePass(state: State) {
+export function doMovePass(state: State): StatusCode.DefenderWin | StatusCode.MadeMoveOnFinishedGame | StatusCode.Okay {
 	if (state.turn >= state.maxTurns)
 		return StatusCode.MadeMoveOnFinishedGame
 

@@ -19,18 +19,13 @@ import { parseMove } from "../dist/parseMove"
 export default (context: Context) => {
 	const library = {
 		CardStringFaceModifier:
-		// @ts-expect-error although it's a const enum, it's a real js runtime object
 		CardStringFaceModifier,
 		CardStringFaces,
-		// @ts-expect-error although it's a const enum, it's a real js runtime object
 		CardStringSuit,
 		CardStringSuits,
 		Lanes,
-		// @ts-expect-error although it's a const enum, it's a real js runtime object
 		MoveTag,
-		// @ts-expect-error although it's a const enum, it's a real js runtime object
 		Role,
-		// @ts-expect-error although it's a const enum, it's a real js runtime object
 		StatusCode,
 		StatusCodeMessages,
 		PowersOfTwo,
