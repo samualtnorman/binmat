@@ -1,8 +1,13 @@
-import { shuffle } from "@samual/lib/shuffle"
-import type { CardString, Lane, State } from "./common"
+import type { LaxPartial } from "@samual/lib"
+import { shuffle as defaultShuffleFunction } from "@samual/lib/shuffle"
+import type { CardString, Lane, ShuffleFunction, State } from "./common"
 import { AttackerDeck, AttackerDiscardPile, Role, StatusCode } from "./common"
 
-export function doMoveDraw(state: State, deckToDrawFrom: Lane | AttackerDeck): {
+export function doMoveDraw(
+	state: State,
+	deckToDrawFrom: Lane | AttackerDeck,
+	{ shuffleFunction: shuffle = defaultShuffleFunction }: LaxPartial<{ shuffleFunction: ShuffleFunction }> = {}
+): {
 	status: StatusCode.Okay | StatusCode.DefenderWin
 	cardDrawn: CardString
 } | {

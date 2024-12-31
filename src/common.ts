@@ -120,6 +120,8 @@ export const CardStringSuits: CardStringSuit[] = [
 	CardStringSuit.Choice
 ]
 
+export type ShuffleFunction = (cards: CardString[]) => CardString[]
+
 export { MoveTag } from "./MoveTag"
 export { Role } from "./Role"
 export { StatusCode } from "./StatusCode"

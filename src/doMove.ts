@@ -1,3 +1,6 @@
+import type { LaxPartial } from "@samual/lib"
+import type { CardString, Lane, Move, ShuffleFunction, State } from "./common"
+import { AttackerDeck, MoveTag, StatusCode } from "./common"
 import type { CombatData } from "./doCombat"
 import { doMoveCombat } from "./doMoveCombat"
 import { doMoveDiscard } from "./doMoveDiscard"
@@ -5,10 +8,8 @@ import { doMoveDraw } from "./doMoveDraw"
 import { doMovePass } from "./doMovePass"
 import { doMovePlay } from "./doMovePlay"
 import { doMovePlayFaceUp } from "./doMovePlayFaceUp"
-import type { CardString, Lane, Move, State } from "./common"
-import { AttackerDeck, MoveTag, StatusCode } from "./common"
 
-export function doMove(state: State, move: Move): {
+export function doMove(state: State, move: Move, options?: LaxPartial<{ shuffleFunction: ShuffleFunction }>): {
 	status: StatusCode.Okay | StatusCode.AttackerWin | StatusCode.DefenderWin
 	binlog: string[]
 } | { status: Exclude<StatusCode, StatusCode.Okay | StatusCode.AttackerWin | StatusCode.DefenderWin> } {
@@ -18,7 +19,7 @@ export function doMove(state: State, move: Move): {
 	switch (move.tag) {
 		case MoveTag.Draw: {
 			const deckIsEmpty = !(move.deck == AttackerDeck ? state.attackerDeck : state.laneDecks[move.deck]).length
-			const result = doMoveDraw(state, move.deck)
+			const result = doMoveDraw(state, move.deck, options)
 			const deck = move.deck == AttackerDeck ? `a` : move.deck
 
 			if (result.status == StatusCode.AttackerWin) {
@@ -63,7 +64,7 @@ export function doMove(state: State, move: Move): {
 		}
 
 		case MoveTag.PlayFaceUp: {
-			const result = doMovePlayFaceUp(state, move.card, move.lane)
+			const result = doMovePlayFaceUp(state, move.card, move.lane, options)
 
 			if (result.status == StatusCode.Okay || result.status == StatusCode.AttackerWin || result.status == StatusCode.DefenderWin) {
 				const binlog = [
@@ -84,7 +85,7 @@ export function doMove(state: State, move: Move): {
 		}
 
 		case MoveTag.Combat: {
-			const result = doMoveCombat(state, move.lane)
+			const result = doMoveCombat(state, move.lane, options)
 
 			if (result.status == StatusCode.Okay || result.status == StatusCode.DefenderWin || result.status == StatusCode.AttackerWin) {
 				const binlog = [
@@ -104,7 +105,7 @@ export function doMove(state: State, move: Move): {
 		}
 
 		case MoveTag.Discard: {
-			const result = doMoveDiscard(state, move.card, move.discardPile)
+			const result = doMoveDiscard(state, move.card, move.discardPile, options)
 
 			if (result.status == StatusCode.Okay || result.status == StatusCode.DefenderWin) {
 				const discardPile = move.discardPile == AttackerDeck ? `a` : move.discardPile

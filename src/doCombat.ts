@@ -1,5 +1,6 @@
-import { shuffle } from "@samual/lib/shuffle"
-import type { CardString, CardStringSuit, CardStringFace, Lane, State } from "./common"
+import type { LaxPartial } from "@samual/lib"
+import { shuffle as defaultShuffleFunction } from "@samual/lib/shuffle"
+import type { CardString, CardStringFace, CardStringSuit, Lane, ShuffleFunction, State } from "./common"
 import { CardStringFaceModifier, Role, StatusCode } from "./common"
 
 export type CombatData = {
@@ -20,7 +21,11 @@ export type CombatData = {
 
 export const PowersOfTwo = [ 2, 4, 8, 16, 32, 64, 128, 256 ]
 
-export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | StatusCode.AttackerWin } & CombatData {
+export function doCombat(
+	state: State,
+	lane: Lane,
+	{ shuffleFunction: shuffle = defaultShuffleFunction }: LaxPartial<{ shuffleFunction: ShuffleFunction }> = {}
+): { status: StatusCode.Okay | StatusCode.AttackerWin } & CombatData {
 	const roleTurn: Role = (state.turn % 2) + 1
 	const laneDeck = state.laneDecks[lane]
 	const laneDiscardPile = state.laneDiscardPiles[lane]
@@ -129,7 +134,7 @@ export function doCombat(state: State, lane: Lane): { status: StatusCode.Okay | 
 	const attackerBouncesDiscarded: `?${CardStringSuit}`[] = []
 
 	if (
-		attackerBounceIndexes.length || defenderBounceIndexes.length || (!attackerAttackPower && !defenderAttackPower)
+		attackerBounceIndexes.length || defenderBounceIndexes.length || !(attackerAttackPower || defenderAttackPower)
 	) {
 		for (const index of defenderBounceIndexes.reverse()) {
 			const bounceDiscarded = defenderStack.splice(index, 1)[0]!

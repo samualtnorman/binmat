@@ -4,7 +4,7 @@ import type { BinmatArgs } from "./generateArgs"
 import { generateArgsForAttacker, generateArgsForDefender } from "./generateArgs"
 import { makeState } from "./makeState"
 import { parseMove } from "./parseMove"
-import type { MoveString, State } from "./common"
+import type { MoveString, ShuffleFunction, State } from "./common"
 import { MoveTag, Role, StatusCode, StatusCodeMessages } from "./common"
 
 export type SimulateGameOptions = {
@@ -23,6 +23,8 @@ export type SimulateGameOptions = {
 
 	/** Intial state of binlog from attacker's last turn (should be odd numbered turn) @default [] */
 	attackerBinlog: string[]
+
+	shuffleFunction: ShuffleFunction
 }
 
 export type CLIContext = {
@@ -56,7 +58,8 @@ export function simulateGame(
 		onMove,
 		state = makeState(),
 		defenderBinlog = [],
-		attackerBinlog = []
+		attackerBinlog = [],
+		shuffleFunction
 	}: LaxPartial<SimulateGameOptions> = {}
 ): Role {
 	let endTime: number
@@ -157,7 +160,7 @@ export function simulateGame(
 			throw error
 		}
 
-		const result = doMove(state, move)
+		const result = doMove(state, move, { shuffleFunction })
 
 		switch (result.status) {
 			case StatusCode.Okay: break
@@ -187,7 +190,7 @@ export function simulateGame(
 	}
 
 	function doDefaultMove() {
-		const result = doMove(state, { tag: MoveTag.Pass })
+		const result = doMove(state, { tag: MoveTag.Pass }, { shuffleFunction })
 
 		switch (result.status) {
 			case StatusCode.Okay: break

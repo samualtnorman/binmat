@@ -1,9 +1,10 @@
+import type { LaxPartial } from "@samual/lib"
+import type { Lane, ShuffleFunction, State } from "./common"
+import { Role, StatusCode } from "./common"
 import type { CombatData } from "./doCombat"
 import { doCombat } from "./doCombat"
-import type { Lane, State } from "./common"
-import { Role, StatusCode } from "./common"
 
-export function doMoveCombat(state: State, lane: Lane): (
+export function doMoveCombat(state: State, lane: Lane, options?: LaxPartial<{ shuffleFunction: ShuffleFunction }>): (
 	{ status: StatusCode.Okay | StatusCode.DefenderWin | StatusCode.AttackerWin } & CombatData
 ) | {
 	status:
@@ -22,7 +23,7 @@ export function doMoveCombat(state: State, lane: Lane): (
 	if (!state.attackerStacks[lane].length)
 		return { status: StatusCode.AttackerInitiatedCombatWithEmptyStack }
 
-	const combatResult = doCombat(state, lane)
+	const combatResult = doCombat(state, lane, options)
 
 	if (combatResult.status == StatusCode.AttackerWin)
 		return combatResult
