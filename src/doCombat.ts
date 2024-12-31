@@ -136,6 +136,9 @@ export function doCombat(
 	if (
 		attackerBounceIndexes.length || defenderBounceIndexes.length || !(attackerAttackPower || defenderAttackPower)
 	) {
+		attackerAttackPower = 0
+		defenderAttackPower = 0
+
 		for (const index of defenderBounceIndexes.reverse()) {
 			const bounceDiscarded = defenderStack.splice(index, 1)[0]!
 
