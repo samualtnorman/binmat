@@ -293,7 +293,7 @@ export function* parseBinlog(binlog: string[]): Generator<BinlogEntry, void, und
 						card,
 						cardsDrawn: binlog[0].slice(binlog[0].lastIndexOf(`/`) + 2, -5).split(` `) as CardString[],
 						defenderAttackPower,
-						defenderStack: defenderStack ? defenderStack.split(` `) as CardString[] : [],
+						defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
 						lane: move.lane,
 						order,
 						role
@@ -305,7 +305,7 @@ export function* parseBinlog(binlog: string[]): Generator<BinlogEntry, void, und
 						card,
 						cardsDrawn,
 						defenderAttackPower,
-						defenderStack: defenderStack ? defenderStack.split(` `) as CardString[] : [],
+						defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
 						lane: move.lane,
 						order,
 						role
