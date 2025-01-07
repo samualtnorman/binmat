@@ -270,7 +270,7 @@ export function* parseBinlog(binlog: string[]): Generator<BinlogEntry, void, und
 					}
 
 					if (binlog[0][7] == `?`) {
-						assert(/^`n--` [ad]\? \/ \?[&%+!^#] x[0-5a]/.test(binlog[0]), HERE)
+						assert(/^`n--` [ad]\? \/ (?:\?[&%+!^#] )+x[0-5a]/.test(binlog[0]), HERE)
 						binlog.shift()
 						assert(binlog[0], HERE)
 					}
