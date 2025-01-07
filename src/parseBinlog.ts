@@ -254,7 +254,7 @@ export function* parseBinlog(binlog: string[]): Generator<BinlogEntry, void, und
 
 				if (binlog[0] && binlog[0][1] == `n`) {
 					assert(
-						/^`n--` c[0-5] \/ (?:[2-9a@*?>][&%+!^#]u? )+\/(?: $|(?: [2-9a@*?>][&%+!^#])+$)/.test(binlog[0]),
+						/^`n--` c[0-5] \/ (?:[2-9a@*?>][&%+!^#]u? )+\/(?: $|(?: [2-9a@*?>][&%+!^#]u?)+$)/.test(binlog[0]),
 						HERE
 					)
 
