@@ -265,16 +265,28 @@ export function* parseBinlog(binlog: string[]): Generator<BinlogEntry, void, und
 					binlog.shift()
 					assert(binlog[0], HERE)
 
-					if (binlog[0][7] == `@`) {
-						assert(/^`n--` a@ \/ (?:[2-9a@*?>][&%+!^#] )+xa$/.test(binlog[0]), HERE)
-						binlog.shift()
-						assert(binlog[0], HERE)
+					for (let times = 2; times--;) {
+						if (binlog[0][7] == `@`) {
+							assert(
+								/^`n--` [ad]@ \/ (?:[2-9a@*?>][&%+!^#] )+x[a0-5]$/.test(binlog[0]),
+								() => `${HERE} ${JSON.stringify(binlog[0])}`
+							)
+
+							binlog.shift()
+							assert(binlog[0], HERE)
+						}
 					}
 
-					if (binlog[0][7] == `?`) {
-						assert(/^`n--` [ad]\? \/ (?:\?[&%+!^#] )+x[0-5a]/.test(binlog[0]), HERE)
-						binlog.shift()
-						assert(binlog[0], HERE)
+					for (let times = 2; times--;) {
+						if (binlog[0][7] == `?`) {
+							assert(
+								/^`n--` [ad]\? \/ (?:\?[&%+!^#] )+x[a0-5]$/.test(binlog[0]),
+								() => `${HERE} ${JSON.stringify(binlog[0])}`
+							)
+
+							binlog.shift()
+							assert(binlog[0], HERE)
+						}
 					}
 
 					assert(
