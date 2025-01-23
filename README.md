@@ -51,9 +51,8 @@ Follow this first.
 4. Run `pnpm install`
 
 ### Compiling the hackmud Scripts
-If you did step 5 of the Setup, run `pnpm hsm push game-scripts` and the scripts will be pushed straight to your user's
-`scripts` folders.<br>
-If you did not do step 5, run `pnpm hsm golf game-scripts/binmat.ts` and `pnpm hsm golf game-scripts/binmat_lib.ts`,
+You can run `pnpm hsm push game-scripts` and the scripts will be pushed straight to your user's
+`scripts` folders. Or you can run `pnpm hsm golf game-scripts/binmat.ts` and `pnpm hsm golf game-scripts/binmat_lib.ts`,
 this will generate hackmud script files next to those source files.
 
 ### Building the package
