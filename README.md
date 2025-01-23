@@ -49,10 +49,6 @@ Follow this first.
    [repository](https://github.com/samualtnorman/binmat)
 3. Open a command prompt `cd`'d into the cloned repository folder
 4. Run `pnpm install`
-5. **(OPTIONAL)** Tell the script manager where the hackmud directory is with
-   `pnpm hsm config set hackmudPath <hackmud directory>`
-   - Replace `<hackmud directory>` with the path to the hackmud directory
-   - You can find your hackmud directory by running `#dir` in hackmud and going up two directories
 
 ### Compiling the hackmud Scripts
 If you did step 5 of the Setup, run `pnpm hsm push game-scripts` and the scripts will be pushed straight to your user's
