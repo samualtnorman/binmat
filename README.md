@@ -1,7 +1,7 @@
 # Binmat
 Simulator and utility functions for the card game [binmat](https://github.com/DrizzlyBear/binmat_rules) from the video game
 [hackmud](https://hackmud.com/).<br>
-If you need any help, you can `@samualn` in the [hackmud discord server](https://discord.gg/gxpEdwU8CC) or
+If you need any help, you can DM or `@samualn` in the [hackmud discord server](https://discord.gg/gxpEdwU8CC) or
 [open an issue](https://github.com/samualtnorman/binmat/issues/new).
 
 Supports Node.js 18, 20, and above.
