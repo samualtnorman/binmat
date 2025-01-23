@@ -45,8 +45,8 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
       hackmud-script-manager:
-        specifier: 0.21.1-2db6aca
-        version: 0.21.1-2db6aca(@babel/core@7.24.4)(typescript@5.7.2)
+        specifier: 0.21.1-6eb310a
+        version: 0.21.1-6eb310a(@babel/core@7.24.4)(typescript@5.7.2)
       knip:
         specifier: ^5.41.1
         version: 5.41.1(@types/node@18.19.68(patch_hash=lej2llhp253wo53qvxs6qw6ccm))(typescript@5.7.2)
@@ -1329,8 +1329,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  hackmud-script-manager@0.21.1-2db6aca:
-    resolution: {integrity: sha512-y+eWxfTCvXEU5y7gBBnecN9v6kOG4wUF8TgoFAsxeicTf1pjlh9+0/wAZH5/IihaSnCbBOrItL997kounffDXQ==}
+  hackmud-script-manager@0.21.1-6eb310a:
+    resolution: {integrity: sha512-fMAPyg/wUwW3im3tjSpHTr/2uy2aJ3pEtNLf9O9XRqWatk6ruzb/89K0/cQxn/xbco2bfMoSwJqxTwVTqwuplw==}
     engines: {node: ^18 || >=20}
     hasBin: true
     peerDependencies:
@@ -3208,7 +3208,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  hackmud-script-manager@0.21.1-2db6aca(@babel/core@7.24.4)(typescript@5.7.2):
+  hackmud-script-manager@0.21.1-6eb310a(@babel/core@7.24.4)(typescript@5.7.2):
     dependencies:
       '@babel/generator': 7.26.3
       '@babel/parser': 7.26.3
