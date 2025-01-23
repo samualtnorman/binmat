@@ -50,13 +50,15 @@ Follow this first.
 3. Open a command prompt `cd`'d into the cloned repository folder
 4. Run `pnpm install`
 
+### Building the package
+Run `pnpm package`, the `dist` folder is then what gets published to [NPM](https://www.npmjs.com/package/binmat).
+
 ### Compiling the hackmud Scripts
+Make sure you have built the package first by following the instructions above.
+
 You can run `pnpm hsm push game-scripts` and the scripts will be pushed straight to your user's
 `scripts` folders. Or you can run `pnpm hsm golf game-scripts/binmat.ts` and `pnpm hsm golf game-scripts/binmat_lib.ts`,
 this will generate hackmud script files next to those source files.
-
-### Building the package
-Run `pnpm package`, the `dist` folder is then what gets published to [NPM](https://www.npmjs.com/package/binmat).
 
 ## Running the Tests
 Run `pnpm test`.
