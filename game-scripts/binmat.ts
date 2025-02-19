@@ -368,8 +368,6 @@ function $(context: Context, args: unknown) {
 				if (callerRole == Role.Defender) {
 					$db.us({ _id: `binmat` }, {
 						$unset: { waiting: `` },
-
-						// @ts-expect-error
 						$set: {
 							[`idToGame/${id}`]: {
 								defender: context.caller,
@@ -396,8 +394,6 @@ function $(context: Context, args: unknown) {
 
 				$db.us({ _id: `binmat` }, {
 					$unset: { waiting: `` },
-
-					// @ts-expect-error
 					$set: {
 						[`idToGame/${id}`]: {
 							defender: waitingUser,
