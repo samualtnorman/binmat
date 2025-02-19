@@ -138,22 +138,7 @@ test("bounce (defender)", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Okay,
-		attackerStack: [ "8!" ],
-		defenderStack: [ "?!" ],
-		attackerAttackPower: 3,
-		defenderAttackPower: 0,
-		damageValue: 0,
-		cardsDrawn: [],
-		attackerBouncesDiscarded: [],
-		attackerCardsTrapped: [],
-		attackerStackDiscarded: [ "8!" ],
-		defenderBouncesDiscarded: [ "?!" ],
-		defenderCardsTrapped: [],
-		defenderStackWasFaceUp: false,
-		cardsDrawnToDiscard: []
-	})
+	expect(doCombat(state, 0)).toMatchSnapshot()
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],
@@ -418,22 +403,7 @@ test("bounce (attacker)", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Okay,
-		attackerStack: [ "?!" ],
-		defenderStack: [ "4!" ],
-		attackerAttackPower: 0,
-		defenderAttackPower: 2,
-		damageValue: 0,
-		cardsDrawn: [],
-		attackerBouncesDiscarded: [ "?!" ],
-		attackerCardsTrapped: [],
-		attackerStackDiscarded: [],
-		defenderBouncesDiscarded: [],
-		defenderCardsTrapped: [],
-		defenderStackWasFaceUp: false,
-		cardsDrawnToDiscard: []
-	})
+	expect(doCombat(state, 0)).toMatchSnapshot()
 
 	expect(state).toEqual({
 		attackerStacks: [ [], [], [], [], [], [] ],

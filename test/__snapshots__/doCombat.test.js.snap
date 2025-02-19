@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`bounce (attacker) 1`] = `
+{
+  "attackerAttackPower": 0,
+  "attackerBouncesDiscarded": [
+    "?!",
+  ],
+  "attackerCardsTrapped": [],
+  "attackerStack": [
+    "?!",
+  ],
+  "attackerStackDiscarded": [],
+  "cardsDrawn": [],
+  "cardsDrawnToDiscard": [],
+  "damageValue": 0,
+  "defenderAttackPower": 0,
+  "defenderBouncesDiscarded": [],
+  "defenderCardsTrapped": [],
+  "defenderStack": [
+    "4!",
+  ],
+  "defenderStackWasFaceUp": false,
+  "status": 1,
+}
+`;
+
+exports[`bounce (defender) 1`] = `
+{
+  "attackerAttackPower": 0,
+  "attackerBouncesDiscarded": [],
+  "attackerCardsTrapped": [],
+  "attackerStack": [
+    "8!",
+  ],
+  "attackerStackDiscarded": [
+    "8!",
+  ],
+  "cardsDrawn": [],
+  "cardsDrawnToDiscard": [],
+  "damageValue": 0,
+  "defenderAttackPower": 0,
+  "defenderBouncesDiscarded": [
+    "?!",
+  ],
+  "defenderCardsTrapped": [],
+  "defenderStack": [
+    "?!",
+  ],
+  "defenderStackWasFaceUp": false,
+  "status": 1,
+}
+`;

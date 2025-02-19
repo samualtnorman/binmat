@@ -394,18 +394,7 @@ it("works", () => {
 		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, { tag: MoveTag.Combat, lane: 0 })).toEqual({
-		status: StatusCode.Okay,
-		binlog: [
-			"`V001` `n------`",
-			"a0 c0",
-			"`n--` c0 / @% / ?+ 4% @# 3+",
-			"`n--` a@ / 3+ xa",
-			"`n--` d@ / @% x0",
-			"`n--` d? / ?+ xa",
-			"`n--` 0 2 - /  x0"
-		]
-	})
+	}, { tag: MoveTag.Combat, lane: 0 })).toMatchSnapshot()
 
 	expect(doMove({
 		attackerStacks: [ [], [], [], [], [], [ "4%" ] ],

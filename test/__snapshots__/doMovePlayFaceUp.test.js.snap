@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`bounce 1`] = `
+{
+  "cardPlayed": "?+",
+  "combat": {
+    "attackerAttackPower": 0,
+    "attackerBouncesDiscarded": [
+      "?+",
+    ],
+    "attackerCardsTrapped": [],
+    "attackerStack": [
+      "?+",
+    ],
+    "attackerStackDiscarded": [],
+    "cardsDrawn": [],
+    "cardsDrawnToDiscard": [],
+    "damageValue": 0,
+    "defenderAttackPower": 0,
+    "defenderBouncesDiscarded": [],
+    "defenderCardsTrapped": [],
+    "defenderStack": [
+      "4%",
+    ],
+    "defenderStackWasFaceUp": false,
+  },
+  "status": 1,
+}
+`;

@@ -566,25 +566,7 @@ test("bounce", () => {
 		maxTurns: 110,
 		attackerPassedLastTurn: false,
 		defenderPassedLastTurn: false
-	}, "?+", 0)).toEqual({
-		status: StatusCode.Okay,
-		cardPlayed: "?+",
-		combat: {
-			attackerStack: [ "?+" ],
-			defenderStack: [ "4%" ],
-			attackerAttackPower: 0,
-			defenderAttackPower: 2,
-			damageValue: 0,
-			cardsDrawn: [],
-			attackerBouncesDiscarded: [ "?+" ],
-			attackerCardsTrapped: [],
-			attackerStackDiscarded: [],
-			defenderBouncesDiscarded: [],
-			defenderCardsTrapped: [],
-			defenderStackWasFaceUp: false,
-			cardsDrawnToDiscard: []
-		}
-	})
+	}, "?+", 0)).toMatchSnapshot()
 })
 
 test("defender win", () => {

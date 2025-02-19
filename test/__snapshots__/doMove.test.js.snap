@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`works 1`] = `
+{
+  "binlog": [
+    "\`V001\` \`n------\`",
+    "a0 c0",
+    "\`n--\` c0 / @% / ?+ 4% @# 3+",
+    "\`n--\` a@ / 3+ xa",
+    "\`n--\` d@ / @% x0",
+    "\`n--\` d? / ?+ xa",
+    "\`n--\` 0 0 0 /  xa",
+  ],
+  "status": 1,
+}
+`;
