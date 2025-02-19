@@ -29,6 +29,7 @@ export function doMoveCombat(state: State, lane: Lane, options?: LaxPartial<{ sh
 		return combatResult
 
 	state.turn++
+	state.attackerPassedLastTurn = false
 
 	if (state.turn == state.maxTurns)
 		return { ...combatResult, status: StatusCode.DefenderWin }

@@ -55,6 +55,11 @@ export function doMoveDraw(
 
 	state.turn++
 
+	if (roleTurn == Role.Defender)
+		state.defenderPassedLastTurn = false
+	else
+		state.attackerPassedLastTurn = false
+
 	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardDrawn }
 

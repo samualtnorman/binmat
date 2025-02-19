@@ -1,5 +1,7 @@
 import type { LaxPartial } from "@samual/lib"
-import type { CardString, Lane, Move, ShuffleFunction, State } from "./common"
+import { assert, ensure } from "@samual/lib/assert"
+import { ARC4RNG, Random } from "random"
+import type { CardString, Lane, Move, MoveString, ShuffleFunction, State } from "./common"
 import { AttackerDeck, MoveTag, StatusCode } from "./common"
 import type { CombatData } from "./doCombat"
 import { doMoveCombat } from "./doMoveCombat"
@@ -8,6 +10,9 @@ import { doMoveDraw } from "./doMoveDraw"
 import { doMovePass } from "./doMovePass"
 import { doMovePlay } from "./doMovePlay"
 import { doMovePlayFaceUp } from "./doMovePlayFaceUp"
+import { Cards, makeState } from "./makeState"
+import { parseMove } from "./parseMove"
+import { StatusCodesToNames } from "./StatusCode"
 
 export function doMove(state: State, move: Move, options?: LaxPartial<{ shuffleFunction: ShuffleFunction }>): {
 	status: StatusCode.Okay | StatusCode.AttackerWin | StatusCode.DefenderWin
@@ -200,4 +205,131 @@ export function doMove(state: State, move: Move, options?: LaxPartial<{ shuffleF
 		else
 			binlog.push(`\`n--\` ${attackerAttackPower} ${defenderAttackPower} - / ${attackerStackDiscarded} x${lane}`)
 	}
+}
+
+if (import.meta.vitest) {
+	const { test, expect,  } = import.meta.vitest
+
+	const setup = () => {
+		const rng = new ARC4RNG(0)
+
+		rng.S = Buffer.from(`LfquhbRQoTNR5vi0FN8i6XbgemiAFlKKwn-WQOI6YHvofmZFyHi4Yjq2g1lvPhsZkfEEQzzJxWfReesVkb1-p_xEsVyACz8vyLw4LY64m8DFJOoMqQEUm6jwvkyJwATjzuTq1CM-hovag_f0ykV8U1g9T1QdWajDPS08k1hjvz2Z-_qPjvw2ROMyk55uHLne2KXTLOvNzQklbAZA4_p1PEbCVHhAVkq_UCz2IFMAYoJozC_BcF0kBLCUA_Z1CQ_BoOtsS9R0BmjV-aucD9MXsgABX7mn2tWWfBf1rk5qfcncaD7boRcDFETdYJ4PHpaylZNhTvEYN4ITKc7T0LRJyQ`, `base64url`) as any
+		rng.i = 0
+		rng.j = 0
+
+		const random = new Random(rng)
+		const state = makeState(shuffle([ ...Cards ]))
+
+		return { state, moves }
+
+		function shuffle<T>(array: T[]): T[] {
+			let index = array.length
+
+			while (index) {
+				const randomIndex = random.int(0, index - 1)
+				const randomItem = array[ randomIndex ]!
+
+				index--
+				array[ randomIndex ] = array[ index ]!
+				array[ index ] = randomItem
+			}
+
+			return array
+		}
+
+		function moves(...moveStrings: MoveString[]) {
+			const lastMoveString = ensure(moveStrings.pop(), HERE)
+
+			for (const moveString of moveStrings) {
+				const result = doMove(state, parseMove(moveString), { shuffleFunction: shuffle })
+
+				assert(result.status == StatusCode.Okay, () =>
+					`${HERE} status: ${StatusCodesToNames[result.status]}, turn: ${state.turn}, move: ${moveString}`
+				)
+
+				expect(result.binlog.join(`\n`)).toMatchSnapshot()
+				expect(state).toMatchSnapshot()
+			}
+
+			const result = doMove(state, parseMove(lastMoveString), { shuffleFunction: shuffle })
+
+			assert(result.status == StatusCode.Okay, () =>
+				`${HERE} status: ${StatusCodesToNames[result.status]}, turn: ${state.turn}, move: ${lastMoveString}`
+			)
+
+			expect(result.binlog.join(`\n`)).toMatchSnapshot()
+		}
+	}
+
+	test(`reset defenderPassedLastTurn on draw`, () => {
+		const { state, moves } = setup()
+
+		moves(`--`, `--`, `d0`)
+		expect(state.defenderPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
+
+	test(`reset attackerPassedLastTurn on draw`, () => {
+		const { state, moves } = setup()
+
+		moves(`--`, `--`, `--`, `d0`)
+		expect(state.attackerPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
+
+	test(`reset defenderPassedLastTurn on play`, () => {
+		const { state, moves } = setup()
+
+		moves(`d0`, `--`, `--`, `--`, `p30`)
+		expect(state.defenderPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
+
+	test(`reset attackerPassedLastTurn on play`, () => {
+		const { state, moves } = setup()
+
+		moves(`--`, `d0`, `--`, `--`, `--`, `p30`)
+		expect(state.attackerPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
+
+	test(`reset defenderPassedLastTurn on play face-up`, () => {
+		const { state, moves } = setup()
+
+		moves(`d3`, `d3`, `d3`, `--`, `p20`, `p70`, `--`, `--`, `u>0`)
+		expect(state.defenderPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
+
+	test(`reset attackerPassedLastTurn on play face-up`, () => {
+		const { state, moves } = setup()
+
+		moves(`d3`, `d5`, `p20`, `d4`, `--`, `p20`, `--`, `--`, `--`, `u>0`)
+		expect(state.attackerPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
+
+	test(`reset attackerPassedLastTurn on combat`, () => {
+		const { state, moves } = setup()
+
+		moves(`d3`, `d2`, `p20`, `p80`, `--`, `--`, `--`, `c0`)
+		expect(state.attackerPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
+
+	test(`reset defenderPassedLastTurn on discard`, () => {
+		const { state, moves } = setup()
+
+		moves(`d3`, `--`, `--`, `--`, `x20`)
+		expect(state.defenderPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
+
+	test(`reset attackerPassedLastTurn on discard`, () => {
+		const { state, moves } = setup()
+
+		moves(`--`, `d3`, `--`, `p23`, `--`, `c3`, `--`, `--`, `--`, `x>a`)
+		expect(state.attackerPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
 }

@@ -34,6 +34,7 @@
 		"braces": "^3.0.3",
 		"hackmud-script-manager": "0.21.1-6eb310a",
 		"knip": "^5.41.1",
+		"random": "^5.1.1",
 		"rollup": "^4.29.0",
 		"semver": "^7.6.3",
 		"typescript": "^5.7.2",

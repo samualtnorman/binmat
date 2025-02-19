@@ -47,6 +47,11 @@ export function doMovePlay(state: State, card: CardString | CardStringFace, lane
 
 	state.turn++
 
+	if (roleTurn == Role.Defender)
+		state.defenderPassedLastTurn = false
+	else
+		state.attackerPassedLastTurn = false
+
 	if (state.turn == state.maxTurns)
 		return { status: StatusCode.DefenderWin, cardPlayed }
 
