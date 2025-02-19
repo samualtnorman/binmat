@@ -9,5 +9,5 @@ jobs:
     - { name: Checkout, uses: actions/checkout@v4 }
     - { name: Setup Node.js environment, uses: actions/setup-node@v4, with: { node-version: ^18.20 || ^20.10 || >=22 } }
     - { name: Setup pnpm, uses: pnpm/action-setup@v3, with: { version: ^10, run_install: true } }
-    - { name: direnv action, uses: HatsuneMiku3939/direnv-action@v1 }
+    - run: echo $PWD/node_modules/.bin:$PATH > $GITHUB_PATH
     - run: scripts/test.sh
