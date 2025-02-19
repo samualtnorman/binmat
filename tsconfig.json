@@ -12,7 +12,7 @@
 		"module": "ESNext",
 		"moduleResolution": "Node",
 		"resolveJsonModule": true,
-		"types": [ "@types/node", "@total-typescript/ts-reset" ],
+		"types": [ "@types/node", "@total-typescript/ts-reset", "babel-plugin-here/env", "vitest/importMeta" ],
 		"noEmit": true,
 		"checkJs": true,
 		"esModuleInterop": true,
