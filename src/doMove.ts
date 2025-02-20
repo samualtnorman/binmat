@@ -227,11 +227,11 @@ if (import.meta.vitest) {
 
 			while (index) {
 				const randomIndex = random.int(0, index - 1)
-				const randomItem = array[ randomIndex ]!
+				const randomItem = array[randomIndex]!
 
 				index--
-				array[ randomIndex ] = array[ index ]!
-				array[ index ] = randomItem
+				array[randomIndex]=array[index]!
+				array[index] = randomItem
 			}
 
 			return array
