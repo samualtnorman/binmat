@@ -210,32 +210,37 @@ export function doMove(state: State, move: Move, options?: LaxPartial<{ shuffleF
 if (import.meta.vitest) {
 	const { test, expect,  } = import.meta.vitest
 
-	const setup = () => {
-		const rng = new ARC4RNG(0)
+	const setup = (shuffles?: CardString[][]) => {
+		const shuffle: (cards: CardString[]) => CardString[] = shuffles
+			? () => ensure(shuffles.shift(), HERE)
+			: (() => {
+				const rng = new ARC4RNG(0)
 
-		rng.S = Buffer.from(`LfquhbRQoTNR5vi0FN8i6XbgemiAFlKKwn-WQOI6YHvofmZFyHi4Yjq2g1lvPhsZkfEEQzzJxWfReesVkb1-p_xEsVyACz8vyLw4LY64m8DFJOoMqQEUm6jwvkyJwATjzuTq1CM-hovag_f0ykV8U1g9T1QdWajDPS08k1hjvz2Z-_qPjvw2ROMyk55uHLne2KXTLOvNzQklbAZA4_p1PEbCVHhAVkq_UCz2IFMAYoJozC_BcF0kBLCUA_Z1CQ_BoOtsS9R0BmjV-aucD9MXsgABX7mn2tWWfBf1rk5qfcncaD7boRcDFETdYJ4PHpaylZNhTvEYN4ITKc7T0LRJyQ`, `base64url`) as any
-		rng.i = 0
-		rng.j = 0
+				rng.S = Buffer.from(`LfquhbRQoTNR5vi0FN8i6XbgemiAFlKKwn-WQOI6YHvofmZFyHi4Yjq2g1lvPhsZkfEEQzzJxWfReesVkb1-p_xEsVyACz8vyLw4LY64m8DFJOoMqQEUm6jwvkyJwATjzuTq1CM-hovag_f0ykV8U1g9T1QdWajDPS08k1hjvz2Z-_qPjvw2ROMyk55uHLne2KXTLOvNzQklbAZA4_p1PEbCVHhAVkq_UCz2IFMAYoJozC_BcF0kBLCUA_Z1CQ_BoOtsS9R0BmjV-aucD9MXsgABX7mn2tWWfBf1rk5qfcncaD7boRcDFETdYJ4PHpaylZNhTvEYN4ITKc7T0LRJyQ`, `base64url`) as any
+				rng.i = 0
+				rng.j = 0
 
-		const random = new Random(rng)
+				const random = new Random(rng)
+
+				return <T>(array: T[]): T[] => {
+					let index = array.length
+
+					while (index) {
+						const randomIndex = random.int(0, index - 1)
+						const randomItem = array[randomIndex]!
+
+						index--
+						array[randomIndex]=array[index]!
+						array[index] = randomItem
+					}
+
+					return array
+				}
+			})()
+
 		const state = makeState(shuffle([ ...Cards ]))
 
 		return { state, moves }
-
-		function shuffle<T>(array: T[]): T[] {
-			let index = array.length
-
-			while (index) {
-				const randomIndex = random.int(0, index - 1)
-				const randomItem = array[randomIndex]!
-
-				index--
-				array[randomIndex]=array[index]!
-				array[index] = randomItem
-			}
-
-			return array
-		}
 
 		function moves(...moveStrings: MoveString[]) {
 			const lastMoveString = ensure(moveStrings.pop(), HERE)
@@ -330,6 +335,19 @@ if (import.meta.vitest) {
 
 		moves(`--`, `d3`, `--`, `p23`, `--`, `c3`, `--`, `--`, `--`, `x>a`)
 		expect(state.attackerPassedLastTurn).toBe(false)
+		expect(state).toMatchSnapshot()
+	})
+
+	test(`combat draws lane deck cards correctly when discard shuffled into lane deck`, () => {
+		const { state, moves } = setup([
+			["a!","*#","*&","@^","2&","8&",">^","?+","a^","6%","2%","*%","9&","7&","4%","8#",">%","*!","4^","2#","5!","5^","4+","6#","2^","9+","9!","?^","@#","6+","6&","6^","?%","4!","*^","3#",">&","a#","7!","8%","9^","8!","6!","a&","?#","8+","2+","5+","@+",">#","2!","*+",">!","a%","@&","4#","5&","5#",">+","7+","9%","5%","8^","?!","3^","7#","9#","@%","7^","@!","3%","?&","7%","3+","3&","3!","4&","a+"],
+			["7!","*+","2!","?#"],
+			["3^",">&","4+"]
+		])
+
+		moves("--","d3","d4","p*+3","x3^3","d3","d1","d2","x9+1","p2!3","d2","p7!4","xa#5","d0","d2","d1","d3","c4","x>&3","d4","x>#5","d3","d4","p9&5","p8^4","u?!2","d3","d1","d1","p6#2","d5","p@+4","p5+2","c3","pa+1","x?#a","d3","--","x4+3","p2+2","d4","d0","pa&3","p?#2","x5%5","p2^2","d2","p8+3","x3#5","p2!5","d3","d0","p6!0","p*%3","--","p2%3","--","c5","d0","c2","x6%2","--","d0","--","xa^5","c4","d0","c3")
+		expect(state.attackerHand).toMatchObject<CardString[]>([ `8%`, `9^`, `8!`, `4+` ])
+		expect(state.laneDecks[3]).toMatchObject<CardString[]>([ `3^`, `>&` ])
 		expect(state).toMatchSnapshot()
 	})
 }

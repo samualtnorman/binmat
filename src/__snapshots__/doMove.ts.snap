@@ -1,5 +1,11041 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 1`] = `
+"\`V000\` \`n------\`
+d0 \`n--\`"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 2`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": true,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+      "9+",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+      "7!",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+      "2!",
+      "*+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+      "3^",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 1,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 3`] = `
+"\`V001\` \`n------\`
+a0 d3 / *+ ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 4`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "*+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": true,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+      "9+",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+      "7!",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+      "2!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+      "3^",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 2,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 5`] = `
+"\`V002\` \`n------\`
+d0 d4 / 3^ hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 6`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "*+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    "3^",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+      "9+",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+      "7!",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+      "2!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 3,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 7`] = `
+"\`V003\` \`n------\`
+a0 pX3 / X a3"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 8`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    "3^",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+      "9+",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+      "7!",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+      "2!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 4,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 9`] = `
+"\`V004\` \`n------\`
+d0 x33 / 3^ x3"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 10`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+      "9+",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+      "7!",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+      "2!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 5,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 11`] = `
+"\`V005\` \`n------\`
+a0 d3 / 2! ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 12`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+      "9+",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+      "7!",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 6,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 13`] = `
+"\`V006\` \`n------\`
+d0 d1 / X hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 14`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    "9+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+      "7!",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 7,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 15`] = `
+"\`V007\` \`n------\`
+a0 d2 / X ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 16`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2!",
+    "7!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    "9+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 8,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 17`] = `
+"\`V008\` \`n------\`
+d0 x91 / 9+ x1"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 18`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2!",
+    "7!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 9,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 19`] = `
+"\`V009\` \`n------\`
+a0 pX3 / X a3"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 20`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "7!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+      "a#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 10,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 21`] = `
+"\`V010\` \`n------\`
+d0 d2 / X hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 22`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "7!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    "a#",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 11,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 23`] = `
+"\`V011\` \`n------\`
+a0 pX4 / X a4"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 24`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [
+      "7!",
+    ],
+    [],
+  ],
+  "defenderHand": [
+    "a#",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 12,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 25`] = `
+"\`V012\` \`n------\`
+d0 xa5 / a# x5"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 26`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [
+      "7!",
+    ],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+      "9&",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [
+      "a#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 13,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 27`] = `
+"\`V013\` \`n------\`
+a0 d0 / X ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 28`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "9&",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [
+      "7!",
+    ],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+      ">&",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [
+      "a#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 14,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 29`] = `
+"\`V014\` \`n------\`
+d0 d2 / X hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 30`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "9&",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [
+      "7!",
+    ],
+    [],
+  ],
+  "defenderHand": [
+    ">&",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+      "2^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [
+      "a#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 15,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 31`] = `
+"\`V015\` \`n------\`
+a0 d1 / X ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 32`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "9&",
+    "2^",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [
+      "7!",
+    ],
+    [],
+  ],
+  "defenderHand": [
+    ">&",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+      ">#",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [
+      "a#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 16,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 33`] = `
+"\`V016\` \`n------\`
+d0 d3 / ># hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 34`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "9&",
+    "2^",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [
+      "7!",
+    ],
+    [],
+  ],
+  "defenderHand": [
+    ">&",
+    ">#",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [
+      "a#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 17,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 35`] = `
+"\`V017\` \`n------\`
+a0 c4
+\`n--\` c4 / 7! / 
+\`n--\` 0 0 0 / 7! xa"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 36`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "9&",
+    "2^",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    ">&",
+    ">#",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+    ],
+    [],
+    [
+      "a#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 18,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 37`] = `
+"\`V018\` \`n------\`
+d0 x>3 / >& x3"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 38`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "9&",
+    "2^",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    ">#",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+      "?!",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 19,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 39`] = `
+"\`V019\` \`n------\`
+a0 d4 / ?! ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 40`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "9&",
+    "2^",
+    "?!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    ">#",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 20,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 41`] = `
+"\`V020\` \`n------\`
+d0 x>5 / ># x5"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 42`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "9&",
+    "2^",
+    "?!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+      "@+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 21,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 43`] = `
+"\`V021\` \`n------\`
+a0 d3 / @+ ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 44`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "9&",
+    "2^",
+    "?!",
+    "@+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+      "8^",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 22,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 45`] = `
+"\`V022\` \`n------\`
+d0 d4 / 8^ hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 46`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "9&",
+    "2^",
+    "?!",
+    "@+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    "8^",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 23,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 47`] = `
+"\`V023\` \`n------\`
+a0 pX5 / X a5"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 48`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+    "?!",
+    "@+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "8^",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 24,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 49`] = `
+"\`V024\` \`n------\`
+d0 pX4 / X d4"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 50`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+    "?!",
+    "@+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 25,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 51`] = `
+"\`V025\` \`n------\`
+a0 u?2 / ?! a2
+\`n--\` c2 / ?!u / 
+\`n--\` a? / ?! x2
+\`n--\` 0 0 0 /  xa"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 52`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+    "@+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+      "5+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 26,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 53`] = `
+"\`V026\` \`n------\`
+d0 d3 / 5+ hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 54`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+    "@+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "5+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+      "6#",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 27,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 55`] = `
+"\`V027\` \`n------\`
+a0 d1 / X ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 56`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+    "@+",
+    "6#",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "5+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+      "4+",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 28,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 57`] = `
+"\`V028\` \`n------\`
+d0 d1 / X hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 58`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+    "@+",
+    "6#",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "5+",
+    "4+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 29,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 59`] = `
+"\`V029\` \`n------\`
+a0 pX2 / X a2"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 60`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+    "@+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "5+",
+    "4+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+      "a+",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 30,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 61`] = `
+"\`V030\` \`n------\`
+d0 d5 / a+ hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 62`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+    "@+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [
+      "*+",
+      "2!",
+    ],
+    [],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "5+",
+    "4+",
+    "a+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 31,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 63`] = `
+"\`V031\` \`n------\`
+a0 pX4 / X a4"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 64`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [
+      "*+",
+      "2!",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "5+",
+    "4+",
+    "a+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 32,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 65`] = `
+"\`V032\` \`n------\`
+d0 pX2 / X d2"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 66`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+  ],
+  "attackerHand": [
+    "2^",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [
+      "*+",
+      "2!",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "4+",
+    "a+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+      "?#",
+      "8+",
+      "2+",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 33,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 67`] = `
+"\`V033\` \`n------\`
+a0 c3
+\`n--\` c3 / *+ 2! / 
+\`n--\` 2 0 3 / *+ 2! xa / ?# 8+ 2+ ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 68`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+    "*+",
+    "2!",
+  ],
+  "attackerHand": [
+    "2^",
+    "?#",
+    "8+",
+    "2+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "4+",
+    "a+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 34,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 69`] = `
+"\`V034\` \`n------\`
+d0 pX1 / X d1"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 70`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "7!",
+    "*+",
+    "2!",
+  ],
+  "attackerHand": [
+    "2^",
+    "?#",
+    "8+",
+    "2+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "4+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 35,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 71`] = `
+"\`V035\` \`n------\`
+a0 x?a / ?# xa"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 72`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "2+",
+    "?#",
+    "2!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "4+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+      "a&",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 36,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 73`] = `
+"\`V036\` \`n------\`
+d0 d3 / a& hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 74`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "2+",
+    "?#",
+    "2!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "4+",
+    "a&",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 37,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 75`] = `
+"\`V037\` \`n------\`
+a0 \`n--\`"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 76`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "2+",
+    "?#",
+    "2!",
+  ],
+  "attackerPassedLastTurn": true,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "4+",
+    "a&",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 38,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 77`] = `
+"\`V038\` \`n------\`
+d0 x43 / 4+ x3"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 78`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "2+",
+    "?#",
+    "2!",
+  ],
+  "attackerPassedLastTurn": true,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "a&",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 39,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 79`] = `
+"\`V039\` \`n------\`
+a0 pX2 / X a2"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 80`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "?#",
+    "2!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "a&",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+      "5%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 40,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 81`] = `
+"\`V040\` \`n------\`
+d0 d4 / 5% hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 82`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "?#",
+    "2!",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "a&",
+    "5%",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+      "*%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 41,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 83`] = `
+"\`V041\` \`n------\`
+a0 d0 / X ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 84`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "?#",
+    "2!",
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "a&",
+    "5%",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 42,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 85`] = `
+"\`V042\` \`n------\`
+d0 pX3 / X d3"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 86`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "?#",
+    "2!",
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "5%",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 43,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 87`] = `
+"\`V043\` \`n------\`
+a0 pX2 / X a2"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 88`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "2!",
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "5%",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 44,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 89`] = `
+"\`V044\` \`n------\`
+d0 x55 / 5% x5"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 90`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2^",
+    "8+",
+    "2!",
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 45,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 91`] = `
+"\`V045\` \`n------\`
+a0 pX2 / X a2"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 92`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "8+",
+    "2!",
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+      "3#",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 46,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 93`] = `
+"\`V046\` \`n------\`
+d0 d2 / X hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 94`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "8+",
+    "2!",
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "3#",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 47,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 95`] = `
+"\`V047\` \`n------\`
+a0 pX3 / X a3"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 96`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2!",
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [
+    "3#",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 48,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 97`] = `
+"\`V048\` \`n------\`
+d0 x35 / 3# x5"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 98`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2!",
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 49,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 99`] = `
+"\`V049\` \`n------\`
+a0 pX5 / X a5"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 100`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+      "2!",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+      "6!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 50,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 101`] = `
+"\`V050\` \`n------\`
+d0 d3 / 6! hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 102`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "*%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+      "2!",
+    ],
+  ],
+  "defenderHand": [
+    "6!",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+      "2%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 51,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 103`] = `
+"\`V051\` \`n------\`
+a0 d0 / X ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 104`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "*%",
+    "2%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+      "2!",
+    ],
+  ],
+  "defenderHand": [
+    "6!",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 52,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 105`] = `
+"\`V052\` \`n------\`
+d0 pX0 / X d0"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 106`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "*%",
+    "2%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+      "2!",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 53,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 107`] = `
+"\`V053\` \`n------\`
+a0 pX3 / X a3"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 108`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+      "*%",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+      "2!",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 54,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 109`] = `
+"\`V054\` \`n------\`
+d0 \`n--\`"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 110`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [
+    "2%",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+      "*%",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+      "2!",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": true,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 55,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 111`] = `
+"\`V055\` \`n------\`
+a0 pX3 / X a3"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 112`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+      "2!",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": true,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 56,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 113`] = `
+"\`V056\` \`n------\`
+d0 \`n--\`"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 114`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [
+      "9&",
+      "2!",
+    ],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": true,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 57,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 115`] = `
+"\`V057\` \`n------\`
+a0 c5
+\`n--\` c5 / 9& 2! / 
+\`n--\` 0 0 0 / 9& 2! xa"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 116`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": true,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+      "6%",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 58,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 117`] = `
+"\`V058\` \`n------\`
+d0 d0 / X hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 118`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [
+      "6#",
+      "2+",
+      "?#",
+      "2^",
+    ],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [],
+  ],
+  "defenderHand": [
+    "6%",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 59,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 119`] = `
+"\`V059\` \`n------\`
+a0 c2
+\`n--\` c2 / 6# 2+ ?# 2^ / 5+
+\`n--\` a? / ?# x2
+\`n--\` 0 0 0 / 6# 2+ 2^ xa"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 120`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+    "6#",
+    "2+",
+    "2^",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [],
+  ],
+  "defenderHand": [
+    "6%",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": true,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+      "?#",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 60,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 121`] = `
+"\`V060\` \`n------\`
+d0 x62 / 6% x2"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 122`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+    "6#",
+    "2+",
+    "2^",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": true,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+      "?#",
+      "6%",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 61,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 123`] = `
+"\`V061\` \`n------\`
+a0 \`n--\`"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 124`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+    "6#",
+    "2+",
+    "2^",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": true,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": true,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+      "a^",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+      "?#",
+      "6%",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 62,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 125`] = `
+"\`V062\` \`n------\`
+d0 d0 / X hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 126`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+    "6#",
+    "2+",
+    "2^",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": true,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [],
+  ],
+  "defenderHand": [
+    "a^",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": true,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+      "?#",
+      "6%",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 63,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 127`] = `
+"\`V063\` \`n------\`
+a0 \`n--\`"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 128`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+    "6#",
+    "2+",
+    "2^",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": true,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [],
+  ],
+  "defenderHand": [
+    "a^",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": true,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+      "?#",
+      "6%",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 64,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 129`] = `
+"\`V064\` \`n------\`
+d0 xa5 / a^ x5"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 130`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+    "6#",
+    "2+",
+    "2^",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": true,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [
+      "@+",
+    ],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": true,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "8^",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+      "?#",
+      "6%",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+      "a^",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 65,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 131`] = `
+"\`V065\` \`n------\`
+a0 c4
+\`n--\` c4 / @+ / 8^
+\`n--\` a@ / 8^ xa
+\`n--\` 0 0 0 / @+ xa"
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 132`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+    "6#",
+    "2+",
+    "2^",
+    "8^",
+    "@+",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": true,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+      "?+",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+      "?#",
+      "6%",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+      "a^",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 66,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 133`] = `
+"\`V066\` \`n------\`
+d0 d0 / X hd0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 134`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+    "6#",
+    "2+",
+    "2^",
+    "8^",
+    "@+",
+  ],
+  "attackerHand": [],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [
+      "8+",
+      "*%",
+      "2%",
+    ],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    "?+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": true,
+    },
+    {
+      "cards": [
+        "a&",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "8%",
+      "9^",
+      "8!",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+      "?#",
+      "6%",
+    ],
+    [
+      "3^",
+      ">&",
+      "4+",
+    ],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+      "a^",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 67,
+}
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 135`] = `
+"\`V067\` \`n------\`
+a0 c3
+\`n--\` c3 / 8+ *% 2% / a&
+\`n--\` 4 0 5 / 8+ *% 2% xa / a& xa / 8% 9^ 8! 4+ ha0 "
+`;
+
+exports[`combat draws lane deck cards correctly when discard shuffled into lane deck 136`] = `
+{
+  "attackerDeck": [
+    "7!",
+    "*+",
+  ],
+  "attackerDiscardPile": [
+    "9&",
+    "2!",
+    "6#",
+    "2+",
+    "2^",
+    "8^",
+    "@+",
+    "a&",
+    "8+",
+    "*%",
+    "2%",
+  ],
+  "attackerHand": [
+    "8%",
+    "9^",
+    "8!",
+    "4+",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "defenderHand": [
+    "?+",
+  ],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [
+        "6!",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "a+",
+      ],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [
+        "5+",
+      ],
+      "isFaceUp": true,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "a!",
+      "*#",
+      "*&",
+      "@^",
+      "2&",
+      "8&",
+      ">^",
+    ],
+    [
+      "7&",
+      "4%",
+      "8#",
+      ">%",
+      "*!",
+      "4^",
+      "2#",
+      "5!",
+      "5^",
+    ],
+    [
+      "9!",
+      "?^",
+      "@#",
+      "6+",
+      "6&",
+      "6^",
+      "?%",
+      "4!",
+      "*^",
+    ],
+    [
+      "3^",
+      ">&",
+    ],
+    [
+      ">!",
+      "a%",
+      "@&",
+      "4#",
+      "5&",
+      "5#",
+      ">+",
+      "7+",
+      "9%",
+    ],
+    [
+      "7#",
+      "9#",
+      "@%",
+      "7^",
+      "@!",
+      "3%",
+      "?&",
+      "7%",
+      "3+",
+      "3&",
+      "3!",
+      "4&",
+    ],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [
+      "9+",
+    ],
+    [
+      "?!",
+      "?#",
+      "6%",
+    ],
+    [],
+    [],
+    [
+      "a#",
+      ">#",
+      "5%",
+      "3#",
+      "a^",
+    ],
+  ],
+  "maxTurns": 110,
+  "turn": 68,
+}
+`;
+
 exports[`reset attackerPassedLastTurn on combat 1`] = `
 "\`V000\` \`n------\`
 d0 d3 / 2+ hd0 "
