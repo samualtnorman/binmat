@@ -169,7 +169,7 @@ export function doCombat(
 			: attackerAttackPower - defenderAttackPower + 1
 
 		if (damageValue > defenderStack.length) {
-			const cardsToDraw = damageValue - defenderStack.length
+			let cardsToDraw = damageValue - defenderStack.length
 
 			if (cardsToDraw > laneDeck.length + laneDiscardPile.length) {
 				return {
@@ -193,10 +193,15 @@ export function doCombat(
 			cardsDrawnToDiscard = defenderStack.splice(0).reverse()
 			state.attackerDiscardPile.push(...cardsDrawnToDiscard)
 
-			if (cardsToDraw > laneDeck.length)
-				laneDeck.push(...shuffle(laneDiscardPile.splice(0)))
+			if (cardsToDraw > laneDeck.length) {
+				cardsDrawn = laneDeck
+				state.laneDecks[lane] = shuffle(laneDiscardPile)
+				state.laneDiscardPiles[lane] = []
+				cardsToDraw -= cardsDrawn.length
+			} else
+				cardsDrawn = []
 
-			cardsDrawn = laneDeck.splice(-cardsToDraw)
+			cardsDrawn.push(...state.laneDecks[lane].splice(-cardsToDraw))
 			state.attackerHand.push(...cardsDrawn)
 		} else {
 			cardsDrawnToDiscard = defenderStack.splice(-damageValue).reverse()
