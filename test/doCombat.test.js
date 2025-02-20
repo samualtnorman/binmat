@@ -556,40 +556,8 @@ test("shuffling lane discard pile into lane deck", () => {
 		defenderPassedLastTurn: false
 	}
 
-	expect(doCombat(state, 0)).toEqual({
-		status: StatusCode.Okay,
-		attackerStack: [ "8!" ],
-		defenderStack: [],
-		attackerAttackPower: 3,
-		defenderAttackPower: 0,
-		damageValue: 4,
-		attackerBouncesDiscarded: [],
-		attackerCardsTrapped: [],
-		attackerStackDiscarded: [ "8!" ],
-		cardsDrawn: [ "3%", "3&", "3+", "3^" ],
-		defenderBouncesDiscarded: [],
-		defenderCardsTrapped: [],
-		defenderStackWasFaceUp: false,
-		cardsDrawnToDiscard: []
-	})
-
-	expect(state).toEqual({
-		attackerStacks: [ [], [], [], [], [], [] ],
-		defenderStacks: [
-			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false },
-			{ cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }, { cards: [], isFaceUp: false }
-		],
-		laneDecks: [ [ "3!", "3#" ], [], [], [], [], [] ],
-		laneDiscardPiles: [ [], [], [], [], [], [] ],
-		attackerDeck: [],
-		attackerDiscardPile: [ "8!" ],
-		attackerHand: [ "3%", "3&", "3+", "3^" ],
-		defenderHand: [],
-		turn: 1,
-		maxTurns: 110,
-		attackerPassedLastTurn: false,
-		defenderPassedLastTurn: false
-	})
+	expect(doCombat(state, 0)).toMatchSnapshot()
+	expect(state).toMatchSnapshot()
 })
 
 test("defender stack already face up", () => {

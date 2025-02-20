@@ -51,3 +51,104 @@ exports[`bounce (defender) 1`] = `
   "status": 1,
 }
 `;
+
+exports[`shuffling lane discard pile into lane deck 1`] = `
+{
+  "attackerAttackPower": 3,
+  "attackerBouncesDiscarded": [],
+  "attackerCardsTrapped": [],
+  "attackerStack": [
+    "8!",
+  ],
+  "attackerStackDiscarded": [
+    "8!",
+  ],
+  "cardsDrawn": [
+    "3!",
+    "3&",
+    "3+",
+    "3^",
+  ],
+  "cardsDrawnToDiscard": [],
+  "damageValue": 4,
+  "defenderAttackPower": 0,
+  "defenderBouncesDiscarded": [],
+  "defenderCardsTrapped": [],
+  "defenderStack": [],
+  "defenderStackWasFaceUp": false,
+  "status": 1,
+}
+`;
+
+exports[`shuffling lane discard pile into lane deck 2`] = `
+{
+  "attackerDeck": [],
+  "attackerDiscardPile": [
+    "8!",
+  ],
+  "attackerHand": [
+    "3!",
+    "3&",
+    "3+",
+    "3^",
+  ],
+  "attackerPassedLastTurn": false,
+  "attackerStacks": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "defenderHand": [],
+  "defenderPassedLastTurn": false,
+  "defenderStacks": [
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+    {
+      "cards": [],
+      "isFaceUp": false,
+    },
+  ],
+  "laneDecks": [
+    [
+      "3#",
+      "3%",
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "laneDiscardPiles": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ],
+  "maxTurns": 110,
+  "turn": 1,
+}
+`;
