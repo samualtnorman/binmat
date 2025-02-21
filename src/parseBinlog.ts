@@ -50,7 +50,8 @@ export type BinlogEntry = {
 	defenderStack: CardString[]
 	attackerAttackPower: number
 	defenderAttackPower: number
-	cardsDrawn: CardString[]
+	cardsDrawn: number
+	knownCardsDrawn: CardString[]
 	tag: MoveTag.Combat
 	lane: 3 | 4 | 5
 	turn: number
@@ -80,7 +81,8 @@ export type BinlogEntry = {
 	defenderStack: CardString[]
 	attackerAttackPower: number
 	defenderAttackPower: number
-	cardsDrawn: CardString[]
+	cardsDrawn: number
+	knownCardsDrawn: CardString[]
 	tag: MoveTag.PlayFaceUp
 	lane: 3 | 4 | 5
 	turn: number
@@ -213,28 +215,40 @@ export function* parseBinlog(binlog: string[]): Generator<BinlogEntry, void, und
 				// might be "-" which becomes NaN (luckily NaN is falsey)
 				cardsDrawn ||= 0
 
-				yield move.lane == 3 || move.lane == 4 || move.lane == 5 ? {
-					turn,
-					...move,
-					attackerAttackPower,
-					attackerStack: attackerStack.split(` `).map(card => card.slice(0, 2)) as CardString[],
-					cardsDrawn: binlog[0].slice(binlog[0].lastIndexOf(`/`) + 2, -5).split(` `) as CardString[],
-					defenderAttackPower,
-					defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
-					lane: move.lane,
-					order,
-					role
-				} : {
-					turn,
-					...move,
-					attackerAttackPower,
-					attackerStack: attackerStack.split(` `).map(card => card.slice(0, 2)) as CardString[],
-					cardsDrawn,
-					defenderAttackPower,
-					defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
-					lane: move.lane,
-					order,
-					role
+				if (move.lane == 3 || move.lane == 4 || move.lane == 5) {
+					const knownCardsDrawn = binlog[0].slice(binlog[ 0 ].lastIndexOf(`/`) + 2, -5)
+
+					assert(
+						/(?:[2-9a@*?>][&%+!^#]|X)(?: [2-9a@*?>][&%+!^#])*/.test(knownCardsDrawn),
+						() => `${HERE} ${JSON.stringify(knownCardsDrawn)}`
+					)
+
+					yield {
+						turn,
+						...move,
+						attackerAttackPower,
+						attackerStack: attackerStack.split(` `).map(card => card.slice(0, 2)) as CardString[],
+						cardsDrawn,
+						knownCardsDrawn: knownCardsDrawn.split(` `).filter(card => card.length == 2) as CardString[],
+						defenderAttackPower,
+						defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
+						lane: move.lane,
+						order,
+						role
+					}
+				} else {
+					yield {
+						turn,
+						...move,
+						attackerAttackPower,
+						attackerStack: attackerStack.split(` `).map(card => card.slice(0, 2)) as CardString[],
+						cardsDrawn,
+						defenderAttackPower,
+						defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
+						lane: move.lane,
+						order,
+						role
+					}
 				}
 
 				binlog.shift()
@@ -299,30 +313,42 @@ export function* parseBinlog(binlog: string[]): Generator<BinlogEntry, void, und
 
 					cardsDrawn ||= 0
 
-					yield move.lane == 3 || move.lane == 4 || move.lane == 5 ? {
-						turn,
-						...move,
-						attackerAttackPower,
-						attackerStack: attackerStack.split(` `).map(card => card.slice(0, 2)) as CardString[],
-						card,
-						cardsDrawn: binlog[0].slice(binlog[0].lastIndexOf(`/`) + 2, -5).split(` `) as CardString[],
-						defenderAttackPower,
-						defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
-						lane: move.lane,
-						order,
-						role
-					} : {
-						turn,
-						...move,
-						attackerAttackPower,
-						attackerStack: attackerStack.split(` `).map(card => card.slice(0, 2)) as CardString[],
-						card,
-						cardsDrawn,
-						defenderAttackPower,
-						defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
-						lane: move.lane,
-						order,
-						role
+					if (move.lane == 3 || move.lane == 4 || move.lane == 5) {
+						const knownCardsDrawn = binlog[0].slice(binlog[ 0 ].lastIndexOf(`/`) + 2, -5)
+
+						assert(
+							/(?:[2-9a@*?>][&%+!^#]|X)(?: [2-9a@*?>][&%+!^#])*/.test(knownCardsDrawn),
+							() => `${HERE} ${JSON.stringify(knownCardsDrawn)}`
+						)
+
+						yield {
+							turn,
+							...move,
+							attackerAttackPower,
+							attackerStack: attackerStack.split(` `).map(card => card.slice(0, 2)) as CardString[],
+							card,
+							cardsDrawn,
+							knownCardsDrawn: knownCardsDrawn.split(` `).filter(card => card.length == 2) as CardString[],
+							defenderAttackPower,
+							defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
+							lane: move.lane,
+							order,
+							role
+						}
+					} else {
+						yield {
+							turn,
+							...move,
+							attackerAttackPower,
+							attackerStack: attackerStack.split(` `).map(card => card.slice(0, 2)) as CardString[],
+							card,
+							cardsDrawn,
+							defenderAttackPower,
+							defenderStack: defenderStack ? defenderStack.split(` `).map(card => card.slice(0, 2)) as CardString[] : [],
+							lane: move.lane,
+							order,
+							role
+						}
 					}
 
 					binlog.shift()
