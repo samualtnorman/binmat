@@ -15,10 +15,7 @@
 	"contributors": [
 		"Fayti1703 <fayti1703@protonmail.com>"
 	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/samualtnorman/binmat"
-	},
+	"repository": "github:samualtnorman/binmat",
 	"dependencies": {
 		"@samual/lib": "^0.13.0"
 	},
